@@ -1,14 +1,8 @@
-using Microsoft.EntityFrameworkCore;
-using StructuredCablingStudio.Data.Contexts;
-using StructuredCablingStudio.Data.Entities;
-using StructuredCablingStudio.Repositories;
+using StructuredCablingStudio.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
-//Подумать перенести в екстеншн
-builder.Services.AddScoped<IApplicationRepository<CablingConfigurationEntity>, DbApplicationRepository>();
-string? connstr = builder.Configuration.GetConnectionString("CablingConfigurationsDB");
-builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlite(connstr));
+builder.Services.AddCablingConfigurationsInteractionBasis(builder);
 
 var app = builder.Build();
 
