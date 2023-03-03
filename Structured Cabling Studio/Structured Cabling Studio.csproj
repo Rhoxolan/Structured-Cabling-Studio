@@ -7,4 +7,14 @@
     <RootNamespace>StructuredCablingStudio</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StructuredCablingStudioCore.Calculation\StructuredCablingStudioCore.Calculation.csproj" />
+    <ProjectReference Include="..\StructuredCablingStudioCore.Parameters\StructuredCablingStudioCore.Parameters.csproj" />
+    <ProjectReference Include="..\StructuredCablingStudioCore\StructuredCablingStudioCore.csproj" />
+  </ItemGroup>
+
 </Project>

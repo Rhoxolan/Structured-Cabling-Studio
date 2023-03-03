@@ -1,7 +1,14 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;
+using StructuredCablingStudio.Data.Contexts;
+using StructuredCablingStudio.Data.Entities;
+using StructuredCablingStudio.Repositories;
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
+//Подумать перенести в екстеншн
+builder.Services.AddScoped<IApplicationRepository<CablingConfigurationEntity>, DbApplicationRepository>();
+string? connstr = builder.Configuration.GetConnectionString("CablingConfigurationsDB");
+builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlite(connstr));
 
 var app = builder.Build();
 
@@ -15,11 +22,10 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
+//app.UseAuthorization();
 
-app.UseAuthorization();
-
+//Прочитать
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -3,7 +3,7 @@
     /// <summary>
     /// Record of structured cabling configuration
     /// </summary>
-    public record StructuredCablingConfiguration
+    public record CablingConfiguration
     {
         /// <summary>
         /// Record time of the structured cabling configuration record
