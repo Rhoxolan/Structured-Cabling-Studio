@@ -362,3 +362,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /Structured Cabling Studio/cabling_configurations.db
+/Structured Cabling Studio/cabling_configurations.db-shm
+/Structured Cabling Studio/cabling_configurations.db-wal
