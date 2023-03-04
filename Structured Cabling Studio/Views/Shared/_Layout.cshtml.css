@@ -46,3 +46,7 @@ button.accept-policy {
   white-space: nowrap;
   line-height: 60px;
 }
+
+#siteNav {
+    background-color: #81A8FF;
+}
