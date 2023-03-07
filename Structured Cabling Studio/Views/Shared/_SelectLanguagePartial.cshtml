@@ -5,8 +5,14 @@
 @inject IOptions<RequestLocalizationOptions> LocOptions
 
 @{
-    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
-    var cultureItems = LocOptions.Value.SupportedUICultures!
-        .Select(c => new SelectListItem { Value = c.Name, Text = c.NativeName })
-        .ToList();
+	var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+	var cultureItems = LocOptions.Value.SupportedUICultures!
+		.Select(c => new SelectListItem { Value = c.Name, Text = c.NativeName })
+		.ToList();
 }
+
+<form asp-controller="Localization" asp-action="SetLanguage" method="post" asp-route-returnUrl="@Context.Request.Path">
+	<label class="form-label fs-6" for="languageSelect">@Localizer["Language"]</label>
+	<br/>
+	<select class="form-select-sm" id="languageSelect" name="culture" onchange="this.form.submit();" asp-for="@requestCulture!.RequestCulture.UICulture.Name" asp-items="cultureItems"></select>
+</form>

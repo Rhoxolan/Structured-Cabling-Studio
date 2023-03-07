@@ -1,11 +1,13 @@
 using StructuredCablingStudio.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+	.AddLocalizationBasis();
 builder.Services.AddCablingConfigurationsInteractionBasis(builder);
-
+builder.Services.AddLocalizationBasis();
 var app = builder.Build();
 
+//Прочитать
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -15,6 +17,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseRequestLocalization();
 app.UseStaticFiles();
 app.UseRouting();
 //app.UseAuthorization();
