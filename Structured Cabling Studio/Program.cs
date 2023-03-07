@@ -1,4 +1,5 @@
-using StructuredCablingStudio.Extensions;
+using StructuredCablingStudio.Extensions.IMvcBuilderExtensions;
+using StructuredCablingStudio.Extensions.IServiceCollectionExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews()

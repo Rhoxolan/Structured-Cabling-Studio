@@ -11,8 +11,7 @@
 		.ToList();
 }
 
-<form asp-controller="Localization" asp-action="SetLanguage" method="post" asp-route-returnUrl="@Context.Request.Path">
+<form class="d-flex flex-column align-items-center" asp-controller="Localization" asp-action="SetLanguage" method="post" asp-route-returnUrl="@Context.Request.Path">
 	<label class="form-label fs-6" for="languageSelect">@Localizer["Language"]</label>
-	<br/>
 	<select class="form-select-sm" id="languageSelect" name="culture" onchange="this.form.submit();" asp-for="@requestCulture!.RequestCulture.UICulture.Name" asp-items="cultureItems"></select>
 </form>
