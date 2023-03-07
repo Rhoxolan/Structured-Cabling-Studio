@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace StructuredCablingStudio.Extensions.IServiceCollectionExtensions
 {
-    public static class AddLocalizationBasisIServiceCollectionExtension
+    public static class AddLocalizationBasisExtension
     {
         public static IServiceCollection AddLocalizationBasis(this IServiceCollection services)
             => services.AddLocalization(options => options.ResourcesPath = "Resources").Configure<RequestLocalizationOptions>(options =>
@@ -12,7 +12,7 @@ namespace StructuredCablingStudio.Extensions.IServiceCollectionExtensions
                 {
                     new CultureInfo("ru"),
                     new CultureInfo("en"),
-                    new CultureInfo("ua")
+                    new CultureInfo("uk")
                 };
                 options.DefaultRequestCulture = new RequestCulture("ru");
                 options.SupportedCultures = supportedCultures;

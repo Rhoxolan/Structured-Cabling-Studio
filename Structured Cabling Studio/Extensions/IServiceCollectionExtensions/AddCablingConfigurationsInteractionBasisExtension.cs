@@ -5,7 +5,7 @@ using StructuredCablingStudio.Repositories;
 
 namespace StructuredCablingStudio.Extensions.IServiceCollectionExtensions
 {
-    public static class AddCablingConfigurationsInteractionBasisIServiceCollectionExtension
+    public static class AddCablingConfigurationsInteractionBasisExtension
     {
         public static IServiceCollection AddCablingConfigurationsInteractionBasis(this IServiceCollection services, WebApplicationBuilder builder)
             => services.AddScoped<IApplicationRepository<CablingConfigurationEntity>, DbApplicationRepository>()
