@@ -14,16 +14,22 @@
 
 	<header>
 		<nav id="siteNav" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-dark border-opacity-10 border-bottom box-shadow">
+			
 			<div class="container-fluid">
 
-				<a class="navbar-brand fs-4 fw-semibold" asp-area="" asp-controller="Home" asp-action="Index">Structured Cabling Studio</a>
-
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#verticalSiteNavbarDiv" aria-controls="navbarSupportedContent"
 						aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
-				<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+				<a class="navbar-brand fs-4 fw-semibold" asp-area="" asp-controller="Home" asp-action="Index">Structured Cabling Studio</a>
+
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNavbarDiv" aria-controls="navbarSupportedContent"
+						aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div id="siteNavbarDiv" class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
 					<ul class="navbar-nav text-white flex-grow-1 flex-row-reverse me-0 me-sm-1 me-md-2 me-lg-3 me-xl-4 mt-3 mt-sm-0">
 						<li class="nav-item">
 							@await Html.PartialAsync("_SelectLanguagePartial")
@@ -37,9 +43,9 @@
 
 	<div class="container-fluid d-flex ps-0">
 
-		<nav id="verticalSiteNav" class="navbar navbar-expand-sm navbar-light">
-			<div class="navbar-collapse collapse">
-				<ul class="nav flex-column">
+		<nav id="verticalSiteNav" class="navbar navbar-expand-sm navbar-dark">
+			<div id="verticalSiteNavbarDiv" class="navbar-collapse collapse">
+				<ul class="navbar-nav flex-column">
 					<li class="nav-item">
 						<a class="nav-link" href="#">Link</a>
 					</li>
