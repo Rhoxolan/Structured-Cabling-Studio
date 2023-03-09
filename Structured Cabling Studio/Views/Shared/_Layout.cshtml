@@ -13,7 +13,7 @@
 <body>
 
 	<header>
-		<nav id="siteNav" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-dark border-opacity-10 border-bottom box-shadow">
+		<nav id="siteNav" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-dark border-opacity-10 border-bottom box-shadow p-1">
 			
 			<div class="container-fluid">
 
@@ -30,7 +30,7 @@
 				</button>
 
 				<div id="siteNavbarDiv" class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-					<ul class="navbar-nav text-white flex-grow-1 flex-row-reverse me-0 me-sm-1 me-md-2 me-lg-3 me-xl-4 mt-3 mt-sm-0">
+					<ul class="navbar-nav text-white flex-grow-1 flex-row-reverse me-0 me-sm-1 me-md-2 me-lg-3 me-xl-4 mt-3 mt-sm-0 mb-1">
 						<li class="nav-item">
 							@await Html.PartialAsync("_SelectLanguagePartial")
 						</li>
@@ -43,14 +43,14 @@
 
 	<div class="container-fluid d-flex ps-0">
 
-		<nav id="verticalSiteNav" class="navbar navbar-expand-sm navbar-dark">
+		<nav id="verticalSiteNav" class="navbar navbar-expand-sm navbar-dark align-items-start">
 			<div id="verticalSiteNavbarDiv" class="navbar-collapse collapse">
-				<ul class="navbar-nav flex-column">
+				<ul id="verticalSiteNavbarUl" class="navbar-nav flex-column ms-3 me-1">
 					<li class="nav-item">
-						<a class="nav-link" href="#">Link</a>
+						<a class="nav-link text-white fw-semibold fs-5" href="#">Link</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Link</a>
+						<a class="nav-link text-white fw-semibold fs-5" href="#">Nunc ut tellus non velit</a>
 					</li>
 				</ul>
 			</div>
@@ -64,7 +64,7 @@
 
 	</div>
 
-	<footer class="border-top footer fixed-bottom text-muted text-nowrap">
+	<footer class="position-absolute border-top footer text-nowrap text-muted w-100">
 		<div class="container">
 			Pavel Batsemakin (<a href="https://github.com/Rhoxolan">Rhoxolan</a>) &#8211; 2023
 		</div>
