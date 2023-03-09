@@ -19,3 +19,7 @@
 #verticalSiteNav {
     background-color: #9CB9FC;
 }
+
+.siteNavbarLi {
+    max-width: 150px;
+}
