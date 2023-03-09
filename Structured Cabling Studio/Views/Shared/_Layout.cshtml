@@ -43,9 +43,9 @@
 
 	<div id="siteContentDiv" class="container-fluid d-flex ps-0">
 
-		<nav id="verticalSiteNav" class="navbar navbar-expand-sm navbar-dark align-items-start">
+		<nav id="verticalSiteNav" class="siteContent navbar navbar-expand-sm navbar-dark align-items-start">
 			<div id="verticalSiteNavbarDiv" class="navbar-collapse collapse">
-				<ul id="verticalSiteNavbarUl" class="navbar-nav flex-column ms-3 me-2">
+				<ul id="verticalSiteNavbarUl" class="navbar-nav flex-column ms-3 me-3">
 					<li class="nav-item">
 						<a class="nav-link text-white fw-semibold fs-5" href="#">Link</a>
 					</li>
@@ -73,6 +73,7 @@
 	<script src="~/lib/jquery/dist/jquery.min.js"></script>
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="~/js/site.js" asp-append-version="true"></script>
+	<script src="~/js/customSelectors.js" asp-append-version="true"></script>
 	@await RenderSectionAsync("Scripts", required: false)
 
 </body>

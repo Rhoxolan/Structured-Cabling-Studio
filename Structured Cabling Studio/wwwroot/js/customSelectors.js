@@ -1,0 +1,1 @@
+$('.siteContent').css('min-height', $(window).height() - $('header').outerHeight() - $('footer').outerHeight());
