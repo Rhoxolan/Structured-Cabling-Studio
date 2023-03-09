@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject IViewLocalizer Localizer
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -34,6 +36,11 @@
 						<li class="nav-item">
 							@await Html.PartialAsync("_SelectLanguagePartial")
 						</li>
+						<li class="nav-item text-wrap">
+							<a class="nav-link text-white fw-semibold fs-5" href="#">
+								@Localizer["Project information"]
+							</a>
+						</li>
 					</ul>
 				</div>
 
@@ -47,10 +54,19 @@
 			<div id="verticalSiteNavbarDiv" class="navbar-collapse collapse">
 				<ul id="verticalSiteNavbarUl" class="navbar-nav flex-column ms-3 me-3">
 					<li class="nav-item">
-						<a class="nav-link text-white fw-semibold fs-5" href="#">Link</a>
+						<a class="nav-link text-white fw-semibold fs-5" href="#">
+							@Localizer["Calculation"]
+						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-white fw-semibold fs-5" href="#">Nunc ut tellus non velit</a>
+						<a class="nav-link text-white fw-semibold fs-5" href="#">
+							@Localizer["History"]
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white fw-semibold fs-5" href="#">
+							@Localizer["Information"]
+						</a>
 					</li>
 				</ul>
 			</div>
