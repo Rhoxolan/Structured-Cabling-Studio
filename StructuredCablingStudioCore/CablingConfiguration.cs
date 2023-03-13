@@ -58,10 +58,11 @@
         /// </summary>
         public required double TotalCableQuantity { get; init; }
 
-        /// <summary>
-        /// Recommendations for cable selection in the structured cabling configuration record.
-        /// Is present if necessity of getting cable selection recommendations is indicated
-        /// </summary>
-        public string? Recommendations { get; init; }
+		/// <summary>
+		/// Recommendations for cable selection in the structured cabling configuration record.
+		/// Represents the key "Insulation Type" for the cable insulation type recommendation, the key "Insulation Material" for the cable insulation material recommendation,
+        /// the key "Shielding" for the cable shielding type recommendation, and the key "Standard" for the cable standard recommendation
+		/// </summary>
+		public required Dictionary<string, string> Recommendations { get; init; }
     }
 }

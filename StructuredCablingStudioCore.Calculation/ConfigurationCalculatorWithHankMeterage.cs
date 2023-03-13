@@ -26,28 +26,6 @@ namespace StructuredCablingStudioCore.Calculation
             double? cableQuantity = averagePermanentLink * numberOfWorkplaces * numberOfPorts;
             int? hankQuantity = (int)Math.Ceiling(numberOfWorkplaces * numberOfPorts / Math.Floor((double)(cableHankMeterage / averagePermanentLink)));
             double totalCableQuantity = (double)(hankQuantity * cableHankMeterage);
-            string? recommendations = null;
-            if (Equals(parameters.IsRecommendationsAvailability, true))
-            {
-                StringBuilder recommendationsBuilder = new();
-                if (!string.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationIsolationType))
-                {
-                    recommendationsBuilder.AppendLine($"Рекомендуемый тип изоляции кабеля: {parameters.CableSelectionRecommendations.RecommendationIsolationType}");
-                }
-                if (!string.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationIsolationMaterial))
-                {
-                    recommendationsBuilder.AppendLine($"Рекомендуемый материал изоляции кабеля: {parameters.CableSelectionRecommendations.RecommendationIsolationMaterial}");
-                }
-                if (!string.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationCableStandard))
-                {
-                    recommendationsBuilder.AppendLine($"Рекомендуемая категория кабеля: {parameters.CableSelectionRecommendations.RecommendationCableStandard}");
-                }
-                if (!string.IsNullOrEmpty(parameters.CableSelectionRecommendations.RecommendationShieldedType))
-                {
-                    recommendationsBuilder.AppendLine($"Рекомендуемый тип экранизации кабеля: {parameters.CableSelectionRecommendations.RecommendationShieldedType}");
-                }
-                recommendations = recommendationsBuilder.ToString();
-            }
             return new CablingConfiguration
             {
                 RecordTime = DateTime.Now,
@@ -60,8 +38,14 @@ namespace StructuredCablingStudioCore.Calculation
                 CableHankMeterage = cableHankMeterage,
                 HankQuantity = hankQuantity,
                 TotalCableQuantity = totalCableQuantity,
-                Recommendations = recommendations
-            };
+                Recommendations = new()
+				{
+					["Insulation Type"] = parameters.CableSelectionRecommendations.RecommendationIsolationType,
+					["Insulation Material"] = parameters.CableSelectionRecommendations.RecommendationIsolationMaterial,
+					["Standart"] = parameters.CableSelectionRecommendations.RecommendationCableStandard,
+					["Shielding"] = parameters.CableSelectionRecommendations.RecommendationShieldedType
+				}
+			};
         }
     }
 }
