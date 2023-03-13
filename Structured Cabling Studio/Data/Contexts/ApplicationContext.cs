@@ -11,5 +11,12 @@ namespace StructuredCablingStudio.Data.Contexts
 		}
 
 		public DbSet<CablingConfigurationEntity> CablingConfigurations { get; set; }
+		
+		public DbSet<CableSelectionRecommendationEntity> CableSelectionRecommendations { get; set; }
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<CablingConfigurationEntity>().Ignore(e => e.Recommendations);
+		}
 	}
 }

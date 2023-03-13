@@ -1,20 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StructuredCablingStudio.Data.Entities;
+using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Models;
-using StructuredCablingStudio.Repositories;
 using System.Diagnostics;
 
 namespace StructuredCablingStudio.Controllers
 {
 	public class HomeController : Controller
 	{
-		//private readonly ILogger<HomeController> _logger;
-		private readonly IApplicationRepository<CablingConfigurationEntity> _repository;
+		private readonly ILogger<HomeController> _logger;
+		private readonly ApplicationContext _context;
 
-		public HomeController(/*ILogger<HomeController> logger*/ IApplicationRepository<CablingConfigurationEntity> repository)
+		public HomeController(ILogger<HomeController> logger, ApplicationContext context)
 		{
-			//_logger = logger;
-			_repository = repository;
+			_logger = logger;
+			_context = context;
 		}
 
 		public IActionResult Index()
