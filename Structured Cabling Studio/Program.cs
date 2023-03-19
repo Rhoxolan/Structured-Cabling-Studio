@@ -4,8 +4,8 @@ using StructuredCablingStudio.Extensions.IServiceCollectionExtensions;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews()
 	.AddLocalizationBasis();
-builder.Services.AddCablingConfigurationsInteractionBasis(builder);
-builder.Services.AddLocalizationBasis();
+builder.Services.AddCablingConfigurationsInteractionBasis(builder)
+	.AddLocalizationBasis();
 var app = builder.Build();
 
 //Прочитать
@@ -23,7 +23,6 @@ app.UseStaticFiles();
 app.UseRouting();
 //app.UseAuthorization();
 
-//Прочитать
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");

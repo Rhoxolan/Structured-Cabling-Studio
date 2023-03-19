@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using StructuredCablingStudio.Data.Entities;
 
 namespace StructuredCablingStudio.Data.Contexts
@@ -11,12 +12,12 @@ namespace StructuredCablingStudio.Data.Contexts
 		}
 
 		public DbSet<CablingConfigurationEntity> CablingConfigurations { get; set; }
-		
-		public DbSet<CableSelectionRecommendationEntity> CableSelectionRecommendations { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.Entity<CablingConfigurationEntity>().Ignore(e => e.Recommendations);
+			modelBuilder.Entity<CablingConfigurationEntity>()
+				.Property(c => c.Recommendations)
+				.HasConversion(d => JsonConvert.SerializeObject(d), s => JsonConvert.DeserializeObject<Dictionary<string, string>>(s)!);
 		}
 	}
 }
