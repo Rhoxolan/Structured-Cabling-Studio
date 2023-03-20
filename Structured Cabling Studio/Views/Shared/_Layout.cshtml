@@ -15,7 +15,7 @@
 <body>
 
 	<header>
-		<nav id="siteNav" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-dark border-opacity-10 border-bottom box-shadow p-1">
+		<nav id="siteNav" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-dark border-opacity-10 border-bottom box-shadow p-0">
 			
 			<div class="container-fluid">
 
@@ -31,13 +31,15 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
-				<div id="siteNavbarDiv" class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-					<ul class="navbar-nav text-white flex-grow-1 flex-row-reverse me-0 me-sm-1 me-md-2 me-lg-3 me-xl-4 mt-3 mt-sm-0 mb-1">
+				<div id="siteNavbarDiv" class="navbar-collapse collapse d-sm-inline-flex me-0 me-sm-1 me-md-2 me-lg-3">
+					<ul class="align-items-center navbar-nav flex-grow-1 flex-row-reverse">
 						<li class="siteNavbarLi nav-item">
-							@await Html.PartialAsync("_SelectLanguagePartial")
+							<div class="nav-link text-white">
+								@await Html.PartialAsync("_SelectLanguagePartial")
+							</div>
 						</li>
-						<li class="siteNavbarLi nav-item text-center d-flex justify-content-center align-items-center">
-							<a class="nav-link text-white fw-semibold me-2 pb-0 pt-0 fs-6" href="#">
+						<li class="siteNavbarLi nav-item">
+							<a class="nav-link text-white text-center fw-semibold fs-6" href="#">
 								@Localizer["Project information"]
 							</a>
 						</li>
