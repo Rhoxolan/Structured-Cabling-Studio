@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using StructuredCablingStudio.Data.Entities;
+using System.Text.Json;
 
 namespace StructuredCablingStudio.Data.Contexts
 {
@@ -17,7 +18,14 @@ namespace StructuredCablingStudio.Data.Contexts
 		{
 			modelBuilder.Entity<CablingConfigurationEntity>()
 				.Property(c => c.Recommendations)
-				.HasConversion(d => JsonConvert.SerializeObject(d), s => JsonConvert.DeserializeObject<Dictionary<string, string>>(s)!);
+				.HasConversion(
+					v => JsonSerializer.Serialize(v, (JsonSerializerOptions)null!),
+					v => JsonSerializer.Deserialize<Dictionary<string, string>>(v, (JsonSerializerOptions)null!)!,
+					new ValueComparer<Dictionary<string, string>>(
+						(c1, c2) => c1!.SequenceEqual(c2!),
+						c => c.Aggregate(0, (a, v) => HashCode.Combine(a, v.GetHashCode())),
+						c => c.ToDictionary(k => k.Key, v => v.Value)
+						));
 		}
 	}
 }
