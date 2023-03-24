@@ -9,7 +9,7 @@
 .footer {
     bottom: 0;
     line-height: 60px;
-    background-color: #EBF1FF;
+    background-color: #F0F6FF;
 }
 
 #siteNav {
@@ -31,6 +31,6 @@
 }
 
 .verticalSiteNavbarLi:active {
-    background-color: #81A7FD;
+    background-color: #87ADFA;
     transition: background-color 0s;
 }
