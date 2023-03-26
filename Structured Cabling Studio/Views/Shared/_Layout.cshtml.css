@@ -31,6 +31,6 @@
 }
 
 .verticalSiteNavbarLi:active {
-    background-color: #87ADFA;
+    background-color: #87ADFF;
     transition: background-color 0s;
 }
