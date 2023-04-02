@@ -1,15 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using StructuredCablingStudio.Data.Entities;
 using System.Text.Json;
 
 namespace StructuredCablingStudio.Data.Contexts
 {
-	public class ApplicationContext : DbContext
+	public class ApplicationContext : IdentityDbContext<User>
 	{
 		public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
 		{
-			Database.EnsureCreated();
+			Database.EnsureDeleted();
+            Database.EnsureCreated();
 		}
 
 		public DbSet<CablingConfigurationEntity> CablingConfigurations { get; set; }
@@ -26,6 +28,7 @@ namespace StructuredCablingStudio.Data.Contexts
 						c => c.Aggregate(0, (a, v) => HashCode.Combine(a, v.GetHashCode())),
 						c => c.ToDictionary(k => k.Key, v => v.Value)
 						));
+            base.OnModelCreating(modelBuilder);
 		}
 	}
 }

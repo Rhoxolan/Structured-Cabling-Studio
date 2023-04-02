@@ -2,10 +2,13 @@ using StructuredCablingStudio.Extensions.IMvcBuilderExtensions;
 using StructuredCablingStudio.Extensions.IServiceCollectionExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddControllersWithViews()
 	.AddLocalizationBasis();
-builder.Services.AddCablingConfigurationsInteractionBasis(builder)
-	.AddLocalizationBasis();
+builder.Services.AddIdentityInteractionBasis();
+builder.Services.AddDataInteractionBasis(builder)
+    .AddLocalizationBasis();
+
 var app = builder.Build();
 
 //Прочитать
@@ -21,7 +24,8 @@ app.UseHttpsRedirection();
 app.UseRequestLocalization();
 app.UseStaticFiles();
 app.UseRouting();
-//app.UseAuthorization();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllerRoute(
 	name: "default",
