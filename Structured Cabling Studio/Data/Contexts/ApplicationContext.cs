@@ -10,7 +10,6 @@ namespace StructuredCablingStudio.Data.Contexts
 	{
 		public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
 		{
-			Database.EnsureDeleted();
             Database.EnsureCreated();
 		}
 
