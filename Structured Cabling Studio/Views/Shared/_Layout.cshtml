@@ -1,6 +1,4 @@
-﻿@inject IViewLocalizer Localizer
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -16,7 +14,7 @@
 
 	<header>
 		<nav id="siteNav" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-dark border-opacity-10 border-bottom box-shadow p-0">
-			
+
 			<div class="container-fluid">
 
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#verticalSiteNavbarDiv" aria-controls="navbarSupportedContent"
@@ -42,6 +40,11 @@
 							<a class="nav-link text-white text-center fw-semibold" href="#">
 								@Localizer["Project information"]
 							</a>
+						</li>
+						<li class="siteNavbarLi nav-item">
+							<div class="nav-link text-white">
+								@await Html.PartialAsync("_SignInWithGooglePartial")
+							</div>
 						</li>
 					</ul>
 				</div>
