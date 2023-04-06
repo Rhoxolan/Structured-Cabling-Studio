@@ -7,7 +7,8 @@ namespace StructuredCablingStudio.Extensions.IServiceCollectionExtensions
     public static class AddIdentityInteractionBasisExtension
     {
         public static IdentityBuilder AddIdentityInteractionBasis(this IServiceCollection services)
-            => services.AddIdentity<User, IdentityRole>()
+            => services.AddIdentity<User, IdentityRole>(opt
+                => opt.User.AllowedUserNameCharacters += "йцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ ")
             .AddEntityFrameworkStores<ApplicationContext>();
     }
 }
