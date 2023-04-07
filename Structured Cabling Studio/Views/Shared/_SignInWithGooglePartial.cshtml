@@ -1,11 +1,10 @@
 ﻿<div class="text-center">
 	@if (User.Identity!.IsAuthenticated)
 	{
-		<a href="#" class="nav-link text-white fw-semibold">
-			@*Link to history page*@
+		<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="nav-link text-decoration-underline text-white fw-semibold">
 			@Localizer["Hello"]@User.Identity.Name
 		</a>
-		<form asp-action="Logout" asp-controller="Account" method="post">
+		<form asp-controller="@nameof(Account)" asp-action="@nameof(Account.Logout)" method="post">
 			<button type="submit" class="btn btn-sm btn-outline-light">
 				@Localizer["LogOut"]
 			</button>
@@ -13,7 +12,7 @@
 	}
 	else
 	{
-		<a asp-action="SignInWithGoogle" asp-controller="Account" class="nav-link text-white fw-semibold">
+		<a asp-controller="@nameof(Account)" asp-action="@nameof(Account.SignInWithGoogle)" class="nav-link text-white fw-semibold">
 			@Localizer["Sign in with Google"]
 		</a>
 	}

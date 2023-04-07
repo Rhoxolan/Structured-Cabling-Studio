@@ -26,5 +26,10 @@ namespace StructuredCablingStudio.Controllers
 		{
             return View();
 		}
+
+		public IActionResult History()
+		{
+			return Content("The History Page");
+		}
 	}
 }

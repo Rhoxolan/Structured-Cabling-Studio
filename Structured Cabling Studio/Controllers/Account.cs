@@ -66,35 +66,50 @@ namespace StructuredCablingStudio.Controllers
         public async Task<IActionResult> GoogleRedirect()
         {
             ExternalLoginInfo? loginInfo = await _signInManager.GetExternalLoginInfoAsync();
-            if (loginInfo is null)
+            if (loginInfo is not null)
             {
-                return RedirectToAction(nameof(AuthenticationFailed), nameof(Account));
-            }
-            var userEmail = loginInfo.Principal.FindFirst(ClaimTypes.Email)?.Value;
-            User? user = await _userManager.FindByEmailAsync(userEmail!);
-            if (user is not null)
-            {
-                var externalLoginSignInResult = await _signInManager.ExternalLoginSignInAsync(loginInfo.LoginProvider, loginInfo.ProviderKey, true);
-                if (!externalLoginSignInResult.Succeeded)
+                var userEmail = loginInfo.Principal.FindFirst(ClaimTypes.Email)?.Value;
+                User? user = await _userManager.FindByEmailAsync(userEmail!);
+                if (user is not null)
                 {
-                    return RedirectToAction(nameof(AuthenticationFailed), nameof(Account));
+                    var externalLoginSignInResult = await _signInManager.ExternalLoginSignInAsync(loginInfo.LoginProvider, loginInfo.ProviderKey, true);
+                    if (externalLoginSignInResult.Succeeded)
+                    {
+                        await _signInManager.SignInAsync(user, true);
+                        return RedirectToAction(nameof(Calculation.Calculate), nameof(Calculation));
+                    }
                 }
-                await _signInManager.SignInAsync(user, true);
-                return RedirectToAction(nameof(Calculation.Calculate), nameof(Calculation));
+                if (user is null)
+                {
+                    user = new User
+                    {
+                        Email = userEmail!,
+                        UserName = userEmail!
+                    };
+                    var createResult = await _userManager.CreateAsync(user);
+                    if (createResult.Succeeded)
+                    {
+                        var addLoginResult = await _userManager.AddLoginAsync(user, loginInfo);
+                        if (addLoginResult.Succeeded)
+                        {
+                            var externalNewUserLoginSignInResult = await _signInManager.ExternalLoginSignInAsync(loginInfo.LoginProvider, loginInfo.ProviderKey, true);
+                            if (externalNewUserLoginSignInResult.Succeeded)
+                            {
+                                await _signInManager.SignInAsync(user, true);
+                                return RedirectToAction(nameof(Calculation.Calculate), nameof(Calculation));
+                            }
+                        }
+                    }
+                }
             }
-            user = new User
-            {
-                Email = userEmail!,
-                UserName = userEmail!
-            };
-            var createResult = await _userManager.CreateAsync(user);
-            var addLoginResult = await _userManager.AddLoginAsync(user, loginInfo);
-            var externalNewUserLoginSignInResult = await _signInManager.ExternalLoginSignInAsync(loginInfo.LoginProvider, loginInfo.ProviderKey, true);
-            if (!createResult.Succeeded && !addLoginResult.Succeeded && !externalNewUserLoginSignInResult.Succeeded)
-            {
-                return RedirectToAction(nameof(AuthenticationFailed), nameof(Account));
-            }
-            await _signInManager.SignInAsync(user, true);
+            return RedirectToAction(nameof(AuthenticationFailed), nameof(Account));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
             return RedirectToAction(nameof(Calculation.Calculate), nameof(Calculation));
         }
 

@@ -10,7 +10,8 @@
 		.ToList();
 }
 
-<form class="d-flex flex-column align-items-center" asp-controller="Localization" asp-action="SetLanguage" method="post" asp-route-returnUrl="@Context.Request.Path">
+<form class="d-flex flex-column align-items-center" asp-controller="@nameof(Localization)" asp-action="@nameof(Localization.SetLanguage)" method="post"
+	  asp-route-returnUrl="@Context.Request.Path">
 	<label class="form-label mb-0" for="languageSelect">@Localizer["Language"]</label>
 	<select class="form-select-sm" id="languageSelect" name="culture" onchange="this.form.submit();">
 		@foreach (var item in cultureItems)
