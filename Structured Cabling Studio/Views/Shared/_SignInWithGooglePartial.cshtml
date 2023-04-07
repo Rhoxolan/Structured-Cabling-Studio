@@ -1,23 +1,20 @@
 ﻿<div class="text-center">
 	@if (User.Identity!.IsAuthenticated)
 	{
-		<div>
-			<a href="#">@Localizer["Hello"]@User.Identity.Name</a> @*Link to history page*@
-		</div>
-		<div>
-			<form asp-action="Logout" asp-controller="Account">
-				<button type="submit" class="btn btn-sm btn-outline-light">
-					@Localizer["LogOut"]
-				</button>
-			</form>
-		</div>
+		<a href="#" class="nav-link text-white fw-semibold">
+			@*Link to history page*@
+			@Localizer["Hello"]@User.Identity.Name
+		</a>
+		<form asp-action="Logout" asp-controller="Account" method="post">
+			<button type="submit" class="btn btn-sm btn-outline-light">
+				@Localizer["LogOut"]
+			</button>
+		</form>
 	}
 	else
 	{
-		<form asp-action="SignInWithGoogle" asp-controller="Account">
-			<button type="submit" class="btn btn-sm btn-outline-light">
-				@Localizer["Sign in with Google"]
-			</button>
-		</form>
+		<a asp-action="SignInWithGoogle" asp-controller="Account" class="nav-link text-white fw-semibold">
+			@Localizer["Sign in with Google"]
+		</a>
 	}
 </div>
