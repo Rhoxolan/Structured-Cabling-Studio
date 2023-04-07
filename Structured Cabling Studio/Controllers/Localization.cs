@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace StructuredCablingStudio.Controllers
 {
-	public class LocalizationController : Controller
+	public class Localization : Controller
 	{
 		public IActionResult SetLanguage(string culture, string returnUrl)
 		{
