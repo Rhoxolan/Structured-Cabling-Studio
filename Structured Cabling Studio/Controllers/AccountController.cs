@@ -31,5 +31,10 @@ namespace StructuredCablingStudio.Controllers
 			}
 			throw new NotImplementedException();
 		}
+
+		public IActionResult AuthenticationFailed()
+		{
+			return View();
+		}
 	}
 }
