@@ -1,14 +1,20 @@
 ﻿<div class="text-center">
 	@if (User.Identity!.IsAuthenticated)
 	{
-		<div class="fw-semibold">
-			<div class="text-white">
+		<div>
+			<div class="text-white fw-semibold">
 				@Localizer["Hello"]
 			</div>
-			<a asp-controller="@nameof(Calculation)" style="font-size:15px" asp-action="@nameof(Calculation.History)" class="nav-link text-decoration-underline text-white">
+			<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="eMailNavDisplay nav-link text-decoration-underline text-white">
 				@User.Identity.Name
 			</a>
-			<a asp-controller="@nameof(Calculation)" style="font-size:3px" asp-action="@nameof(Calculation.History)" class="nav-link text-decoration-underline text-white">
+			<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="eMailNavDisplay nav-link text-decoration-underline text-white">
+				consequatorisusocongueoatoDonecoornareomattisomorbio
+			</a>
+			<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="eMailNavDisplay nav-link text-decoration-underline text-white">
+				oProinoaoconsecteturoerosooDonecoaliquamomollisoorciooutoconsequatorisusocongueoatoDonecoornareomattisomorbio
+			</a>
+			<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="eMailNavDisplay nav-link text-decoration-underline text-white">
 				Loremoipsumodolorositoamet,oconsecteturoadipiscingoelitoMaurisobibendumoosodalesooorciooutosollicitudinoNullamovehiculaonuncoegetorutrumoaccumsan.oProinoaoconsecteturoerosooDonecoaliquamomollisoorciooutoconsequatorisusocongueoatoDonecoornareomattisomorbio
 			</a>
 		</div>
