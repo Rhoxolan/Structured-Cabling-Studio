@@ -1,0 +1,11 @@
+﻿.signinDisplay {
+    max-width: 170px;
+}
+
+.loginDisplay {
+    max-width: 260px;
+}
+
+.btnLogout {
+    padding: 1px;
+}

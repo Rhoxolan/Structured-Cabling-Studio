@@ -1,36 +1,26 @@
 ﻿<div class="text-center">
 	@if (User.Identity!.IsAuthenticated)
 	{
-		<div>
+		<div class="loginDisplay nav-link pt-0 pb-1">
 			<div class="text-white fw-semibold">
 				@Localizer["Hello"]
 			</div>
-			<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="eMailNavDisplay nav-link text-decoration-underline text-white">
+			<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="eMailNavDisplay text-decoration-underline text-white">
 				@User.Identity.Name
 			</a>
-			<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="eMailNavDisplay nav-link text-decoration-underline text-white">
-				31-rxdyqmkumnaufvyvqipogpjiukzу
-			</a>
-			<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="eMailNavDisplay nav-link text-decoration-underline text-white">
-				63-sgdcqsmqehmasibojawlhbagewpecqymgdiemflrsjayenidwtduwvxezgla
-			</a>
-			<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="eMailNavDisplay nav-link text-decoration-underline text-white">
-				127loudpojubxtxdmiusnkuqieszgictkhmvydtrodhxzkbvbvvlqcmloeswwcvapjgidggjbwtlsfvukqplsaizvivqciqkhplnkylyrqzsllybsxealuhhewtltmy
-			</a>
-			<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="eMailNavDisplay nav-link text-decoration-underline text-white">
-				255tjhtuatwfatvfaaignjizvbsijiqpwbzzdcgstciaiypamysvrcjxpaxbqcpyvoludodsidsrsqwnzqskoefhzldbcytxmqkufjwdjrykmgbjgavmkjvsrdfxnmpcpvsvadvihvbsuhjciupopxpsqxfmudkdirdupfbjnyamnsyvzucrpcbitycotsvqunchuqeuwqrvtziwhdkgqrkmpzpipbscnltujmutlsqgbghpxvbzxegxjrzpvsg
-			</a>
+			<form asp-controller="@nameof(Account)" asp-action="@nameof(Account.Logout)" method="post">
+				<button type="submit" class="btn btn-sm btn-outline-light btnLogout">
+					@Localizer["LogOut"]
+				</button>
+			</form>
 		</div>
-		<form asp-controller="@nameof(Account)" asp-action="@nameof(Account.Logout)" method="post">
-			<button type="submit" class="btn btn-sm btn-outline-light">
-				@Localizer["LogOut"]
-			</button>
-		</form>
 	}
 	else
 	{
-		<a asp-controller="@nameof(Account)" asp-action="@nameof(Account.SignInWithGoogle)" class="nav-link text-white fw-semibold">
-			@Localizer["Sign in with Google"]
-		</a>
+		<div class="signinDisplay">
+			<a asp-controller="@nameof(Account)" asp-action="@nameof(Account.SignInWithGoogle)" class="nav-link text-white fw-semibold">
+				@Localizer["Sign in with Google"]
+			</a>
+		</div>
 	}
 </div>
