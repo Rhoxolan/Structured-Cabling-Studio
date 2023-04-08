@@ -26,17 +26,16 @@
 
 //.eMailNavDisplay
 
-//Выровнять
 $('.eMailNavDisplay').css('font-size', function () {
     let textLength = $(this).prop("innerText").length;
     if (textLength > 127 && textLength <= 255) {
-        return 1.75;
+        return 1.9;
     }
     else if (textLength > 63) {
-        return 4;
+        return 3.8;
     }
     else if (textLength > 31) {
-        return 8;
+        return 7.1;
     }
     else if (textLength > 0) {
         return 15;

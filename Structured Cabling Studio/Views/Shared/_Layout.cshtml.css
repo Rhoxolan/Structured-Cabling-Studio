@@ -22,11 +22,11 @@
 }
 
 .siteNavbarLi {
-    max-width: 170px;
+    max-width: 150px;
 }
 
 .siteNavbarLiLogin {
-    max-width: 250px;
+    max-width: 260px;
 }
 
 .verticalSiteNavbarLi:hover {
