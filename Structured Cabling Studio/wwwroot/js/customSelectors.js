@@ -26,6 +26,7 @@
 
 //.eMailNavDisplay
 
+//Выровнять
 $('.eMailNavDisplay').css('font-size', function () {
     let textLength = $(this).prop("innerText").length;
     if (textLength > 127 && textLength <= 255) {
