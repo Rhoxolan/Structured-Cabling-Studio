@@ -18,6 +18,8 @@ namespace StructuredCablingStudio.Controllers
 		}
 
 		[AllowAnonymous]
+		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public IActionResult SignInWithGoogle()
 		{
 			string? redirectUrl = Url.Action(nameof(GoogleRedirect));
