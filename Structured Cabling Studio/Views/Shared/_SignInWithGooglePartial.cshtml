@@ -1,9 +1,17 @@
 ﻿<div class="text-center">
 	@if (User.Identity!.IsAuthenticated)
 	{
-		<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="nav-link text-decoration-underline text-white fw-semibold">
-			@Localizer["Hello"]@User.Identity.Name
-		</a>
+		<div class="fw-semibold">
+			<div class="text-white">
+				@Localizer["Hello"]
+			</div>
+			<a asp-controller="@nameof(Calculation)" style="font-size:15px" asp-action="@nameof(Calculation.History)" class="nav-link text-decoration-underline text-white">
+				@User.Identity.Name
+			</a>
+			<a asp-controller="@nameof(Calculation)" style="font-size:3px" asp-action="@nameof(Calculation.History)" class="nav-link text-decoration-underline text-white">
+				Loremoipsumodolorositoamet,oconsecteturoadipiscingoelitoMaurisobibendumoosodalesooorciooutosollicitudinoNullamovehiculaonuncoegetorutrumoaccumsan.oProinoaoconsecteturoerosooDonecoaliquamomollisoorciooutoconsequatorisusocongueoatoDonecoornareomattisomorbio
+			</a>
+		</div>
 		<form asp-controller="@nameof(Account)" asp-action="@nameof(Account.Logout)" method="post">
 			<button type="submit" class="btn btn-sm btn-outline-light">
 				@Localizer["LogOut"]

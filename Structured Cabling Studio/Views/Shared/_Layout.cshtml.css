@@ -25,6 +25,10 @@
     max-width: 170px;
 }
 
+.siteNavbarLiLogin {
+   /* max-width: 250px;*/
+}
+
 .verticalSiteNavbarLi:hover {
     background-color: #93B4FB;
     transition: background-color 0.3s;

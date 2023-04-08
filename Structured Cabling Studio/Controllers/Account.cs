@@ -32,49 +32,6 @@ namespace StructuredCablingStudio.Controllers
 			{
 				var userEmail = loginInfo.Principal.FindFirst(ClaimTypes.Email)?.Value;
 				User? user = await _userManager.FindByEmailAsync(userEmail!);
-				if (user is not null)
-				{
-					var externalLoginSignInResult = await _signInManager.ExternalLoginSignInAsync(loginInfo.LoginProvider, loginInfo.ProviderKey, true);
-					if (externalLoginSignInResult.Succeeded)
-					{
-						await _signInManager.SignInAsync(user, true);
-						return RedirectToAction(nameof(Calculation.Calculate), nameof(Calculation));
-					}
-				}
-				else
-				{
-					user = new User
-					{
-						Email = userEmail!,
-						UserName = userEmail!
-					};
-					var createResult = await _userManager.CreateAsync(user);
-					if (createResult.Succeeded)
-					{
-						var addLoginResult = await _userManager.AddLoginAsync(user, loginInfo);
-						if (addLoginResult.Succeeded)
-						{
-							var externalNewUserLoginSignInResult = await _signInManager.ExternalLoginSignInAsync(loginInfo.LoginProvider, loginInfo.ProviderKey, true);
-							if (externalNewUserLoginSignInResult.Succeeded)
-							{
-								await _signInManager.SignInAsync(user, true);
-								return RedirectToAction(nameof(Calculation.Calculate), nameof(Calculation));
-							}
-						}
-					}
-				}
-			}
-			return RedirectToAction(nameof(AuthenticationFailed), nameof(Account));
-		}
-
-		//Протестировать
-		public async Task<IActionResult> GoogleRedirect2()
-		{
-			ExternalLoginInfo? loginInfo = await _signInManager.GetExternalLoginInfoAsync();
-			if (loginInfo is not null)
-			{
-				var userEmail = loginInfo.Principal.FindFirst(ClaimTypes.Email)?.Value;
-				User? user = await _userManager.FindByEmailAsync(userEmail!);
 				if (user is null)
 				{
 					user = new User
