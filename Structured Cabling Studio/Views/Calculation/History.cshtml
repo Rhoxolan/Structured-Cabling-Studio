@@ -1,0 +1,15 @@
+﻿@if (!User.Identity!.IsAuthenticated)
+{
+	<h3>
+		@Localizer["Signin with Google to watch history"]
+	</h3>
+	<a asp-controller="@nameof(Account)" asp-action="@nameof(Account.SignInWithGoogle)" class="btn btn-outline-primary">
+		@Localizer["Sign In with Google"]
+	</a>
+}
+else
+{
+	<p>
+		The history page
+	</p>
+}
