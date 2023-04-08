@@ -1,27 +1,20 @@
 //.verticalSiteContent
 
-$('.verticalSiteContent').css('min-height', $(window).height() - $('header').outerHeight() - $('footer').outerHeight());
+verticalSiteContentResize();
 
-$(window).on('resize', function () {
-    $('.verticalSiteContent').css('min-height', $(window).height() - $('header').outerHeight() - $('footer').outerHeight());
-});
+$(document).ready(verticalSiteContentResize);
 
-$(window).on('load', function () {
-    $('.verticalSiteContent').css('min-height', $(window).height() - $('header').outerHeight() - $('footer').outerHeight());
-    console.log("Hello from load");
-});
+$(window).on('resize load', verticalSiteContentResize);
 
-$('footer').on('resize', function () {
-    $('.verticalSiteContent').css('min-height', $(window).height() - $('header').outerHeight() - $('footer').outerHeight());
-});
+$('footer, header, .verticalSiteContent').on('resize load', verticalSiteContentResize);
 
-$('header').on('resize', function () {
-    $('.verticalSiteContent').css('min-height', $(window).height() - $('header').outerHeight() - $('footer').outerHeight());
-});
+function verticalSiteContentResize() {
+    $('.verticalSiteContent').css('min-height', getverticalSiteContentSize());
+}
 
-$('.verticalSiteContent').on('resize', function () {
-    $(this).css('min-height', $(window).height() - $('header').outerHeight() - $('footer').outerHeight());
-});
+function getverticalSiteContentSize() {
+    return $(window).height() - $('header').outerHeight() - $('footer').outerHeight();
+}
 
 
 //.eMailNavDisplay
