@@ -117,8 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Sign In with Google" xml:space="preserve">
+    <value>Sign In with Google</value>
+  </data>
   <data name="Signin with Google to watch history" xml:space="preserve">
     <value>Sign In with Google account and get the opportunity to watch your calculations history!</value>
-    <comment>Test String</comment>
   </data>
 </root>

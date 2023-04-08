@@ -118,10 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Sign In with Google" xml:space="preserve">
-    <value>Увійти у систему за допомогою Google</value>
+    <value>Увійти за допомогою Google</value>
   </data>
   <data name="Signin with Google to watch history" xml:space="preserve">
     <value>Увійдіть у систему за допомогою облікового запису Google і отримайте можливість переглядати свою історію розрахунків!</value>
-    <comment>Test string</comment>
   </data>
 </root>

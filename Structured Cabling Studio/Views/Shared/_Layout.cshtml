@@ -57,12 +57,12 @@
 			<div id="verticalSiteNavbarDiv" class="navbar-collapse collapse">
 				<ul class="navbar-nav flex-column">
 					<li class="verticalSiteNavbarLi nav-item p-1 ps-3 pe-3">
-						<a class="nav-link text-white fw-semibold fs-5" href="#">
+						<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.Calculate)" class="nav-link text-white fw-semibold fs-5">
 							@Localizer["Calculation"]
 						</a>
 					</li>
 					<li class="verticalSiteNavbarLi nav-item p-1 ps-3 pe-3">
-						<a class="nav-link text-white fw-semibold fs-5" href="#">
+						<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="nav-link text-white fw-semibold fs-5">
 							@Localizer["History"]
 						</a>
 					</li>

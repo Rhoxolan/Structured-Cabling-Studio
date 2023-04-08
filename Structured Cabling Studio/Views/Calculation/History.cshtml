@@ -1,9 +1,13 @@
-﻿@if (!User.Identity!.IsAuthenticated)
+﻿@{
+	ViewData["Title"] = "History";
+}
+
+@if (!User.Identity!.IsAuthenticated)
 {
-	<h3>
+	<h4>
 		@Localizer["Signin with Google to watch history"]
-	</h3>
-	<a asp-controller="@nameof(Account)" asp-action="@nameof(Account.SignInWithGoogle)" class="btn btn-outline-primary">
+	</h4>
+	<a asp-controller="@nameof(Account)" asp-action="@nameof(Account.SignInWithGoogle)" class="btn btn-outline-primary mt-3">
 		@Localizer["Sign In with Google"]
 	</a>
 }
