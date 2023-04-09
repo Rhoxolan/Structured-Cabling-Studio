@@ -31,5 +31,10 @@ namespace StructuredCablingStudio.Controllers
 		{
 			return View();
 		}
+
+        public IActionResult Information()
+        {
+            return Content("Informatin Page");
+        }
 	}
 }
