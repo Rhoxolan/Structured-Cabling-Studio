@@ -18,10 +18,9 @@
 	else
 	{
 		<div class="signinDisplay">
-			<form id="fform" asp-controller="@nameof(Account)" asp-action="@nameof(Account.SignInWithGoogle)" method="post">
+			<form id="signInWithGoogleForm" asp-controller="@nameof(Account)" asp-action="@nameof(Account.SignInWithGoogle)" method="post">
 			</form>
-			@*Перенести в JS*@
-			<a href="#" onclick="document.getElementById('fform').submit()" class="nav-link text-white fw-semibold">
+			<a id="signInWithGoogleA" href="#" class="nav-link text-white fw-semibold">
 				@Localizer["Sign in with Google"]
 			</a>
 		</div>
