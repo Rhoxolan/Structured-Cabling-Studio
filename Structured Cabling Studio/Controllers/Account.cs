@@ -17,7 +17,6 @@ namespace StructuredCablingStudio.Controllers
 			_signInManager = signInManager;
 		}
 
-		[AllowAnonymous]
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public IActionResult SignInWithGoogle()
