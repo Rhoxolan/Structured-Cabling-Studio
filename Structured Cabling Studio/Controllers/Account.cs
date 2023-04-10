@@ -44,12 +44,12 @@ namespace StructuredCablingStudio.Controllers
 					var createResult = await _userManager.CreateAsync(user);
 					if (!createResult.Succeeded)
 					{
-						return RedirectToAction(nameof(AuthenticationFailed), nameof(Account));
+						return View("AuthenticationFailed");
 					}
 					var addLoginResult = await _userManager.AddLoginAsync(user, loginInfo);
 					if (!addLoginResult.Succeeded)
 					{
-						return RedirectToAction(nameof(AuthenticationFailed), nameof(Account));
+						return View("AuthenticationFailed");
 					}
 				}
 				var externalLoginSignInResult = await _signInManager.ExternalLoginSignInAsync(loginInfo.LoginProvider, loginInfo.ProviderKey, true);
@@ -59,7 +59,7 @@ namespace StructuredCablingStudio.Controllers
 					return RedirectToAction(nameof(Calculation.Calculate), nameof(Calculation));
 				}
 			}
-			return RedirectToAction(nameof(AuthenticationFailed), nameof(Account));
+			return View("AuthenticationFailed");
 		}
 
 		[HttpPost]
@@ -68,11 +68,6 @@ namespace StructuredCablingStudio.Controllers
 		{
 			await _signInManager.SignOutAsync();
 			return RedirectToAction(nameof(Calculation.Calculate), nameof(Calculation));
-		}
-
-		public IActionResult AuthenticationFailed()
-		{
-			return View();
 		}
 	}
 }
