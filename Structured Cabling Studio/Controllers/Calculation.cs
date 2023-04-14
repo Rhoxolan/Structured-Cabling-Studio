@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
@@ -27,6 +28,7 @@ namespace StructuredCablingStudio.Controllers
             return View();
 		}
 
+        [Authorize]
 		public IActionResult History()
 		{
 			return View();

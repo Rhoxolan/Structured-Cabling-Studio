@@ -31,15 +31,14 @@ builder.Services.AddDbContext<ApplicationContext>(opt
 		opt.SupportedCultures = supportedCultures;
 		opt.SupportedUICultures = supportedCultures;
 	})
-	.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-	.AddCookie(opt =>
+	.ConfigureApplicationCookie(opt =>
 	{
-		opt.LoginPath = "Account/Login";
+		opt.LoginPath = "/Account/SignIn";
 		opt.ReturnUrlParameter = "returnUrl";
 	})
+	.AddAuthentication()
 	.AddGoogle(opt =>
 	{
-		opt.AccessDeniedPath = "/";
 		var googleSection = builder.Configuration.GetSection("Authentication:Google");
 		opt.ClientId = googleSection["ClientId"]!;
 		opt.ClientSecret = googleSection["ClientSecret"]!;

@@ -2,11 +2,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using StructuredCablingStudio.Data.Entities;
-using StructuredCablingStudio.Models.ViewModels;
+using StructuredCablingStudio.Models.ViewModels.AccountViewModels;
 using System.Security.Claims;
 
 namespace StructuredCablingStudio.Controllers
 {
+	[Authorize]
 	public class Account : Controller
 	{
 		private readonly UserManager<User> _userManager;
@@ -18,13 +19,15 @@ namespace StructuredCablingStudio.Controllers
 			_signInManager = signInManager;
 		}
 
-		public IActionResult Login(string returnUrl)
+		[AllowAnonymous]
+		public IActionResult SignIn(string returnUrl)
 		{
-			throw new NotImplementedException();
+			return View("SignIn", new SignInViewModel { ReturnUrl = returnUrl });
 		}
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
+		[AllowAnonymous]
 		public IActionResult SignInWithGoogle(string returnUrl)
 		{
 			string? redirectUrl = Url.Action(nameof(GoogleLoginCallback), nameof(Account), new { returnUrl });
@@ -33,6 +36,7 @@ namespace StructuredCablingStudio.Controllers
 			return Challenge(properties, provider);
 		}
 
+		[AllowAnonymous]
 		public async Task<IActionResult> GoogleLoginCallback(string returnUrl)
 		{
 			ExternalLoginInfo? loginInfo = await _signInManager.GetExternalLoginInfoAsync();
