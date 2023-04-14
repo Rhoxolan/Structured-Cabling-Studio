@@ -123,4 +123,7 @@
   <data name="Contact to developer" xml:space="preserve">
     <value>Свяжитесь с разработчиком проекта</value>
   </data>
+  <data name="Go back" xml:space="preserve">
+    <value>Вернуться назад</value>
+  </data>
 </root>

@@ -1,4 +1,8 @@
-﻿<div class="text-center">
+﻿@{
+	string returnUrl = Context.Request.Path.Value + Context.Request.QueryString.Value;
+}
+
+<div class="text-center">
 	@if (User.Identity!.IsAuthenticated)
 	{
 		<div class="loginDisplay nav-link pt-0 pb-1">
@@ -9,6 +13,7 @@
 				@User.Identity.Name
 			</a>
 			<form asp-controller="@nameof(Account)" asp-action="@nameof(Account.Logout)" method="post">
+				<input type="hidden" name="returnUrl" value="@returnUrl">
 				<button type="submit" class="btn btn-sm btn-outline-light btnLogout">
 					@Localizer["LogOut"]
 				</button>
@@ -19,6 +24,7 @@
 	{
 		<div class="signinDisplay">
 			<form id="signInWithGoogleForm" asp-controller="@nameof(Account)" asp-action="@nameof(Account.SignInWithGoogle)" method="post">
+				<input type="hidden" name="returnUrl" value="@returnUrl">
 			</form>
 			<a id="signInWithGoogleA" href="#" class="nav-link text-white fw-semibold">
 				@Localizer["Sign in with Google"]

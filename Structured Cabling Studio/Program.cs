@@ -26,7 +26,7 @@ builder.Services.AddDbContext<ApplicationContext>(opt
 			new CultureInfo("en"),
 			new CultureInfo("uk")
 		};
-		opt.DefaultRequestCulture = new RequestCulture("ru");
+		opt.DefaultRequestCulture = new RequestCulture("en");
 		opt.SupportedCultures = supportedCultures;
 		opt.SupportedUICultures = supportedCultures;
 	})

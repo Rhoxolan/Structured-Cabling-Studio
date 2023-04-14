@@ -1,9 +1,18 @@
-﻿<h1>
+﻿@model AuthenticationFailedViewModel
+
+<h1>
 	@Localizer["Authentication is failed"]
 </h1>
 <p>
 	<div class="fs-5">
 		@Localizer["Contact to developer"] &#8211;
 	</div>
-	<a class="fs-5" href="mailto:pbaworkcontactmail@gmail.com">pbaworkcontactmail@gmail.com</a>
+	<div>
+		<a class="fs-5" href="mailto:pbaworkcontactmail@gmail.com">pbaworkcontactmail@gmail.com</a>
+	</div>
+</p>
+<p>
+	<a href="@Model.ReturnUrl" class="btn btn-outline-info">
+			@Localizer["Go back"]
+	</a>
 </p>
