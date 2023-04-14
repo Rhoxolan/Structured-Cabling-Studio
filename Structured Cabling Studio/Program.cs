@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -30,9 +31,15 @@ builder.Services.AddDbContext<ApplicationContext>(opt
 		opt.SupportedCultures = supportedCultures;
 		opt.SupportedUICultures = supportedCultures;
 	})
-	.AddAuthentication()
+	.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+	.AddCookie(opt =>
+	{
+		opt.LoginPath = "Account/Login";
+		opt.ReturnUrlParameter = "returnUrl";
+	})
 	.AddGoogle(opt =>
 	{
+		opt.AccessDeniedPath = "/";
 		var googleSection = builder.Configuration.GetSection("Authentication:Google");
 		opt.ClientId = googleSection["ClientId"]!;
 		opt.ClientSecret = googleSection["ClientSecret"]!;

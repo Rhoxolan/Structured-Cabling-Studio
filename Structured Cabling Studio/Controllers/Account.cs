@@ -18,6 +18,11 @@ namespace StructuredCablingStudio.Controllers
 			_signInManager = signInManager;
 		}
 
+		public IActionResult Login(string returnUrl)
+		{
+			throw new NotImplementedException();
+		}
+
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public IActionResult SignInWithGoogle(string returnUrl)
