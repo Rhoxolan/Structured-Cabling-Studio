@@ -22,7 +22,7 @@ namespace StructuredCablingStudio.Controllers
 		[AllowAnonymous]
 		public IActionResult SignIn(string returnUrl)
 		{
-			return View("SignIn", new SignInViewModel { ReturnUrl = returnUrl });
+			return View(new SignInViewModel { ReturnUrl = returnUrl });
 		}
 
 		[HttpPost]
