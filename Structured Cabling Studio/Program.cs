@@ -17,7 +17,8 @@ builder.Services.AddIdentity<User, IdentityRole>()
 
 builder.Services.AddDbContext<ApplicationContext>(opt
 	=> opt.UseSqlServer(builder.Configuration.GetConnectionString("CablingConfigurationsDB")))
-	.AddLocalization(options => options.ResourcesPath = "Resources").Configure<RequestLocalizationOptions>(opt =>
+	.AddLocalization(opt => opt.ResourcesPath = "Resources")
+	.Configure<RequestLocalizationOptions>(opt =>
 	{
 		var supportedCultures = new[]
 		{
