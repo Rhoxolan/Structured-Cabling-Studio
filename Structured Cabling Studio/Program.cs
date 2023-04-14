@@ -1,16 +1,41 @@
-using StructuredCablingStudio.Extensions.AuthenticationBuilderExtensions;
-using StructuredCablingStudio.Extensions.IMvcBuilderExtensions;
-using StructuredCablingStudio.Extensions.IServiceCollectionExtensions;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.EntityFrameworkCore;
+using StructuredCablingStudio.Data.Contexts;
+using StructuredCablingStudio.Data.Entities;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews()
-	.AddLocalizationBasis();
-builder.Services.AddIdentityInteractionBasis();
-builder.Services.AddDataInteractionBasis(builder)
-	.AddLocalizationBasis()
+	.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+	.AddDataAnnotationsLocalization();
+
+builder.Services.AddIdentity<User, IdentityRole>()
+	.AddEntityFrameworkStores<ApplicationContext>();
+
+builder.Services.AddDbContext<ApplicationContext>(opt
+	=> opt.UseSqlServer(builder.Configuration.GetConnectionString("CablingConfigurationsDB")))
+	.AddLocalization(options => options.ResourcesPath = "Resources").Configure<RequestLocalizationOptions>(opt =>
+	{
+		var supportedCultures = new[]
+		{
+			new CultureInfo("ru"),
+			new CultureInfo("en"),
+			new CultureInfo("uk")
+		};
+		opt.DefaultRequestCulture = new RequestCulture("ru");
+		opt.SupportedCultures = supportedCultures;
+		opt.SupportedUICultures = supportedCultures;
+	})
 	.AddAuthentication()
-	.AddGoogleAuthentication(builder);
+	.AddGoogle(opt =>
+	{
+		var googleSection = builder.Configuration.GetSection("Authentication:Google");
+		opt.ClientId = googleSection["ClientId"]!;
+		opt.ClientSecret = googleSection["ClientSecret"]!;
+	});
 
 var app = builder.Build();
 
@@ -18,7 +43,6 @@ if (!app.Environment.IsDevelopment())
 {
 	app.UseHsts();
 }
-//Проверить, всё ли из этого необходимо ввиду добавления сервисов 
 app.UseHttpsRedirection();
 app.UseRequestLocalization();
 app.UseStaticFiles();
