@@ -1,76 +1,107 @@
 ﻿@{
-    ViewData["Title"] = "Calculation";
+	ViewData["Title"] = "Calculation";
 }
 
 <form asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.Calculate)" method="post">
-    <div class="mb-3">
-        <div class="row">
-            <div class="col">
-                <label class="form-label" for="minPermanentLinkInput">
-                    @Localizer["Minimum length of the permanent link:"]
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-                <input class="form-control border-primary border-opacity-75" type="text" id="minPermanentLinkInput" name="minPermanentLink" />
-            </div>
-            <div class="col d-flex align-items-end ps-0">
-                <label class="form-label mb-1" for="minPermanentLinkInput">
-                    @Localizer["m"]
-                </label>
-            </div>
-        </div>
-    </div>
+	<div class="mt-0">
+		<div class="row">
+			<div class="col">
+				<label class="form-label" for="minPermanentLinkInput">
+					@Localizer["Minimum length of the permanent link:"]
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
+				<input class="form-control border-primary border-opacity-75" type="text" id="minPermanentLinkInput" name="minPermanentLink" />
+			</div>
+			<div class="col d-flex align-items-end ps-0">
+				<label class="form-label mb-1" for="minPermanentLinkInput">
+					@Localizer["m"]
+				</label>
+			</div>
+		</div>
+	</div>
 
-    <div class="mb-3">
-        <div class="row">
-            <div class="col">
-                <label class="form-label" for="maxPermanentLinkInput">
-                    @Localizer["Maximum length of the permanent link:"]
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-                <input class="form-control border-primary border-opacity-75" type="text" id="maxPermanentLinkInput" name="maxPermanentLink" />
-            </div>
-            <div class="col d-flex align-items-end ps-0">
-                <label class="form-label mb-1" for="maxPermanentLinkInput">
-                    @Localizer["m"]
-                </label>
-            </div>
-        </div>
-    </div>
+	<div class="mt-3">
+		<div class="row">
+			<div class="col">
+				<label class="form-label" for="maxPermanentLinkInput">
+					@Localizer["Maximum length of the permanent link:"]
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
+				<input class="form-control border-primary border-opacity-75" type="text" id="maxPermanentLinkInput" name="maxPermanentLink" />
+			</div>
+			<div class="col d-flex align-items-end ps-0">
+				<label class="form-label mb-1" for="maxPermanentLinkInput">
+					@Localizer["m"]
+				</label>
+			</div>
+		</div>
+	</div>
 
-    <div class="mb-3">
-        <div class="row">
-            <div class="col">
-                <label class="form-label" for="workplacesCountInput">
-                    @Localizer["Workplaces count:"]
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-                <input class="form-control border-primary border-opacity-75" type="text" id="workplacesCountInput" name="workplacesCount" />
-            </div>
-        </div>
-    </div>
+	<div class="mt-3">
+		<div class="row">
+			<div class="col">
+				<label class="form-label" for="workplacesCountInput">
+					@Localizer["Workplaces count:"]
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
+				<input class="form-control border-primary border-opacity-75" type="text" id="workplacesCountInput" name="workplacesCount" />
+			</div>
+		</div>
+	</div>
 
-    <div class="mb-3">
-        <div class="row">
-            <div class="col">
-                <label class="form-label" for="portsCountInput">
-                    @Localizer["Ports count per 1 workplace:"]
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-                <input class="form-control border-primary border-opacity-75" type="text" id="portsCountInput" name="portsCount" />
-            </div>
-        </div>
-    </div>
+	<div class="mt-3">
+		<div class="row">
+			<div class="col">
+				<label class="form-label" for="portsCountInput">
+					@Localizer["Ports count per 1 workplace:"]
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
+				<input class="form-control border-primary border-opacity-75" type="text" id="portsCountInput" name="portsCount" />
+			</div>
+		</div>
+	</div>
+
+	<div class="mt-3">
+		<div class="row">
+			<div class="col">
+				<div class="form-check">
+					<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="cableHankMeterageAvailabilityInput" name="cableHankMeterageAvailability">
+					<label class="form-check-label" for="cableHankMeterageAvailabilityInput">
+						@Localizer["Take into account the cable hank meterage"]
+					</label>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	@*Подумать, может совместить последние 2. Может вернуть "mb".*@
+
+	<div class="mt-2">
+		<div class="row">
+			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
+				<input class="form-control border-primary border-opacity-75" type="text" id="" name="" />
+			</div>
+			<div class="col-1 d-flex align-items-end ps-0">
+				<label class="form-label mb-1" for="">
+					@Localizer["m"]
+				</label>
+			</div>
+			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
+				<input class="form-control border-primary border-opacity-75" type="text" id="" name="" />
+			</div>
+		</div>
+	</div>
 
 </form>

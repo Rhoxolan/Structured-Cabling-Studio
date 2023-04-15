@@ -129,6 +129,9 @@
   <data name="Ports count per 1 workplace:" xml:space="preserve">
     <value>Ports count per 1 workplace:</value>
   </data>
+  <data name="Take into account the cable hank meterage" xml:space="preserve">
+    <value>Take into account the cable hank meterage</value>
+  </data>
   <data name="Workplaces count:" xml:space="preserve">
     <value>Workplaces count:</value>
   </data>
