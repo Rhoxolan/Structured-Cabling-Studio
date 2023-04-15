@@ -4,8 +4,11 @@
 
 .loginDisplay {
     max-width: 260px;
+    padding-top: 1.5px;
+    line-height: normal;
 }
 
 .btnLogout {
     padding: 1px;
+    margin-top: 3px;
 }
