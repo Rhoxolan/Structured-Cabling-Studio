@@ -2,7 +2,45 @@
     ViewData["Title"] = "Calculation";
 }
 
-<div class="text-center">
-    <h1 class="display-4">@Localizer["Welcome"]</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<form asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.Calculate)" method="post">
+    <div class="mb-3">
+        <div class="row">
+            <div class="col">
+                <label class="form-label" for="minPermanentLinkInput">
+                    @Localizer["Minimum length of the permanent link:"]
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-11 col-sm-8 col-md-6 col-lg-3">
+                <input class="form-control" type="text" id="minPermanentLinkInput" name="minPermanentLink" />
+            </div>
+            <div class="col d-flex align-items-end ps-0">
+                <label class="form-label mb-1" for="minPermanentLinkInput">
+                    @Localizer["m"]
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <div class="row">
+            <div class="col">
+                <label class="form-label" for="maxPermanentLinkInput">
+                    @Localizer["Maximum length of the permanent link:"]
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-11 col-sm-8 col-md-6 col-lg-3">
+                <input class="form-control" type="text" id="maxPermanentLinkInput" name="maxPermanentLink" />
+            </div>
+            <div class="col d-flex align-items-end ps-0">
+                <label class="form-label mb-1" for="maxPermanentLinkInput">
+                    @Localizer["m"]
+                </label>
+            </div>
+        </div>
+    </div>
+
+</form>

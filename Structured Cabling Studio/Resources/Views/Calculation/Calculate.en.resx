@@ -117,8 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Welcome" xml:space="preserve">
-    <value>Welcome</value>
-    <comment>Test String</comment>
+  <data name="m" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="Maximum length of the permanent link:" xml:space="preserve">
+    <value>Maximum length of the permanent link:</value>
+  </data>
+  <data name="Minimum length of the permanent link:" xml:space="preserve">
+    <value>Minimum length of the permanent link:</value>
   </data>
 </root>
