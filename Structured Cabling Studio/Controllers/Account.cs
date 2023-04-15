@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using StructuredCablingStudio.Data.Entities;
 using StructuredCablingStudio.Models.ViewModels.AccountViewModels;
 using System.Security.Claims;
+using static System.String;
 
 namespace StructuredCablingStudio.Controllers
 {
@@ -22,7 +23,7 @@ namespace StructuredCablingStudio.Controllers
 		[AllowAnonymous]
 		public IActionResult SignIn(string returnUrl)
 		{
-			return View(new SignInViewModel { ReturnUrl = returnUrl });
+			return View(new SignInViewModel { ReturnUrl = UrlChecker(returnUrl) });
 		}
 
 		[HttpPost]
@@ -30,7 +31,7 @@ namespace StructuredCablingStudio.Controllers
 		[AllowAnonymous]
 		public IActionResult SignInWithGoogle(string returnUrl)
 		{
-			string? redirectUrl = Url.Action(nameof(GoogleLoginCallback), nameof(Account), new { returnUrl });
+			string? redirectUrl = Url.Action(nameof(GoogleLoginCallback), nameof(Account), new { returnUrl = UrlChecker(returnUrl) });
 			string provider = "Google";
 			var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
 			return Challenge(properties, provider);
@@ -54,22 +55,22 @@ namespace StructuredCablingStudio.Controllers
 					var createResult = await _userManager.CreateAsync(user);
 					if (!createResult.Succeeded)
 					{
-						return View("AuthenticationFailed", new AuthenticationFailedViewModel { ReturnUrl = returnUrl });
+						return View("AuthenticationFailed", new AuthenticationFailedViewModel { ReturnUrl = UrlChecker(returnUrl) });
 					}
 					var addLoginResult = await _userManager.AddLoginAsync(user, loginInfo);
 					if (!addLoginResult.Succeeded)
 					{
-						return View("AuthenticationFailed", new AuthenticationFailedViewModel { ReturnUrl = returnUrl });
+						return View("AuthenticationFailed", new AuthenticationFailedViewModel { ReturnUrl = UrlChecker(returnUrl) });
 					}
 				}
 				var externalLoginSignInResult = await _signInManager.ExternalLoginSignInAsync(loginInfo.LoginProvider, loginInfo.ProviderKey, true);
 				if (externalLoginSignInResult.Succeeded)
 				{
 					await _signInManager.SignInAsync(user, true);
-					return LocalRedirect(returnUrl);
+					return LocalRedirect(UrlChecker(returnUrl));
 				}
 			}
-			return View("AuthenticationFailed", new AuthenticationFailedViewModel { ReturnUrl = returnUrl });
+			return View("AuthenticationFailed", new AuthenticationFailedViewModel { ReturnUrl = UrlChecker(returnUrl) });
 		}
 
 		[HttpPost]
@@ -77,7 +78,16 @@ namespace StructuredCablingStudio.Controllers
 		public async Task<IActionResult> Logout(string returnUrl)
 		{
 			await _signInManager.SignOutAsync();
-			return LocalRedirect(returnUrl);
+			return LocalRedirect(UrlChecker(returnUrl));
+		}
+
+		private string UrlChecker(string url)
+		{
+			if(!Url.IsLocalUrl(url) && IsNullOrEmpty(url))
+			{
+				return Url.Action(nameof(Calculation.Calculate), nameof(Calculation))!;
+			}
+			return url;
 		}
 	}
 }
