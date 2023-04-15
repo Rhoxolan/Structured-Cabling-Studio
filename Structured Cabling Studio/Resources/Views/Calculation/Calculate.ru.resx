@@ -126,4 +126,10 @@
   <data name="Minimum length of the permanent link:" xml:space="preserve">
     <value>Наименьшая длина постоянного линка (Permanent link): </value>
   </data>
+  <data name="Ports count per 1 workplace:" xml:space="preserve">
+    <value>Количество портов на 1 рабочее место:</value>
+  </data>
+  <data name="Workplaces count:" xml:space="preserve">
+    <value>Количество рабочих мест:</value>
+  </data>
 </root>
