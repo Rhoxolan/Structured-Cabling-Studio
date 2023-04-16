@@ -86,58 +86,27 @@
 		</div>
 		<div class="row mt-2">
 			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-				<input class="form-control border-primary border-opacity-75" type="text" id="cableHankMeterageInput" name="cableHankMeterage" />
+				<input class="form-control border-primary border-opacity-75" type="text" list="cableHankMeterageDatalist" id="cableHankMeterageInput" name="cableHankMeterage" />
+				<datalist id="cableHankMeterageDatalist">
+					<option>50</option>
+					<option>100</option>
+					<option>305</option>
+					<option>500</option>
+					<option>1000</option>
+				</datalist>
 			</div>
 			<div class="col-auto d-flex align-items-end ps-0 pe-0">
 				<label class="form-label mb-1" for="cableHankMeterageInput">
 					@Localizer["m"]
 				</label>
 			</div>
-			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-				<details class="form-control border-primary border-opacity-75 position-relative ps-0">
-					<summary class="ps-3">
-						@*@Localizer["The standard values of a cable hank length"]*@
-						m
-					</summary>
-					<div id="cableHankMeterageDetailsExpandableDiv" class="form-control d-flex flex-column align-items-center border-primary border-opacity-75 position-absolute">
-						<div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-								<label class="form-check-label" for="flexRadioDefault1">
-									50 @Localizer["m"]
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-								<label class="form-check-label" for="flexRadioDefault1">
-									100 @Localizer["m"]
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-								<label class="form-check-label" for="flexRadioDefault1">
-									305 @Localizer["m"]
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-								<label class="form-check-label" for="flexRadioDefault1">
-									500 @Localizer["m"]
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-								<label class="form-check-label" for="flexRadioDefault1">
-									100 @Localizer["m"]
-								</label>
-							</div>
-						</div>
-					</div>
-				</details>
-			</div>
 		</div>
 	</div>
 
-	<hr class="border border-primary opacity-50"/>
+	<hr class="border border-primary opacity-50" />
+
+	<h5 class="fw-normal">
+		@Localizer["Advanced calculation parameters"]
+	</h5>
 
 </form>
