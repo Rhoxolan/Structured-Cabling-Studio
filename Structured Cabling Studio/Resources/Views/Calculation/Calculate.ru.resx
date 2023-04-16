@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Hank length" xml:space="preserve">
+    <value>Метраж</value>
+  </data>
   <data name="m" xml:space="preserve">
     <value>м.</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="Ports count per 1 workplace:" xml:space="preserve">
     <value>Количество портов на 1 рабочее место:</value>
+  </data>
+  <data name="Standart values" xml:space="preserve">
+    <value>Стандартные значения</value>
   </data>
   <data name="Take into account the cable hank meterage" xml:space="preserve">
     <value>Учитывать метраж кабеля в бухте</value>
