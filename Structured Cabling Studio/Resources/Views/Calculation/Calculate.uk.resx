@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add cable selection recommendations" xml:space="preserve">
+    <value>Додати рекомендаціі з підбору кабелю</value>
+  </data>
   <data name="Advanced calculation parameters" xml:space="preserve">
     <value>Додаткові параметри розрахунку</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="The standard values of a cable hank length" xml:space="preserve">
     <value>Стандартні значенния метража кабелю у бухті</value>
+  </data>
+  <data name="Will the sections of the cable route run outdoors" xml:space="preserve">
+    <value>Чи будуть ділянки кабельної траси проходити поза приміщенням</value>
   </data>
   <data name="Workplaces count:" xml:space="preserve">
     <value>Кількість робочих місць:</value>
