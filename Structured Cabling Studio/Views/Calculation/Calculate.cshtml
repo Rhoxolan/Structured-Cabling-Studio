@@ -3,7 +3,7 @@
 }
 
 <form asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.Calculate)" method="post">
-	<div class="mt-0">
+	<div class="mb-3">
 		<div class="row">
 			<div class="col">
 				<label class="form-label" for="minPermanentLinkInput">
@@ -23,7 +23,7 @@
 		</div>
 	</div>
 
-	<div class="mt-3">
+	<div class="mb-3">
 		<div class="row">
 			<div class="col">
 				<label class="form-label" for="maxPermanentLinkInput">
@@ -43,7 +43,7 @@
 		</div>
 	</div>
 
-	<div class="mt-3">
+	<div class="mb-3">
 		<div class="row">
 			<div class="col">
 				<label class="form-label" for="workplacesCountInput">
@@ -58,7 +58,7 @@
 		</div>
 	</div>
 
-	<div class="mt-3">
+	<div class="mb-3">
 		<div class="row">
 			<div class="col">
 				<label class="form-label" for="portsCountInput">
@@ -73,7 +73,7 @@
 		</div>
 	</div>
 
-	<div class="mt-3">
+	<div class="mb-3">
 		<div class="row">
 			<div class="col">
 				<div class="form-check">
@@ -84,22 +84,23 @@
 				</div>
 			</div>
 		</div>
-	</div>
-
-	@*Подумать, может совместить последние 2. Может вернуть "mb".*@
-
-	<div class="mt-2">
-		<div class="row">
+		<div class="row mt-2">
 			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
 				<input class="form-control border-primary border-opacity-75" type="text" id="" name="" />
 			</div>
-			<div class="col-1 d-flex align-items-end ps-0">
+			<div class="col-auto d-flex align-items-end ps-0 pe-0">
 				<label class="form-label mb-1" for="">
 					@Localizer["m"]
 				</label>
 			</div>
 			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-				<input class="form-control border-primary border-opacity-75" type="text" id="" name="" />
+				<select class="form-select border-primary border-opacity-75">
+					<option value="50">50 @Localizer["m"]</option>
+					<option value="100">100 @Localizer["m"]</option>
+					<option selected value="305">305 @Localizer["m"]</option>
+					<option value="500">500 @Localizer["m"]</option>
+					<option value="1000">1000 @Localizer["m"]</option>
+				</select>
 			</div>
 		</div>
 	</div>

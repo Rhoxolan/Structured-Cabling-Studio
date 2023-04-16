@@ -132,6 +132,9 @@
   <data name="Take into account the cable hank meterage" xml:space="preserve">
     <value>Take into account the cable hank meterage</value>
   </data>
+  <data name="The standard values of a cable hank length" xml:space="preserve">
+    <value>The standard values of a cable hank length</value>
+  </data>
   <data name="Workplaces count:" xml:space="preserve">
     <value>Workplaces count:</value>
   </data>
