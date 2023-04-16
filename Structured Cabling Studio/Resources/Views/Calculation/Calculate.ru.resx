@@ -129,6 +129,9 @@
   <data name="Availability of technological reserve coefficient:" xml:space="preserve">
     <value>Учитывать коэффициент технологического запаса:</value>
   </data>
+  <data name="Consider standard fire safety requirements" xml:space="preserve">
+    <value>Учитывать стандартные требования к пожарной безопасности</value>
+  </data>
   <data name="Hank length" xml:space="preserve">
     <value>Метраж</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="Take into account the cable hank meterage" xml:space="preserve">
     <value>Учитывать метраж кабеля в бухте</value>
+  </data>
+  <data name="Take into account the necessity of cable shielding" xml:space="preserve">
+    <value>Учитывать необходимость экранизации кабеля</value>
   </data>
   <data name="The standard values of a cable hank length" xml:space="preserve">
     <value>Стандартные значения метража кабеля в бухте</value>
