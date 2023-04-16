@@ -120,6 +120,12 @@
   <data name="Advanced calculation parameters" xml:space="preserve">
     <value>Дополнительные параметры расчёта</value>
   </data>
+  <data name="Arbitary ports count per workplace" xml:space="preserve">
+    <value>Разрешить произвольное количество портов на 1 рабочее место</value>
+  </data>
+  <data name="Availability of technological reserve coefficient:" xml:space="preserve">
+    <value>Учитывать коэффициент технологического запаса:</value>
+  </data>
   <data name="Hank length" xml:space="preserve">
     <value>Метраж</value>
   </data>
@@ -137,6 +143,9 @@
   </data>
   <data name="Standart values" xml:space="preserve">
     <value>Стандартные значения</value>
+  </data>
+  <data name="Strict compliance with the standart" xml:space="preserve">
+    <value>Строгое соответствие стандарту ISO/IEC 11801</value>
   </data>
   <data name="Take into account the cable hank meterage" xml:space="preserve">
     <value>Учитывать метраж кабеля в бухте</value>

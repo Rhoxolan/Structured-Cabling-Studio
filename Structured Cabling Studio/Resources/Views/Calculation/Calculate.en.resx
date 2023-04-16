@@ -120,6 +120,12 @@
   <data name="Advanced calculation parameters" xml:space="preserve">
     <value>Advanced calculation parameters</value>
   </data>
+  <data name="Arbitary ports count per workplace" xml:space="preserve">
+    <value>Allow an arbitrary ports count per 1 workplace</value>
+  </data>
+  <data name="Availability of technological reserve coefficient:" xml:space="preserve">
+    <value>Take into account of the technological reserve coefficient:</value>
+  </data>
   <data name="Hank length" xml:space="preserve">
     <value>Length</value>
   </data>
@@ -137,6 +143,9 @@
   </data>
   <data name="Standart values" xml:space="preserve">
     <value>Standart values</value>
+  </data>
+  <data name="Strict compliance with the standart" xml:space="preserve">
+    <value>Strict compliance with the ISO/IEC 11801 standart</value>
   </data>
   <data name="Take into account the cable hank meterage" xml:space="preserve">
     <value>Take into account the cable hank meterage</value>
