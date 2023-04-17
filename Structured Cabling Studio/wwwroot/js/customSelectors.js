@@ -16,7 +16,6 @@ function getverticalSiteContentSize() {
     return $(window).height() - $('header').outerHeight() - $('footer').outerHeight();
 }
 
-
 //.eMailNavDisplay
 
 $('.eMailNavDisplay').css('font-size', function () {
@@ -37,4 +36,3 @@ $('.eMailNavDisplay').css('font-size', function () {
         return 15;
     }
 });
-
