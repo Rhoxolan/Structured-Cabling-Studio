@@ -162,6 +162,9 @@
   <data name="The standard values of a cable hank length" xml:space="preserve">
     <value>The standard values of a cable hank length</value>
   </data>
+  <data name="Used connection interfaces" xml:space="preserve">
+    <value>Used connection interfaces</value>
+  </data>
   <data name="Will the sections of the cable route run outdoors" xml:space="preserve">
     <value>Will the sections of the cable route run outdoors</value>
   </data>
