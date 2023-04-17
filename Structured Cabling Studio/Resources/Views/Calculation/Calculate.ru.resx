@@ -147,6 +147,9 @@
   <data name="Ports count per 1 workplace:" xml:space="preserve">
     <value>Количество портов на 1 рабочее место:</value>
   </data>
+  <data name="Restore defaults" xml:space="preserve">
+    <value>Восстановить значения по умолчанию</value>
+  </data>
   <data name="Standart values" xml:space="preserve">
     <value>Стандартные значения</value>
   </data>
