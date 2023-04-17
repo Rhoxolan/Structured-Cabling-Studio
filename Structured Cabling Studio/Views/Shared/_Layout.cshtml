@@ -56,17 +56,17 @@
 		<nav id="verticalSiteNav" class="verticalSiteContent navbar navbar-expand-lg align-items-start p-0">
 			<div id="verticalSiteNavbarDiv" class="navbar-collapse collapse">
 				<ul class="navbar-nav flex-column">
-					<li class="verticalSiteNavbarLi nav-item p-1 ps-3 pe-3">
+					<li class="verticalSiteNavbarLi nav-item p-1 px-3">
 						<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.Calculate)" class="nav-link text-white fw-semibold fs-5">
 							@Localizer["Calculation"]
 						</a>
 					</li>
-					<li class="verticalSiteNavbarLi nav-item p-1 ps-3 pe-3">
+					<li class="verticalSiteNavbarLi nav-item p-1 px-3">
 						<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="nav-link text-white fw-semibold fs-5">
 							@Localizer["History"]
 						</a>
 					</li>
-					<li class="verticalSiteNavbarLi nav-item p-1 ps-3 pe-3">
+					<li class="verticalSiteNavbarLi nav-item p-1 px-3">
 						<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.Information)" class="nav-link text-white fw-semibold fs-5">
 							@Localizer["Information"]
 						</a>
@@ -75,8 +75,8 @@
 			</div>
 		</nav>
 
-		<div class="container mt-3 ps-lg-5 pe-lg-5">
-			<main role="main" class="pb-3 ps-lg-5 ps-lg-5 ps-xxl-3 pe-xxl-3 ms-xl-3 me-xl-3 ms-xxl-0 me-xxl-0">
+		<div class="container mt-3 px-lg-5">
+			<main role="main" class="pb-3 px-lg-5 mx-xl-5 mx-xxl-2">
 				@RenderBody()
 			</main>
 		</div>
