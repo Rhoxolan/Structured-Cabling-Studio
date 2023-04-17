@@ -9,25 +9,8 @@
 			<div class="text-white fw-semibold">
 				@Localizer["Hello"]
 			</div>
-			<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="text-decoration-underline text-white">
-@*				<div class="eMailNavDisplayf">
-					@User.Identity.Name
-				</div>*@
-				<div class="eMailNavDisplay mt-1">
-					31kxnslmvpgdlmtgzbboawgimyexfjh
-				</div>
-				<div class="eMailNavDisplay  mt-1">
-					45gwqbhvpdhzmajdtusnttrjbxsrlaonxlbnjozzydbhx
-				</div>
-				<div class="eMailNavDisplay  mt-1">
-					63ojgddkkbfxnzvrqkkczuxwdpwqqtvgwvxoncmmimlcvurxtmrsrylsuzipfov
-				</div>
-				<div class="eMailNavDisplay  mt-1">
-					127avblgmomwgrovuujltpqohwrewpwoiwhqzpsvsmravwjbbqpihmmbievkmezcbbidqzvzzqekgymlkcjlsvislrvtflglmjkxzsgketngdzjslbtrqhnuhtifwhy
-				</div>
-				<div class="eMailNavDisplay  mt-1">
-					255ksuuzrhxyshyvbiylgluzxzrhqxugntcbcuehquvagivyxdofajrhvzdqsqsiircamwemyooqycwxumhzxvzhvartjebxyzftfzwbrfyztmzepjgyclwoaotorzybtahypvnckgkbxhiidwjnebxkjxdaywokbfpzzscabhxaruobmjkpwmgfilwdbvscnzpghkjxbcewbqdskmwsateiyjvxqwuouubtscqlrcepelhfbpvphbevjafnevt
-				</div>
+			<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="eMailNavDisplay text-decoration-underline text-white">
+				@User.Identity.Name
 			</a>
 			<form asp-controller="@nameof(Account)" asp-action="@nameof(Account.Logout)" method="post">
 				<input type="hidden" name="returnUrl" value="@returnUrl">
