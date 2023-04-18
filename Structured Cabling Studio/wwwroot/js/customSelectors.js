@@ -16,6 +16,7 @@ function getverticalSiteContentSize() {
     return $(window).height() - $('header').outerHeight() - $('footer').outerHeight();
 }
 
+
 //.eMailNavDisplay
 
 $('.eMailNavDisplay').css('font-size', function () {
@@ -36,3 +37,29 @@ $('.eMailNavDisplay').css('font-size', function () {
         return 15;
     }
 });
+
+
+//.brandDisplay
+
+resizeBrandDisplay();
+
+$(document).ready(resizeBrandDisplay);
+
+$(window).on('resize load', resizeBrandDisplay);
+
+$('header, .brandDisplay').on('resize load', resizeBrandDisplay);
+
+function resizeBrandDisplay() {
+    $('.brandDisplay').css('font-size', getBrandDisplayFS);
+};
+
+function getBrandDisplayFS() {
+    if ($(window).width() < 576) {
+        return 17;
+    }
+    else {
+        return 25;
+    }
+
+    //Сделать лесенку ифэлсеиф и уменьшить fs для экранов меньше, например, 360-и
+}
