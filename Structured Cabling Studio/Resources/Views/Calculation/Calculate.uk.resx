@@ -129,6 +129,12 @@
   <data name="Availability of technological reserve coefficient:" xml:space="preserve">
     <value>Враховувати коефіцієнт технологічного запасу:</value>
   </data>
+  <data name="Calculate" xml:space="preserve">
+    <value>Розрахувати</value>
+  </data>
+  <data name="Clean output block" xml:space="preserve">
+    <value>Очистити блок виводу</value>
+  </data>
   <data name="Consider standard fire safety requirements" xml:space="preserve">
     <value>Враховувати стандартні вимогу до пожарної безпеки</value>
   </data>
@@ -149,6 +155,9 @@
   </data>
   <data name="Restore defaults" xml:space="preserve">
     <value>Відновити дефолтні значення</value>
+  </data>
+  <data name="Save to TXT" xml:space="preserve">
+    <value>Зберегти у TXT</value>
   </data>
   <data name="Standart values" xml:space="preserve">
     <value>Стандартні значення</value>

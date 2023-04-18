@@ -129,6 +129,12 @@
   <data name="Availability of technological reserve coefficient:" xml:space="preserve">
     <value>Take into account of the technological reserve coefficient:</value>
   </data>
+  <data name="Calculate" xml:space="preserve">
+    <value>Calculate</value>
+  </data>
+  <data name="Clean output block" xml:space="preserve">
+    <value>Clean output block</value>
+  </data>
   <data name="Consider standard fire safety requirements" xml:space="preserve">
     <value>Consider the standard fire safety requirements</value>
   </data>
@@ -149,6 +155,9 @@
   </data>
   <data name="Restore defaults" xml:space="preserve">
     <value>Restore defaults</value>
+  </data>
+  <data name="Save to TXT" xml:space="preserve">
+    <value>Save to TXT</value>
   </data>
   <data name="Standart values" xml:space="preserve">
     <value>Standart values</value>
