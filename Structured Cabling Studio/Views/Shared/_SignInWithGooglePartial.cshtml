@@ -7,9 +7,9 @@
 	{
 		<div class="loginDisplay nav-link pb-1">
 			<div class="text-white fw-semibold">
-				@Localizer["Hello"]
+				@Localizer["Hello"]<span class="d-none d-sm-inline-block">,</span>
 			</div>
-			<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="eMailNavDisplay text-decoration-underline text-white">
+			<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="d-none d-sm-block eMailNavDisplay text-decoration-underline text-white">
 				@User.Identity.Name
 			</a>
 			<form asp-controller="@nameof(Account)" asp-action="@nameof(Account.Logout)" method="post">
