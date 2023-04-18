@@ -55,31 +55,37 @@ function resizeBrandDisplay() {
 
 function getBrandDisplayFS() {
     let windowWidth = $(window).width()
-    if (windowWidth > 575) {
+    if (windowWidth > 1399) {
+        return 26;
+    }
+    else if (windowWidth > 1199) {
         return 25;
     }
-    if (windowWidth > 399) {
+    else if (windowWidth > 575) {
+        return 24;
+    }
+    else if (windowWidth > 399) {
         return 19;
     }
-    if (windowWidth > 359) {
+    else if (windowWidth > 359) {
         return 17;
     }
-    if (windowWidth > 319) {
+    else if (windowWidth > 319) {
         return 14.5;
     }
-    if (windowWidth > 299) {
+    else if (windowWidth > 299) {
         return 13.1;
     }
-    if (windowWidth > 279) {
+    else if (windowWidth > 279) {
         return 11.5;
     }
-    if (windowWidth > 259) {
+    else if (windowWidth > 259) {
         return 9.5
     }
-    if (windowWidth > 239) {
-        return 8
+    else if (windowWidth > 239) {
+        return 8.3;
     }
-    if (windowWidth > 0) {
+    else if (windowWidth > 0) {
         return 7.3;
     }
 }
