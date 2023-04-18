@@ -6,11 +6,13 @@
 	@if (User.Identity!.IsAuthenticated)
 	{
 		<div class="loginDisplay nav-link pb-1">
-			<div class="text-white fw-semibold">
-				@Localizer["Hello"]<span class="d-none d-sm-inline-block">,</span>
-			</div>
-			<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="d-none d-sm-block eMailNavDisplay text-decoration-underline text-white">
-				@User.Identity.Name
+			<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="text-white text-decoration-none">
+				<div class="fw-semibold">
+					@Localizer["Hello"]<span class="d-none d-sm-inline-block">,</span><span class="d-inline-block d-sm-none">!</span>
+				</div>
+				<div class="d-none d-sm-block eMailNavDisplay text-decoration-underline ">
+					@User.Identity.Name
+				</div>
 			</a>
 			<form asp-controller="@nameof(Account)" asp-action="@nameof(Account.Logout)" method="post">
 				<input type="hidden" name="returnUrl" value="@returnUrl">
