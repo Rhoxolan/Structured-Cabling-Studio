@@ -31,17 +31,17 @@
 
 				<div id="siteNavbarDiv" class="navbar-collapse collapse d-lg-inline-flex me-0 me-sm-1 me-md-2 me-lg-3 pt-2 pt-sm-0">
 					<ul class="align-items-center navbar-nav flex-grow-1 flex-row-reverse">
-						<li class="siteNavbarLi nav-item ms-3 ms-lg-2 me-1">
+						<li class="siteNavbarLi nav-item ms-3 ms-lg-2 me-3 me-lg-1">
 							<div class="navLinkText nav-link text-white">
 								@await Html.PartialAsync("_SelectLanguagePartial")
 							</div>
 						</li>
-						<li class="siteNavbarLi nav-item ms-3 ms-lg-2 me-1">
+						<li class="siteNavbarLi nav-item ms-3 ms-lg-2 me-3 me-lg-1">
 							<a class="navLinkText nav-link text-white text-center fw-semibold" href="#">
 								@Localizer["Project information"]
 							</a>
 						</li>
-						<li class="navLinkText nav-item ms-3 ms-lg-2 me-1">
+						<li class="navLinkText nav-item ms-3 ms-lg-2 me-3 me-lg-1">
 							@await Html.PartialAsync("_SignInWithGooglePartial")
 						</li>
 					</ul>
