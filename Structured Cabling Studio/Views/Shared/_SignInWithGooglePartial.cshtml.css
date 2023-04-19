@@ -1,14 +1,14 @@
-﻿.signinDisplay {
+﻿#signInDisplayDiv {
     max-width: 170px;
 }
 
-.loginDisplay {
+#loginDisplayDiv {
     max-width: 260px;
     padding-top: 1.5px;
     line-height: normal;
 }
 
-.btnLogout {
+#logoutButton {
     padding: 1px;
     margin-top: 3px;
 }
