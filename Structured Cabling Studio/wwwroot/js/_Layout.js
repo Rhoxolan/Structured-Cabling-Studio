@@ -11,33 +11,50 @@ function verticalSiteNavResize() {
 }
 
 
-//#eMailNavDisplayDiv
+//#brandDisplay
 
-eMailNavDisplayDivFSChanger();
-document.addEventListener('DOMContentLoaded', eMailNavDisplayDivFSChanger);
-window.addEventListener('resize', eMailNavDisplayDivFSChanger);
-window.addEventListener('load', eMailNavDisplayDivFSChanger);
+brandDisplayFSChanger();
+document.addEventListener('DOMContentLoaded', brandDisplayFSChanger);
+window.addEventListener('resize', brandDisplayFSChanger);
+window.addEventListener('load', brandDisplayFSChanger);
 
-function eMailNavDisplayDivFSChanger() {
-    let eMailDiv = document.getElementById('eMailNavDisplayDiv');
-    let textLength = eMailDiv.innerText.length;
-    if (textLength > 127 && textLength <= 255) {
-        eMailDiv.style.fontSize = "2px";
+function brandDisplayFSChanger() {
+    let brandDiv = document.getElementById("brandDisplay");
+    let windowWidth = window.innerWidth;
+    if (windowWidth > 1399) {
+        brandDiv.style.fontSize = "26px";
     }
-    else if (textLength > 63) { //Max 127
-        eMailDiv.style.fontSize = "4px";
+    else if (windowWidth > 1199) {
+        brandDiv.style.fontSize = "25px";
     }
-    else if (textLength > 45) { //Max 63
-        eMailDiv.style.fontSize = "8px";
+    else if (windowWidth > 575) {
+        brandDiv.style.fontSize = "24px";
     }
-    else if (textLength > 31) { //Max 45
-        eMailDiv.style.fontSize = "12px";
+    else if (windowWidth > 399) {
+        brandDiv.style.fontSize = "19px";
     }
-    else if (textLength > 0) { //Max 31
-        eMailDiv.style.fontSize = "15px";
+    else if (windowWidth > 359) {
+        brandDiv.style.fontSize = "17px";
+    }
+    else if (windowWidth > 319) {
+        brandDiv.style.fontSize = "14.5px";
+    }
+    else if (windowWidth > 299) {
+        brandDiv.style.fontSize = "13.1px";
+    }
+    else if (windowWidth > 279) {
+        brandDiv.style.fontSize = "11.5px";
+    }
+    else if (windowWidth > 259) {
+        brandDiv.style.fontSize = "9.5px";
+    }
+    else if (windowWidth > 239) {
+        brandDiv.style.fontSize = "8.3px";
+    }
+    else if (windowWidth > 0) {
+        brandDiv.style.fontSize = "7.3px";
     }
 }
-
 
 //.navLinkText
 
@@ -59,27 +76,6 @@ function verticalSiteNavbarUlFSChanger() {
     }
     else if (window.innerWidth > 0) {
         navLinks.forEach(n => n.style.fontSize = '8.1px');
-    }
-};
-
-
-//#languageSelect
-
-languageSelectFSChanger();
-document.addEventListener('DOMContentLoaded', languageSelectFSChanger);
-window.addEventListener('resize', languageSelectFSChanger);
-window.addEventListener('load', languageSelectFSChanger);
-
-function languageSelectFSChanger() {
-    let select = document.getElementById('languageSelect');
-    if (window.innerWidth > 575) {
-        select.style.fontSize = '14px';
-    }
-    else if (window.innerWidth > 319) {
-        select.style.fontSize = '12px';
-    }
-    else if (window.innerWidth > 0) {
-        select.style.fontSize = '8px';
     }
 };
 

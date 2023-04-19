@@ -22,7 +22,7 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
-				<a class="brandDisplay navbar-brand fw-semibold" asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.Calculate)">Structured Cabling Studio</a>
+				<a id="brandDisplay" class="navbar-brand fw-semibold" asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.Calculate)">Structured Cabling Studio</a>
 
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNavbarDiv" aria-controls="navbarSupportedContent"
 						aria-expanded="false" aria-label="Toggle navigation">
@@ -93,6 +93,7 @@
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="~/js/customSelectors.js" asp-append-version="true"></script>
 	<script src="~/js/_SignInWithGooglePartial.js" asp-append-version="true"></script>
+	<script src="~/js/_SelectLanguagePartial.js" asp-append-version="true"></script>
 	<script src="~/js/_Layout.js" asp-append-version="true"></script>
 	@await RenderSectionAsync("Scripts", required: false)
 
