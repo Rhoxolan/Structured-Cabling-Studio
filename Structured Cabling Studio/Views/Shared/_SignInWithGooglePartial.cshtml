@@ -16,7 +16,7 @@
 			</a>
 			<form asp-controller="@nameof(Account)" asp-action="@nameof(Account.Logout)" method="post">
 				<input type="hidden" name="returnUrl" value="@returnUrl">
-				<button id="logoutButton" type="submit" class="navLinkText btn btn-sm btn-outline-light">
+				<button id="logoutButton" type="submit" class=" btn btn-sm btn-outline-light">
 					@Localizer["LogOut"]
 				</button>
 			</form>
