@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
+using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
+using static System.String;
 
 namespace StructuredCablingStudio.Controllers
 {
@@ -25,10 +27,25 @@ namespace StructuredCablingStudio.Controllers
 
         public IActionResult Calculate()
 		{
-            return View();
+            return View(new CalculateViewModel { });
 		}
 
-        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+		public IActionResult Calculate(CalculateViewModel calculateVM)
+		{
+            if(!IsNullOrEmpty(calculateVM.ApprovedRestoreDefaults))
+            {
+
+            }
+			if (!IsNullOrEmpty(calculateVM.ApprovedCalculation))
+			{
+
+			}
+			return View(calculateVM);
+		}
+
+		[Authorize]
 		public IActionResult History()
 		{
 			return View();

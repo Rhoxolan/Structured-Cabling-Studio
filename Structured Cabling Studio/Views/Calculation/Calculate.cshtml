@@ -1,5 +1,9 @@
-﻿@{
+﻿@using static System.String
+@model CalculateViewModel
+@{
 	ViewData["Title"] = "Calculation";
+	Model.ApprovedCalculation = Empty;
+	Model.ApprovedRestoreDefaults = Empty;
 }
 
 <form asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.Calculate)" method="post">
@@ -274,9 +278,10 @@
 	<div class="mb-3">
 		<div class="row">
 			<div class="col-auto">
-				<button class="btn btn-sm btn-outline-secondary">
+				<button type="submit" id="restoreDefaultsButton" class="btn btn-sm btn-outline-secondary">
 					@Localizer["Restore defaults"]
 				</button>
+				<input type="hidden" name="approvedRestoreDefaults" id="approvedRestoreDefaultsInput" value="" />
 			</div>
 		</div>
 	</div>
@@ -286,9 +291,10 @@
 	<div class="mb-3">
 		<div class="row">
 			<div class="col-auto">
-				<button class="btn btn-lg btn-outline-primary fw-semibold">
+				<button type="submit" id="calculateButton" class="btn btn-lg btn-outline-primary fw-semibold">
 					@Localizer["Calculate"]
 				</button>
+				<input type="hidden" name="approvedCalculation" id="approvedCalculationInput" value="" />
 			</div>
 		</div>
 	</div>
@@ -313,4 +319,6 @@
 	</div>
 
 </form>
+
+<script src="~/js/Calculate.js" asp-append-version="true"></script>
 
