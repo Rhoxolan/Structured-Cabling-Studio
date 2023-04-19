@@ -17,6 +17,6 @@ function languageSelectFSChanger() {
     }
     else if (window.innerWidth > 0) {
         //select.style.fontSize = '8px';
-        select.style.fontSize = '0.75rem';
+        select.style.fontSize = '0.55rem';
     }
 };

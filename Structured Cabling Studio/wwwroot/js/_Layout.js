@@ -47,7 +47,7 @@ function brandDisplayFSChanger() {
     }
     else if (windowWidth > 299) {
         //brandDiv.style.fontSize = "13.1px";
-        brandDiv.style.fontSize =  "0.9rem";
+        brandDiv.style.fontSize = "0.9rem";
     }
     else if (windowWidth > 279) {
         //brandDiv.style.fontSize = "11.5px";
@@ -59,11 +59,11 @@ function brandDisplayFSChanger() {
     }
     else if (windowWidth > 239) {
         //brandDiv.style.fontSize = "8.3px";
-        brandDiv.style.fontSize = "0.6rem";
+        brandDiv.style.fontSize = "0.55rem";
     }
     else if (windowWidth > 0) {
         //brandDiv.style.fontSize = "7.3px";
-        brandDiv.style.fontSize = "0.55rem";
+        brandDiv.style.fontSize = "0.5rem";
     }
 }
 
@@ -101,6 +101,27 @@ function verticalSiteNavbarUlFSChanger() {
         navLinks.forEach(n => n.style.fontSize = '0.7rem');
     }
 };
+
+
+//.verticalSiteNavbarText
+
+verticalSiteNavbarLiFSChanger();
+document.addEventListener('DOMContentLoaded', verticalSiteNavbarLiFSChanger);
+window.addEventListener('resize', verticalSiteNavbarLiFSChanger);
+window.addEventListener('load', verticalSiteNavbarLiFSChanger);
+
+function verticalSiteNavbarLiFSChanger() {
+    let verticalNavbarLis = document.querySelectorAll(".verticalSiteNavbarText");
+    let windowWidth = window.innerWidth;
+    if (windowWidth < 321) {
+        //verticalNavbarLis.forEach(l => l.style.fontSize = "11px");
+        verticalNavbarLis.forEach(l => l.style.fontSize = "0.8rem");
+    }
+    else {
+        //verticalNavbarLis.forEach(l => l.style.fontSize = "19px");
+        verticalNavbarLis.forEach(l => l.style.fontSize = "1.25rem");
+    }
+}
 
 
 //#siteFooterText

@@ -57,18 +57,24 @@
 			<div id="verticalSiteNavbarDiv" class="navbar-collapse collapse">
 				<ul class="navbar-nav flex-column">
 					<li class="verticalSiteNavbarLi nav-item p-1 px-3">
-						<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.Calculate)" class="nav-link text-white fw-semibold fs-5">
-							@Localizer["Calculation"]
+						<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.Calculate)" class="nav-link text-white fw-semibold">
+							<div class="verticalSiteNavbarText">
+								@Localizer["Calculation"]
+							</div>
 						</a>
 					</li>
 					<li class="verticalSiteNavbarLi nav-item p-1 px-3">
-						<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="nav-link text-white fw-semibold fs-5">
-							@Localizer["History"]
+						<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.History)" class="nav-link text-white fw-semibold">
+							<div class="verticalSiteNavbarText">
+								@Localizer["History"]
+							</div>
 						</a>
 					</li>
 					<li class="verticalSiteNavbarLi nav-item p-1 px-3">
-						<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.Information)" class="nav-link text-white fw-semibold fs-5">
-							@Localizer["Information"]
+						<a asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.Information)" class="nav-link text-white fw-semibold">
+							<div class="verticalSiteNavbarText">
+								@Localizer["Information"]
+							</div>
 						</a>
 					</li>
 				</ul>
