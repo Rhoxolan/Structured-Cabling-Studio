@@ -2,7 +2,7 @@
 @model CalculateViewModel
 @{
 	ViewData["Title"] = "Calculation";
-	Model.ApprovedCalculation = Empty;
+	Model.ApprovedCalculation = Empty; //Попробовать с асп-фор или перенести в контроллер
 	Model.ApprovedRestoreDefaults = Empty;
 }
 
@@ -18,7 +18,7 @@
 		</div>
 		<div class="row">
 			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-				<input class="form-control border-primary border-opacity-75" type="text" id="minPermanentLinkInput" name="minPermanentLink" />
+				<input class="form-control border-primary border-opacity-75" type="text" id="minPermanentLinkInput" name="minPermanentLink"/>
 			</div>
 			<div class="col d-flex align-items-end ps-0">
 				<label class="form-label mb-1" for="minPermanentLinkInput">
@@ -82,8 +82,8 @@
 		<div class="row">
 			<div class="col">
 				<div class="form-check">
-					<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="cableHankMeterageAvailabilityInput" name="cableHankMeterageAvailability">
-					<label class="form-check-label" for="cableHankMeterageAvailabilityInput">
+					<input class="form-check-input border-primary border-opacity-75" id="isCableHankMeterageAvailabilityCheckBox" asp-for="IsCableHankMeterageAvailability">
+					<label class="form-check-label" for="isCableHankMeterageAvailabilityCheckBox">
 						@Localizer["Take into account the cable hank meterage"]
 					</label>
 				</div>
@@ -91,7 +91,16 @@
 		</div>
 		<div class="row mt-2">
 			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-				<input class="form-control border-primary border-opacity-75" type="text" list="cableHankMeterageDatalist" id="cableHankMeterageInput" name="cableHankMeterage" />
+				@{
+					if (Model.IsCableHankMeterageAvailability)
+					{
+						<input class="form-control border-primary border-opacity-75" type="text" list="cableHankMeterageDatalist" id="cableHankMeterageInput" name="cableHankMeterage" />
+					}
+					else
+					{
+						<input class="form-control border-primary border-opacity-75" type="text" list="cableHankMeterageDatalist" id="cableHankMeterageInput" name="cableHankMeterage" disabled />
+					}
+				}
 				<datalist id="cableHankMeterageDatalist">
 					<option>50</option>
 					<option>100</option>
@@ -128,7 +137,16 @@
 		<div class="row ms-1 mt-2">
 			<div class="col">
 				<div class="form-check">
-					<input class="form-check-input border-primary border-opacity-75" id="isAnArbitraryNumberOfPortsCheckBox" asp-for="IsAnArbitraryNumberOfPortsCheckBox">
+					@{
+						if (Model.IsStrictComplianceWithTheStandart)
+						{
+							<input class="form-check-input border-primary border-opacity-75" id="isAnArbitraryNumberOfPortsCheckBox" asp-for="IsAnArbitraryNumberOfPorts">
+						}
+						else
+						{
+							<input class="form-check-input border-primary border-opacity-75" id="isAnArbitraryNumberOfPortsCheckBox" asp-for="IsAnArbitraryNumberOfPorts" checked disabled>
+						}
+					}
 					<label class="form-check-label" for="isAnArbitraryNumberOfPortsCheckBox">
 						@Localizer["Arbitary ports count per workplace"]
 					</label>
@@ -141,8 +159,8 @@
 		<div class="row">
 			<div class="col">
 				<div class="form-check">
-					<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="technologicalReserveCoefficientAvailabilityCheckBox" name="technologicalReserveCoefficientAvailability">
-					<label class="form-check-label" for="technologicalReserveCoefficientAvailabilityCheckBox">
+					<input class="form-check-input border-primary border-opacity-75" id="isTechnologicalReserveAvailabilityCheckBox" asp-for="IsTechnologicalReserveAvailability">
+					<label class="form-check-label" for="isTechnologicalReserveAvailabilityCheckBox">
 						@Localizer["Availability of technological reserve coefficient:"]
 					</label>
 				</div>
@@ -150,7 +168,16 @@
 		</div>
 		<div class="row ms-1 mt-2">
 			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-				<input class="form-control border-primary border-opacity-75" type="text" id="technologicalReserveCoefficientInput" name="technologicalReserveCoefficient" />
+				@{
+					if (Model.IsTechnologicalReserveAvailability)
+					{
+						<input class="form-control border-primary border-opacity-75" type="text" id="technologicalReserveCoefficientInput" name="technologicalReserveCoefficient" />
+					}
+					else
+					{
+						<input class="form-control border-primary border-opacity-75" type="text" id="technologicalReserveCoefficientInput" name="technologicalReserveCoefficient" disabled/>
+					}
+				}
 			</div>
 		</div>
 	</div>
@@ -159,8 +186,8 @@
 		<div class="row">
 			<div class="col">
 				<div class="form-check">
-					<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="addCableSelectionRecommendationsCheckBox" name="addCableSelectionRecommendations">
-					<label class="form-check-label" for="addCableSelectionRecommendationsCheckBox">
+					<input class="form-check-input border-primary border-opacity-75" id="isRecommendationsAvailabilityCheckBox" asp-for="IsRecommendationsAvailability">
+					<label class="form-check-label" for="isRecommendationsAvailabilityCheckBox">
 						@Localizer["Add cable selection recommendations"]
 					</label>
 				</div>

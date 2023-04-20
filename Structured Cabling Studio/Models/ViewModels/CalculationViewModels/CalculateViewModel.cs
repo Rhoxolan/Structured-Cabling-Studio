@@ -8,6 +8,12 @@
 
 		public bool IsStrictComplianceWithTheStandart { get; set; }
 
-		public bool IsAnArbitraryNumberOfPortsCheckBox { get; set; }
+		public bool IsAnArbitraryNumberOfPorts { get; set; }
+
+		public bool IsTechnologicalReserveAvailability { get; set; }
+
+		public bool IsRecommendationsAvailability { get; set; }
+
+		public bool IsCableHankMeterageAvailability { get; set; }
 	}
 }
