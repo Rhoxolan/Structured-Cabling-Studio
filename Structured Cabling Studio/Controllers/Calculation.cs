@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
-using static System.String;
 
 namespace StructuredCablingStudio.Controllers
 {
@@ -34,15 +33,15 @@ namespace StructuredCablingStudio.Controllers
         [ValidateAntiForgeryToken]
 		public IActionResult Calculate(CalculateViewModel calculateVM)
 		{
-            if(!IsNullOrEmpty(calculateVM.ApprovedRestoreDefaults))
+            if (calculateVM.ApprovedRestoreDefaults)
             {
 
             }
-			if (!IsNullOrEmpty(calculateVM.ApprovedCalculation))
-			{
+            if (calculateVM.ApprovedCalculation)
+            {
 
-			}
-			return View(calculateVM);
+            }
+            return View(calculateVM);
 		}
 
 		[Authorize]

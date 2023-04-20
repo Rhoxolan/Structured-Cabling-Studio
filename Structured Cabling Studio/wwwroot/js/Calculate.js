@@ -13,11 +13,11 @@ document.getElementById('isRecommendationsAvailabilityCheckBox').addEventListene
 document.getElementById('isCableHankMeterageAvailabilityCheckBox').addEventListener('click', removeDisabledAttributesFromAllInputs);
 
 document.getElementById('calculateButton').addEventListener('click', function () {
-    document.getElementById('approvedCalculationInput').value = 'approved';
+    document.getElementById('approvedCalculationInput').value = true;
 });
 
 document.getElementById('restoreDefaultsButton').addEventListener('click', function () {
-    document.getElementById('approvedRestoreDefaultsInput').value = 'approved';
+    document.getElementById('approvedRestoreDefaultsInput').value = true;
 });
 
 document.getElementById('isStrictComplianceWithTheStandartCheckBox').addEventListener('click', calculateFormSubmit);

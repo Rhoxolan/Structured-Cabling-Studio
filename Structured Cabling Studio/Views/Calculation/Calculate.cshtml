@@ -2,8 +2,6 @@
 @model CalculateViewModel
 @{
 	ViewData["Title"] = "Calculation";
-	Model.ApprovedCalculation = Empty; //Попробовать с асп-фор или перенести в контроллер, попробовать с бул
-	Model.ApprovedRestoreDefaults = Empty;
 }
 
 <form id="calculateForm" asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.Calculate)" method="post">
@@ -424,7 +422,7 @@
 				<button type="submit" id="restoreDefaultsButton" class="btn btn-sm btn-outline-secondary">
 					@Localizer["Restore defaults"]
 				</button>
-				<input type="hidden" name="approvedRestoreDefaults" id="approvedRestoreDefaultsInput" value="" />
+				<input type="hidden" id="approvedRestoreDefaultsInput" value="false" asp-for="ApprovedRestoreDefaults" />
 			</div>
 		</div>
 	</div>
@@ -437,7 +435,7 @@
 				<button type="submit" id="calculateButton" class="btn btn-lg btn-outline-primary fw-semibold">
 					@Localizer["Calculate"]
 				</button>
-				<input type="hidden" name="approvedCalculation" id="approvedCalculationInput" value="" />
+				<input type="hidden" id="approvedCalculationInput" value="false" asp-for="ApprovedCalculation" />
 			</div>
 		</div>
 	</div>
