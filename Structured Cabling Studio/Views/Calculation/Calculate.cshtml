@@ -2,7 +2,7 @@
 @model CalculateViewModel
 @{
 	ViewData["Title"] = "Calculation";
-	Model.ApprovedCalculation = Empty; //Попробовать с асп-фор или перенести в контроллер
+	Model.ApprovedCalculation = Empty; //Попробовать с асп-фор или перенести в контроллер, попробовать с бул
 	Model.ApprovedRestoreDefaults = Empty;
 }
 
@@ -237,8 +237,8 @@
 				<div class="row ms-3 mt-2">
 					<div class="col">
 						<div class="form-check">
-							<input class="form-check-input border-primary border-opacity-75" asp-for="IsTenBase_T">
-							<label class="form-check-label" asp-for="IsTenBase_T">
+							<input class="form-check-input border-primary border-opacity-75" asp-for="HasTenBase_T">
+							<label class="form-check-label" asp-for="HasTenBase_T">
 								10BASE-T
 							</label>
 						</div>
@@ -247,8 +247,8 @@
 				<div class="row ms-3 mt-2">
 					<div class="col">
 						<div class="form-check">
-							<input class="form-check-input border-primary border-opacity-75" asp-for="IsFastEthernet">
-							<label class="form-check-label" asp-for="IsFastEthernet">
+							<input class="form-check-input border-primary border-opacity-75" asp-for="HasFastEthernet">
+							<label class="form-check-label" asp-for="HasFastEthernet">
 								Fast Ethernet (100BASE-T)
 							</label>
 						</div>
@@ -257,8 +257,8 @@
 				<div class="row ms-3 mt-2">
 					<div class="col">
 						<div class="form-check">
-							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="1000basetCheckBox" name="1000baset">
-							<label class="form-check-label" for="1000basetCheckBox">
+							<input class="form-check-input border-primary border-opacity-75" asp-for="HasGigabitBASE_T">
+							<label class="form-check-label" asp-for="HasGigabitBASE_T">
 								Gigabit Ethernet (1000BASE-T)
 							</label>
 						</div>
@@ -267,8 +267,8 @@
 				<div class="row ms-3 mt-2">
 					<div class="col">
 						<div class="form-check">
-							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="1000basetxCheckBox" name="1000basetx">
-							<label class="form-check-label" for="1000basetxCheckBox">
+							<input class="form-check-input border-primary border-opacity-75" asp-for="HasGigabitBASE_TX">
+							<label class="form-check-label" asp-for="HasGigabitBASE_TX">
 								Gigabit Ethernet (1000BASE-TX)
 							</label>
 						</div>
@@ -277,8 +277,8 @@
 				<div class="row ms-3 mt-2">
 					<div class="col">
 						<div class="form-check">
-							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="25gbasetCheckBox" name="25gbaset">
-							<label class="form-check-label" for="25gbasetCheckBox">
+							<input class="form-check-input border-primary border-opacity-75" asp-for="HasTwoPointFiveGBASE_T">
+							<label class="form-check-label" asp-for="HasTwoPointFiveGBASE_T">
 								2.5GBASE-T
 							</label>
 						</div>
@@ -287,8 +287,8 @@
 				<div class="row ms-3 mt-2">
 					<div class="col">
 						<div class="form-check">
-							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="5gbasetCheckBox" name="25gbaset">
-							<label class="form-check-label" for="5gbasetCheckBox">
+							<input class="form-check-input border-primary border-opacity-75" asp-for="HasFiveGBASE_T">
+							<label class="form-check-label" asp-for="HasFiveGBASE_T">
 								5GBASE-T
 							</label>
 						</div>
@@ -297,8 +297,8 @@
 				<div class="row ms-3 mt-2">
 					<div class="col">
 						<div class="form-check">
-							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="10gbasetCheckBox" name="10gbaset">
-							<label class="form-check-label" for="10gbasetCheckBox">
+							<input class="form-check-input border-primary border-opacity-75" asp-for="HasTenGE">
+							<label class="form-check-label" asp-for="HasTenGE">
 								10GE (10GBASE-T)
 							</label>
 						</div>
@@ -347,8 +347,8 @@
 				<div class="row ms-3 mt-2">
 					<div class="col">
 						<div class="form-check">
-							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="10basetCheckBox" name="10baset" disabled>
-							<label class="form-check-label" for="10basetCheckBox">
+							<input class="form-check-input border-primary border-opacity-75" asp-for="HasTenBase_T" disabled>
+							<label class="form-check-label" asp-for="HasTenBase_T">
 								10BASE-T
 							</label>
 						</div>
@@ -357,8 +357,8 @@
 				<div class="row ms-3 mt-2">
 					<div class="col">
 						<div class="form-check">
-							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="100basetCheckBox" name="100baset" disabled>
-							<label class="form-check-label" for="100basetCheckBox">
+							<input class="form-check-input border-primary border-opacity-75" asp-for="HasFastEthernet" disabled>
+							<label class="form-check-label" asp-for="HasFastEthernet">
 								Fast Ethernet (100BASE-T)
 							</label>
 						</div>
@@ -367,8 +367,8 @@
 				<div class="row ms-3 mt-2">
 					<div class="col">
 						<div class="form-check">
-							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="1000basetCheckBox" name="1000baset" disabled>
-							<label class="form-check-label" for="1000basetCheckBox">
+							<input class="form-check-input border-primary border-opacity-75" asp-for="HasGigabitBASE_T" disabled>
+							<label class="form-check-label" asp-for="HasGigabitBASE_T">
 								Gigabit Ethernet (1000BASE-T)
 							</label>
 						</div>
@@ -377,8 +377,8 @@
 				<div class="row ms-3 mt-2">
 					<div class="col">
 						<div class="form-check">
-							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="1000basetxCheckBox" name="1000basetx" disabled>
-							<label class="form-check-label" for="1000basetxCheckBox">
+							<input class="form-check-input border-primary border-opacity-75" asp-for="HasGigabitBASE_TX" disabled>
+							<label class="form-check-label" asp-for="HasGigabitBASE_TX">
 								Gigabit Ethernet (1000BASE-TX)
 							</label>
 						</div>
@@ -387,8 +387,8 @@
 				<div class="row ms-3 mt-2">
 					<div class="col">
 						<div class="form-check">
-							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="25gbasetCheckBox" name="25gbaset" disabled>
-							<label class="form-check-label" for="25gbasetCheckBox">
+							<input class="form-check-input border-primary border-opacity-75" asp-for="HasTwoPointFiveGBASE_T" disabled>
+							<label class="form-check-label" asp-for="HasTwoPointFiveGBASE_T">
 								2.5GBASE-T
 							</label>
 						</div>
@@ -397,8 +397,8 @@
 				<div class="row ms-3 mt-2">
 					<div class="col">
 						<div class="form-check">
-							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="5gbasetCheckBox" name="25gbaset" disabled>
-							<label class="form-check-label" for="5gbasetCheckBox">
+							<input class="form-check-input border-primary border-opacity-75" asp-for="HasFiveGBASE_T" disabled>
+							<label class="form-check-label" asp-for="HasFiveGBASE_T">
 								5GBASE-T
 							</label>
 						</div>
@@ -407,8 +407,8 @@
 				<div class="row ms-3 mt-2">
 					<div class="col">
 						<div class="form-check">
-							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="10gbasetCheckBox" name="10gbaset" disabled>
-							<label class="form-check-label" for="10gbasetCheckBox">
+							<input class="form-check-input border-primary border-opacity-75" asp-for="HasTenGE" disabled>
+							<label class="form-check-label" asp-for="HasTenGE">
 								10GE (10GBASE-T)
 							</label>
 						</div>

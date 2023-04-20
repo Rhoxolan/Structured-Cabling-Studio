@@ -16,8 +16,18 @@
 
 		public bool IsCableHankMeterageAvailability { get; set; }
 
-		public bool IsTenBase_T { get; set; }
+		public bool HasTenBase_T { get; set; }
 
-		public bool IsFastEthernet { get; set; }
+		public bool HasFastEthernet { get; set; }
+
+		public bool HasGigabitBASE_T { get; set; }
+
+		public bool HasGigabitBASE_TX { get; set; }
+
+		public bool HasTwoPointFiveGBASE_T { get; set; }
+
+		public bool HasFiveGBASE_T { get; set; }
+
+		public bool HasTenGE { get; set; }
 	}
 }
