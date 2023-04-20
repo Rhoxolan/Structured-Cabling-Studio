@@ -15,5 +15,9 @@
 		public bool IsRecommendationsAvailability { get; set; }
 
 		public bool IsCableHankMeterageAvailability { get; set; }
+
+		public bool IsTenBase_T { get; set; }
+
+		public bool IsFastEthernet { get; set; }
 	}
 }

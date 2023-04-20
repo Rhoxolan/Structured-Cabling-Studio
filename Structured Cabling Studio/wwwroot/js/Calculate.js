@@ -31,7 +31,7 @@ document.getElementById('isRecommendationsAvailabilityCheckBox').addEventListene
 document.getElementById('isCableHankMeterageAvailabilityCheckBox').addEventListener('click', calculateFormSubmit);
 
 function calculateFormSubmit() {
-    document.getElementById('calculateForm').submit();
+    document.forms["calculateForm"].submit();
 }
 
 function removeDisabledAttributesFromAllInputs() {

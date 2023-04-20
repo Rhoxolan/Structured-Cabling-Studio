@@ -193,113 +193,229 @@
 				</div>
 			</div>
 		</div>
-		<div class="row ms-1 mt-2">
-			<div class="col">
-				<div class="form-check">
-					<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="isCableRouteRunOutdoorsCheckBox" name="isCableRouteRunOutdoors">
-					<label class="form-check-label" for="isCableRouteRunOutdoorsCheckBox">
-						@Localizer["Will the sections of the cable route run outdoors"]
-					</label>
+
+		@{
+			if (Model.IsRecommendationsAvailability)
+			{
+				<div class="row ms-1 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="isCableRouteRunOutdoorsCheckBox" name="isCableRouteRunOutdoors">
+							<label class="form-check-label" for="isCableRouteRunOutdoorsCheckBox">
+								@Localizer["Will the sections of the cable route run outdoors"]
+							</label>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class="row ms-1 mt-2">
-			<div class="col">
-				<div class="form-check">
-					<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="considerFireSafetyRequirementsCheckBox" name="сonsiderFireSafetyRequirements">
-					<label class="form-check-label" for="considerFireSafetyRequirementsCheckBox">
-						@Localizer["Consider standard fire safety requirements"]
-					</label>
+				<div class="row ms-1 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="considerFireSafetyRequirementsCheckBox" name="сonsiderFireSafetyRequirements">
+							<label class="form-check-label" for="considerFireSafetyRequirementsCheckBox">
+								@Localizer["Consider standard fire safety requirements"]
+							</label>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class="row ms-1 mt-2">
-			<div class="col">
-				<div class="form-check">
-					<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="cableShieldingNecessityCheckBox" name="cableShieldingNecessity">
-					<label class="form-check-label" for="cableShieldingNecessityCheckBox">
-						@Localizer["Take into account the necessity of cable shielding"]
-					</label>
+				<div class="row ms-1 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="cableShieldingNecessityCheckBox" name="cableShieldingNecessity">
+							<label class="form-check-label" for="cableShieldingNecessityCheckBox">
+								@Localizer["Take into account the necessity of cable shielding"]
+							</label>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class="row ms-1 mt-2">
-			<div class="col">
-				<label class="form-check-label">
-					@Localizer["Used connection interfaces"]
-				</label>
-			</div>
-		</div>
-		<div class="row ms-3 mt-2">
-			<div class="col">
-				<div class="form-check">
-					<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="10basetCheckBox" name="10baset">
-					<label class="form-check-label" for="10basetCheckBox">
-						10BASE-T
-					</label>
+				<div class="row ms-1 mt-2">
+					<div class="col">
+						<label class="form-check-label">
+							@Localizer["Used connection interfaces"]
+						</label>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class="row ms-3 mt-2">
-			<div class="col">
-				<div class="form-check">
-					<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="100basetCheckBox" name="100baset">
-					<label class="form-check-label" for="100basetCheckBox">
-						Fast Ethernet (100BASE-T)
-					</label>
+				<div class="row ms-3 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" asp-for="IsTenBase_T">
+							<label class="form-check-label" asp-for="IsTenBase_T">
+								10BASE-T
+							</label>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class="row ms-3 mt-2">
-			<div class="col">
-				<div class="form-check">
-					<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="1000basetCheckBox" name="1000baset">
-					<label class="form-check-label" for="1000basetCheckBox">
-						Gigabit Ethernet (1000BASE-T)
-					</label>
+				<div class="row ms-3 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" asp-for="IsFastEthernet">
+							<label class="form-check-label" asp-for="IsFastEthernet">
+								Fast Ethernet (100BASE-T)
+							</label>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class="row ms-3 mt-2">
-			<div class="col">
-				<div class="form-check">
-					<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="1000basetxCheckBox" name="1000basetx">
-					<label class="form-check-label" for="1000basetxCheckBox">
-						Gigabit Ethernet (1000BASE-TX)
-					</label>
+				<div class="row ms-3 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="1000basetCheckBox" name="1000baset">
+							<label class="form-check-label" for="1000basetCheckBox">
+								Gigabit Ethernet (1000BASE-T)
+							</label>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class="row ms-3 mt-2">
-			<div class="col">
-				<div class="form-check">
-					<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="25gbasetCheckBox" name="25gbaset">
-					<label class="form-check-label" for="25gbasetCheckBox">
-						2.5GBASE-T
-					</label>
+				<div class="row ms-3 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="1000basetxCheckBox" name="1000basetx">
+							<label class="form-check-label" for="1000basetxCheckBox">
+								Gigabit Ethernet (1000BASE-TX)
+							</label>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class="row ms-3 mt-2">
-			<div class="col">
-				<div class="form-check">
-					<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="5gbasetCheckBox" name="25gbaset">
-					<label class="form-check-label" for="5gbasetCheckBox">
-						5GBASE-T
-					</label>
+				<div class="row ms-3 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="25gbasetCheckBox" name="25gbaset">
+							<label class="form-check-label" for="25gbasetCheckBox">
+								2.5GBASE-T
+							</label>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class="row ms-3 mt-2">
-			<div class="col">
-				<div class="form-check">
-					<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="10gbasetCheckBox" name="10gbaset">
-					<label class="form-check-label" for="10gbasetCheckBox">
-						10GE (10GBASE-T)
-					</label>
+				<div class="row ms-3 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="5gbasetCheckBox" name="25gbaset">
+							<label class="form-check-label" for="5gbasetCheckBox">
+								5GBASE-T
+							</label>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
+				<div class="row ms-3 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="10gbasetCheckBox" name="10gbaset">
+							<label class="form-check-label" for="10gbasetCheckBox">
+								10GE (10GBASE-T)
+							</label>
+						</div>
+					</div>
+				</div>
+			}
+			else
+			{
+				<div class="row ms-1 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="isCableRouteRunOutdoorsCheckBox" name="isCableRouteRunOutdoors" disabled>
+							<label class="form-check-label" for="isCableRouteRunOutdoorsCheckBox">
+								@Localizer["Will the sections of the cable route run outdoors"]
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row ms-1 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="considerFireSafetyRequirementsCheckBox" name="сonsiderFireSafetyRequirements" disabled>
+							<label class="form-check-label" for="considerFireSafetyRequirementsCheckBox">
+								@Localizer["Consider standard fire safety requirements"]
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row ms-1 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="cableShieldingNecessityCheckBox" name="cableShieldingNecessity" disabled>
+							<label class="form-check-label" for="cableShieldingNecessityCheckBox">
+								@Localizer["Take into account the necessity of cable shielding"]
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row ms-1 mt-2">
+					<div class="col">
+						<label class="form-check-label text-muted opacity-75">
+							@Localizer["Used connection interfaces"]
+						</label>
+					</div>
+				</div>
+				<div class="row ms-3 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="10basetCheckBox" name="10baset" disabled>
+							<label class="form-check-label" for="10basetCheckBox">
+								10BASE-T
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row ms-3 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="100basetCheckBox" name="100baset" disabled>
+							<label class="form-check-label" for="100basetCheckBox">
+								Fast Ethernet (100BASE-T)
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row ms-3 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="1000basetCheckBox" name="1000baset" disabled>
+							<label class="form-check-label" for="1000basetCheckBox">
+								Gigabit Ethernet (1000BASE-T)
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row ms-3 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="1000basetxCheckBox" name="1000basetx" disabled>
+							<label class="form-check-label" for="1000basetxCheckBox">
+								Gigabit Ethernet (1000BASE-TX)
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row ms-3 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="25gbasetCheckBox" name="25gbaset" disabled>
+							<label class="form-check-label" for="25gbasetCheckBox">
+								2.5GBASE-T
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row ms-3 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="5gbasetCheckBox" name="25gbaset" disabled>
+							<label class="form-check-label" for="5gbasetCheckBox">
+								5GBASE-T
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row ms-3 mt-2">
+					<div class="col">
+						<div class="form-check">
+							<input class="form-check-input border-primary border-opacity-75" type="checkbox" id="10gbasetCheckBox" name="10gbaset" disabled>
+							<label class="form-check-label" for="10gbasetCheckBox">
+								10GE (10GBASE-T)
+							</label>
+						</div>
+					</div>
+				</div>
+			}
+		}
 	</div>
 
 	<div class="mb-3">
