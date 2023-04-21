@@ -20,6 +20,10 @@ document.getElementById('restoreDefaultsButton').addEventListener('click', funct
     document.getElementById('approvedRestoreDefaultsInput').value = "approved";
 });
 
+document.getElementById('calculateButton').addEventListener('click', function () {
+    document.getElementById('recordTimeInput').value = new Date().getTime().toString();
+})
+
 document.getElementById('isStrictComplianceWithTheStandartCheckBox').addEventListener('click', calculateFormSubmit);
 
 document.getElementById('isAnArbitraryNumberOfPortsCheckBox').addEventListener('click', calculateFormSubmit);

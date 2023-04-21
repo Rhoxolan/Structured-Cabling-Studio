@@ -1,12 +1,12 @@
-﻿using static System.String;
-
-namespace StructuredCablingStudio.Models.ViewModels.CalculationViewModels
+﻿namespace StructuredCablingStudio.Models.ViewModels.CalculationViewModels
 {
 	public class CalculateViewModel
 	{
-		public string ApprovedCalculation { get; set; } = Empty;
+		public string? RecordTime { get; set; }
 
-		public string ApprovedRestoreDefaults { get; set; } = Empty;
+		public string? ApprovedCalculation { get; set; }
+
+		public string? ApprovedRestoreDefaults { get; set; }
 
 		public bool IsStrictComplianceWithTheStandart { get; set; }
 

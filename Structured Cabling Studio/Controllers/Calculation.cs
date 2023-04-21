@@ -25,24 +25,35 @@ namespace StructuredCablingStudio.Controllers
             _roleManager = roleManager;
         }
 
-        public IActionResult Calculate()
+        public IActionResult Calculate(CalculateViewModel? calculateVM)
 		{
-            return View(new CalculateViewModel { });
+            if(calculateVM is null)
+            {
+                calculateVM = new CalculateViewModel { };
+
+			}
+            return View(calculateVM);
 		}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-		public IActionResult Calculate(CalculateViewModel calculateVM)
+		public IActionResult CalculateConfirmed(CalculateViewModel calculateVM)
 		{
             if (!IsNullOrEmpty(calculateVM.ApprovedRestoreDefaults))
             {
                 Console.WriteLine("ApprovedRestoreDefaults");
-                //logic
+				//logic
+				calculateVM.ApprovedRestoreDefaults = "";
 			}
             if (!IsNullOrEmpty(calculateVM.ApprovedCalculation))
             {
 				Console.WriteLine("ApprovedCalculation");
-				//logic
+                //logic
+                calculateVM.ApprovedCalculation = "";
+			}
+            if (!calculateVM.IsStrictComplianceWithTheStandart)
+            {
+				calculateVM.IsAnArbitraryNumberOfPorts = true;
 			}
             if(!calculateVM.IsRecommendationsAvailability) //Подумать за фильтры или какой-то аналог, куда можно это вынести
             {
@@ -57,7 +68,8 @@ namespace StructuredCablingStudio.Controllers
                 calculateVM.HasFiveGBASE_T = false;
                 calculateVM.HasTenGE = false;
 			}
-            return View(calculateVM);
+            Console.WriteLine(DateTimeOffset.FromUnixTimeMilliseconds(Convert.ToInt64(calculateVM.RecordTime)).DateTime.ToLocalTime().ToString()); //Отладить
+            return RedirectToAction(nameof(Calculate), calculateVM);
 		}
 
 		[Authorize]

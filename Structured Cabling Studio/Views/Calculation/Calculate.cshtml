@@ -1,10 +1,9 @@
-﻿@using static System.String
-@model CalculateViewModel
+﻿@model CalculateViewModel
 @{
 	ViewData["Title"] = "Calculation";
 }
 
-<form id="calculateForm" asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.Calculate)" method="post">
+<form id="calculateForm" asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.CalculateConfirmed)" method="post">
 
 	<div class="mb-3">
 		<div class="row">
@@ -142,7 +141,7 @@
 						}
 						else
 						{
-							<input class="form-check-input border-primary border-opacity-75" id="isAnArbitraryNumberOfPortsCheckBox" asp-for="IsAnArbitraryNumberOfPorts" checked disabled>
+							<input class="form-check-input border-primary border-opacity-75" id="isAnArbitraryNumberOfPortsCheckBox" asp-for="IsAnArbitraryNumberOfPorts" disabled>
 						}
 					}
 					<label class="form-check-label" for="isAnArbitraryNumberOfPortsCheckBox">
@@ -422,7 +421,7 @@
 				<button type="submit" id="restoreDefaultsButton" class="btn btn-sm btn-outline-secondary">
 					@Localizer["Restore defaults"]
 				</button>
-				<input type="hidden" id="approvedRestoreDefaultsInput" name="approvedRestoreDefaults"/>
+				<input type="hidden" id="approvedRestoreDefaultsInput" asp-for="ApprovedRestoreDefaults"/>
 			</div>
 		</div>
 	</div>
@@ -435,7 +434,8 @@
 				<button type="submit" id="calculateButton" class="btn btn-lg btn-outline-primary fw-semibold">
 					@Localizer["Calculate"]
 				</button>
-				<input type="hidden" id="approvedCalculationInput" name="approvedCalculation"/>
+				<input type="hidden" id="approvedCalculationInput" asp-for="ApprovedCalculation"/>
+				<input type="hidden" id="recordTimeInput" asp-for="RecordTime" />
 			</div>
 		</div>
 	</div>
