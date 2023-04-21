@@ -38,13 +38,11 @@ namespace StructuredCablingStudio.Controllers
             {
                 Console.WriteLine("ApprovedRestoreDefaults");
                 //logic
-                calculateVM.ApprovedRestoreDefaults = "";
 			}
             if (!IsNullOrEmpty(calculateVM.ApprovedCalculation))
             {
 				Console.WriteLine("ApprovedCalculation");
 				//logic
-				calculateVM.ApprovedCalculation = "";
 			}
             if(!calculateVM.IsRecommendationsAvailability)
             {
