@@ -422,7 +422,7 @@
 				<button type="submit" id="restoreDefaultsButton" class="btn btn-sm btn-outline-secondary">
 					@Localizer["Restore defaults"]
 				</button>
-				<input type="hidden" id="approvedRestoreDefaultsInput" value="false" asp-for="ApprovedRestoreDefaults" />
+				<input type="hidden" id="approvedRestoreDefaultsInput" name="approvedRestoreDefaults"/>
 			</div>
 		</div>
 	</div>
@@ -435,7 +435,7 @@
 				<button type="submit" id="calculateButton" class="btn btn-lg btn-outline-primary fw-semibold">
 					@Localizer["Calculate"]
 				</button>
-				<input type="hidden" id="approvedCalculationInput" value="false" asp-for="ApprovedCalculation" />
+				<input type="hidden" id="approvedCalculationInput" name="approvedCalculation"/>
 			</div>
 		</div>
 	</div>

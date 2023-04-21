@@ -1,10 +1,12 @@
-﻿namespace StructuredCablingStudio.Models.ViewModels.CalculationViewModels
+﻿using static System.String;
+
+namespace StructuredCablingStudio.Models.ViewModels.CalculationViewModels
 {
 	public class CalculateViewModel
 	{
-		public bool ApprovedCalculation { get; set; }
+		public string ApprovedCalculation { get; set; } = Empty;
 
-		public bool ApprovedRestoreDefaults { get; set; }
+		public string ApprovedRestoreDefaults { get; set; } = Empty;
 
 		public bool IsStrictComplianceWithTheStandart { get; set; }
 
