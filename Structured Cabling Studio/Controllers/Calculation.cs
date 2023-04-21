@@ -44,10 +44,19 @@ namespace StructuredCablingStudio.Controllers
 				Console.WriteLine("ApprovedCalculation");
 				//logic
 			}
-            if(!calculateVM.IsRecommendationsAvailability)
+            if(!calculateVM.IsRecommendationsAvailability) //Подумать за фильтры или какой-то аналог, куда можно это вынести
             {
-
-            }
+                calculateVM.IsCableRouteRunOutdoors = false;
+                calculateVM.IsConsiderFireSafetyRequirements = false;
+                calculateVM.IsCableShieldingNecessity = false;
+                calculateVM.HasTenBase_T = false;
+                calculateVM.HasFastEthernet = false;
+                calculateVM.HasGigabitBASE_T = false;
+                calculateVM.HasGigabitBASE_TX = false;
+                calculateVM.HasTwoPointFiveGBASE_T = false;
+                calculateVM.HasFiveGBASE_T = false;
+                calculateVM.HasTenGE = false;
+			}
             return View(calculateVM);
 		}
 

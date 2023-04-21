@@ -18,6 +18,12 @@ namespace StructuredCablingStudio.Models.ViewModels.CalculationViewModels
 
 		public bool IsCableHankMeterageAvailability { get; set; }
 
+		public bool IsCableRouteRunOutdoors { get; set; }
+
+		public bool IsConsiderFireSafetyRequirements { get; set; }
+
+		public bool IsCableShieldingNecessity { get; set; }
+
 		public bool HasTenBase_T { get; set; }
 
 		public bool HasFastEthernet { get; set; }
