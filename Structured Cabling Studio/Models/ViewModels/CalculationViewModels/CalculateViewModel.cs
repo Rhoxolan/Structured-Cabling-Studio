@@ -6,7 +6,11 @@ namespace StructuredCablingStudio.Models.ViewModels.CalculationViewModels
 	{
 		public string? RecordTime { get; set; }
 
-		public double MinPermanentLink { get; set; }
+		public double MinPermanentLink { get; set; } = 25;
+
+		public double MaxPermanentLink { get; set; } = 75;
+
+		public int NumberOfWorkplaces { get; set; } = 10;
 
 		public string? ApprovedCalculation { get; set; }
 

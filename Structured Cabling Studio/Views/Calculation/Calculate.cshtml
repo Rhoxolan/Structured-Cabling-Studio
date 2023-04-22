@@ -3,6 +3,15 @@
 @{
 	ViewData["Title"] = "Calculation";
 	var diapasons = (ViewData["Diapasons"] as StructuredCablingStudioDiapasons)!;
+	double linkStep;
+	if (Model.IsStrictComplianceWithTheStandart)
+	{
+		linkStep = 1;
+	}
+	else
+	{
+		linkStep = 0.01;
+	}
 }
 
 <form id="calculateForm" asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.CalculateConfirmed)" method="post">
@@ -10,17 +19,17 @@
 	<div class="mb-3">
 		<div class="row">
 			<div class="col">
-				<label class="form-label" asp-for="MinPermanentLink">
+				<label class="form-label" for="minPermanentLinkInput">
 					@Localizer["Minimum length of the permanent link:"]
 				</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-				<input class="form-control border-primary border-opacity-75" type="number" id="minPermanentLinkInput" step="1" min="@diapasons.MinPermanentLinkDiapason.Min" max="@diapasons.MinPermanentLinkDiapason.Max" asp-for="MinPermanentLink" />
+				<input class="form-control border-primary border-opacity-75" type="number" id="minPermanentLinkInput" step="@linkStep" min="@diapasons.MinPermanentLinkDiapason.Min" max="@diapasons.MinPermanentLinkDiapason.Max" asp-for="MinPermanentLink" required />
 			</div>
 			<div class="col d-flex align-items-end ps-0">
-				<label class="form-label mb-1" asp-for="MinPermanentLink">
+				<label class="form-label mb-1" for="minPermanentLinkInput">
 					@Localizer["m"]
 				</label>
 			</div>
@@ -37,7 +46,7 @@
 		</div>
 		<div class="row">
 			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-				<input class="form-control border-primary border-opacity-75" type="text" id="maxPermanentLinkInput" name="maxPermanentLink"/>
+				<input class="form-control border-primary border-opacity-75" type="number" id="maxPermanentLinkInput" step="@linkStep" min="@diapasons.MaxPermanentLinkDiapason.Min" max="@diapasons.MaxPermanentLinkDiapason.Max" asp-for="MaxPermanentLink" required />
 			</div>
 			<div class="col d-flex align-items-end ps-0">
 				<label class="form-label mb-1" for="maxPermanentLinkInput">
@@ -50,14 +59,14 @@
 	<div class="mb-3">
 		<div class="row">
 			<div class="col">
-				<label class="form-label" for="workplacesCountInput">
+				<label class="form-label" for="numberOfWorkplacesInput">
 					@Localizer["Workplaces count:"]
 				</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-				<input class="form-control border-primary border-opacity-75" type="text" id="workplacesCountInput" name="workplacesCount" />
+				<input class="form-control border-primary border-opacity-75" id="numberOfWorkplacesInput" step="1" min="@diapasons.NumberOfWorkplacesDiapason.Min" max="@diapasons.MaxPermanentLinkDiapason.Max" asp-for="NumberOfWorkplaces" required />
 			</div>
 		</div>
 	</div>

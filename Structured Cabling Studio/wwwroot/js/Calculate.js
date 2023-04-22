@@ -2,6 +2,14 @@ document.getElementById('minPermanentLinkInput').addEventListener('blur', valida
 
 document.getElementById('minPermanentLinkInput').addEventListener('blur', validateStep);
 
+document.getElementById('maxPermanentLinkInput').addEventListener('blur', validateDiapason);
+
+document.getElementById('maxPermanentLinkInput').addEventListener('blur', validateStep);
+
+document.getElementById('numberOfWorkplacesInput').addEventListener('blur', validateDiapason);
+
+document.getElementById('numberOfWorkplacesInput').addEventListener('blur', validateStep);
+
 document.getElementById('calculateButton').addEventListener('click', removeDisabledAttributesFromAllInputs);
 
 document.getElementById('restoreDefaultsButton').addEventListener('click', removeDisabledAttributesFromAllInputs);
@@ -26,7 +34,7 @@ document.getElementById('restoreDefaultsButton').addEventListener('click', funct
 
 document.getElementById('calculateButton').addEventListener('click', function () {
     document.getElementById('recordTimeInput').value = new Date().getTime().toString();
-})
+});
 
 document.getElementById('isStrictComplianceWithTheStandartCheckBox').addEventListener('click', calculateFormSubmit);
 
@@ -39,6 +47,8 @@ document.getElementById('isRecommendationsAvailabilityCheckBox').addEventListene
 document.getElementById('isCableHankMeterageAvailabilityCheckBox').addEventListener('click', calculateFormSubmit);
 
 function validateDiapason(e) {
+    console.log(`max = ${e.target.getAttribute('max')}`);
+    console.log(`min = ${e.target.getAttribute('min')}`);
     if (parseFloat(e.target.value) > parseFloat(e.target.getAttribute('max'))) {
         e.target.value = e.target.getAttribute('max');
     }
@@ -54,9 +64,9 @@ function validateStep(e) {
         if (!Number.isInteger(inputValue)) {
             e.target.value = Math.floor(inputValue);
         }
-    } else if (stepValue === 0.01) {
-        const validValue = Math.floor(inputValue * 100) / 100;
-        e.target.value = validValue.toFixed(2);
+    }
+    else if (stepValue === 0.01) {
+        e.target.value = (Math.floor(inputValue * 100) / 100).toFixed(2);
     }
 }
 
