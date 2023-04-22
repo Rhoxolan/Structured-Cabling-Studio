@@ -1,6 +1,8 @@
-﻿@model CalculateViewModel
+﻿@using StructuredCablingStudioCore.Parameters;
+@model CalculateViewModel
 @{
 	ViewData["Title"] = "Calculation";
+	var diapasons = (ViewData["Diapasons"] as StructuredCablingStudioDiapasons)!;
 }
 
 <form id="calculateForm" asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.CalculateConfirmed)" method="post">
@@ -8,17 +10,17 @@
 	<div class="mb-3">
 		<div class="row">
 			<div class="col">
-				<label class="form-label" for="minPermanentLinkInput">
+				<label class="form-label" asp-for="MinPermanentLink">
 					@Localizer["Minimum length of the permanent link:"]
 				</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-				<input class="form-control border-primary border-opacity-75" type="text" id="minPermanentLinkInput" name="minPermanentLink"/>
+				<input class="form-control border-primary border-opacity-75" type="number" min="@diapasons.MinPermanentLinkDiapason.Min" max="@diapasons.MinPermanentLinkDiapason.Max" asp-for="MinPermanentLink" />
 			</div>
 			<div class="col d-flex align-items-end ps-0">
-				<label class="form-label mb-1" for="minPermanentLinkInput">
+				<label class="form-label mb-1" asp-for="MinPermanentLink">
 					@Localizer["m"]
 				</label>
 			</div>

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
+using StructuredCablingStudioCore.Parameters;
 using static System.String;
 
 namespace StructuredCablingStudio.Controllers
@@ -25,14 +26,17 @@ namespace StructuredCablingStudio.Controllers
             _roleManager = roleManager;
         }
 
-        public IActionResult Calculate(CalculateViewModel? calculateVM)
+        public IActionResult Calculate(StructuredCablingStudioParameters parameters, CalculateViewModel calculateVM)
 		{
-            if(calculateVM is null)
+            parameters = new StructuredCablingStudioParameters
             {
-                calculateVM = new CalculateViewModel { };
-
-			}
-            return View(calculateVM);
+                IsStrictСomplianceWithTheStandart = true,
+                IsAnArbitraryNumberOfPorts = true,
+                IsTechnologicalReserveAvailability = true,
+                IsRecommendationsAvailability = false
+            };
+            ViewData["Diapasoms"] = parameters.Diapasons;
+			return View(calculateVM);
 		}
 
         [HttpPost]

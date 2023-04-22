@@ -4,6 +4,8 @@
 	{
 		public string? RecordTime { get; set; }
 
+		public double MinPermanentLink { get; set; }
+
 		public string? ApprovedCalculation { get; set; }
 
 		public string? ApprovedRestoreDefaults { get; set; }
