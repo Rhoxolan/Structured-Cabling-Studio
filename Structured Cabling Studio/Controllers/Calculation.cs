@@ -26,16 +26,16 @@ namespace StructuredCablingStudio.Controllers
             _roleManager = roleManager;
         }
 
-        public IActionResult Calculate(StructuredCablingStudioParameters parameters, CalculateViewModel calculateVM)
+        public IActionResult Calculate(CalculateViewModel calculateVM)
 		{
-            parameters = new StructuredCablingStudioParameters
+			StructuredCablingStudioParameters parameters = new StructuredCablingStudioParameters
             {
                 IsStrictСomplianceWithTheStandart = true,
                 IsAnArbitraryNumberOfPorts = true,
                 IsTechnologicalReserveAvailability = true,
                 IsRecommendationsAvailability = false
             };
-            ViewData["Diapasoms"] = parameters.Diapasons;
+            ViewData["Diapasons"] = parameters.Diapasons;
 			return View(calculateVM);
 		}
 
