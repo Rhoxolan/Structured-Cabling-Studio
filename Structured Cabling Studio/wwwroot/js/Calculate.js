@@ -1,3 +1,7 @@
+document.getElementById('minPermanentLinkInput').addEventListener('blur', validateDiapason);
+
+document.getElementById('minPermanentLinkInput').addEventListener('blur', validateStep);
+
 document.getElementById('calculateButton').addEventListener('click', removeDisabledAttributesFromAllInputs);
 
 document.getElementById('restoreDefaultsButton').addEventListener('click', removeDisabledAttributesFromAllInputs);
@@ -33,6 +37,28 @@ document.getElementById('isTechnologicalReserveAvailabilityCheckBox').addEventLi
 document.getElementById('isRecommendationsAvailabilityCheckBox').addEventListener('click', calculateFormSubmit);
 
 document.getElementById('isCableHankMeterageAvailabilityCheckBox').addEventListener('click', calculateFormSubmit);
+
+function validateDiapason(e) {
+    if (parseFloat(e.target.value) > parseFloat(e.target.getAttribute('max'))) {
+        e.target.value = e.target.getAttribute('max');
+    }
+    if (parseFloat(e.target.value) < parseFloat(e.target.getAttribute('min'))) {
+        e.target.value = e.target.getAttribute('min');
+    }
+}
+
+function validateStep(e) {
+    const inputValue = parseFloat(e.target.value);
+    const stepValue = parseFloat(e.target.getAttribute('step'));
+    if (stepValue === 1) {
+        if (!Number.isInteger(inputValue)) {
+            e.target.value = Math.floor(inputValue);
+        }
+    } else if (stepValue === 0.01) {
+        const validValue = Math.floor(inputValue * 100) / 100;
+        e.target.value = validValue.toFixed(2);
+    }
+}
 
 function calculateFormSubmit() {
     document.forms["calculateForm"].submit();

@@ -17,7 +17,7 @@
 		</div>
 		<div class="row">
 			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-				<input class="form-control border-primary border-opacity-75" type="number" min="@diapasons.MinPermanentLinkDiapason.Min" max="@diapasons.MinPermanentLinkDiapason.Max" oninput="validity.valid||(value='');" asp-for="MinPermanentLink" />
+				<input class="form-control border-primary border-opacity-75" type="number" id="minPermanentLinkInput" step="1" min="@diapasons.MinPermanentLinkDiapason.Min" max="@diapasons.MinPermanentLinkDiapason.Max" asp-for="MinPermanentLink" />
 			</div>
 			<div class="col d-flex align-items-end ps-0">
 				<label class="form-label mb-1" asp-for="MinPermanentLink">
