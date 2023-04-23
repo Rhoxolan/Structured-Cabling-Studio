@@ -16,12 +16,9 @@ namespace StructuredCablingStudioCore.Parameters
 
         public StandartValuesStrategy()
         {
-            numberOfWorkplacesDiapason = (ToDecimal(StandartValues_NumberOfWorkplacesDiapason_Min),
-                ToDecimal(StandartValues_NumberOfWorkplacesDiapason_Max));
-            cableHankMeterageDiapason = (ToDecimal(StandartValues_CableHankMeterageDiapason_Min),
-                ToDecimal(StandartValues_CableHankMeterageDiapason_Max));
-            technologicalReserveDiapason = (ToDecimal(StandartValues_TechnologicalReserveDiapason_Min),
-                ToDecimal(StandartValues_TechnologicalReserveDiapason_Max));
+            numberOfWorkplacesDiapason = (ToDecimal(StandartValues_NumberOfWorkplacesDiapason_Min, System.Globalization.CultureInfo.InvariantCulture), ToDecimal(StandartValues_NumberOfWorkplacesDiapason_Max, System.Globalization.CultureInfo.InvariantCulture));
+            cableHankMeterageDiapason = (ToDecimal(StandartValues_CableHankMeterageDiapason_Min, System.Globalization.CultureInfo.InvariantCulture), ToDecimal(StandartValues_CableHankMeterageDiapason_Max, System.Globalization.CultureInfo.InvariantCulture));
+            technologicalReserveDiapason = (ToDecimal(StandartValues_TechnologicalReserveDiapason_Min, System.Globalization.CultureInfo.InvariantCulture), ToDecimal(StandartValues_TechnologicalReserveDiapason_Max, System.Globalization.CultureInfo.InvariantCulture));
         }
 
         /// <summary>

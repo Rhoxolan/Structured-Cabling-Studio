@@ -1,5 +1,6 @@
 ﻿using static StructuredCablingStudioCore.Parameters.Properties.Resources;
 using static System.Convert;
+using static System.Globalization.CultureInfo;
 
 namespace StructuredCablingStudioCore.Parameters
 {
@@ -30,7 +31,7 @@ namespace StructuredCablingStudioCore.Parameters
                 }
                 else
                 {
-                    technologicalReserve = ToDouble(TechnologicalReserveAvailability_TechnologicalReserve_Default);
+                    technologicalReserve = ToDouble(TechnologicalReserveAvailability_TechnologicalReserve_Default, InvariantCulture);
                     return (double)technologicalReserve;
                 }
             }

@@ -1,5 +1,6 @@
 ﻿using static StructuredCablingStudioCore.Parameters.Properties.Resources;
 using static System.Convert;
+using static System.Globalization.CultureInfo;
 
 namespace StructuredCablingStudioCore.Parameters
 {
@@ -14,7 +15,7 @@ namespace StructuredCablingStudioCore.Parameters
 
         public NonTechnologicalReserveStrategy()
         {
-            technologicalReserve = ToDouble(NonTechnologicalReserve_TechnologicalReserve);
+            technologicalReserve = ToDouble(NonTechnologicalReserve_TechnologicalReserve, InvariantCulture);
         }
 
         /// <summary>

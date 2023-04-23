@@ -1,5 +1,6 @@
 ﻿using static StructuredCablingStudioCore.Parameters.Properties.Resources;
 using static System.Convert;
+using static System.Globalization.CultureInfo;
 
 namespace StructuredCablingStudioCore.Parameters
 {
@@ -15,10 +16,10 @@ namespace StructuredCablingStudioCore.Parameters
 
         public NonStrictComplianceWithTheStandartStrategy()
         {
-			minPermanentLinkDiapason = (ToDecimal(NonStrictComplianceWithTheStandart_MinPermanentLinkDiapason_Min), 
-                ToDecimal(NonStrictComplianceWithTheStandart_MinPermanentLinkDiapason_Max));
-            maxPermanentLinkDiapason = (ToDecimal(NonStrictComplianceWithTheStandart_MaxPermanentLinkDiapason_Min),
-                ToDecimal(NonStrictComplianceWithTheStandart_MaxPermanentLinkDiapason_Max));
+			minPermanentLinkDiapason = (ToDecimal(NonStrictComplianceWithTheStandart_MinPermanentLinkDiapason_Min, InvariantCulture), 
+                ToDecimal(NonStrictComplianceWithTheStandart_MinPermanentLinkDiapason_Max, InvariantCulture));
+            maxPermanentLinkDiapason = (ToDecimal(NonStrictComplianceWithTheStandart_MaxPermanentLinkDiapason_Min, InvariantCulture),
+                ToDecimal(NonStrictComplianceWithTheStandart_MaxPermanentLinkDiapason_Max, InvariantCulture));
         }
 
         /// <summary>

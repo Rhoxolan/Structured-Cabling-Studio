@@ -1,5 +1,6 @@
 ﻿using static StructuredCablingStudioCore.Parameters.Properties.Resources;
 using static System.Convert;
+using static System.Globalization.CultureInfo;
 
 namespace StructuredCablingStudioCore.Parameters
 {
@@ -14,8 +15,8 @@ namespace StructuredCablingStudioCore.Parameters
 
         public AnArbitraryNumberOfPortsStrategy()
         {
-            numberOfPortsDiapason = (ToDecimal(AnArbitraryNumberOfPorts_NumberOfPortsDiapason_Min),
-                ToDecimal(AnArbitraryNumberOfPorts_NumberOfPortsDiapason_Max));
+            numberOfPortsDiapason = (ToDecimal(AnArbitraryNumberOfPorts_NumberOfPortsDiapason_Min, InvariantCulture),
+                ToDecimal(AnArbitraryNumberOfPorts_NumberOfPortsDiapason_Max, InvariantCulture));
         }
 
         /// <summary>
