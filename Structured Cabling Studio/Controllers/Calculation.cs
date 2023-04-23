@@ -30,7 +30,7 @@ namespace StructuredCablingStudio.Controllers
 		{
 			StructuredCablingStudioParameters parameters = new StructuredCablingStudioParameters
             {
-                IsStrictСomplianceWithTheStandart = false,
+                IsStrictСomplianceWithTheStandart = true,
                 IsAnArbitraryNumberOfPorts = true,
                 IsTechnologicalReserveAvailability = true,
                 IsRecommendationsAvailability = false

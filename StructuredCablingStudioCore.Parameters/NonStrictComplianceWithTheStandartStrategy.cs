@@ -15,7 +15,7 @@ namespace StructuredCablingStudioCore.Parameters
 
         public NonStrictComplianceWithTheStandartStrategy()
         {
-            minPermanentLinkDiapason = (ToDecimal(NonStrictComplianceWithTheStandart_MinPermanentLinkDiapason_Min), 
+			minPermanentLinkDiapason = (ToDecimal(NonStrictComplianceWithTheStandart_MinPermanentLinkDiapason_Min), 
                 ToDecimal(NonStrictComplianceWithTheStandart_MinPermanentLinkDiapason_Max));
             maxPermanentLinkDiapason = (ToDecimal(NonStrictComplianceWithTheStandart_MaxPermanentLinkDiapason_Min),
                 ToDecimal(NonStrictComplianceWithTheStandart_MaxPermanentLinkDiapason_Max));
