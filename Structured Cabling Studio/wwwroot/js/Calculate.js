@@ -18,20 +18,13 @@ document.getElementById('cableHankMeterageInput').addEventListener('blur', valid
 
 document.getElementById('cableHankMeterageInput').addEventListener('blur', validateStep);
 
+document.getElementById('cableHankMeterageInput').addEventListener('blur', checkCableHankMeterage);
+
 document.getElementById('technologicalReserveInput').addEventListener('blur', validateDiapason);
 
 document.getElementById('technologicalReserveInput').addEventListener('blur', validateStep);
 
-document.getElementById('cableHankMeterageInput').addEventListener('blur', function () {
-    const minPermanentLink = +document.getElementById('minPermanentLinkInput').value;
-    const maxPermanentLink = +document.getElementById('maxPermanentLinkInput').value;
-    const technologicalReserve = +document.getElementById('technologicalReserveInput').value;
-    const ceiledAveragePermanentLink = Math.ceil((minPermanentLink + maxPermanentLink) / 2 * technologicalReserve);
-    const cableHankMeterage = +this.value;
-    if (cableHankMeterage < ceiledAveragePermanentLink) {
-        this.value = ceiledAveragePermanentLink;
-    }
-});
+document.getElementById('technologicalReserveInput').addEventListener('blur', checkCableHankMeterage);
 
 document.getElementById('calculateButton').addEventListener('click', removeDisabledAttributesFromAllInputs);
 
@@ -97,4 +90,15 @@ function calculateFormSubmit() {
 
 function removeDisabledAttributesFromAllInputs() {
     document.querySelectorAll('input').forEach(i => i.removeAttribute('disabled'));
+}
+
+function checkCableHankMeterage() {
+    const minPermanentLink = +document.getElementById('minPermanentLinkInput').value;
+    const maxPermanentLink = +document.getElementById('maxPermanentLinkInput').value;
+    const technologicalReserve = +document.getElementById('technologicalReserveInput').value;
+    const ceiledAveragePermanentLink = Math.ceil((minPermanentLink + maxPermanentLink) / 2 * technologicalReserve);
+    const cableHankMeterage = +document.getElementById('cableHankMeterageInput').value;
+    if (cableHankMeterage < ceiledAveragePermanentLink) {
+        document.getElementById('cableHankMeterageInput').value = ceiledAveragePermanentLink;
+    }
 }

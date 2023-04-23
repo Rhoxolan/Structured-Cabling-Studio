@@ -14,7 +14,7 @@ namespace StructuredCablingStudio.Models.ViewModels.CalculationViewModels
 
 		public int NumberOfPorts { get; set; } = 2;
 
-		public int? CableHankMeterage { get; set; } = 305;
+		public int? CableHankMeterage { get; set; }
 
 		public double TechnologicalReserve { get; set; } = 1;
 
