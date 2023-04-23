@@ -59,11 +59,15 @@ namespace StructuredCablingStudio.Controllers
             {
 				calculateVM.IsAnArbitraryNumberOfPorts = true;
 			}
-            //if (!calculateVM.IsCableHankMeterageAvailability)
-            //{
-            //    calculateVM.CableHankMeterage = null;
-            //}
-            if(!calculateVM.IsRecommendationsAvailability) //Подумать за фильтры или какой-то аналог, куда можно это вынести
+            if (!calculateVM.IsCableHankMeterageAvailability)
+            {
+                calculateVM.CableHankMeterage = null;
+            }
+			if (!calculateVM.IsTechnologicalReserveAvailability)
+			{
+				calculateVM.TechnologicalReserve = 1;
+			}
+			if (!calculateVM.IsRecommendationsAvailability) //Подумать за фильтры или какой-то аналог, куда можно это вынести
             {
                 calculateVM.IsCableRouteRunOutdoors = false;
                 calculateVM.IsConsiderFireSafetyRequirements = false;

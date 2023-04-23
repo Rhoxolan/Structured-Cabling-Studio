@@ -102,7 +102,7 @@
 				@{
 					if (Model.IsCableHankMeterageAvailability)
 					{
-						<input class="form-control border-primary border-opacity-75" type="number" step="1" list="cableHankMeterageDatalist" id="cableHankMeterageInput" min="@diapasons.CableHankMeterageDiapason.Min" max="@diapasons.CableHankMeterageDiapason.Max" asp-for="CableHankMeterage" required/>
+						<input class="form-control border-primary border-opacity-75" step="1" list="cableHankMeterageDatalist" id="cableHankMeterageInput" min="@diapasons.CableHankMeterageDiapason.Min" max="@diapasons.CableHankMeterageDiapason.Max" asp-for="CableHankMeterage" required/>
 					}
 					else
 					{
@@ -179,11 +179,11 @@
 				@{
 					if (Model.IsTechnologicalReserveAvailability)
 					{
-						<input class="form-control border-primary border-opacity-75" type="text" id="technologicalReserveCoefficientInput" name="technologicalReserveCoefficient" />
+						<input class="form-control border-primary border-opacity-75" type="number" step="0.01" min="@diapasons.TechnologicalReserveDiapason.Min" max="@diapasons.TechnologicalReserveDiapason.Max" id="technologicalReserveInput" asp-for="TechnologicalReserve" required/>
 					}
 					else
 					{
-						<input class="form-control border-primary border-opacity-75" type="text" id="technologicalReserveCoefficientInput" name="technologicalReserveCoefficient" disabled/>
+						<input class="form-control border-primary border-opacity-75" type="number" id="technologicalReserveInput" asp-for="TechnologicalReserve" disabled />
 					}
 				}
 			</div>

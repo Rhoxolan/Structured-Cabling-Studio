@@ -12,7 +12,8 @@ namespace StructuredCablingStudioCore.Calculation
         /// Calculation method of structured cabling configuration with cable hank meterage
         /// </summary>
         /// <exception cref="StructuredCablingStudioCoreException"></exception>
-        public CablingConfiguration Calculate(StructuredCablingStudioParameters parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, int numberOfPorts, double? cableHankMeterage)
+        public CablingConfiguration Calculate(StructuredCablingStudioParameters parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
+            int numberOfPorts, int? cableHankMeterage)
         {
             if (cableHankMeterage is null)
             {
@@ -24,8 +25,8 @@ namespace StructuredCablingStudioCore.Calculation
                 throw new StructuredCablingStudioCoreException("Calculation is impossible! The value of average permanent link length more than the value of cable hank meterage");
             }
             double? cableQuantity = averagePermanentLink * numberOfWorkplaces * numberOfPorts;
-            int? hankQuantity = (int)Math.Ceiling(numberOfWorkplaces * numberOfPorts / Math.Floor((double)(cableHankMeterage / averagePermanentLink)));
-            double totalCableQuantity = (double)(hankQuantity * cableHankMeterage);
+            int? hankQuantity = (int)Math.Ceiling(numberOfWorkplaces * numberOfPorts / Math.Floor((double)cableHankMeterage / averagePermanentLink));
+            double totalCableQuantity = hankQuantity.Value * cableHankMeterage.Value;
             return new CablingConfiguration
             {
                 RecordTime = DateTime.Now,

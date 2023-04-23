@@ -11,6 +11,6 @@ namespace StructuredCablingStudioCore.Calculation
         /// Calculation method of structured cabling configuration
         /// </summary>
         CablingConfiguration Calculate(StructuredCablingStudioParameters parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
-            int numberOfPorts, double? cableHankMeterage);
+            int numberOfPorts, int? cableHankMeterage);
     }
 }

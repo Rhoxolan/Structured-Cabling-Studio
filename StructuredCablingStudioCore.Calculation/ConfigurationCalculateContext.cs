@@ -22,7 +22,8 @@ namespace StructuredCablingStudioCore.Calculation
         /// Calculating of structured cabling configuration
         /// </summary>
         /// <exception cref="StructuredCablingStudioCoreException"></exception>
-        public CablingConfiguration Calculate(StructuredCablingStudioParameters parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, int numberOfPorts, double? cableHankMeterage)
+        public CablingConfiguration Calculate(StructuredCablingStudioParameters parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
+            int numberOfPorts, int? cableHankMeterage)
         {
             if (configurationCalculatorStrategy != null)
             {

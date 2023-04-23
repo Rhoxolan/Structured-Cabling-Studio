@@ -45,7 +45,7 @@
         /// Value of cable hank meterage in the structured cabling configuration record
         /// Is present if structured cabling configuration was calculated with cable hank meterage
         /// </summary>
-        public double? CableHankMeterage { get; init; } = null;
+        public int? CableHankMeterage { get; init; } = null;
 
         /// <summary>
         /// Value of cable hank count in the structured cabling configuration record

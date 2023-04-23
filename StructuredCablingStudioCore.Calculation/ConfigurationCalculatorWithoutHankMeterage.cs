@@ -11,7 +11,8 @@ namespace StructuredCablingStudioCore.Calculation
 		/// <summary>
 		/// Calculation method of structured cabling configuration without cable hank meterage
 		/// </summary>
-		public CablingConfiguration Calculate(StructuredCablingStudioParameters parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces, int numberOfPorts, double? cableHankMeterage)
+		public CablingConfiguration Calculate(StructuredCablingStudioParameters parameters, double minPermanentLink, double maxPermanentLink, int numberOfWorkplaces,
+			int numberOfPorts, int? cableHankMeterage)
 		{
 			double averagePermanentLink = (minPermanentLink + maxPermanentLink) / 2 * parameters.TechnologicalReserve;
 			double totalCableQuantity = averagePermanentLink * numberOfWorkplaces * numberOfPorts;

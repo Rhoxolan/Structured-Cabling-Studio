@@ -14,7 +14,24 @@ document.getElementById('numberOfPortsInput').addEventListener('blur', validateD
 
 document.getElementById('numberOfPortsInput').addEventListener('blur', validateStep);
 
-//Добавить для метража кабеля в бухте
+document.getElementById('cableHankMeterageInput').addEventListener('blur', validateDiapason);
+
+document.getElementById('cableHankMeterageInput').addEventListener('blur', validateStep);
+
+document.getElementById('technologicalReserveInput').addEventListener('blur', validateDiapason);
+
+document.getElementById('technologicalReserveInput').addEventListener('blur', validateStep);
+
+document.getElementById('cableHankMeterageInput').addEventListener('blur', function () {
+    const minPermanentLink = +document.getElementById('minPermanentLinkInput').value;
+    const maxPermanentLink = +document.getElementById('maxPermanentLinkInput').value;
+    const technologicalReserve = +document.getElementById('technologicalReserveInput').value;
+    const ceiledAveragePermanentLink = Math.ceil((minPermanentLink + maxPermanentLink) / 2 * technologicalReserve);
+    const cableHankMeterage = +this.value;
+    if (cableHankMeterage < ceiledAveragePermanentLink) {
+        this.value = ceiledAveragePermanentLink;
+    }
+});
 
 document.getElementById('calculateButton').addEventListener('click', removeDisabledAttributesFromAllInputs);
 
@@ -53,8 +70,6 @@ document.getElementById('isRecommendationsAvailabilityCheckBox').addEventListene
 document.getElementById('isCableHankMeterageAvailabilityCheckBox').addEventListener('click', calculateFormSubmit);
 
 function validateDiapason(e) {
-    console.log(`max = ${e.target.getAttribute('max')}`);
-    console.log(`min = ${e.target.getAttribute('min')}`);
     if (parseFloat(e.target.value) > parseFloat(e.target.getAttribute('max'))) {
         e.target.value = e.target.getAttribute('max');
     }
