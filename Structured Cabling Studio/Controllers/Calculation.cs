@@ -47,18 +47,22 @@ namespace StructuredCablingStudio.Controllers
             {
                 Console.WriteLine("ApprovedRestoreDefaults");
 				//logic
-				calculateVM.ApprovedRestoreDefaults = "";
+				calculateVM.ApprovedRestoreDefaults = null;
 			}
             if (!IsNullOrEmpty(calculateVM.ApprovedCalculation))
             {
 				Console.WriteLine("ApprovedCalculation");
                 //logic
-                calculateVM.ApprovedCalculation = "";
+                calculateVM.ApprovedCalculation = null;
 			}
             if (!calculateVM.IsStrictComplianceWithTheStandart)
             {
 				calculateVM.IsAnArbitraryNumberOfPorts = true;
 			}
+            //if (!calculateVM.IsCableHankMeterageAvailability)
+            //{
+            //    calculateVM.CableHankMeterage = null;
+            //}
             if(!calculateVM.IsRecommendationsAvailability) //Подумать за фильтры или какой-то аналог, куда можно это вынести
             {
                 calculateVM.IsCableRouteRunOutdoors = false;

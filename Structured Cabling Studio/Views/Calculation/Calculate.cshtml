@@ -66,7 +66,7 @@
 		</div>
 		<div class="row">
 			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-				<input class="form-control border-primary border-opacity-75" id="numberOfWorkplacesInput" step="1" min="@diapasons.NumberOfWorkplacesDiapason.Min" max="@diapasons.MaxPermanentLinkDiapason.Max" asp-for="NumberOfWorkplaces" required />
+				<input class="form-control border-primary border-opacity-75" id="numberOfWorkplacesInput" step="1" min="@diapasons.NumberOfWorkplacesDiapason.Min" max="@diapasons.NumberOfWorkplacesDiapason.Max" asp-for="NumberOfWorkplaces" required />
 			</div>
 		</div>
 	</div>
@@ -74,14 +74,14 @@
 	<div class="mb-3">
 		<div class="row">
 			<div class="col">
-				<label class="form-label" for="portsCountInput">
+				<label class="form-label" for="numberOfPortsInput">
 					@Localizer["Ports count per 1 workplace:"]
 				</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-				<input class="form-control border-primary border-opacity-75" type="text" id="portsCountInput" name="portsCount" />
+				<input class="form-control border-primary border-opacity-75" id="numberOfPortsInput" step="1" min="@diapasons.NumberOfPortsDiapason.Min" max="@diapasons.NumberOfPortsDiapason.Max" asp-for="NumberOfPorts" required/>
 			</div>
 		</div>
 	</div>
@@ -102,11 +102,11 @@
 				@{
 					if (Model.IsCableHankMeterageAvailability)
 					{
-						<input class="form-control border-primary border-opacity-75" type="text" list="cableHankMeterageDatalist" id="cableHankMeterageInput" name="cableHankMeterage" />
+						<input class="form-control border-primary border-opacity-75" type="number" step="1" list="cableHankMeterageDatalist" id="cableHankMeterageInput" min="@diapasons.CableHankMeterageDiapason.Min" max="@diapasons.CableHankMeterageDiapason.Max" asp-for="CableHankMeterage" required/>
 					}
 					else
 					{
-						<input class="form-control border-primary border-opacity-75" type="text" list="cableHankMeterageDatalist" id="cableHankMeterageInput" name="cableHankMeterage" disabled />
+						<input class="form-control border-primary border-opacity-75" id="cableHankMeterageInput" asp-for="CableHankMeterage" disabled />
 					}
 				}
 				<datalist id="cableHankMeterageDatalist">

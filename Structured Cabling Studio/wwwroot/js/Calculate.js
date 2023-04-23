@@ -10,6 +10,12 @@ document.getElementById('numberOfWorkplacesInput').addEventListener('blur', vali
 
 document.getElementById('numberOfWorkplacesInput').addEventListener('blur', validateStep);
 
+document.getElementById('numberOfPortsInput').addEventListener('blur', validateDiapason);
+
+document.getElementById('numberOfPortsInput').addEventListener('blur', validateStep);
+
+//Добавить для метража кабеля в бухте
+
 document.getElementById('calculateButton').addEventListener('click', removeDisabledAttributesFromAllInputs);
 
 document.getElementById('restoreDefaultsButton').addEventListener('click', removeDisabledAttributesFromAllInputs);

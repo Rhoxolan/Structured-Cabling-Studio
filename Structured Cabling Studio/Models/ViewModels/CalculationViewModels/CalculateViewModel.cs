@@ -12,6 +12,10 @@ namespace StructuredCablingStudio.Models.ViewModels.CalculationViewModels
 
 		public int NumberOfWorkplaces { get; set; } = 10;
 
+		public int NumberOfPorts { get; set; } = 2;
+
+		public double? CableHankMeterage { get; set; } = 305;
+
 		public string? ApprovedCalculation { get; set; }
 
 		public string? ApprovedRestoreDefaults { get; set; }
