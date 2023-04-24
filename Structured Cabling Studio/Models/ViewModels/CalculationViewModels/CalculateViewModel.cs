@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace StructuredCablingStudio.Models.ViewModels.CalculationViewModels
+﻿namespace StructuredCablingStudio.Models.ViewModels.CalculationViewModels
 {
 	public class CalculateViewModel
 	{

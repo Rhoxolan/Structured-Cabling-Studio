@@ -80,7 +80,7 @@ function validateStep(e) {
         }
     }
     else if (stepValue === 0.01) {
-        e.target.value = (Math.floor(inputValue * 100) / 100).toFixed(2);
+        e.target.value = parseFloat(e.target.value).toFixed(2);
     }
 }
 
