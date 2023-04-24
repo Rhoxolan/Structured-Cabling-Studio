@@ -6,7 +6,6 @@ using StructuredCablingStudio.Data.Entities;
 using StructuredCablingStudio.Filters.CalculationFilters;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
 using StructuredCablingStudioCore.Parameters;
-using static System.String;
 
 namespace StructuredCablingStudio.Controllers
 {
