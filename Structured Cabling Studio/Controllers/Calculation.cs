@@ -26,62 +26,85 @@ namespace StructuredCablingStudio.Controllers
             _roleManager = roleManager;
         }
 
-        public IActionResult Calculate(CalculateViewModel calculateVM)
+        public IActionResult Calculate()
 		{
-			StructuredCablingStudioParameters parameters = new StructuredCablingStudioParameters
-            {
-                IsStrictСomplianceWithTheStandart = true,
-                IsAnArbitraryNumberOfPorts = true,
-                IsTechnologicalReserveAvailability = true,
-                IsRecommendationsAvailability = false
-            };
-            ViewData["Diapasons"] = parameters.Diapasons;
-			return View(calculateVM);
+			//В привязчик
+			{
+				StructuredCablingStudioParameters parameters = new StructuredCablingStudioParameters
+				{
+					IsStrictСomplianceWithTheStandart = true,
+					IsAnArbitraryNumberOfPorts = true,
+					IsTechnologicalReserveAvailability = true,
+					IsRecommendationsAvailability = false
+				};
+				ViewData["Diapasons"] = parameters.Diapasons;
+			}
+
+			return View(new CalculateViewModel { });
 		}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-		public IActionResult CalculateConfirmed(CalculateViewModel calculateVM)
+		public IActionResult Calculate(CalculateViewModel calculateVM)
 		{
-            if (!IsNullOrEmpty(calculateVM.ApprovedRestoreDefaults))
-            {
-                Console.WriteLine("ApprovedRestoreDefaults");
-				//logic
-				calculateVM.ApprovedRestoreDefaults = null;
-			}
-            if (!IsNullOrEmpty(calculateVM.ApprovedCalculation))
-            {
-				Console.WriteLine("ApprovedCalculation");
-                //logic
-                calculateVM.ApprovedCalculation = null;
-			}
-            if (!calculateVM.IsStrictComplianceWithTheStandart)
-            {
-				calculateVM.IsAnArbitraryNumberOfPorts = true;
-			}
-            if (!calculateVM.IsCableHankMeterageAvailability)
-            {
-                calculateVM.CableHankMeterage = null;
-            }
-			if (!calculateVM.IsTechnologicalReserveAvailability)
+			if (!IsNullOrEmpty(calculateVM.ApprovedCalculation))
 			{
-				calculateVM.TechnologicalReserve = 1;
+				//Calculate
 			}
-			if (!calculateVM.IsRecommendationsAvailability) //Подумать за фильтры или какой-то аналог, куда можно это вынести
-            {
-                calculateVM.IsCableRouteRunOutdoors = false;
-                calculateVM.IsConsiderFireSafetyRequirements = false;
-                calculateVM.IsCableShieldingNecessity = false;
-                calculateVM.HasTenBase_T = false;
-                calculateVM.HasFastEthernet = false;
-                calculateVM.HasGigabitBASE_T = false;
-                calculateVM.HasGigabitBASE_TX = false;
-                calculateVM.HasTwoPointFiveGBASE_T = false;
-                calculateVM.HasFiveGBASE_T = false;
-                calculateVM.HasTenGE = false;
+
+			//В фильтр
+			{
+				if (!IsNullOrEmpty(calculateVM.ApprovedRestoreDefaults))
+				{
+					Console.WriteLine("ApprovedRestoreDefaults");
+					ModelState.SetModelValue("ApprovedRestoreDefaults", "", default);
+				}
+				if (!IsNullOrEmpty(calculateVM.ApprovedCalculation))
+				{
+					Console.WriteLine("ApprovedCalculation");
+					ModelState.SetModelValue("ApprovedCalculation", "", default);
+				}
+				if (!calculateVM.IsStrictComplianceWithTheStandart)
+				{
+					ModelState.SetModelValue("IsAnArbitraryNumberOfPorts", true, default);
+				}
+				if (!calculateVM.IsCableHankMeterageAvailability)
+				{
+					ModelState.SetModelValue("CableHankMeterage", "", default);
+				}
+				if (!calculateVM.IsTechnologicalReserveAvailability)
+				{
+					ModelState.SetModelValue("TechnologicalReserve", 1, default);
+				}
+				if (!calculateVM.IsRecommendationsAvailability)
+				{
+					ModelState.SetModelValue("IsCableRouteRunOutdoors", false, default);
+					ModelState.SetModelValue("IsConsiderFireSafetyRequirements", false, default);
+					ModelState.SetModelValue("IsCableShieldingNecessity", false, default);
+					ModelState.SetModelValue("HasTenBase_T", false, default);
+					ModelState.SetModelValue("HasFastEthernet", false, default);
+					ModelState.SetModelValue("HasGigabitBASE_T", false, default);
+					ModelState.SetModelValue("HasGigabitBASE_TX", false, default);
+					ModelState.SetModelValue("HasTwoPointFiveGBASE_T", false, default);
+					ModelState.SetModelValue("HasFiveGBASE_T", false, default);
+					ModelState.SetModelValue("HasTenGE", false, default);
+				}
 			}
-            Console.WriteLine(DateTimeOffset.FromUnixTimeMilliseconds(Convert.ToInt64(calculateVM.RecordTime)).DateTime.ToLocalTime().ToString()); //Отладить
-            return RedirectToAction(nameof(Calculate), calculateVM);
+
+			//В привязчик
+			{
+				StructuredCablingStudioParameters parameters = new StructuredCablingStudioParameters
+				{
+					IsStrictСomplianceWithTheStandart = true,
+					IsAnArbitraryNumberOfPorts = true,
+					IsTechnologicalReserveAvailability = true,
+					IsRecommendationsAvailability = false
+				};
+				ViewData["Diapasons"] = parameters.Diapasons;
+			}
+
+			Console.WriteLine(DateTimeOffset.FromUnixTimeMilliseconds(Convert.ToInt64(calculateVM.RecordTime)).DateTime.ToLocalTime().ToString()); //Отладить
+            return View(calculateVM);
 		}
 
 		[Authorize]

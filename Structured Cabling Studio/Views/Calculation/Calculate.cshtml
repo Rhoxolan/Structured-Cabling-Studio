@@ -5,7 +5,7 @@
 	var diapasons = (ViewData["Diapasons"] as StructuredCablingStudioDiapasons)!;
 }
 
-<form id="calculateForm" asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.CalculateConfirmed)" method="post">
+<form id="calculateForm" asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.Calculate)" method="post">
 
 	<div class="mb-3">
 		<div class="row">
