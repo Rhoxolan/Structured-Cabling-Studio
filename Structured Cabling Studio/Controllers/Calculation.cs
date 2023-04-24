@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
+using StructuredCablingStudio.Filters.CalculationFilters;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
 using StructuredCablingStudioCore.Parameters;
 using static System.String;
@@ -45,51 +46,19 @@ namespace StructuredCablingStudio.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+		[ApprovedRestoreDefaultsActionFilter]
+		[ApprovedCalculationActionFilter]
+		[IsStrictComplianceWithTheStandartActionFilter]
+		[IsCableHankMeterageAvailabilityActionFilter]
+		[IsTechnologicalReserveAvailabilityActionFilter]
+		[IsRecommendationsAvailabilityActionFilter]
 		public IActionResult Calculate(CalculateViewModel calculateVM)
 		{
-			if (!IsNullOrEmpty(calculateVM.ApprovedCalculation))
+			if (calculateVM.ApprovedCalculation == "approved")
 			{
 				//Calculate
 			}
 
-			//В фильтр
-			{
-				if (!IsNullOrEmpty(calculateVM.ApprovedRestoreDefaults))
-				{
-					Console.WriteLine("ApprovedRestoreDefaults");
-					ModelState.SetModelValue("ApprovedRestoreDefaults", "", default);
-				}
-				if (!IsNullOrEmpty(calculateVM.ApprovedCalculation))
-				{
-					Console.WriteLine("ApprovedCalculation");
-					ModelState.SetModelValue("ApprovedCalculation", "", default);
-				}
-				if (!calculateVM.IsStrictComplianceWithTheStandart)
-				{
-					ModelState.SetModelValue("IsAnArbitraryNumberOfPorts", true, default);
-				}
-				if (!calculateVM.IsCableHankMeterageAvailability)
-				{
-					ModelState.SetModelValue("CableHankMeterage", "", default);
-				}
-				if (!calculateVM.IsTechnologicalReserveAvailability)
-				{
-					ModelState.SetModelValue("TechnologicalReserve", 1, default);
-				}
-				if (!calculateVM.IsRecommendationsAvailability)
-				{
-					ModelState.SetModelValue("IsCableRouteRunOutdoors", false, default);
-					ModelState.SetModelValue("IsConsiderFireSafetyRequirements", false, default);
-					ModelState.SetModelValue("IsCableShieldingNecessity", false, default);
-					ModelState.SetModelValue("HasTenBase_T", false, default);
-					ModelState.SetModelValue("HasFastEthernet", false, default);
-					ModelState.SetModelValue("HasGigabitBASE_T", false, default);
-					ModelState.SetModelValue("HasGigabitBASE_TX", false, default);
-					ModelState.SetModelValue("HasTwoPointFiveGBASE_T", false, default);
-					ModelState.SetModelValue("HasFiveGBASE_T", false, default);
-					ModelState.SetModelValue("HasTenGE", false, default);
-				}
-			}
 
 			//В привязчик
 			{
