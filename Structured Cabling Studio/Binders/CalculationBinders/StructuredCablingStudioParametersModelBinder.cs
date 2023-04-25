@@ -1,40 +1,53 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using StructuredCablingStudio.DTOs;
+using StructuredCablingStudio.Extensions.ISessionExtension;
 using StructuredCablingStudioCore.Parameters;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace StructuredCablingStudio.Binders.CalculationBinders
 {
 	public class StructuredCablingStudioParametersModelBinder : IModelBinder
 	{
+		private readonly IMapper _mapper;
+
+		public StructuredCablingStudioParametersModelBinder(IMapper mapper)
+		{
+			_mapper = mapper;
+		}
+
 		public Task BindModelAsync(ModelBindingContext bindingContext)
 		{
-			if (bindingContext == null)
+			if (bindingContext?.HttpContext?.Session != null)
 			{
-				throw new ArgumentNullException(nameof(bindingContext));
-			}
-			string sessionKey = "parameters";
-			if(bindingContext.HttpContext.Session != null)
-			{
-				string? data = bindingContext.HttpContext.Session.GetString(sessionKey);
-				if (data != null)
+				var cablingParameters = bindingContext.HttpContext.Session.GetStructuredCablingParameters();
+				StructuredCablingStudioParameters parameters;
+				if (cablingParameters != null)
 				{
-					var options = new JsonSerializerOptions
-					{
-						WriteIndented = true,
-						ReferenceHandler = ReferenceHandler.Preserve
-					};
-					(bool? IsStrictСomplianceWithTheStandart,
-					bool? IsAnArbitraryNumberOfPorts,
-					bool? IsTechnologicalReserveAvailability,
-					bool? IsRecommendationsAvailability,
-					double TechnologicalReserve,
-					RecommendationsArguments RecommendationsArguments)? deserializableParameters
-					= JsonSerializer.Deserialize<(bool?, bool?, bool?, bool?, double, RecommendationsArguments)>(data, options);
-					StructuredCablingStudioParameters parameters = new();
+					parameters = _mapper.Map<StructuredCablingStudioParameters>(cablingParameters);
 				}
+				else
+				{
+					parameters = new StructuredCablingStudioParameters
+					{
+						IsStrictСomplianceWithTheStandart = true,
+						IsAnArbitraryNumberOfPorts = true,
+						IsTechnologicalReserveAvailability = true,
+						TechnologicalReserve = 1.1,
+						IsRecommendationsAvailability = true
+					};
+					parameters.RecommendationsArguments.IsolationType = IsolationType.Indoor;
+					parameters.RecommendationsArguments.IsolationMaterial = IsolationMaterial.LSZH;
+					parameters.RecommendationsArguments.ShieldedType = ShieldedType.UTP;
+					parameters.RecommendationsArguments.ConnectionInterfaces = new List<ConnectionInterfaceStandard>
+					{
+						ConnectionInterfaceStandard.FastEthernet,
+						ConnectionInterfaceStandard.GigabitBASE_T
+					};
+					bindingContext.HttpContext.Session.SetStructuredCablingParameters(_mapper.Map<StructuredCablingParameters>(parameters));
+				}
+				bindingContext.Result = ModelBindingResult.Success(parameters);
 			}
-			throw new NotImplementedException();
+			return Task.CompletedTask;
 		}
 	}
 }

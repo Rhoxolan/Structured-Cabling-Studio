@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 using System.Text.Json;
-using StructuredCablingStudioCore.Parameters;
+using StructuredCablingStudio.DTOs;
 
 namespace StructuredCablingStudio.Extensions.ISessionExtension
 {
@@ -8,22 +8,29 @@ namespace StructuredCablingStudio.Extensions.ISessionExtension
 	{
 		private static readonly string key = "parameters";
 
-		public static void SetStructuredCablingParameters(this ISession session, (bool?, bool?, bool?, bool?, double, RecommendationsArguments) parameters)
+		public static void SetStructuredCablingParameters(this ISession session, StructuredCablingParameters parameters)
 		{
 			var options = new JsonSerializerOptions
 			{
 				WriteIndented = true,
 				ReferenceHandler = ReferenceHandler.Preserve,
-				IncludeFields = true
 			};
 			session.SetString(key, JsonSerializer.Serialize(parameters, options));
 		}
 
-		public static (bool? IsStrictСomplianceWithTheStandart, bool? IsAnArbitraryNumberOfPorts, bool? IsTechnologicalReserveAvailability,
-			bool? IsRecommendationsAvailability, double TechnologicalReserve, RecommendationsArguments RecommendationsArguments)?
-			GetStructuredCablingParameters(this ISession session)
+		public static StructuredCablingParameters? GetStructuredCablingParameters(this ISession session)
 		{
-			throw new NotImplementedException();
+			string? str = session.GetString(key);
+			if (str != null)
+			{
+				var options = new JsonSerializerOptions
+				{
+					WriteIndented = true,
+					ReferenceHandler = ReferenceHandler.Preserve,
+				};
+				return JsonSerializer.Deserialize<StructuredCablingParameters>(str, options);
+			}
+			return null;
 		}
 	}
 }

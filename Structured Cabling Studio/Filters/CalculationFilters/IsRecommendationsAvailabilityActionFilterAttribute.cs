@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
+using StructuredCablingStudio.Extensions.ModelStateDictionaryExtensions;
 
 namespace StructuredCablingStudio.Filters.CalculationFilters
 {
@@ -6,10 +7,10 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 	{
 		public override void OnActionExecuted(ActionExecutedContext context)
 		{
-			object? rawValue = context.ModelState.GetValueOrDefault("IsRecommendationsAvailability")?.RawValue;
-			if (rawValue is not null)
+			bool? isRecommendationsAvailability = context.ModelState.CheckModelStateCheckBoxValue("IsRecommendationsAvailability");
+			if (isRecommendationsAvailability is not null)
 			{
-				var valuesChanger = () =>
+				if (!isRecommendationsAvailability.Value)
 				{
 					context.ModelState.SetModelValue("IsCableRouteRunOutdoors", false, default);
 					context.ModelState.SetModelValue("IsConsiderFireSafetyRequirements", false, default);
@@ -21,23 +22,6 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 					context.ModelState.SetModelValue("HasTwoPointFiveGBASE_T", false, default);
 					context.ModelState.SetModelValue("HasFiveGBASE_T", false, default);
 					context.ModelState.SetModelValue("HasTenGE", false, default);
-				};
-				if (rawValue.GetType().IsArray)
-				{
-					var array = (Array)rawValue;
-					var stringValues = new string[array.Length];
-					if (stringValues[0] == "false")
-					{
-						valuesChanger();
-					}
-				}
-				if (rawValue is string)
-				{
-					string stringValue = (string)rawValue;
-					if (stringValue == "false")
-					{
-						valuesChanger();
-					}
 				}
 			}
 		}

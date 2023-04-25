@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
+using StructuredCablingStudio.Extensions.ModelStateDictionaryExtensions;
 
 namespace StructuredCablingStudio.Filters.CalculationFilters
 {
@@ -6,25 +7,12 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 	{
 		public override void OnActionExecuted(ActionExecutedContext context)
 		{
-			object? rawValue = context.ModelState.GetValueOrDefault("IsCableHankMeterageAvailability")?.RawValue;
-			if (rawValue is not null)
+			bool? isCableHankMeterageAvailability = context.ModelState.CheckModelStateCheckBoxValue("IsCableHankMeterageAvailability");
+			if (isCableHankMeterageAvailability is not null)
 			{
-				if (rawValue.GetType().IsArray)
+				if (!isCableHankMeterageAvailability.Value)
 				{
-					var array = (Array)rawValue;
-					var stringValues = new string[array.Length];
-					if (stringValues[0] == "false")
-					{
-						context.ModelState.SetModelValue("CableHankMeterage", "", default);
-					}
-				}
-				if (rawValue is string)
-				{
-					string stringValue = (string)rawValue;
-					if (stringValue == "false")
-					{
-						context.ModelState.SetModelValue("CableHankMeterage", "", default);
-					}
+					context.ModelState.SetModelValue("CableHankMeterage", "", default);
 				}
 			}
 		}
