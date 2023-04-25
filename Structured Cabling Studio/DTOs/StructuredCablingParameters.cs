@@ -14,6 +14,6 @@ namespace StructuredCablingStudio.DTOs
 		
 		public double TechnologicalReserve { get; set; }
 
-		public RecommendationsArguments RecommendationsArguments { get; set; } = default!;
+		public RecommendationsArguments RecommendationsArguments { get; set; } = new();
 	}
 }
