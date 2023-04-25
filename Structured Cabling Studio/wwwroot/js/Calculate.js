@@ -93,12 +93,15 @@ function removeDisabledAttributesFromAllInputs() {
 }
 
 function checkCableHankMeterage() {
-    const minPermanentLink = +document.getElementById('minPermanentLinkInput').value;
-    const maxPermanentLink = +document.getElementById('maxPermanentLinkInput').value;
-    const technologicalReserve = +document.getElementById('technologicalReserveInput').value;
-    const ceiledAveragePermanentLink = Math.ceil((minPermanentLink + maxPermanentLink) / 2 * technologicalReserve);
-    const cableHankMeterage = +document.getElementById('cableHankMeterageInput').value;
-    if (cableHankMeterage < ceiledAveragePermanentLink) {
-        document.getElementById('cableHankMeterageInput').value = ceiledAveragePermanentLink;
+    const value = document.getElementById('cableHankMeterageInput').value
+    if (value !== "" && !isNaN(value)) {
+        const minPermanentLink = +document.getElementById('minPermanentLinkInput').value;
+        const maxPermanentLink = +document.getElementById('maxPermanentLinkInput').value;
+        const technologicalReserve = +document.getElementById('technologicalReserveInput').value;
+        const ceiledAveragePermanentLink = Math.ceil((minPermanentLink + maxPermanentLink) / 2 * technologicalReserve);
+        const cableHankMeterage = +document.getElementById('cableHankMeterageInput').value;
+        if (cableHankMeterage < ceiledAveragePermanentLink) {
+            document.getElementById('cableHankMeterageInput').value = ceiledAveragePermanentLink;
+        }
     }
 }
