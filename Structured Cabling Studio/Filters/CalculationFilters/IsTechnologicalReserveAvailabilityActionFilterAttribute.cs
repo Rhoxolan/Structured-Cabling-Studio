@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
-using StructuredCablingStudio.Extensions.ModelStateDictionaryExtensions;
+using StructuredCablingStudio.Controllers;
+using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
 
 namespace StructuredCablingStudio.Filters.CalculationFilters
 {
@@ -7,10 +8,11 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 	{
 		public override void OnActionExecuted(ActionExecutedContext context)
 		{
-			bool? isTechnologicalReserveAvailability = context.ModelState.CheckModelStateCheckBoxValue("IsTechnologicalReserveAvailability");
-			if (isTechnologicalReserveAvailability is not null)
+			var controller = (Calculation)context.Controller;
+			var model = (CalculateViewModel?)controller.ViewData.Model;
+			if (model != null)
 			{
-				if (!isTechnologicalReserveAvailability.Value)
+				if (!model.IsTechnologicalReserveAvailability)
 				{
 					context.ModelState.SetModelValue("TechnologicalReserve", 1, default);
 				}

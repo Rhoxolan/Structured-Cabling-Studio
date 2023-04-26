@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
-using StructuredCablingStudio.Extensions.ModelStateDictionaryExtensions;
+using StructuredCablingStudio.Controllers;
+using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
 
 namespace StructuredCablingStudio.Filters.CalculationFilters
 {
@@ -7,10 +8,11 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 	{
 		public override void OnActionExecuted(ActionExecutedContext context)
 		{
-			bool? isRecommendationsAvailability = context.ModelState.CheckModelStateCheckBoxValue("IsRecommendationsAvailability");
-			if (isRecommendationsAvailability is not null)
+			var controller = (Calculation)context.Controller;
+			var model = (CalculateViewModel?)controller.ViewData.Model;
+			if (model != null)
 			{
-				if (!isRecommendationsAvailability.Value)
+				if (!model.IsRecommendationsAvailability)
 				{
 					context.ModelState.SetModelValue("IsCableRouteRunOutdoors", false, default);
 					context.ModelState.SetModelValue("IsConsiderFireSafetyRequirements", false, default);

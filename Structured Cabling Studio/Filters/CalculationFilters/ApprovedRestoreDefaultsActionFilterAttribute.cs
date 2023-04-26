@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
+using StructuredCablingStudio.Controllers;
+using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
 
 namespace StructuredCablingStudio.Filters.CalculationFilters
 {
@@ -6,10 +8,14 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 	{
 		public override void OnActionExecuted(ActionExecutedContext context)
 		{
-			string? modelValue = context.ModelState.GetValueOrDefault("ApprovedRestoreDefaults")?.RawValue?.ToString();
-			if (modelValue == "approved")
+			var controller = (Calculation)context.Controller;
+			var model = (CalculateViewModel?)controller.ViewData.Model;
+			if(model != null)
 			{
-				context.ModelState.SetModelValue("ApprovedRestoreDefaults", "", default);
+				if (model.ApprovedRestoreDefaults == "approved")
+				{
+					context.ModelState.SetModelValue("ApprovedRestoreDefaults", "", default);
+				}
 			}
 		}
 	}
