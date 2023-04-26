@@ -14,7 +14,7 @@
 
 		public int? CableHankMeterage { get; set; }
 
-		public double TechnologicalReserve { get; set; } = 1;
+		public double TechnologicalReserve { get; set; }
 
 		public string? ApprovedCalculation { get; set; }
 
