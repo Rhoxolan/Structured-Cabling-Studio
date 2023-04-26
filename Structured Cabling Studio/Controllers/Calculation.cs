@@ -44,6 +44,7 @@ namespace StructuredCablingStudio.Controllers
 		[IsCableHankMeterageAvailabilityActionFilter]
 		[IsTechnologicalReserveAvailabilityActionFilter]
 		[IsRecommendationsAvailabilityActionFilter]
+		[StructuredCablingStuidoParametersResultFilter]
 		public IActionResult Calculate(CalculateViewModel calculateVM, StructuredCablingStudioParameters parameters)
 		{
 			if (calculateVM.ApprovedCalculation == "approved")
