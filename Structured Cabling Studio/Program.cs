@@ -18,7 +18,8 @@ builder.Services.AddControllersWithViews(opt
 builder.Services.AddIdentity<User, IdentityRole>()
 	.AddEntityFrameworkStores<ApplicationContext>();
 
-builder.Services.AddAutoMapper(typeof(StructuredCablingParametersProfile))
+builder.Services.AddAutoMapper(typeof(StructuredCablingParametersProfile),
+	typeof(CalculateViewModelProfile))
 	.AddDbContext<ApplicationContext>(opt
 	=> opt.UseSqlServer(builder.Configuration.GetConnectionString("CablingConfigurationsDB")))
 	.AddLocalization(opt => opt.ResourcesPath = "Resources")

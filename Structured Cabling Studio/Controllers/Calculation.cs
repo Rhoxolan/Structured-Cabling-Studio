@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using StructuredCablingStudio.Data.Contexts;
@@ -16,20 +17,23 @@ namespace StructuredCablingStudio.Controllers
 		private readonly UserManager<User> _userManager;
 		private readonly SignInManager<User> _signInManager;
 		private readonly RoleManager<IdentityRole> _roleManager;
+		private readonly IMapper _mapper;
 
-		public Calculation(ILogger<Calculation> logger, ApplicationContext context, UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager)
+		public Calculation(ILogger<Calculation> logger, ApplicationContext context, UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager, IMapper mapper)
 		{
 			_logger = logger;
 			_context = context;
 			_userManager = userManager;
 			_signInManager = signInManager;
 			_roleManager = roleManager;
+			_mapper = mapper;
 		}
 
 		public IActionResult Calculate(StructuredCablingStudioParameters parameters)
 		{
+			CalculateViewModel viewModel = _mapper.Map<CalculateViewModel>(parameters);
 			ViewData["Diapasons"] = parameters.Diapasons;
-			return View(new CalculateViewModel { });
+			return View(viewModel);
 		}
 
 		[HttpPost]
@@ -40,7 +44,6 @@ namespace StructuredCablingStudio.Controllers
 		[IsCableHankMeterageAvailabilityActionFilter]
 		[IsTechnologicalReserveAvailabilityActionFilter]
 		[IsRecommendationsAvailabilityActionFilter]
-		[StructuredCablingStuidoParametersResultFilter]
 		public IActionResult Calculate(CalculateViewModel calculateVM, StructuredCablingStudioParameters parameters)
 		{
 			if (calculateVM.ApprovedCalculation == "approved")
