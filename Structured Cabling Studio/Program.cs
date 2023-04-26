@@ -6,6 +6,7 @@ using StructuredCablingStudio.AutoMapperProfiles;
 using StructuredCablingStudio.Binders.CalculationBinders;
 using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
+using StructuredCablingStudio.Filters.CalculationFilters;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,8 +19,10 @@ builder.Services.AddControllersWithViews(opt
 builder.Services.AddIdentity<User, IdentityRole>()
 	.AddEntityFrameworkStores<ApplicationContext>();
 
-builder.Services.AddAutoMapper(typeof(StructuredCablingParametersProfile),
-	typeof(CalculateViewModelProfile))
+builder.Services.AddAutoMapper(typeof(StructuredCablingParametersToStructuredCablingStudioParametersProfile),
+	typeof(StructuredCablingStudioParametersToCalculateViewModelProfile),
+	typeof(CalculateViewModelToStructuredCablingParametersProfile))
+	.AddScoped<StructuredCablingStuidoParametersResultFilter>()
 	.AddDbContext<ApplicationContext>(opt
 	=> opt.UseSqlServer(builder.Configuration.GetConnectionString("CablingConfigurationsDB")))
 	.AddLocalization(opt => opt.ResourcesPath = "Resources")

@@ -14,7 +14,8 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 			{
 				if (model.ApprovedRestoreDefaults == "approved")
 				{
-					context.ModelState.SetModelValue("ApprovedRestoreDefaults", "", default);
+					model.ApprovedRestoreDefaults = "";
+					context.ModelState.SetModelValue(nameof(model.ApprovedRestoreDefaults), model.ApprovedRestoreDefaults, default);
 				}
 			}
 		}

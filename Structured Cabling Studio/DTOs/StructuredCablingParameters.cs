@@ -4,7 +4,7 @@ namespace StructuredCablingStudio.DTOs
 {
 	public class StructuredCablingParameters
 	{
-		public bool IsStrictСomplianceWithTheStandart { get; set; }
+		public bool IsStrictComplianceWithTheStandart { get; set; }
 
 		public bool IsAnArbitraryNumberOfPorts { get; set; }
 		

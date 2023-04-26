@@ -14,7 +14,8 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 			{
 				if (!model.IsTechnologicalReserveAvailability)
 				{
-					context.ModelState.SetModelValue("TechnologicalReserve", 1, default);
+					model.TechnologicalReserve = 1;
+					context.ModelState.SetModelValue(nameof(model.TechnologicalReserve), model.TechnologicalReserve, default);
 				}
 			}
 		}

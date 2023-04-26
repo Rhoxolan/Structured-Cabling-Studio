@@ -61,7 +61,7 @@
         /// <summary>
         /// Allowed or not to enter values according to ISO/IEC 11801
         /// </summary>
-        public bool? IsStrictСomplianceWithTheStandart
+        public bool? IsStrictComplianceWithTheStandart
         {
             get => diapasonContext.IsStrictСomplianceWithTheStandart;
             set => diapasonContext.IsStrictСomplianceWithTheStandart = value;

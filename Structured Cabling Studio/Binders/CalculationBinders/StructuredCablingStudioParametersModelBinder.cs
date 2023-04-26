@@ -29,7 +29,7 @@ namespace StructuredCablingStudio.Binders.CalculationBinders
 				{
 					parameters = new StructuredCablingStudioParameters
 					{
-						IsStrictСomplianceWithTheStandart = true,
+						IsStrictComplianceWithTheStandart = true,
 						IsAnArbitraryNumberOfPorts = true,
 						IsTechnologicalReserveAvailability = true,
 						TechnologicalReserve = 1.1,

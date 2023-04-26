@@ -14,7 +14,8 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 			{
 				if (!model.IsCableHankMeterageAvailability)
 				{
-					context.ModelState.SetModelValue("CableHankMeterage", "", default);
+					model.CableHankMeterage = null;
+					context.ModelState.SetModelValue(nameof(model.CableHankMeterage), model.CableHankMeterage, default);
 				}
 			}
 		}

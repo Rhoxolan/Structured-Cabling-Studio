@@ -14,7 +14,8 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 			{
 				if (model.ApprovedCalculation == "approved")
 				{
-					context.ModelState.SetModelValue("ApprovedCalculation", "", default);
+					model.ApprovedCalculation = "";
+					context.ModelState.SetModelValue(nameof(model.ApprovedCalculation), model.ApprovedCalculation, default);
 				}
 			}
 		}

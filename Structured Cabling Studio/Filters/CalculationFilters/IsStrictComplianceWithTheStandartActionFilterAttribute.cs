@@ -14,7 +14,8 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 			{
 				if (!model.IsStrictComplianceWithTheStandart)
 				{
-					context.ModelState.SetModelValue("IsAnArbitraryNumberOfPorts", true, default);
+					model.IsAnArbitraryNumberOfPorts = true;
+					context.ModelState.SetModelValue(nameof(model.IsAnArbitraryNumberOfPorts), model.IsAnArbitraryNumberOfPorts, default);
 				}
 			}
 		}
