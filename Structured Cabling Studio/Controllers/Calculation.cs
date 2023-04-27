@@ -52,7 +52,6 @@ namespace StructuredCablingStudio.Controllers
 				//Calculate
 				Console.WriteLine(DateTimeOffset.FromUnixTimeMilliseconds(Convert.ToInt64(calculateVM.RecordTime)).DateTime.ToLocalTime().ToString()); //Отладить
 			}
-			ViewData["Diapasons"] = parameters.Diapasons;
 			return View(calculateVM);
 		}
 
