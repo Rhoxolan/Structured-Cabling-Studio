@@ -24,7 +24,7 @@ namespace StructuredCablingStudio.AutoMapperProfiles
 				}
 				if (src.HasGigabitBASE_T)
 				{
-					dst.RecommendationsArguments.ConnectionInterfaces.Add(ConnectionInterfaceStandard.FastEthernet);
+					dst.RecommendationsArguments.ConnectionInterfaces.Add(ConnectionInterfaceStandard.GigabitBASE_T);
 				}
 				if (src.HasGigabitBASE_TX)
 				{
