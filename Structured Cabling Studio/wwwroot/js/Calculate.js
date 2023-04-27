@@ -52,6 +52,8 @@ document.getElementById('calculateButton').addEventListener('click', function ()
     document.getElementById('recordTimeInput').value = new Date().getTime().toString();
 });
 
+document.getElementById('restoreDefaultsButton').addEventListener('click', calculateFormSubmit);
+
 document.getElementById('isStrictComplianceWithTheStandartCheckBox').addEventListener('click', calculateFormSubmit);
 
 document.getElementById('isAnArbitraryNumberOfPortsCheckBox').addEventListener('click', calculateFormSubmit);
