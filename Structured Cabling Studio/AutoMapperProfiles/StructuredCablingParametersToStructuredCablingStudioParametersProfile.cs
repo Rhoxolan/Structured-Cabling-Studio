@@ -13,6 +13,13 @@ namespace StructuredCablingStudio.AutoMapperProfiles
 				opt.SetMappingOrder(5);
 				opt.Condition(src => src.IsTechnologicalReserveAvailability);
 			})
+			.AfterMap((src, dst) =>
+			{
+				dst.RecommendationsArguments.ShieldedType = src.RecommendationsArguments.ShieldedType;
+				dst.RecommendationsArguments.IsolationMaterial = src.RecommendationsArguments.IsolationMaterial;
+				dst.RecommendationsArguments.IsolationType = src.RecommendationsArguments.IsolationType;
+				dst.RecommendationsArguments.ConnectionInterfaces = src.RecommendationsArguments.ConnectionInterfaces;
+			})
 			.ReverseMap();
 	}
 }
