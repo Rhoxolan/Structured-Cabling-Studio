@@ -44,7 +44,7 @@ namespace StructuredCablingStudio.Controllers
 		[IsCableHankMeterageAvailabilityActionFilter]
 		[IsTechnologicalReserveAvailabilityActionFilter]
 		[IsRecommendationsAvailabilityActionFilter]
-		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MaxValue)]
+		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
 		[ServiceFilter(typeof(StructuredCablingStuidoParametersResultFilter))]
 		public IActionResult Calculate(CalculateViewModel calculateVM, StructuredCablingStudioParameters parameters)
 		{
