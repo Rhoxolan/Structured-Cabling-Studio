@@ -1,4 +1,5 @@
-﻿@using StructuredCablingStudioCore.Parameters;
+﻿@using StructuredCablingStudioCore.Parameters
+@using static System.Globalization.CultureInfo
 @model CalculateViewModel
 @{
 	ViewData["Title"] = "Calculation";
@@ -17,7 +18,9 @@
 		</div>
 		<div class="row">
 			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-				<input class="form-control border-primary border-opacity-75" type="number" id="minPermanentLinkInput" step="0.01" min="@diapasons.MinPermanentLinkDiapason.Min" max="@diapasons.MinPermanentLinkDiapason.Max" asp-for="MinPermanentLink" required />
+				<input class="form-control border-primary border-opacity-75" type="number" id="minPermanentLinkInput" step="0.01"
+				min="@diapasons.MinPermanentLinkDiapason.Min.ToString(InvariantCulture)" max="@diapasons.MinPermanentLinkDiapason.Max.ToString(InvariantCulture)"
+				asp-for="MinPermanentLink" required />
 			</div>
 			<div class="col d-flex align-items-end ps-0">
 				<label class="form-label mb-1" for="minPermanentLinkInput">
@@ -37,7 +40,9 @@
 		</div>
 		<div class="row">
 			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-				<input class="form-control border-primary border-opacity-75" type="number" id="maxPermanentLinkInput" step="0.01" min="@diapasons.MaxPermanentLinkDiapason.Min" max="@diapasons.MaxPermanentLinkDiapason.Max" asp-for="MaxPermanentLink" required />
+				<input class="form-control border-primary border-opacity-75" type="number" id="maxPermanentLinkInput" step="0.01"
+				min="@diapasons.MaxPermanentLinkDiapason.Min.ToString(InvariantCulture)" max="@diapasons.MaxPermanentLinkDiapason.Max.ToString(InvariantCulture)"
+				asp-for="MaxPermanentLink" required />
 			</div>
 			<div class="col d-flex align-items-end ps-0">
 				<label class="form-label mb-1" for="maxPermanentLinkInput">
@@ -57,7 +62,9 @@
 		</div>
 		<div class="row">
 			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-				<input class="form-control border-primary border-opacity-75" id="numberOfWorkplacesInput" step="1" min="@diapasons.NumberOfWorkplacesDiapason.Min" max="@diapasons.NumberOfWorkplacesDiapason.Max" asp-for="NumberOfWorkplaces" required />
+				<input class="form-control border-primary border-opacity-75" id="numberOfWorkplacesInput" step="1"
+				min="@diapasons.NumberOfWorkplacesDiapason.Min.ToString(InvariantCulture)" max="@diapasons.NumberOfWorkplacesDiapason.Max.ToString(InvariantCulture)"
+				asp-for="NumberOfWorkplaces" required />
 			</div>
 		</div>
 	</div>
@@ -72,7 +79,9 @@
 		</div>
 		<div class="row">
 			<div class="col-5 col-md-4 col-lg-3 col-xxl-2">
-				<input class="form-control border-primary border-opacity-75" id="numberOfPortsInput" step="1" min="@diapasons.NumberOfPortsDiapason.Min" max="@diapasons.NumberOfPortsDiapason.Max" asp-for="NumberOfPorts" required/>
+				<input class="form-control border-primary border-opacity-75" id="numberOfPortsInput" step="1" 
+				min="@diapasons.NumberOfPortsDiapason.Min.ToString(InvariantCulture)" max="@diapasons.NumberOfPortsDiapason.Max.ToString(InvariantCulture)"
+				asp-for="NumberOfPorts" required />
 			</div>
 		</div>
 	</div>
@@ -93,7 +102,9 @@
 				@{
 					if (Model.IsCableHankMeterageAvailability)
 					{
-						<input class="form-control border-primary border-opacity-75" step="1" list="cableHankMeterageDatalist" id="cableHankMeterageInput" min="@diapasons.CableHankMeterageDiapason.Min" max="@diapasons.CableHankMeterageDiapason.Max" asp-for="CableHankMeterage" required />
+						<input class="form-control border-primary border-opacity-75" step="1" list="cableHankMeterageDatalist" id="cableHankMeterageInput"
+						min="@diapasons.CableHankMeterageDiapason.Min.ToString(InvariantCulture)" max="@diapasons.CableHankMeterageDiapason.Max.ToString(InvariantCulture)"
+						asp-for="CableHankMeterage" required />
 					}
 					else
 					{
@@ -170,7 +181,9 @@
 				@{
 					if (Model.IsTechnologicalReserveAvailability)
 					{
-						<input class="form-control border-primary border-opacity-75" type="number" step="0.01" min="@diapasons.TechnologicalReserveDiapason.Min" max="@diapasons.TechnologicalReserveDiapason.Max" id="technologicalReserveInput" asp-for="TechnologicalReserve" required/>
+						<input class="form-control border-primary border-opacity-75" type="number" step="0.01"
+						min="@diapasons.TechnologicalReserveDiapason.Min.ToString(InvariantCulture)" max="@diapasons.TechnologicalReserveDiapason.Max.ToString(InvariantCulture)"
+						id="technologicalReserveInput" asp-for="TechnologicalReserve" required />
 					}
 					else
 					{
@@ -423,7 +436,7 @@
 				<button type="submit" id="restoreDefaultsButton" class="btn btn-sm btn-outline-secondary">
 					@Localizer["Restore defaults"]
 				</button>
-				<input type="hidden" id="approvedRestoreDefaultsInput" asp-for="ApprovedRestoreDefaults"/>
+				<input type="hidden" id="approvedRestoreDefaultsInput" asp-for="ApprovedRestoreDefaults" />
 			</div>
 		</div>
 	</div>
@@ -436,7 +449,7 @@
 				<button type="submit" id="calculateButton" class="btn btn-lg btn-outline-primary fw-semibold">
 					@Localizer["Calculate"]
 				</button>
-				<input type="hidden" id="approvedCalculationInput" asp-for="ApprovedCalculation"/>
+				<input type="hidden" id="approvedCalculationInput" asp-for="ApprovedCalculation" />
 				<input type="hidden" id="recordTimeInput" asp-for="RecordTime" />
 			</div>
 		</div>
