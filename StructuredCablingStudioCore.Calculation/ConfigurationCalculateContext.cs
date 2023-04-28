@@ -33,7 +33,7 @@ namespace StructuredCablingStudioCore.Calculation
         }
 
         /// <summary>
-        /// Set or get of the value of 1 hank cable meterage consider when structured cabling configuration calculates
+        /// Set and get of the value of 1 hank cable meterage consider when structured cabling configuration calculates
         /// </summary>
         public bool? IsCableHankMeterageAvailability
         {

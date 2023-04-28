@@ -22,10 +22,10 @@ namespace StructuredCablingStudioCore.Calculation
             int numberOfPorts, int? cableHankMeterage)
             => configurationCalculateContext.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts, cableHankMeterage);
 
-        /// <summary>
-        /// The set of the value of 1 hank cable meterage consider when structured cabling configuration calculates
-        /// </summary>
-        public bool? IsCableHankMeterageAvailability
+		/// <summary>
+		/// Set and get of the value of 1 hank cable meterage consider when structured cabling configuration calculates
+		/// </summary>
+		public bool? IsCableHankMeterageAvailability
         {
 			get => configurationCalculateContext.IsCableHankMeterageAvailability;
 			set => configurationCalculateContext.IsCableHankMeterageAvailability = value;

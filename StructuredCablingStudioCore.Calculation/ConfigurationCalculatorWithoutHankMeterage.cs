@@ -1,5 +1,4 @@
 ﻿using StructuredCablingStudioCore.Parameters;
-using System.Text;
 
 namespace StructuredCablingStudioCore.Calculation
 {
