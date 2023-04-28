@@ -27,10 +27,10 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 			var model = (CalculateViewModel?)controller.ViewData.Model;
 			if(model != null)
 			{
-				var structuredCablingParameters = _mapper.Map<StructuredCablingParameters>(model);
-				context.HttpContext.Session.SetStructuredCablingParameters(structuredCablingParameters);
-				var structuredCablingStudioParameters = _mapper.Map<StructuredCablingStudioParameters>(structuredCablingParameters);
+				var structuredCablingStudioParameters = _mapper.Map<StructuredCablingStudioParameters>(model);
 				controller.ViewData["Diapasons"] = structuredCablingStudioParameters.Diapasons;
+				var structuredCablingParameters = _mapper.Map<StructuredCablingParameters>(structuredCablingStudioParameters);
+				context.HttpContext.Session.SetStructuredCablingParameters(structuredCablingParameters);
 			}
 		}
 	}

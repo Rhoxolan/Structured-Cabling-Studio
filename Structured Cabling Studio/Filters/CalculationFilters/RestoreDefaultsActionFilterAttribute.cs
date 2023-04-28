@@ -4,7 +4,7 @@ using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
 
 namespace StructuredCablingStudio.Filters.CalculationFilters
 {
-	public class ApprovedRestoreDefaultsActionFilterAttribute : ActionFilterAttribute
+	public class RestoreDefaultsActionFilterAttribute : ActionFilterAttribute
 	{
 		public override void OnActionExecuted(ActionExecutedContext context)
 		{
@@ -20,8 +20,6 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 					context.ModelState.SetModelValue(nameof(model.IsAnArbitraryNumberOfPorts), model.IsAnArbitraryNumberOfPorts, default);
 					model.IsTechnologicalReserveAvailability = true;
 					context.ModelState.SetModelValue(nameof(model.IsTechnologicalReserveAvailability), model.IsTechnologicalReserveAvailability, default);
-					model.TechnologicalReserve = 1.1;
-					context.ModelState.SetModelValue(nameof(model.TechnologicalReserve), model.TechnologicalReserve, default);
 					model.IsRecommendationsAvailability = true;
 					context.ModelState.SetModelValue(nameof(model.IsRecommendationsAvailability), model.IsRecommendationsAvailability, default);
 					model.IsCableRouteRunOutdoors = false;

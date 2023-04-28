@@ -32,7 +32,6 @@ namespace StructuredCablingStudio.Binders.CalculationBinders
 						IsStrictComplianceWithTheStandart = true,
 						IsAnArbitraryNumberOfPorts = true,
 						IsTechnologicalReserveAvailability = true,
-						TechnologicalReserve = 1.1,
 						IsRecommendationsAvailability = true
 					};
 					parameters.RecommendationsArguments.IsolationType = IsolationType.Indoor;

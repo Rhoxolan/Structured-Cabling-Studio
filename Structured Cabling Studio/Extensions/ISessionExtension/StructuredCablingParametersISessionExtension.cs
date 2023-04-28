@@ -1,6 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 using System.Text.Json;
 using StructuredCablingStudio.DTOs;
+using StructuredCablingStudioCore.Calculation;
 
 namespace StructuredCablingStudio.Extensions.ISessionExtension
 {
@@ -32,5 +33,10 @@ namespace StructuredCablingStudio.Extensions.ISessionExtension
 			}
 			return null;
 		}
+	}
+
+	public static class CalculateParametersISessionExtension
+	{
+
 	}
 }

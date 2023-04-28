@@ -24,6 +24,7 @@ builder.Services.AddAutoMapper(typeof(StructuredCablingParametersToStructuredCab
 	typeof(CalculateViewModelToStructuredCablingParametersProfile))
 	.AddScoped<StructuredCablingStuidoParametersResultFilter>()
 	.AddScoped<DiapasonActionFilter>()
+	.AddScoped<ValueActionFilter>()
 	.AddDbContext<ApplicationContext>(opt
 	=> opt.UseSqlServer(builder.Configuration.GetConnectionString("CablingConfigurationsDB")))
 	.AddLocalization(opt => opt.ResourcesPath = "Resources")

@@ -1,12 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc.Filters;
 using StructuredCablingStudio.Controllers;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
+using StructuredCablingStudioCore.Parameters;
 
 namespace StructuredCablingStudio.Filters.CalculationFilters
 {
-	public class ValueActionFilterAttribute : ActionFilterAttribute
+	public class ValueActionFilter : IActionFilter
 	{
-		public override void OnActionExecuted(ActionExecutedContext context)
+		private readonly IMapper _mapper;
+
+		public ValueActionFilter(IMapper mapper)
+		{
+			_mapper = mapper;
+		}
+
+		public void OnActionExecuting(ActionExecutingContext context)
+		{
+		}
+
+		public void OnActionExecuted(ActionExecutedContext context)
 		{
 			var controller = (Calculation)context.Controller;
 			var model = (CalculateViewModel?)controller.ViewData.Model;
@@ -20,6 +33,12 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 						model.CableHankMeterage = ceiledAveragePermanentLink;
 						context.ModelState.SetModelValue(nameof(model.CableHankMeterage), model.CableHankMeterage, default);
 					}
+				}
+				var structuredCablingStudioParameters = _mapper.Map<StructuredCablingStudioParameters>(model);
+				if(model.TechnologicalReserve != structuredCablingStudioParameters.TechnologicalReserve)
+				{
+					model.TechnologicalReserve = structuredCablingStudioParameters.TechnologicalReserve;
+					context.ModelState.SetModelValue(nameof(model.TechnologicalReserve), model.TechnologicalReserve, default);
 				}
 			}
 		}
