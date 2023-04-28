@@ -34,6 +34,7 @@ namespace StructuredCablingStudio.Controllers
 		{
 			CalculateViewModel viewModel = _mapper.Map<CalculateViewModel>(cablingParameters);
 			viewModel.IsCableHankMeterageAvailability = calculateParameters.IsCableHankMeterageAvailability.GetValueOrDefault();
+			viewModel.CableHankMeterage = calculateParameters.CableHankMeterage;
 			ViewData["Diapasons"] = cablingParameters.Diapasons;
 			return View(viewModel);
 		}
@@ -43,11 +44,10 @@ namespace StructuredCablingStudio.Controllers
 		[RestoreDefaultsActionFilter]
 		[ApprovedCalculationActionFilter]
 		[IsStrictComplianceWithTheStandartActionFilter]
-		[IsCableHankMeterageAvailabilityActionFilter]
 		[IsRecommendationsAvailabilityActionFilter]
 		[ServiceFilter(typeof(ValueActionFilter), Order = int.MinValue + 1)]
 		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
-		[ServiceFilter(typeof(StructuredCablingStuidoParametersResultFilter))]
+		[ServiceFilter(typeof(ParametersResultFilter))]
 		public IActionResult Calculate(CalculateViewModel calculateVM, StructuredCablingStudioParameters parameters)
 		{
 			if (calculateVM.ApprovedCalculation == "approved")

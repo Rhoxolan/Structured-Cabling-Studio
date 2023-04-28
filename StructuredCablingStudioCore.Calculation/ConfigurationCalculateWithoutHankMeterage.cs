@@ -37,10 +37,10 @@ namespace StructuredCablingStudioCore.Calculation
 		/// <summary>
 		/// Value of the cable hank meterage
 		/// </summary>
-		public int CableHankMeterage
+		public int? CableHankMeterage
 		{
-			get => throw new NotImplementedException();
-			set => throw new NotImplementedException();
+			get => null;
+			set => throw new StructuredCablingStudioCoreException("Value of the cable hank meterage is not taken into account. Please check the settings.");
 		}
 	}
 }

@@ -16,6 +16,6 @@ namespace StructuredCablingStudioCore.Calculation
         /// <summary>
         /// Value of the cable hank meterage
         /// </summary>
-		int CableHankMeterage { get; set; }
+		int? CableHankMeterage { get; set; }
 	}
 }

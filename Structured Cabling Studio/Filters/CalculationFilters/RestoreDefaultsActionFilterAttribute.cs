@@ -35,6 +35,10 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 					{
 						IsCableHankMeterageAvailability = true
 					};
+					model.IsCableHankMeterageAvailability = calculateParameters.IsCableHankMeterageAvailability.Value;
+					context.ModelState.SetModelValue(nameof(model.IsCableHankMeterageAvailability), model.IsCableHankMeterageAvailability, default);
+					model.CableHankMeterage = calculateParameters.CableHankMeterage;
+					context.ModelState.SetModelValue(nameof(model.CableHankMeterage), model.CableHankMeterage, default);
 					model.TechnologicalReserve = cablingParameters.TechnologicalReserve;
 					context.ModelState.SetModelValue(nameof(model.TechnologicalReserve), model.TechnologicalReserve, default);
 					model.IsStrictComplianceWithTheStandart = cablingParameters.IsStrictComplianceWithTheStandart.Value;

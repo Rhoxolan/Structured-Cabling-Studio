@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using StructuredCablingStudio.Controllers;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
+using StructuredCablingStudioCore.Calculation;
 using StructuredCablingStudioCore.Parameters;
 
 namespace StructuredCablingStudio.Filters.CalculationFilters
@@ -39,6 +40,12 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 				{
 					model.TechnologicalReserve = structuredCablingStudioParameters.TechnologicalReserve;
 					context.ModelState.SetModelValue(nameof(model.TechnologicalReserve), model.TechnologicalReserve, default);
+				}
+				var configurationCalculateParameters = _mapper.Map<ConfigurationCalculateParameters>(model);
+				if(model.CableHankMeterage != configurationCalculateParameters.CableHankMeterage)
+				{
+					model.CableHankMeterage = configurationCalculateParameters.CableHankMeterage;
+					context.ModelState.SetModelValue(nameof(model.CableHankMeterage), model.CableHankMeterage, default);
 				}
 			}
 		}

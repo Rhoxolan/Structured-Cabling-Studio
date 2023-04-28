@@ -25,8 +25,9 @@ builder.Services.AddIdentity<User, IdentityRole>()
 builder.Services.AddAutoMapper(typeof(StructuredCablingParametersToStructuredCablingStudioParametersProfile),
 	typeof(StructuredCablingStudioParametersToCalculateViewModelProfile),
 	typeof(CalculateViewModelToStructuredCablingParametersProfile),
-	typeof(CalculateParametersToConfigurationCalculateParametersProfile))
-	.AddScoped<StructuredCablingStuidoParametersResultFilter>()
+	typeof(CalculateParametersToConfigurationCalculateParametersProfile),
+	typeof(CalculateViewModelToConfigurationCalculateParameters))
+	.AddScoped<ParametersResultFilter>()
 	.AddScoped<DiapasonActionFilter>()
 	.AddScoped<ValueActionFilter>()
 	.AddDbContext<ApplicationContext>(opt

@@ -10,11 +10,11 @@ namespace StructuredCablingStudioCore.Calculation
     /// </summary>
     internal class ConfigurationCalculateWithHankMeterage : IConfigurationCalculateStrategy
     {
-		private int cableHankMeterage;
+		private int? cableHankMeterage;
 
         public ConfigurationCalculateWithHankMeterage()
         {
-            cableHankMeterage = ToInt32(ConfigurationCalculateWithHankMeterage_CableHankMeterage_Default, InvariantCulture);
+            cableHankMeterage = null;
 		}
 
 		/// <summary>
@@ -24,14 +24,18 @@ namespace StructuredCablingStudioCore.Calculation
 		public CablingConfiguration Calculate(StructuredCablingStudioParameters parameters, double minPermanentLink, double maxPermanentLink,
             int numberOfWorkplaces, int numberOfPorts)
         {
-            double averagePermanentLink = (minPermanentLink + maxPermanentLink) / 2 * parameters.TechnologicalReserve;
+			if (cableHankMeterage is null)
+			{
+				throw new StructuredCablingStudioCoreException("Structured cabling configuration calculating error! The value of cable meterage in 1 hank is not determined");
+			}
+			double averagePermanentLink = (minPermanentLink + maxPermanentLink) / 2 * parameters.TechnologicalReserve;
             if (averagePermanentLink > cableHankMeterage)
             {
                 throw new StructuredCablingStudioCoreException("Calculation is impossible! The value of average permanent link length more than the value of cable hank meterage");
             }
             double? cableQuantity = averagePermanentLink * numberOfWorkplaces * numberOfPorts;
-            int? hankQuantity = (int)Math.Ceiling(numberOfWorkplaces * numberOfPorts / Math.Floor(cableHankMeterage / averagePermanentLink));
-            double totalCableQuantity = hankQuantity.Value * cableHankMeterage;
+            int? hankQuantity = (int)Math.Ceiling(numberOfWorkplaces * numberOfPorts / Math.Floor(cableHankMeterage.Value / averagePermanentLink));
+            double totalCableQuantity = hankQuantity.Value * cableHankMeterage.Value;
             return new CablingConfiguration
             {
                 RecordTime = DateTime.Now,
@@ -57,10 +61,15 @@ namespace StructuredCablingStudioCore.Calculation
 		/// <summary>
 		/// Value of the cable hank meterage
 		/// </summary>
-		public int CableHankMeterage
+		public int? CableHankMeterage
         {
             get
             {
+                if(cableHankMeterage != null)
+                {
+                    return cableHankMeterage;
+                }
+                cableHankMeterage = ToInt32(ConfigurationCalculateWithHankMeterage_CableHankMeterage_Default, InvariantCulture);
                 return cableHankMeterage;
 			}
             set
