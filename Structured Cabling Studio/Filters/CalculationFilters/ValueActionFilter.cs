@@ -34,12 +34,6 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 						context.ModelState.SetModelValue(nameof(model.CableHankMeterage), model.CableHankMeterage, default);
 					}
 				}
-				var structuredCablingStudioParameters = _mapper.Map<StructuredCablingStudioParameters>(model);
-				if(model.TechnologicalReserve != structuredCablingStudioParameters.TechnologicalReserve)
-				{
-					model.TechnologicalReserve = structuredCablingStudioParameters.TechnologicalReserve;
-					context.ModelState.SetModelValue(nameof(model.TechnologicalReserve), model.TechnologicalReserve, default);
-				}
 			}
 		}
 	}

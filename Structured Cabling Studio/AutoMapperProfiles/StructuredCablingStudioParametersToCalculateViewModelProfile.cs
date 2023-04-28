@@ -25,7 +25,7 @@ namespace StructuredCablingStudio.AutoMapperProfiles
 			.ForMember(dst => dst.TechnologicalReserve, opt =>
 			{
 				opt.SetMappingOrder(5);
-				opt.Condition(src => src.IsTechnologicalReserveAvailability && src.ApprovedRestoreDefaults != "approved");
+				opt.Condition(src => src.IsTechnologicalReserveAvailability);
 			})
 			.AfterMap((src, dst) =>
 			{
