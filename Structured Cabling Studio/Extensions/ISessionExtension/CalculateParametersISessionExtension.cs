@@ -4,11 +4,11 @@ using StructuredCablingStudio.DTOs;
 
 namespace StructuredCablingStudio.Extensions.ISessionExtension
 {
-	public static class StructuredCablingParametersISessionExtension
+	public static class CalculateParametersISessionExtension
 	{
-		private static readonly string key = "cablingParameters";
+		private static readonly string key = "calculateParameters";
 
-		public static void SetStructuredCablingParameters(this ISession session, StructuredCablingParameters parameters)
+		public static void SetCalculateParameters(this ISession session, CalculateParameters parameters)
 		{
 			var options = new JsonSerializerOptions
 			{
@@ -18,7 +18,7 @@ namespace StructuredCablingStudio.Extensions.ISessionExtension
 			session.SetString(key, JsonSerializer.Serialize(parameters, options));
 		}
 
-		public static StructuredCablingParameters? GetStructuredCablingParameters(this ISession session)
+		public static CalculateParameters? GetCalculateParameters(this ISession session)
 		{
 			string? str = session.GetString(key);
 			if (str != null)
@@ -28,7 +28,7 @@ namespace StructuredCablingStudio.Extensions.ISessionExtension
 					WriteIndented = true,
 					ReferenceHandler = ReferenceHandler.Preserve,
 				};
-				return JsonSerializer.Deserialize<StructuredCablingParameters>(str, options);
+				return JsonSerializer.Deserialize<CalculateParameters>(str, options);
 			}
 			return null;
 		}

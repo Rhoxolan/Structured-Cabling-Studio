@@ -6,6 +6,7 @@ using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
 using StructuredCablingStudio.Filters.CalculationFilters;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
+using StructuredCablingStudioCore.Calculation;
 using StructuredCablingStudioCore.Parameters;
 
 namespace StructuredCablingStudio.Controllers
@@ -29,10 +30,11 @@ namespace StructuredCablingStudio.Controllers
 			_mapper = mapper;
 		}
 
-		public IActionResult Calculate(StructuredCablingStudioParameters parameters)
+		public IActionResult Calculate(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters)
 		{
-			CalculateViewModel viewModel = _mapper.Map<CalculateViewModel>(parameters);
-			ViewData["Diapasons"] = parameters.Diapasons;
+			CalculateViewModel viewModel = _mapper.Map<CalculateViewModel>(cablingParameters);
+			viewModel.IsCableHankMeterageAvailability = calculateParameters.IsCableHankMeterageAvailability.GetValueOrDefault();
+			ViewData["Diapasons"] = cablingParameters.Diapasons;
 			return View(viewModel);
 		}
 

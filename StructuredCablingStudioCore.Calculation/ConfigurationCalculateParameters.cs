@@ -27,7 +27,8 @@ namespace StructuredCablingStudioCore.Calculation
         /// </summary>
         public bool? IsCableHankMeterageAvailability
         {
-            set => configurationCalculateContext.IsCableHankMeterageAvailability = value;
-        }
+			get => configurationCalculateContext.IsCableHankMeterageAvailability;
+			set => configurationCalculateContext.IsCableHankMeterageAvailability = value;
+		}
     }
 }

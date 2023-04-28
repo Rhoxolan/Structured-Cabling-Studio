@@ -33,10 +33,22 @@ namespace StructuredCablingStudioCore.Calculation
         }
 
         /// <summary>
-        /// The set of the value of 1 hank cable meterage consider when structured cabling configuration calculates
+        /// Set or get of the value of 1 hank cable meterage consider when structured cabling configuration calculates
         /// </summary>
         public bool? IsCableHankMeterageAvailability
         {
+            get
+            {
+                if(configurationCalculatorStrategy is ConfigurationCalculatorWithHankMeterage)
+                {
+                    return true;
+                }
+                if(configurationCalculatorStrategy is ConfigurationCalculatorWithoutHankMeterage)
+                {
+                    return false;
+                }
+                throw new StructuredCablingStudioCoreException("The value of cable hank meterage availability is not initialized. Please check the settings.");
+            }
             set
             {
                 if (value is null)

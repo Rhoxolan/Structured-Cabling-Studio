@@ -11,8 +11,11 @@ using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews(opt
-	=> opt.ModelBinderProviders.Insert(0, new StructuredCablingStudioParametersModelBinderProvider()))
+builder.Services.AddControllersWithViews(opt =>
+{
+	opt.ModelBinderProviders.Insert(0, new StructuredCablingStudioParametersModelBinderProvider());
+	opt.ModelBinderProviders.Insert(0, new ConfigurationCalculateParametersModelBinderProvider());
+})
 	.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
 	.AddDataAnnotationsLocalization();
 
@@ -21,7 +24,8 @@ builder.Services.AddIdentity<User, IdentityRole>()
 
 builder.Services.AddAutoMapper(typeof(StructuredCablingParametersToStructuredCablingStudioParametersProfile),
 	typeof(StructuredCablingStudioParametersToCalculateViewModelProfile),
-	typeof(CalculateViewModelToStructuredCablingParametersProfile))
+	typeof(CalculateViewModelToStructuredCablingParametersProfile),
+	typeof(CalculateParametersToConfigurationCalculateParametersProfile))
 	.AddScoped<StructuredCablingStuidoParametersResultFilter>()
 	.AddScoped<DiapasonActionFilter>()
 	.AddScoped<ValueActionFilter>()

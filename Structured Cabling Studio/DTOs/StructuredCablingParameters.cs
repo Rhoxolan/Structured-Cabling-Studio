@@ -16,9 +16,4 @@ namespace StructuredCablingStudio.DTOs
 
 		public RecommendationsArguments RecommendationsArguments { get; set; } = new();
 	}
-
-	public class CalculateParameters
-	{
-		public bool IsCableHankMeterageAvailability { get; set; }
-	}
 }
