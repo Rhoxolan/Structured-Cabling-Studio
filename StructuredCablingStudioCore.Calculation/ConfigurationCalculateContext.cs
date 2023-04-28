@@ -7,9 +7,9 @@ namespace StructuredCablingStudioCore.Calculation
     /// </summary>
     internal class ConfigurationCalculateContext
     {
-        private IConfigurationCalculatorStrategy? configurationCalculatorStrategy;
-        private ConfigurationCalculatorWithHankMeterage calculatorWithHankMeterage;
-        private ConfigurationCalculatorWithoutHankMeterage calculatorWithoutHankMeterage;
+        private IConfigurationCalculateStrategy? configurationCalculatorStrategy;
+        private ConfigurationCalculateWithHankMeterage calculatorWithHankMeterage;
+        private ConfigurationCalculateWithoutHankMeterage calculatorWithoutHankMeterage;
 
         public ConfigurationCalculateContext()
         {
@@ -39,11 +39,11 @@ namespace StructuredCablingStudioCore.Calculation
         {
             get
             {
-                if(configurationCalculatorStrategy is ConfigurationCalculatorWithHankMeterage)
+                if(configurationCalculatorStrategy is ConfigurationCalculateWithHankMeterage)
                 {
                     return true;
                 }
-                if(configurationCalculatorStrategy is ConfigurationCalculatorWithoutHankMeterage)
+                if(configurationCalculatorStrategy is ConfigurationCalculateWithoutHankMeterage)
                 {
                     return false;
                 }
