@@ -4,16 +4,15 @@ using StructuredCablingStudio.Controllers;
 using StructuredCablingStudio.DTOs;
 using StructuredCablingStudio.Extensions.ISessionExtension;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
-using StructuredCablingStudioCore.Calculation;
 using StructuredCablingStudioCore.Parameters;
 
 namespace StructuredCablingStudio.Filters.CalculationFilters
 {
-	public class ParametersResultFilter : IResultFilter
+	public class StructuredCablingStudioParametersResultFilter : IResultFilter
 	{
 		private readonly IMapper _mapper;
 
-		public ParametersResultFilter(IMapper mapper)
+		public StructuredCablingStudioParametersResultFilter(IMapper mapper)
 		{
 			_mapper = mapper;
 		}
@@ -32,9 +31,6 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 				controller.ViewData["Diapasons"] = structuredCablingStudioParameters.Diapasons;
 				var structuredCablingParameters = _mapper.Map<StructuredCablingParameters>(structuredCablingStudioParameters);
 				context.HttpContext.Session.SetStructuredCablingParameters(structuredCablingParameters);
-				var configurationCalulateParameters = _mapper.Map<ConfigurationCalculateParameters>(model);
-				var calculateParameters = _mapper.Map<CalculateParameters>(configurationCalulateParameters);
-				context.HttpContext.Session.SetCalculateParameters(calculateParameters);
 			}
 		}
 	}

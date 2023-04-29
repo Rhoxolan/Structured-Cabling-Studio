@@ -47,7 +47,8 @@ namespace StructuredCablingStudio.Controllers
 		[IsRecommendationsAvailabilityActionFilter]
 		[ServiceFilter(typeof(ValueActionFilter), Order = int.MinValue + 1)]
 		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
-		[ServiceFilter(typeof(ParametersResultFilter))]
+		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
+		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
 		public IActionResult Calculate(CalculateViewModel calculateVM, StructuredCablingStudioParameters parameters)
 		{
 			if (calculateVM.ApprovedCalculation == "approved")
