@@ -8,6 +8,10 @@ namespace StructuredCablingStudio.AutoMapperProfiles
 	{
 		public CalculateViewModelToConfigurationCalculateParameters()
 			=> CreateMap<CalculateViewModel, ConfigurationCalculateParameters>()
-			.ForMember(dst => dst.CableHankMeterage, opt => opt.Condition(src => src.IsCableHankMeterageAvailability));
+			.ForMember(dst => dst.CableHankMeterage, opt =>
+			{
+				opt.SetMappingOrder(2);
+				opt.Condition(src => src.IsCableHankMeterageAvailability);
+			});
 	}
 }

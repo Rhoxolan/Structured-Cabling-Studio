@@ -43,11 +43,11 @@ namespace StructuredCablingStudioCore.Calculation
 			}
 			set
 			{
-				if (configurationCalculateStrategy is not null)
+				if (configurationCalculateStrategy is null)
 				{
-					configurationCalculateStrategy.CableHankMeterage = value;
+					throw new StructuredCablingStudioCoreException("Value of the need to consider of cable meterage in 1 hank is not initialized. Please check the parameters of calculation.");
 				}
-				throw new StructuredCablingStudioCoreException("Value of the need to consider of cable meterage in 1 hank is not initialized. Please check the parameters of calculation.");
+				configurationCalculateStrategy.CableHankMeterage = value;
 			}
 
 		}
