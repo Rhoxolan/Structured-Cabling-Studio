@@ -4,10 +4,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
+using StructuredCablingStudio.DTOs;
 using StructuredCablingStudio.Filters.CalculationFilters;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
 using StructuredCablingStudioCore.Calculation;
 using StructuredCablingStudioCore.Parameters;
+using static System.Convert;
+using static System.DateTimeOffset;
 
 namespace StructuredCablingStudio.Controllers
 {
@@ -49,12 +52,15 @@ namespace StructuredCablingStudio.Controllers
 		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
 		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
 		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
-		public IActionResult Calculate(CalculateViewModel calculateVM, StructuredCablingStudioParameters parameters)
+		public IActionResult Calculate(CalculateViewModel calculateVM)
 		{
 			if (calculateVM.ApprovedCalculation == "approved")
 			{
-				//Calculate
-				Console.WriteLine(DateTimeOffset.FromUnixTimeMilliseconds(Convert.ToInt64(calculateVM.RecordTime)).DateTime.ToLocalTime().ToString()); //Отладить
+				var cablingParameters = _mapper.Map<StructuredCablingStudioParameters>(calculateVM);
+				var calculateParameters = _mapper.Map<ConfigurationCalculateParameters>(calculateVM);
+				var recordTime = FromUnixTimeMilliseconds(ToInt64(calculateVM.RecordTime)).DateTime.ToLocalTime();
+				var configuration = calculateParameters.Calculate(cablingParameters, recordTime, calculateVM.MinPermanentLink, calculateVM.MaxPermanentLink,
+					calculateVM.NumberOfWorkplaces, calculateVM.NumberOfPorts);
 			}
 			return View(calculateVM);
 		}

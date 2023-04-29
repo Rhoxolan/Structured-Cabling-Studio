@@ -18,12 +18,12 @@ namespace StructuredCablingStudioCore.Calculation
 		/// Calculating of structured cabling configuration
 		/// </summary>
 		/// <exception cref="StructuredCablingStudioCoreException"></exception>
-		public CablingConfiguration Calculate(StructuredCablingStudioParameters parameters, double minPermanentLink, double maxPermanentLink,
+		public CablingConfiguration Calculate(StructuredCablingStudioParameters parameters, DateTime recordTime, double minPermanentLink, double maxPermanentLink,
 			int numberOfWorkplaces, int numberOfPorts)
 		{
 			if (configurationCalculateStrategy != null)
 			{
-				return configurationCalculateStrategy.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts);
+				return configurationCalculateStrategy.Calculate(parameters, recordTime, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts);
 			}
 			throw new StructuredCablingStudioCoreException("Value of the need to consider of cable meterage in 1 hank is not initialized. Please check the parameters of calculation.");
 		}

@@ -18,9 +18,9 @@ namespace StructuredCablingStudioCore.Calculation
         /// Calculating of structured cabling configuration
         /// </summary>
         /// <exception cref="StructuredCablingStudioCoreException"></exception>
-        public CablingConfiguration Calculate(StructuredCablingStudioParameters parameters, double minPermanentLink, double maxPermanentLink,
+        public CablingConfiguration Calculate(StructuredCablingStudioParameters parameters, DateTime recordTime, double minPermanentLink, double maxPermanentLink,
             int numberOfWorkplaces, int numberOfPorts)
-            => configurationCalculateContext.Calculate(parameters, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts);
+            => configurationCalculateContext.Calculate(parameters, recordTime, minPermanentLink, maxPermanentLink, numberOfWorkplaces, numberOfPorts);
 
 		/// <summary>
 		/// Value of the cable hank meterage

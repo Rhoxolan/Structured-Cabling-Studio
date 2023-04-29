@@ -10,7 +10,7 @@ namespace StructuredCablingStudioCore.Calculation
         /// <summary>
         /// Calculation method of structured cabling configuration
         /// </summary>
-        CablingConfiguration Calculate(StructuredCablingStudioParameters parameters, double minPermanentLink, double maxPermanentLink,
+        CablingConfiguration Calculate(StructuredCablingStudioParameters parameters, DateTime recordTime, double minPermanentLink, double maxPermanentLink,
             int numberOfWorkplaces, int numberOfPorts);
 
         /// <summary>

@@ -21,7 +21,7 @@ namespace StructuredCablingStudioCore.Calculation
 		/// Calculation method of structured cabling configuration with cable hank meterage
 		/// </summary>
 		/// <exception cref="StructuredCablingStudioCoreException"></exception>
-		public CablingConfiguration Calculate(StructuredCablingStudioParameters parameters, double minPermanentLink, double maxPermanentLink,
+		public CablingConfiguration Calculate(StructuredCablingStudioParameters parameters, DateTime recordTime, double minPermanentLink, double maxPermanentLink,
             int numberOfWorkplaces, int numberOfPorts)
         {
 			if (cableHankMeterage is null)
@@ -38,7 +38,7 @@ namespace StructuredCablingStudioCore.Calculation
             double totalCableQuantity = hankQuantity.Value * cableHankMeterage.Value;
             return new CablingConfiguration
             {
-                RecordTime = DateTime.Now,
+                RecordTime = recordTime,
                 MinPermanentLink = minPermanentLink,
                 MaxPermanentLink = maxPermanentLink,
                 AveragePermanentLink = averagePermanentLink,
