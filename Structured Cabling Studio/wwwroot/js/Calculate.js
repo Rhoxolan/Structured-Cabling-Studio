@@ -2,9 +2,13 @@ document.getElementById('minPermanentLinkInput').addEventListener('blur', valida
 
 document.getElementById('minPermanentLinkInput').addEventListener('blur', validateStep);
 
+document.getElementById('minPermanentLinkInput').addEventListener('blur', checkCableHankMeterage);
+
 document.getElementById('maxPermanentLinkInput').addEventListener('blur', validateDiapason);
 
 document.getElementById('maxPermanentLinkInput').addEventListener('blur', validateStep);
+
+document.getElementById('maxPermanentLinkInput').addEventListener('blur', checkCableHankMeterage);
 
 document.getElementById('numberOfWorkplacesInput').addEventListener('blur', validateDiapason);
 
