@@ -26,7 +26,8 @@ builder.Services.AddAutoMapper(typeof(StructuredCablingParametersToStructuredCab
 	typeof(StructuredCablingStudioParametersToCalculateViewModelProfile),
 	typeof(CalculateViewModelToStructuredCablingParametersProfile),
 	typeof(CalculateParametersToConfigurationCalculateParametersProfile),
-	typeof(CalculateViewModelToConfigurationCalculateParameters))
+	typeof(CalculateViewModelToConfigurationCalculateParameters),
+	typeof(CablingConfigurationToCablingConfigurationEntityProfile))
 	.AddScoped<StructuredCablingStudioParametersResultFilter>()
 	.AddScoped<ConfigurationCalulateParametersResultFilter>()
 	.AddScoped<DiapasonActionFilter>()

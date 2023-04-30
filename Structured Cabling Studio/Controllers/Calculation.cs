@@ -9,6 +9,7 @@ using StructuredCablingStudio.Filters.CalculationFilters;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
 using StructuredCablingStudioCore.Calculation;
 using StructuredCablingStudioCore.Parameters;
+using System.Security.Claims;
 using static System.Convert;
 using static System.DateTimeOffset;
 
@@ -61,6 +62,22 @@ namespace StructuredCablingStudio.Controllers
 				var recordTime = FromUnixTimeMilliseconds(ToInt64(calculateVM.RecordTime)).DateTime.ToLocalTime();
 				var configuration = calculateParameters.Calculate(cablingParameters, recordTime, calculateVM.MinPermanentLink, calculateVM.MaxPermanentLink,
 					calculateVM.NumberOfWorkplaces, calculateVM.NumberOfPorts);
+
+				var currentUser = _userManager.FindByNameAsync(User.Identity.Name).Result;
+
+				var currentUser2 = _userManager.FindByEmailAsync(User.FindFirst(ClaimTypes.Email).Value).Result;
+
+				var currentUser3 = _userManager.FindByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier).Value).Result;
+
+				var userId = User.FindFirst(ClaimTypes.NameIdentifier);
+
+				var configuratonEntity = _mapper.Map<CablingConfigurationEntity>(configuration);
+				configuratonEntity.User = currentUser3;
+
+				_context.CablingConfigurations.Add(configuratonEntity);
+
+				_context.SaveChanges();
+
 			}
 			return View(calculateVM);
 		}
