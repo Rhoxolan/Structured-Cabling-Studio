@@ -159,6 +159,12 @@
   <data name="MinPermanentLink" xml:space="preserve">
     <value>Minimum length of the permanent link:</value>
   </data>
+  <data name="NumberOfPorts" xml:space="preserve">
+    <value>Ports count per 1 workplace:</value>
+  </data>
+  <data name="NumberOfWorkplaces" xml:space="preserve">
+    <value>Workplaces count:</value>
+  </data>
   <data name="Ports count per 1 workplace:" xml:space="preserve">
     <value>Ports count per 1 workplace:</value>
   </data>

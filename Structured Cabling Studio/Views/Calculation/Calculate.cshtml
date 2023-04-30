@@ -460,32 +460,38 @@
 	<div class="mb-3">
 		<div class="row">
 			<div class="col">
-				<div id="configurationOutputdiv" class="form-control border-primary px-3 py-2">
+				<div id="configurationOutputdiv" class="form-control border-primary px-4 py-2">
 					@{
 						if(cablingConfiguration != null)
 						{
 							<p>
-								@Localizer["RecordTime"] @cablingConfiguration.RecordTime.ToShortDateString() @cablingConfiguration.RecordTime.ToLongTimeString()
+								@Localizer["RecordTime"]&ensp;<span class="fw-semibold">@cablingConfiguration.RecordTime.ToShortDateString() @cablingConfiguration.RecordTime.ToLongTimeString()</span>
 							</p>
 							<p>
 								<span>
-									@Localizer["MinPermanentLink"] @cablingConfiguration.MinPermanentLink.ToString("F2") @Localizer["m"]
+									@Localizer["MinPermanentLink"]&ensp;<span class="fw-semibold">@cablingConfiguration.MinPermanentLink.ToString("F2")&nbsp;@Localizer["m"]</span>
 								</span>
 								<br>
 								<span>
-									@Localizer["MaxPermanentLink"] @cablingConfiguration.MaxPermanentLink.ToString("F2") @Localizer["m"]
+									@Localizer["MaxPermanentLink"]&ensp;<span class="fw-semibold">@cablingConfiguration.MaxPermanentLink.ToString("F2")&nbsp;@Localizer["m"]</span>
 								</span>
 								<br>
 								<span>
-									@Localizer["AveragePermanentLink"] @cablingConfiguration.AveragePermanentLink.ToString("F2") @Localizer["m"]
+									@Localizer["AveragePermanentLink"]&ensp;<span class="fw-semibold">@cablingConfiguration.AveragePermanentLink.ToString("F2")&nbsp;@Localizer["m"]</span>
 								</span>
 								<br>
 								<span>
-									@Localizer["AveragePermanentLink"] @cablingConfiguration.AveragePermanentLink.ToString("F2") @Localizer["m"]
+									@Localizer["NumberOfWorkplaces"]&ensp;<span class="fw-semibold">@cablingConfiguration.NumberOfWorkplaces.ToString()</span>
 								</span>
 								<br>
 								<span>
+									@Localizer["NumberOfPorts"]&ensp;<span class="fw-semibold">@cablingConfiguration.NumberOfPorts.ToString()</span>
 								</span>
+								<br>
+								<span>
+									
+								</span>
+								<br>
 							</p>
 						}
 					}
