@@ -7,7 +7,7 @@ using StructuredCablingStudioCore.Parameters;
 
 namespace StructuredCablingStudio.Filters.CalculationFilters
 {
-	public class ValueActionFilter : IActionFilter
+	public class ValueActionFilter : IAsyncActionFilter
 	{
 		private readonly IMapper _mapper;
 
@@ -16,24 +16,21 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 			_mapper = mapper;
 		}
 
-		public void OnActionExecuting(ActionExecutingContext context)
+		public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
 		{
-		}
-
-		public void OnActionExecuted(ActionExecutedContext context)
-		{
+			await next();
 			var controller = (Calculation)context.Controller;
 			var model = (CalculateViewModel?)controller.ViewData.Model;
 			if (model != null)
 			{
 				var structuredCablingStudioParameters = _mapper.Map<StructuredCablingStudioParameters>(model);
-				if(model.TechnologicalReserve != structuredCablingStudioParameters.TechnologicalReserve)
+				if (model.TechnologicalReserve != structuredCablingStudioParameters.TechnologicalReserve)
 				{
 					model.TechnologicalReserve = structuredCablingStudioParameters.TechnologicalReserve;
 					context.ModelState.SetModelValue(nameof(model.TechnologicalReserve), model.TechnologicalReserve, default);
 				}
 				var configurationCalculateParameters = _mapper.Map<ConfigurationCalculateParameters>(model);
-				if(model.CableHankMeterage != configurationCalculateParameters.CableHankMeterage)
+				if (model.CableHankMeterage != configurationCalculateParameters.CableHankMeterage)
 				{
 					model.CableHankMeterage = configurationCalculateParameters.CableHankMeterage;
 					context.ModelState.SetModelValue(nameof(model.CableHankMeterage), model.CableHankMeterage, default);

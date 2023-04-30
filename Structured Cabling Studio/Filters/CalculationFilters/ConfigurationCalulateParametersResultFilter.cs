@@ -8,7 +8,7 @@ using StructuredCablingStudioCore.Calculation;
 
 namespace StructuredCablingStudio.Filters.CalculationFilters
 {
-	public class ConfigurationCalulateParametersResultFilter : IResultFilter
+	public class ConfigurationCalulateParametersResultFilter : IAsyncResultFilter
 	{
 		private readonly IMapper _mapper;
 
@@ -17,11 +17,7 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 			_mapper = mapper;
 		}
 
-		public void OnResultExecuted(ResultExecutedContext context)
-		{
-		}
-
-		public void OnResultExecuting(ResultExecutingContext context)
+		public async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
 		{
 			var controller = (Calculation)context.Controller;
 			var model = (CalculateViewModel?)controller.ViewData.Model;
@@ -31,6 +27,7 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 				var calculateParameters = _mapper.Map<CalculateParameters>(configurationCalulateParameters);
 				context.HttpContext.Session.SetCalculateParameters(calculateParameters);
 			}
+			await next();
 		}
 	}
 }

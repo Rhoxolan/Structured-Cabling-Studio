@@ -6,7 +6,7 @@ using StructuredCablingStudioCore.Parameters;
 
 namespace StructuredCablingStudio.Filters.CalculationFilters
 {
-	public class DiapasonActionFilter : IActionFilter
+	public class DiapasonActionFilter : IAsyncActionFilter
 	{
 		private readonly IMapper _mapper;
 
@@ -15,15 +15,12 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 			_mapper = mapper;
 		}
 
-		public void OnActionExecuting(ActionExecutingContext context)
+		public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
 		{
-		}
-
-		public void OnActionExecuted(ActionExecutedContext context)
-		{
+			await next();
 			var controller = (Calculation)context.Controller;
 			var model = (CalculateViewModel?)controller.ViewData.Model;
-			if(model != null)
+			if (model != null)
 			{
 				var structuredCablingStudioParameters = _mapper.Map<StructuredCablingStudioParameters>(model);
 				if (model.MinPermanentLink > (double)structuredCablingStudioParameters.Diapasons.MinPermanentLinkDiapason.Max)

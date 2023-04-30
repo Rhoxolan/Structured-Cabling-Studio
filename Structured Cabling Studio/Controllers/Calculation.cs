@@ -53,7 +53,6 @@ namespace StructuredCablingStudio.Controllers
 		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
 		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
 		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
-		//Перевести фильтры на асинхронный интерфейс
 		public async Task<IActionResult> Calculate(CalculateViewModel calculateVM)
 		{
 			if (calculateVM.ApprovedCalculation == "approved")
@@ -63,25 +62,19 @@ namespace StructuredCablingStudio.Controllers
 				var recordTime = FromUnixTimeMilliseconds(ToInt64(calculateVM.RecordTime)).DateTime.ToLocalTime();
 				var configuration = calculateParameters.Calculate(cablingParameters, recordTime, calculateVM.MinPermanentLink, calculateVM.MaxPermanentLink,
 					calculateVM.NumberOfWorkplaces, calculateVM.NumberOfPorts);
-
-				if(User.Identity != null)
+				if (User.Identity != null && User.Identity.IsAuthenticated)
 				{
-					if (User.Identity.IsAuthenticated)
+					var userId = User.FindFirst(ClaimTypes.NameIdentifier);
+					if (userId != null)
 					{
-						var userId = User.FindFirst(ClaimTypes.NameIdentifier);
-						if (userId == null)
-						{
-							return View("Error");
-						}
 						var currentUser = await _userManager.FindByIdAsync(userId.Value);
-						if (currentUser == null)
+						if (currentUser != null)
 						{
-							return View("Error");
+							var configuratonEntity = _mapper.Map<CablingConfigurationEntity>(configuration);
+							configuratonEntity.User = currentUser;
+							await _context.CablingConfigurations.AddAsync(configuratonEntity);
+							await _context.SaveChangesAsync();
 						}
-						var configuratonEntity = _mapper.Map<CablingConfigurationEntity>(configuration);
-						configuratonEntity.User = currentUser;
-						await _context.CablingConfigurations.AddAsync(configuratonEntity);
-						_context.SaveChanges();
 					}
 				}
 			}

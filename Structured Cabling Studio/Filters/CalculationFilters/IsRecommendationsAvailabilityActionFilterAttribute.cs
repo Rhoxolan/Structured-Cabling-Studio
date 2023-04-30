@@ -6,8 +6,9 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 {
 	public class IsRecommendationsAvailabilityActionFilterAttribute : ActionFilterAttribute
 	{
-		public override void OnActionExecuted(ActionExecutedContext context)
+		public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
 		{
+			await next();
 			var controller = (Calculation)context.Controller;
 			var model = (CalculateViewModel?)controller.ViewData.Model;
 			if (model != null)
