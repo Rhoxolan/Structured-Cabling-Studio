@@ -129,6 +129,9 @@
   <data name="Availability of technological reserve coefficient:" xml:space="preserve">
     <value>Враховувати коефіцієнт технологічного запасу:</value>
   </data>
+  <data name="AveragePermanentLink" xml:space="preserve">
+    <value>Середня довжина постійного лінку (Permanent Link):</value>
+  </data>
   <data name="Calculate" xml:space="preserve">
     <value>Розрахувати</value>
   </data>
@@ -147,11 +150,20 @@
   <data name="Maximum length of the permanent link:" xml:space="preserve">
     <value>Максимальна довжина постійного лінку (Permanent link):</value>
   </data>
+  <data name="MaxPermanentLink" xml:space="preserve">
+    <value>Максимальна довжина постійного лінку (Permanent Link):</value>
+  </data>
   <data name="Minimum length of the permanent link:" xml:space="preserve">
     <value>Мінімальная довжина постійного лінку (Permanent link):</value>
   </data>
+  <data name="MinPermanentLink" xml:space="preserve">
+    <value>Мінімальная довжина постійного лінку (Permanent Link):</value>
+  </data>
   <data name="Ports count per 1 workplace:" xml:space="preserve">
     <value>Кількість портів на 1 робоче місце:</value>
+  </data>
+  <data name="RecordTime" xml:space="preserve">
+    <value>Час та дата запису конфигураціі СКС:</value>
   </data>
   <data name="Restore defaults" xml:space="preserve">
     <value>Відновити дефолтні значення</value>

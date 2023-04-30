@@ -129,6 +129,9 @@
   <data name="Availability of technological reserve coefficient:" xml:space="preserve">
     <value>Учитывать коэффициент технологического запаса:</value>
   </data>
+  <data name="AveragePermanentLink" xml:space="preserve">
+    <value>Средняя длина постоянного линка (Permanent Link):</value>
+  </data>
   <data name="Calculate" xml:space="preserve">
     <value>Рассчитать</value>
   </data>
@@ -147,11 +150,20 @@
   <data name="Maximum length of the permanent link:" xml:space="preserve">
     <value>Наибольшая длина постоянного линка (Permanent link):</value>
   </data>
+  <data name="MaxPermanentLink" xml:space="preserve">
+    <value>Наибольшая длина постоянного линка (Permanent Link):</value>
+  </data>
   <data name="Minimum length of the permanent link:" xml:space="preserve">
     <value>Наименьшая длина постоянного линка (Permanent link): </value>
   </data>
+  <data name="MinPermanentLink" xml:space="preserve">
+    <value>Наименьшая длина постоянного линка (Permanent Link):</value>
+  </data>
   <data name="Ports count per 1 workplace:" xml:space="preserve">
     <value>Количество портов на 1 рабочее место:</value>
+  </data>
+  <data name="RecordTime" xml:space="preserve">
+    <value>Дата и время записи конфигурации СКС:</value>
   </data>
   <data name="Restore defaults" xml:space="preserve">
     <value>Восстановить значения по умолчанию</value>

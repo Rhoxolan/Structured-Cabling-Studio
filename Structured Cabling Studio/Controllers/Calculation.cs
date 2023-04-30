@@ -77,6 +77,7 @@ namespace StructuredCablingStudio.Controllers
 						}
 					}
 				}
+				ViewData["CablingConfiguration"] = configuration;
 			}
 			return View(calculateVM);
 		}

@@ -129,6 +129,9 @@
   <data name="Availability of technological reserve coefficient:" xml:space="preserve">
     <value>Take into account of the technological reserve coefficient:</value>
   </data>
+  <data name="AveragePermanentLink" xml:space="preserve">
+    <value>Average length of the permanent link:</value>
+  </data>
   <data name="Calculate" xml:space="preserve">
     <value>Calculate</value>
   </data>
@@ -147,11 +150,20 @@
   <data name="Maximum length of the permanent link:" xml:space="preserve">
     <value>Maximum length of the permanent link:</value>
   </data>
+  <data name="MaxPermanentLink" xml:space="preserve">
+    <value>Maximum length of the permanent link:</value>
+  </data>
   <data name="Minimum length of the permanent link:" xml:space="preserve">
+    <value>Minimum length of the permanent link:</value>
+  </data>
+  <data name="MinPermanentLink" xml:space="preserve">
     <value>Minimum length of the permanent link:</value>
   </data>
   <data name="Ports count per 1 workplace:" xml:space="preserve">
     <value>Ports count per 1 workplace:</value>
+  </data>
+  <data name="RecordTime" xml:space="preserve">
+    <value>Date and time of structured cabling confiruration record:</value>
   </data>
   <data name="Restore defaults" xml:space="preserve">
     <value>Restore defaults</value>

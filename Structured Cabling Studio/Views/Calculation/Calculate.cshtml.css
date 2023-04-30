@@ -1,3 +1,4 @@
-﻿#configurationOutputTextArea {
-    resize: none;
+﻿#configurationOutputdiv {
+    min-height: 28rem;
+    font-size: 1.1rem;
 }
