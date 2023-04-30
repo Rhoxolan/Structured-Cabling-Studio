@@ -53,7 +53,8 @@ namespace StructuredCablingStudio.Controllers
 		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
 		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
 		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
-		public IActionResult Calculate(CalculateViewModel calculateVM)
+		//Перевести фильтры на асинхронный интерфейс
+		public async Task<IActionResult> Calculate(CalculateViewModel calculateVM)
 		{
 			if (calculateVM.ApprovedCalculation == "approved")
 			{
@@ -63,21 +64,26 @@ namespace StructuredCablingStudio.Controllers
 				var configuration = calculateParameters.Calculate(cablingParameters, recordTime, calculateVM.MinPermanentLink, calculateVM.MaxPermanentLink,
 					calculateVM.NumberOfWorkplaces, calculateVM.NumberOfPorts);
 
-				var currentUser = _userManager.FindByNameAsync(User.Identity.Name).Result;
-
-				var currentUser2 = _userManager.FindByEmailAsync(User.FindFirst(ClaimTypes.Email).Value).Result;
-
-				var currentUser3 = _userManager.FindByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier).Value).Result;
-
-				var userId = User.FindFirst(ClaimTypes.NameIdentifier);
-
-				var configuratonEntity = _mapper.Map<CablingConfigurationEntity>(configuration);
-				configuratonEntity.User = currentUser3;
-
-				_context.CablingConfigurations.Add(configuratonEntity);
-
-				_context.SaveChanges();
-
+				if(User.Identity != null)
+				{
+					if (User.Identity.IsAuthenticated)
+					{
+						var userId = User.FindFirst(ClaimTypes.NameIdentifier);
+						if (userId == null)
+						{
+							return View("Error");
+						}
+						var currentUser = await _userManager.FindByIdAsync(userId.Value);
+						if (currentUser == null)
+						{
+							return View("Error");
+						}
+						var configuratonEntity = _mapper.Map<CablingConfigurationEntity>(configuration);
+						configuratonEntity.User = currentUser;
+						await _context.CablingConfigurations.AddAsync(configuratonEntity);
+						_context.SaveChanges();
+					}
+				}
 			}
 			return View(calculateVM);
 		}
