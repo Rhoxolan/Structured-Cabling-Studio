@@ -46,7 +46,6 @@ namespace StructuredCablingStudio.Controllers
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		[RestoreDefaultsActionFilter]
-		[ApprovedCalculationActionFilter]
 		[IsStrictComplianceWithTheStandartActionFilter]
 		[IsRecommendationsAvailabilityActionFilter]
 		[ServiceFilter(typeof(ValueActionFilter), Order = int.MinValue + 1)]
