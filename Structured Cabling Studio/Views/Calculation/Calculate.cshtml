@@ -546,6 +546,7 @@
 									<br>
 								</p>
 							}
+							<script src="~/js/Calculate_Scroll.js" asp-append-version="true"></script>
 						}
 					}
 				</div>
@@ -564,6 +565,8 @@
 	</div>
 
 </form>
+
+@await Html.PartialAsync("_PleaseWaitPartial")
 
 <script src="~/js/Calculate.js" asp-append-version="true"></script>
 

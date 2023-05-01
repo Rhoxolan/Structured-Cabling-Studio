@@ -68,6 +68,20 @@ document.getElementById('isRecommendationsAvailabilityCheckBox').addEventListene
 
 document.getElementById('isCableHankMeterageAvailabilityCheckBox').addEventListener('click', calculateFormSubmit);
 
+document.getElementById('calculateButton').addEventListener('click', pleaseWaitDisplay);
+
+document.getElementById('restoreDefaultsButton').addEventListener('click', pleaseWaitDisplay);
+
+document.getElementById('isStrictComplianceWithTheStandartCheckBox').addEventListener('click', pleaseWaitDisplay);
+
+document.getElementById('isAnArbitraryNumberOfPortsCheckBox').addEventListener('click', pleaseWaitDisplay);
+
+document.getElementById('isTechnologicalReserveAvailabilityCheckBox').addEventListener('click', pleaseWaitDisplay);
+
+document.getElementById('isRecommendationsAvailabilityCheckBox').addEventListener('click', pleaseWaitDisplay);
+
+document.getElementById('isCableHankMeterageAvailabilityCheckBox').addEventListener('click', pleaseWaitDisplay);
+
 function validateDiapason(e) {
     if (parseFloat(e.target.value) > parseFloat(e.target.getAttribute('max'))) {
         e.target.value = e.target.getAttribute('max');
@@ -110,4 +124,8 @@ function checkCableHankMeterage() {
             document.getElementById('cableHankMeterageInput').value = ceiledAveragePermanentLink;
         }
     }
+}
+
+function pleaseWaitDisplay() {
+    document.getElementById('pleaseWaitTotalDiv').style.setProperty("display", "flex", "important");
 }

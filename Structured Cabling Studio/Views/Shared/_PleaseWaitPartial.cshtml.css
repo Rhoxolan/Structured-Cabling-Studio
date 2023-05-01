@@ -1,0 +1,8 @@
+﻿#pleaseWaitTotalDiv {
+    z-index: 1;
+}
+
+#pleaseWaitMessageDiv {
+    border-radius: 7px;
+    color: darkblue;
+}
