@@ -156,6 +156,12 @@
   <data name="HankQuantity" xml:space="preserve">
     <value>Necessary cable hank count</value>
   </data>
+  <data name="Insulation Material" xml:space="preserve">
+    <value>Recommended cable insluation material:</value>
+  </data>
+  <data name="Insulation Type" xml:space="preserve">
+    <value>Recommended cable insluation type:</value>
+  </data>
   <data name="m" xml:space="preserve">
     <value>m</value>
   </data>
@@ -188,6 +194,12 @@
   </data>
   <data name="Save to TXT" xml:space="preserve">
     <value>Save to TXT</value>
+  </data>
+  <data name="Shielding" xml:space="preserve">
+    <value>Recommended cable shielding type:</value>
+  </data>
+  <data name="Standart" xml:space="preserve">
+    <value>Recommended cable category:</value>
   </data>
   <data name="Standart values" xml:space="preserve">
     <value>Standart values</value>

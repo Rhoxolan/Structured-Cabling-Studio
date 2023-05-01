@@ -156,6 +156,12 @@
   <data name="HankQuantity" xml:space="preserve">
     <value>Необходимое количество бухт кабеля:</value>
   </data>
+  <data name="Insulation Material" xml:space="preserve">
+    <value>Рекомендуемый материал изоляции кабеля:</value>
+  </data>
+  <data name="Insulation Type" xml:space="preserve">
+    <value>Рекомендуемый тип изоляции кабеля:</value>
+  </data>
   <data name="m" xml:space="preserve">
     <value>м.</value>
   </data>
@@ -188,6 +194,12 @@
   </data>
   <data name="Save to TXT" xml:space="preserve">
     <value>Сохранить в TXT</value>
+  </data>
+  <data name="Shielding" xml:space="preserve">
+    <value>Рекомендуемый тип экранизации кабеля:</value>
+  </data>
+  <data name="Standart" xml:space="preserve">
+    <value>Рекомендуемая категория кабеля:</value>
   </data>
   <data name="Standart values" xml:space="preserve">
     <value>Стандартные значения</value>

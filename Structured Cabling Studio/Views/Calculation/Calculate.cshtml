@@ -461,7 +461,7 @@
 	<div class="mb-3">
 		<div class="row">
 			<div class="col">
-				<div id="configurationOutputdiv" class="form-control border-primary px-4 py-2">
+				<div id="configurationOutputdiv" class="form-control border-primary px-4 py-3">
 					@{
 						if(cablingConfiguration != null)
 						{
@@ -519,10 +519,29 @@
 								!IsNullOrEmpty(cablingConfiguration.Recommendations["Insulation Material"]) &&
 								!IsNullOrEmpty(cablingConfiguration.Recommendations["Shielding"]))
 							{
-								<br>
 								<p>
+									<br>
 									<span>
 										@Localizer["CableSelectionRecommendations"]
+									</span>
+									<br>
+									<span>
+										@Localizer["Insulation Type"]&ensp;@cablingConfiguration.Recommendations["Insulation Type"]
+									</span>
+									<br>
+									<span>
+										@Localizer["Insulation Material"]&ensp;@cablingConfiguration.Recommendations["Insulation Material"]
+									</span>
+									<br>
+									@if (!IsNullOrEmpty(cablingConfiguration.Recommendations["Standart"]))
+									{
+										<span>
+											@Localizer["Standart"]&ensp;@cablingConfiguration.Recommendations["Standart"]
+										</span>
+										<br>
+									}
+									<span>
+										@Localizer["Shielding"]&ensp;@cablingConfiguration.Recommendations["Shielding"]
 									</span>
 									<br>
 								</p>
