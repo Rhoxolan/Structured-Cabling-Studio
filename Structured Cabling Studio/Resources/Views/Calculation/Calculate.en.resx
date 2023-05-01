@@ -132,6 +132,15 @@
   <data name="AveragePermanentLink" xml:space="preserve">
     <value>Average length of the permanent link:</value>
   </data>
+  <data name="CableHankMeterage" xml:space="preserve">
+    <value>Cable length on 1 hank:</value>
+  </data>
+  <data name="CableQuantity" xml:space="preserve">
+    <value>Necessary cable meterage:</value>
+  </data>
+  <data name="CableSelectionRecommendations" xml:space="preserve">
+    <value>Cable selection recommendations:</value>
+  </data>
   <data name="Calculate" xml:space="preserve">
     <value>Calculate</value>
   </data>
@@ -143,6 +152,9 @@
   </data>
   <data name="Hank length" xml:space="preserve">
     <value>Length</value>
+  </data>
+  <data name="HankQuantity" xml:space="preserve">
+    <value>Necessary cable hank count</value>
   </data>
   <data name="m" xml:space="preserve">
     <value>m</value>
@@ -191,6 +203,9 @@
   </data>
   <data name="The standard values of a cable hank length" xml:space="preserve">
     <value>The standard values of a cable hank length</value>
+  </data>
+  <data name="TotalCableQuantity" xml:space="preserve">
+    <value>Total necessary cable meterage:</value>
   </data>
   <data name="Used connection interfaces" xml:space="preserve">
     <value>Used connection interfaces</value>

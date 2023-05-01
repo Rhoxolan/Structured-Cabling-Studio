@@ -132,6 +132,15 @@
   <data name="AveragePermanentLink" xml:space="preserve">
     <value>Середня довжина постійного лінку (Permanent Link):</value>
   </data>
+  <data name="CableHankMeterage" xml:space="preserve">
+    <value>Метраж кабелю в 1-й бухті:</value>
+  </data>
+  <data name="CableQuantity" xml:space="preserve">
+    <value>Необхідний метраж кабелю:</value>
+  </data>
+  <data name="CableSelectionRecommendations" xml:space="preserve">
+    <value>Рекомендаціі по підбору кабелю:</value>
+  </data>
   <data name="Calculate" xml:space="preserve">
     <value>Розрахувати</value>
   </data>
@@ -143,6 +152,9 @@
   </data>
   <data name="Hank length" xml:space="preserve">
     <value>Метраж</value>
+  </data>
+  <data name="HankQuantity" xml:space="preserve">
+    <value>Небхідна кількість бухт кабелю:</value>
   </data>
   <data name="m" xml:space="preserve">
     <value>м.</value>
@@ -191,6 +203,9 @@
   </data>
   <data name="The standard values of a cable hank length" xml:space="preserve">
     <value>Стандартні значенния метража кабелю у бухті</value>
+  </data>
+  <data name="TotalCableQuantity" xml:space="preserve">
+    <value>Загальна необхідна кількість кабелю:</value>
   </data>
   <data name="Used connection interfaces" xml:space="preserve">
     <value>Інтерфейси підключені, які використовуються</value>

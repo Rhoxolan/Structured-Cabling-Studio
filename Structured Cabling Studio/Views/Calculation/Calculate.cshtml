@@ -1,6 +1,7 @@
 ﻿@using StructuredCablingStudioCore.Parameters
 @using StructuredCablingStudioCore;
 @using static System.Globalization.CultureInfo
+@using static System.String;
 @model CalculateViewModel
 @{
 	ViewData["Title"] = "Calculation";
@@ -465,7 +466,7 @@
 						if(cablingConfiguration != null)
 						{
 							<p>
-								@Localizer["RecordTime"]&ensp;<span class="fw-semibold">@cablingConfiguration.RecordTime.ToShortDateString() @cablingConfiguration.RecordTime.ToLongTimeString()</span>
+								@Localizer["RecordTime"]&ensp;@cablingConfiguration.RecordTime.ToShortDateString() @cablingConfiguration.RecordTime.ToLongTimeString()
 							</p>
 							<p>
 								<span>
@@ -488,11 +489,44 @@
 									@Localizer["NumberOfPorts"]&ensp;<span class="fw-semibold">@cablingConfiguration.NumberOfPorts.ToString()</span>
 								</span>
 								<br>
-								<span>
-									
-								</span>
-								<br>
+								@if(cablingConfiguration.CableQuantity != null)
+								{
+									<span>
+										@Localizer["CableQuantity"]&ensp;<span class="fw-semibold">@cablingConfiguration.CableQuantity.Value.ToString("F2")&nbsp;@Localizer["m"]</span>
+									</span>
+									<br>
+								}
+								@if(cablingConfiguration.CableHankMeterage != null)
+								{
+									<span>
+										@Localizer["CableHankMeterage"]&ensp;<span class="fw-semibold">@cablingConfiguration.CableHankMeterage.Value.ToString()&nbsp;@Localizer["m"]</span>
+									</span>
+									<br>
+								}
+								@if (cablingConfiguration.HankQuantity != null)
+								{
+									<span>
+										@Localizer["HankQuantity"]&ensp;<span class="fw-semibold">@cablingConfiguration.HankQuantity.Value.ToString()</span>
+									</span>
+								}
 							</p>
+							<p>
+								<span class="fw-semibold">
+									@Localizer["TotalCableQuantity"]&ensp;@cablingConfiguration.TotalCableQuantity.ToString("F2")&nbsp;@Localizer["m"]
+								</span>
+							</p>
+							if (!IsNullOrEmpty(cablingConfiguration.Recommendations["Insulation Type"]) &&
+								!IsNullOrEmpty(cablingConfiguration.Recommendations["Insulation Material"]) &&
+								!IsNullOrEmpty(cablingConfiguration.Recommendations["Shielding"]))
+							{
+								<br>
+								<p>
+									<span>
+										@Localizer["CableSelectionRecommendations"]
+									</span>
+									<br>
+								</p>
+							}
 						}
 					}
 				</div>
