@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
-using StructuredCablingStudio.DTOs;
 using StructuredCablingStudio.Filters.CalculationFilters;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
 using StructuredCablingStudioCore.Calculation;
@@ -34,11 +33,12 @@ namespace StructuredCablingStudio.Controllers
 			_mapper = mapper;
 		}
 
-		public IActionResult Calculate(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters)
+		public IActionResult Calculate(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters, uint? id)
 		{
 			CalculateViewModel viewModel = _mapper.Map<CalculateViewModel>(cablingParameters);
 			viewModel.IsCableHankMeterageAvailability = calculateParameters.IsCableHankMeterageAvailability.GetValueOrDefault();
 			viewModel.CableHankMeterage = calculateParameters.CableHankMeterage;
+
 			ViewData["Diapasons"] = cablingParameters.Diapasons;
 			return View(viewModel);
 		}
