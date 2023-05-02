@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
 using StructuredCablingStudio.DTOs.CalculateDTOs;
@@ -54,23 +55,23 @@ namespace StructuredCablingStudio.Controllers
 				{
 					return LocalRedirect("/");
 				}
-				var configuration = await _context.CablingConfigurations.FindAsync(id);
-				if (configuration != null)
+				var configurations = await _context.CablingConfigurations.Include(c => c.User).ToListAsync();
+				var configuration = configurations.FirstOrDefault(c => c.Id == id);
+				if (configuration == null)
 				{
-					var userId = User.FindFirst(ClaimTypes.NameIdentifier);
-					if (userId != null)
-					{
-						var currentUser = await _userManager.FindByIdAsync(userId.Value);
-						if (currentUser != null)
-						{
-							if (configuration.User.Id != currentUser.Id)
-							{
-								return LocalRedirect("/");
-							}
-							ViewData["CablingConfiguration"] = _mapper.Map<CablingConfiguration>(configuration);
-						}
-					}
+					return LocalRedirect("/");
 				}
+				var userId = User.FindFirst(ClaimTypes.NameIdentifier);
+				if (userId == null)
+				{
+					return LocalRedirect("/");
+				}
+				var currentUser = await _userManager.FindByIdAsync(userId.Value);
+				if (currentUser == null || configuration.User.Id != currentUser.Id)
+				{
+					return LocalRedirect("/");
+				}
+				ViewData["CablingConfiguration"] = _mapper.Map<CablingConfiguration>(configuration);
 			}
 			else if (cablingConfiguration != null)
 			{
@@ -92,7 +93,7 @@ namespace StructuredCablingStudio.Controllers
 		[ServiceFilter(typeof(CalculateDTOResultFilter))]
 		public async Task<IActionResult> Calculate(CalculateViewModel calculateVM)
 		{
-			if(calculateVM.ApprovedCalculation == "approved")
+			if (calculateVM.ApprovedCalculation == "approved")
 			{
 				var cablingParameters = _mapper.Map<StructuredCablingStudioParameters>(calculateVM);
 				var calculateParameters = _mapper.Map<ConfigurationCalculateParameters>(calculateVM);
