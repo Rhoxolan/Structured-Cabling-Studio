@@ -4,13 +4,13 @@
 	{
 		public string? RecordTime { get; set; }
 
-		public double MinPermanentLink { get; set; } = 25;
+		public double MinPermanentLink { get; set; }
 
-		public double MaxPermanentLink { get; set; } = 75;
+		public double MaxPermanentLink { get; set; }
 
-		public int NumberOfWorkplaces { get; set; } = 10;
+		public int NumberOfWorkplaces { get; set; }
 
-		public int NumberOfPorts { get; set; } = 2;
+		public int NumberOfPorts { get; set; }
 
 		public int? CableHankMeterage { get; set; }
 

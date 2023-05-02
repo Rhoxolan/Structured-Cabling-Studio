@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
+using StructuredCablingStudio.DTOs.CalculateDTOs;
 using StructuredCablingStudio.Filters.CalculationFilters;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
 using StructuredCablingStudioCore.Calculation;
@@ -33,11 +34,36 @@ namespace StructuredCablingStudio.Controllers
 			_mapper = mapper;
 		}
 
-		public IActionResult Calculate(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters, uint? id)
+		public async Task<IActionResult> Calculate(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters,
+			CalculateDTO calculateDTO, uint? id)
 		{
 			CalculateViewModel viewModel = _mapper.Map<CalculateViewModel>(cablingParameters);
 			viewModel.IsCableHankMeterageAvailability = calculateParameters.IsCableHankMeterageAvailability.GetValueOrDefault();
 			viewModel.CableHankMeterage = calculateParameters.CableHankMeterage;
+			viewModel.MinPermanentLink = calculateDTO.MinPermanentLink;
+			viewModel.MaxPermanentLink = calculateDTO.MaxPermanentLink;
+			viewModel.NumberOfPorts = calculateDTO.NumberOfPorts;
+			viewModel.NumberOfWorkplaces = calculateDTO.NumberOfWorkplaces;
+
+			if(id != null)
+			{
+				var configuration = await _context.CablingConfigurations.FindAsync(id);
+				if(configuration != null && configuration.User != null)
+				{
+					if (!User.Identity!.IsAuthenticated)
+					{
+						return Unauthorized();
+					}
+					var userId = User.FindFirst(ClaimTypes.NameIdentifier);
+					var currentUser = await _userManager.FindByIdAsync(userId.Value);
+					if(configuration.User.Id != currentUser.Id)
+					{
+						return Unauthorized();
+					}
+				}
+
+				ViewData["CablingConfiguration"] = configuration;
+			}
 
 			ViewData["Diapasons"] = cablingParameters.Diapasons;
 			return View(viewModel);
@@ -52,6 +78,7 @@ namespace StructuredCablingStudio.Controllers
 		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
 		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
 		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
+		[ServiceFilter(typeof(CalculateDTOResultFilter))]
 		public async Task<IActionResult> Calculate(CalculateViewModel calculateVM)
 		{
 			if (calculateVM.ApprovedCalculation == "approved")
@@ -76,7 +103,7 @@ namespace StructuredCablingStudio.Controllers
 						}
 					}
 				}
-				ViewData["CablingConfiguration"] = configuration;
+				
 			}
 			return View(calculateVM);
 		}

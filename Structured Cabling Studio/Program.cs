@@ -15,6 +15,7 @@ builder.Services.AddControllersWithViews(opt =>
 {
 	opt.ModelBinderProviders.Insert(0, new StructuredCablingStudioParametersModelBinderProvider());
 	opt.ModelBinderProviders.Insert(0, new ConfigurationCalculateParametersModelBinderProvider());
+	opt.ModelBinderProviders.Insert(0, new CalculateDTOModelBinderProvider());
 })
 	.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
 	.AddDataAnnotationsLocalization();
@@ -27,11 +28,13 @@ builder.Services.AddAutoMapper(typeof(StructuredCablingParametersToStructuredCab
 	typeof(CalculateViewModelToStructuredCablingParametersProfile),
 	typeof(CalculateParametersToConfigurationCalculateParametersProfile),
 	typeof(CalculateViewModelToConfigurationCalculateParameters),
-	typeof(CablingConfigurationToCablingConfigurationEntityProfile))
+	typeof(CablingConfigurationToCablingConfigurationEntityProfile),
+	typeof(CalculateDTOToCalculateViewModelProfile))
 	.AddScoped<StructuredCablingStudioParametersResultFilter>()
 	.AddScoped<ConfigurationCalulateParametersResultFilter>()
 	.AddScoped<DiapasonActionFilter>()
 	.AddScoped<ValueActionFilter>()
+	.AddScoped<CalculateDTOResultFilter>()
 	.AddDbContext<ApplicationContext>(opt
 	=> opt.UseSqlServer(builder.Configuration.GetConnectionString("CablingConfigurationsDB")))
 	.AddLocalization(opt => opt.ResourcesPath = "Resources")
