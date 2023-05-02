@@ -6,6 +6,6 @@ namespace StructuredCablingStudio.Data.Entities
     {
         public uint Id { get; set; }
 
-        public User? User { get; set; }
+        public User User { get; set; } = default!;
     }
 }

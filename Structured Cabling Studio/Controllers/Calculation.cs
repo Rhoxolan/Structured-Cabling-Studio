@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
 using StructuredCablingStudio.DTOs.CalculateDTOs;
+using StructuredCablingStudio.Extensions.ISessionExtension;
 using StructuredCablingStudio.Filters.CalculationFilters;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
+using StructuredCablingStudioCore;
 using StructuredCablingStudioCore.Calculation;
 using StructuredCablingStudioCore.Parameters;
 using System.Security.Claims;
@@ -35,7 +37,7 @@ namespace StructuredCablingStudio.Controllers
 		}
 
 		public async Task<IActionResult> Calculate(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters,
-			CalculateDTO calculateDTO, uint? id)
+			CalculateDTO calculateDTO, CablingConfiguration? cablingConfiguration, uint? id)
 		{
 			CalculateViewModel viewModel = _mapper.Map<CalculateViewModel>(cablingParameters);
 			viewModel.IsCableHankMeterageAvailability = calculateParameters.IsCableHankMeterageAvailability.GetValueOrDefault();
@@ -44,6 +46,18 @@ namespace StructuredCablingStudio.Controllers
 			viewModel.MaxPermanentLink = calculateDTO.MaxPermanentLink;
 			viewModel.NumberOfPorts = calculateDTO.NumberOfPorts;
 			viewModel.NumberOfWorkplaces = calculateDTO.NumberOfWorkplaces;
+
+			if(id != null)
+			{
+				var configuration = await _context.CablingConfigurations.FindAsync(id);
+				if(configuration != null)
+				{
+
+				}
+			}
+
+
+
 
 			if(id != null)
 			{
@@ -81,7 +95,7 @@ namespace StructuredCablingStudio.Controllers
 		[ServiceFilter(typeof(CalculateDTOResultFilter))]
 		public async Task<IActionResult> Calculate(CalculateViewModel calculateVM)
 		{
-			if (calculateVM.ApprovedCalculation == "approved")
+			if(calculateVM.ApprovedCalculation == "approved")
 			{
 				var cablingParameters = _mapper.Map<StructuredCablingStudioParameters>(calculateVM);
 				var calculateParameters = _mapper.Map<ConfigurationCalculateParameters>(calculateVM);
@@ -100,10 +114,12 @@ namespace StructuredCablingStudio.Controllers
 							configuratonEntity.User = currentUser;
 							await _context.CablingConfigurations.AddAsync(configuratonEntity);
 							await _context.SaveChangesAsync();
+							return RedirectToAction(nameof(Index), new { id = configuratonEntity.Id });
 						}
 					}
 				}
-				
+				HttpContext.Session.SetCablingConfiguration(configuration);
+				return RedirectToAction(nameof(Index));
 			}
 			return View(calculateVM);
 		}

@@ -16,6 +16,7 @@ builder.Services.AddControllersWithViews(opt =>
 	opt.ModelBinderProviders.Insert(0, new StructuredCablingStudioParametersModelBinderProvider());
 	opt.ModelBinderProviders.Insert(0, new ConfigurationCalculateParametersModelBinderProvider());
 	opt.ModelBinderProviders.Insert(0, new CalculateDTOModelBinderProvider());
+	opt.ModelBinderProviders.Insert(0, new CablingConfigurationModelBinderProvider());
 })
 	.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
 	.AddDataAnnotationsLocalization();
