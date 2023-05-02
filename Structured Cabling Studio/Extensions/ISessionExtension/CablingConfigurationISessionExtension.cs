@@ -32,5 +32,8 @@ namespace StructuredCablingStudio.Extensions.ISessionExtension
 			}
 			return null;
 		}
+
+		public static void DeleteCablingConfiguration(this ISession session)
+			=> session.Remove(key);
 	}
 }

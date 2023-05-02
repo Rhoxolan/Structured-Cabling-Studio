@@ -26,7 +26,8 @@ namespace StructuredCablingStudio.Controllers
 		private readonly RoleManager<IdentityRole> _roleManager;
 		private readonly IMapper _mapper;
 
-		public Calculation(ILogger<Calculation> logger, ApplicationContext context, UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager, IMapper mapper)
+		public Calculation(ILogger<Calculation> logger, ApplicationContext context, UserManager<User> userManager,
+			SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager, IMapper mapper)
 		{
 			_logger = logger;
 			_context = context;
@@ -36,6 +37,7 @@ namespace StructuredCablingStudio.Controllers
 			_mapper = mapper;
 		}
 
+		[CablingConfigurationResultFilter]
 		public async Task<IActionResult> Calculate(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters,
 			CalculateDTO calculateDTO, CablingConfiguration? cablingConfiguration, uint? id)
 		{
@@ -46,39 +48,34 @@ namespace StructuredCablingStudio.Controllers
 			viewModel.MaxPermanentLink = calculateDTO.MaxPermanentLink;
 			viewModel.NumberOfPorts = calculateDTO.NumberOfPorts;
 			viewModel.NumberOfWorkplaces = calculateDTO.NumberOfWorkplaces;
-
-			if(id != null)
+			if (id != null)
 			{
-				var configuration = await _context.CablingConfigurations.FindAsync(id);
-				if(configuration != null)
+				if (User.Identity == null || !User.Identity.IsAuthenticated)
 				{
-
+					return LocalRedirect("/");
 				}
-			}
-
-
-
-
-			if(id != null)
-			{
 				var configuration = await _context.CablingConfigurations.FindAsync(id);
-				if(configuration != null && configuration.User != null)
+				if (configuration != null)
 				{
-					if (!User.Identity!.IsAuthenticated)
-					{
-						return Unauthorized();
-					}
 					var userId = User.FindFirst(ClaimTypes.NameIdentifier);
-					var currentUser = await _userManager.FindByIdAsync(userId.Value);
-					if(configuration.User.Id != currentUser.Id)
+					if (userId != null)
 					{
-						return Unauthorized();
+						var currentUser = await _userManager.FindByIdAsync(userId.Value);
+						if (currentUser != null)
+						{
+							if (configuration.User.Id != currentUser.Id)
+							{
+								return LocalRedirect("/");
+							}
+							ViewData["CablingConfiguration"] = _mapper.Map<CablingConfiguration>(configuration);
+						}
 					}
 				}
-
-				ViewData["CablingConfiguration"] = configuration;
 			}
-
+			else if (cablingConfiguration != null)
+			{
+				ViewData["CablingConfiguration"] = cablingConfiguration;
+			}
 			ViewData["Diapasons"] = cablingParameters.Diapasons;
 			return View(viewModel);
 		}
@@ -114,12 +111,12 @@ namespace StructuredCablingStudio.Controllers
 							configuratonEntity.User = currentUser;
 							await _context.CablingConfigurations.AddAsync(configuratonEntity);
 							await _context.SaveChangesAsync();
-							return RedirectToAction(nameof(Index), new { id = configuratonEntity.Id });
+							return RedirectToAction(nameof(Calculate), new { id = configuratonEntity.Id });
 						}
 					}
 				}
 				HttpContext.Session.SetCablingConfiguration(configuration);
-				return RedirectToAction(nameof(Index));
+				return RedirectToAction(nameof(Calculate));
 			}
 			return View(calculateVM);
 		}
