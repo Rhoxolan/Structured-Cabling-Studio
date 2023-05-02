@@ -55,19 +55,14 @@ namespace StructuredCablingStudio.Controllers
 				{
 					return LocalRedirect("/");
 				}
-				var configurations = await _context.CablingConfigurations.Include(c => c.User).ToListAsync();
-				var configuration = configurations.FirstOrDefault(c => c.Id == id);
-				if (configuration == null)
-				{
-					return LocalRedirect("/");
-				}
 				var userId = User.FindFirst(ClaimTypes.NameIdentifier);
 				if (userId == null)
 				{
 					return LocalRedirect("/");
 				}
-				var currentUser = await _userManager.FindByIdAsync(userId.Value);
-				if (currentUser == null || configuration.User.Id != currentUser.Id)
+				var configurations = await _context.CablingConfigurations.Where(c => c.User.Id == userId.Value).ToListAsync();
+				var configuration = configurations?.FirstOrDefault(c => c.Id == id);
+				if (configuration == null)
 				{
 					return LocalRedirect("/");
 				}
