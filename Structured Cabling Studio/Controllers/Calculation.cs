@@ -13,6 +13,8 @@ using StructuredCablingStudioCore;
 using StructuredCablingStudioCore.Calculation;
 using StructuredCablingStudioCore.Parameters;
 using System.Security.Claims;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 using static System.Convert;
 using static System.DateTimeOffset;
 
@@ -177,6 +179,19 @@ namespace StructuredCablingStudio.Controllers
 		public IActionResult History()
 		{
 			return View();
+		}
+
+		[HttpPost]
+		public IActionResult SaveToTXT(string serializedCablingConfiguration)
+		{
+			var options = new JsonSerializerOptions
+			{
+				WriteIndented = true,
+				ReferenceHandler = ReferenceHandler.Preserve,
+			};
+			var cablingConfiguration = JsonSerializer.Deserialize<CablingConfiguration>(serializedCablingConfiguration, options);
+
+			throw new NotImplementedException();
 		}
 
 		public IActionResult Information()
