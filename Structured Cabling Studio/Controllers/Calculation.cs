@@ -243,12 +243,9 @@ namespace StructuredCablingStudio.Controllers
 					}
 					cablingConfigurationSB.AppendLine($"{_localizer["Shielding"]} {cablingConfiguration.Recommendations["Shielding"]}");
 				}
-
 				var stream = new MemoryStream(UTF8.GetBytes(cablingConfigurationSB.ToString()));
 				return File(stream, "text/plain", fileName);
 			}
-
-
 			return LocalRedirect("/");
 		}
 
