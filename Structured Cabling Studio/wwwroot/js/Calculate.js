@@ -68,8 +68,6 @@ document.getElementById('isRecommendationsAvailabilityCheckBox').addEventListene
 
 document.getElementById('isCableHankMeterageAvailabilityCheckBox').addEventListener('click', calculateFormSubmit);
 
-document.getElementById('calculateButton').addEventListener('click', pleaseWaitDisplay);
-
 document.getElementById('restoreDefaultsButton').addEventListener('click', pleaseWaitDisplay);
 
 document.getElementById('isStrictComplianceWithTheStandartCheckBox').addEventListener('click', pleaseWaitDisplay);
@@ -81,6 +79,8 @@ document.getElementById('isTechnologicalReserveAvailabilityCheckBox').addEventLi
 document.getElementById('isRecommendationsAvailabilityCheckBox').addEventListener('click', pleaseWaitDisplay);
 
 document.getElementById('isCableHankMeterageAvailabilityCheckBox').addEventListener('click', pleaseWaitDisplay);
+
+document.forms.calculateForm.addEventListener('submit', pleaseWaitDisplay);
 
 function validateDiapason(e) {
     if (parseFloat(e.target.value) > parseFloat(e.target.getAttribute('max'))) {
