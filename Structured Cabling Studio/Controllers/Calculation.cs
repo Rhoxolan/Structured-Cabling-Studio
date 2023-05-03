@@ -38,9 +38,8 @@ namespace StructuredCablingStudio.Controllers
 			_mapper = mapper;
 		}
 
-		[CablingConfigurationResultFilter]
-		public async Task<IActionResult> Calculate(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters,
-			CalculateDTO calculateDTO, CablingConfiguration? cablingConfiguration, uint? id)
+		public IActionResult Calculate(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters,
+			CalculateDTO calculateDTO)
 		{
 			CalculateViewModel viewModel = _mapper.Map<CalculateViewModel>(cablingParameters);
 			viewModel.IsCableHankMeterageAvailability = calculateParameters.IsCableHankMeterageAvailability.GetValueOrDefault();
@@ -49,34 +48,91 @@ namespace StructuredCablingStudio.Controllers
 			viewModel.MaxPermanentLink = calculateDTO.MaxPermanentLink;
 			viewModel.NumberOfPorts = calculateDTO.NumberOfPorts;
 			viewModel.NumberOfWorkplaces = calculateDTO.NumberOfWorkplaces;
-			if (id != null)
-			{
-				if (User.Identity == null || !User.Identity.IsAuthenticated)
-				{
-					return LocalRedirect("/");
-				}
-				var userId = User.FindFirst(ClaimTypes.NameIdentifier);
-				if (userId == null)
-				{
-					return LocalRedirect("/");
-				}
-				var configurations = await _context.CablingConfigurations.Where(c => c.User.Id == userId.Value).ToListAsync();
-				var configuration = configurations?.FirstOrDefault(c => c.Id == id);
-				if (configuration == null)
-				{
-					return LocalRedirect("/");
-				}
-				ViewData["CablingConfiguration"] = _mapper.Map<CablingConfiguration>(configuration);
-			}
-			else if (cablingConfiguration != null)
-			{
-				ViewData["CablingConfiguration"] = cablingConfiguration;
-			}
 			ViewData["Diapasons"] = cablingParameters.Diapasons;
 			return View(viewModel);
 		}
 
-		[HttpPost]
+        //[CablingConfigurationResultFilter]
+        //public async Task<IActionResult> Calculate(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters,
+        //    CalculateDTO calculateDTO, CablingConfiguration? cablingConfiguration, uint? id)
+        //{
+        //    CalculateViewModel viewModel = _mapper.Map<CalculateViewModel>(cablingParameters);
+        //    viewModel.IsCableHankMeterageAvailability = calculateParameters.IsCableHankMeterageAvailability.GetValueOrDefault();
+        //    viewModel.CableHankMeterage = calculateParameters.CableHankMeterage;
+        //    viewModel.MinPermanentLink = calculateDTO.MinPermanentLink;
+        //    viewModel.MaxPermanentLink = calculateDTO.MaxPermanentLink;
+        //    viewModel.NumberOfPorts = calculateDTO.NumberOfPorts;
+        //    viewModel.NumberOfWorkplaces = calculateDTO.NumberOfWorkplaces;
+        //    if (id != null)
+        //    {
+        //        if (User.Identity == null || !User.Identity.IsAuthenticated)
+        //        {
+        //            return LocalRedirect("/");
+        //        }
+        //        var userId = User.FindFirst(ClaimTypes.NameIdentifier);
+        //        if (userId == null)
+        //        {
+        //            return LocalRedirect("/");
+        //        }
+        //        var configurations = await _context.CablingConfigurations.Where(c => c.User.Id == userId.Value).ToListAsync();
+        //        var configuration = configurations?.FirstOrDefault(c => c.Id == id);
+        //        if (configuration == null)
+        //        {
+        //            return LocalRedirect("/");
+        //        }
+        //        ViewData["CablingConfiguration"] = _mapper.Map<CablingConfiguration>(configuration);
+        //    }
+        //    else if (cablingConfiguration != null)
+        //    {
+        //        ViewData["CablingConfiguration"] = cablingConfiguration;
+        //    }
+        //    ViewData["Diapasons"] = cablingParameters.Diapasons;
+        //    return View(viewModel);
+        //}
+
+        [CablingConfigurationResultFilter]
+        public async Task<IActionResult> Calculated(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters,
+			CalculateDTO calculateDTO, CablingConfiguration? cablingConfiguration, uint? id)
+        {
+			if(cablingConfiguration == null && id == null)
+			{
+                return LocalRedirect("/");
+            }
+            if (id != null)
+            {
+                if (User.Identity == null || !User.Identity.IsAuthenticated)
+                {
+                    return LocalRedirect("/");
+                }
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier);
+                if (userId == null)
+                {
+                    return LocalRedirect("/");
+                }
+                var configurations = await _context.CablingConfigurations.Where(c => c.User.Id == userId.Value).ToListAsync();
+                var configuration = configurations?.FirstOrDefault(c => c.Id == id);
+                if (configuration == null)
+                {
+                    return LocalRedirect("/");
+                }
+                ViewData["CablingConfiguration"] = _mapper.Map<CablingConfiguration>(configuration);
+            }
+            else if (cablingConfiguration != null)
+            {
+                ViewData["CablingConfiguration"] = cablingConfiguration;
+            }
+            CalculateViewModel viewModel = _mapper.Map<CalculateViewModel>(cablingParameters);
+            viewModel.IsCableHankMeterageAvailability = calculateParameters.IsCableHankMeterageAvailability.GetValueOrDefault();
+            viewModel.CableHankMeterage = calculateParameters.CableHankMeterage;
+            viewModel.MinPermanentLink = calculateDTO.MinPermanentLink;
+            viewModel.MaxPermanentLink = calculateDTO.MaxPermanentLink;
+            viewModel.NumberOfPorts = calculateDTO.NumberOfPorts;
+            viewModel.NumberOfWorkplaces = calculateDTO.NumberOfWorkplaces;
+            ViewData["Diapasons"] = cablingParameters.Diapasons;
+            return View("Calculate", viewModel);
+        }
+
+        [HttpPost]
 		[ValidateAntiForgeryToken]
 		[RestoreDefaultsActionFilter]
 		[IsStrictComplianceWithTheStandartActionFilter]
@@ -107,12 +163,12 @@ namespace StructuredCablingStudio.Controllers
 							configuratonEntity.User = currentUser;
 							await _context.CablingConfigurations.AddAsync(configuratonEntity);
 							await _context.SaveChangesAsync();
-							return RedirectToAction(nameof(Calculate), new { id = configuratonEntity.Id });
+							return RedirectToAction(nameof(Calculated), new { id = configuratonEntity.Id });
 						}
 					}
 				}
 				HttpContext.Session.SetCablingConfiguration(configuration);
-				return RedirectToAction(nameof(Calculate));
+				return RedirectToAction(nameof(Calculated));
 			}
 			return View(calculateVM);
 		}
