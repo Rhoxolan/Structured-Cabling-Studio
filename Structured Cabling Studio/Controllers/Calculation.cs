@@ -17,6 +17,9 @@ using System.Text.Json.Serialization;
 using System.Text.Json;
 using static System.Convert;
 using static System.DateTimeOffset;
+using System.Text;
+using System.Net.Http.Headers;
+using Microsoft.VisualBasic.FileIO;
 
 namespace StructuredCablingStudio.Controllers
 {
@@ -191,7 +194,15 @@ namespace StructuredCablingStudio.Controllers
 			};
 			var cablingConfiguration = JsonSerializer.Deserialize<CablingConfiguration>(serializedCablingConfiguration, options);
 
-			throw new NotImplementedException();
+
+			var stream = new MemoryStream(Encoding.ASCII.GetBytes("Hello World"));
+
+			return File(stream, "text/plain", "test.txt");
+
+			//return new FileStreamResult(stream, "text/plain")
+			//{
+			//	FileDownloadName = "test.txt"
+			//};
 		}
 
 		public IActionResult Information()
