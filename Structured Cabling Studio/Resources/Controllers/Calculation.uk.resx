@@ -117,115 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Add cable selection recommendations" xml:space="preserve">
-    <value>Add cable selection recommendations</value>
-  </data>
-  <data name="Advanced calculation parameters" xml:space="preserve">
-    <value>Advanced calculation parameters</value>
-  </data>
-  <data name="Arbitary ports count per workplace" xml:space="preserve">
-    <value>Allow an arbitrary ports count per 1 workplace</value>
-  </data>
-  <data name="Availability of technological reserve coefficient:" xml:space="preserve">
-    <value>Take into account of the technological reserve coefficient:</value>
-  </data>
   <data name="AveragePermanentLink" xml:space="preserve">
-    <value>Average length of the permanent link:</value>
+    <value>Середня довжина постійного лінку (Permanent Link):</value>
   </data>
   <data name="CableHankMeterage" xml:space="preserve">
-    <value>Cable length on 1 hank:</value>
+    <value>Метраж кабелю в 1-й бухті:</value>
   </data>
   <data name="CableQuantity" xml:space="preserve">
-    <value>Necessary cable meterage:</value>
+    <value>Необхідний метраж кабелю:</value>
   </data>
   <data name="CableSelectionRecommendations" xml:space="preserve">
-    <value>Cable selection recommendations:</value>
+    <value>Рекомендаціі по підбору кабелю:</value>
   </data>
-  <data name="Calculate" xml:space="preserve">
-    <value>Calculate</value>
-  </data>
-  <data name="Clean output block" xml:space="preserve">
-    <value>Clean output block</value>
-  </data>
-  <data name="Consider standard fire safety requirements" xml:space="preserve">
-    <value>Consider the standard fire safety requirements</value>
-  </data>
-  <data name="Hank length" xml:space="preserve">
-    <value>Length</value>
+  <data name="CreatedIn" xml:space="preserve">
+    <value>Конфігурація СКС була створена у застосунку Structured Cabling Studio</value>
   </data>
   <data name="HankQuantity" xml:space="preserve">
-    <value>Necessary cable hank count:</value>
+    <value>Небхідна кількість бухт кабелю:</value>
   </data>
   <data name="Insulation Material" xml:space="preserve">
-    <value>Recommended cable insluation material:</value>
+    <value>Рекомендований матеріал ізоляції кабелю:</value>
   </data>
   <data name="Insulation Type" xml:space="preserve">
-    <value>Recommended cable insluation type:</value>
+    <value>Рекомендований тип ізоляції кабелю:</value>
   </data>
   <data name="m" xml:space="preserve">
-    <value>m</value>
-  </data>
-  <data name="Maximum length of the permanent link:" xml:space="preserve">
-    <value>Maximum length of the permanent link:</value>
+    <value>м.</value>
   </data>
   <data name="MaxPermanentLink" xml:space="preserve">
-    <value>Maximum length of the permanent link:</value>
-  </data>
-  <data name="Minimum length of the permanent link:" xml:space="preserve">
-    <value>Minimum length of the permanent link:</value>
+    <value>Максимальна довжина постійного лінку (Permanent Link):</value>
   </data>
   <data name="MinPermanentLink" xml:space="preserve">
-    <value>Minimum length of the permanent link:</value>
+    <value>Мінімальная довжина постійного лінку (Permanent Link):</value>
   </data>
   <data name="NumberOfPorts" xml:space="preserve">
-    <value>Ports count per 1 workplace:</value>
+    <value>Кількість портів на 1 робоче місце:</value>
   </data>
   <data name="NumberOfWorkplaces" xml:space="preserve">
-    <value>Workplaces count:</value>
-  </data>
-  <data name="Ports count per 1 workplace:" xml:space="preserve">
-    <value>Ports count per 1 workplace:</value>
+    <value>Кількість робочих місць:</value>
   </data>
   <data name="RecordTime" xml:space="preserve">
-    <value>Date and time of structured cabling confiruration record:</value>
-  </data>
-  <data name="Restore defaults" xml:space="preserve">
-    <value>Restore defaults</value>
-  </data>
-  <data name="Save to TXT" xml:space="preserve">
-    <value>Save to TXT</value>
+    <value>Час та дата запису конфигураціі СКС:</value>
   </data>
   <data name="Shielding" xml:space="preserve">
-    <value>Recommended cable shielding type:</value>
+    <value>Рекомендований тип екранізаціі кабелю:</value>
   </data>
   <data name="Standart" xml:space="preserve">
-    <value>Recommended cable category:</value>
+    <value>Рекомендована категорія кабелю:</value>
   </data>
-  <data name="Standart values" xml:space="preserve">
-    <value>Standart values</value>
-  </data>
-  <data name="Strict compliance with the standart" xml:space="preserve">
-    <value>Strict compliance with the ISO/IEC 11801 standart</value>
-  </data>
-  <data name="Take into account the cable hank meterage" xml:space="preserve">
-    <value>Take into account the cable hank meterage</value>
-  </data>
-  <data name="Take into account the necessity of cable shielding" xml:space="preserve">
-    <value>Take into account the necessity of cable shielding</value>
-  </data>
-  <data name="The standard values of a cable hank length" xml:space="preserve">
-    <value>The standard values of a cable hank length</value>
+  <data name="StructuredCablingConfiguration" xml:space="preserve">
+    <value>Конфігурація СКС</value>
   </data>
   <data name="TotalCableQuantity" xml:space="preserve">
-    <value>Total necessary cable meterage:</value>
-  </data>
-  <data name="Used connection interfaces" xml:space="preserve">
-    <value>Used connection interfaces</value>
-  </data>
-  <data name="Will the sections of the cable route run outdoors" xml:space="preserve">
-    <value>Will the sections of the cable route run outdoors</value>
-  </data>
-  <data name="Workplaces count:" xml:space="preserve">
-    <value>Workplaces count:</value>
+    <value>Загальна необхідна кількість кабелю:</value>
   </data>
 </root>
