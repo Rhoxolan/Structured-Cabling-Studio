@@ -44,6 +44,13 @@ namespace StructuredCablingStudio.Controllers
 			_localizer = localizer;
 		}
 
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Calculate(CalculateViewModel calculateVM)
+		{
+			throw new NotImplementedException();
+		}
+
 		[Authorize]
 		public IActionResult History()
 		{
@@ -53,6 +60,12 @@ namespace StructuredCablingStudio.Controllers
 		public IActionResult Information()
 		{
 			return Content("Informatin Page");
+		}
+
+		[HttpPost]
+		public IActionResult SaveToTXT(string serializedCablingConfiguration)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

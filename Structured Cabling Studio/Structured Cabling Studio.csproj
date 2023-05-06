@@ -57,6 +57,9 @@
     <EmbeddedResource Update="Resources\Controllers\Calculation.ru.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Calculation\_CalculateFormPartial.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

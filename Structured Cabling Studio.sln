@@ -5,11 +5,11 @@ VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Structured Cabling Studio", "Structured Cabling Studio\Structured Cabling Studio.csproj", "{985C79B0-16D2-4060-8815-7B7E10526B66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StructuredCablingStudioCore", "StructuredCablingStudioCore\StructuredCablingStudioCore.csproj", "{6828621B-4945-4560-8A61-103769025E6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StructuredCablingStudioCore", "StructuredCablingStudioCore\StructuredCablingStudioCore.csproj", "{6828621B-4945-4560-8A61-103769025E6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StructuredCablingStudioCore.Parameters", "StructuredCablingStudioCore.Parameters\StructuredCablingStudioCore.Parameters.csproj", "{DA5E42BA-5BDF-4F4B-BB5A-49785FFB400E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StructuredCablingStudioCore.Parameters", "StructuredCablingStudioCore.Parameters\StructuredCablingStudioCore.Parameters.csproj", "{DA5E42BA-5BDF-4F4B-BB5A-49785FFB400E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StructuredCablingStudioCore.Calculation", "StructuredCablingStudioCore.Calculation\StructuredCablingStudioCore.Calculation.csproj", "{90613539-AF7E-45B5-8984-5AFA265C4CA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StructuredCablingStudioCore.Calculation", "StructuredCablingStudioCore.Calculation\StructuredCablingStudioCore.Calculation.csproj", "{90613539-AF7E-45B5-8984-5AFA265C4CA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
