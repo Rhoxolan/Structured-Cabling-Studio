@@ -19,6 +19,7 @@ using static System.Convert;
 using static System.DateTimeOffset;
 using static System.Text.Encoding;
 using static System.String;
+using StructuredCablingStudio.DTOs.CalculateDTOs;
 
 namespace StructuredCablingStudio.Controllers
 {
@@ -44,11 +45,24 @@ namespace StructuredCablingStudio.Controllers
 			_localizer = localizer;
 		}
 
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Calculate(CalculateViewModel calculateVM)
+		public IActionResult Calculate()
 		{
-			throw new NotImplementedException();
+			return View();
+		}
+
+		[HttpPost]
+		public IActionResult GetCalculateForm(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters,
+			CalculateDTO calculateDTO)
+		{
+			CalculateViewModel viewModel = _mapper.Map<CalculateViewModel>(cablingParameters);
+			viewModel.IsCableHankMeterageAvailability = calculateParameters.IsCableHankMeterageAvailability.GetValueOrDefault();
+			viewModel.CableHankMeterage = calculateParameters.CableHankMeterage;
+			viewModel.MinPermanentLink = calculateDTO.MinPermanentLink;
+			viewModel.MaxPermanentLink = calculateDTO.MaxPermanentLink;
+			viewModel.NumberOfPorts = calculateDTO.NumberOfPorts;
+			viewModel.NumberOfWorkplaces = calculateDTO.NumberOfWorkplaces;
+			ViewData["Diapasons"] = cablingParameters.Diapasons;
+			return PartialView("_CalculateFormPartial", viewModel);
 		}
 
 		[Authorize]

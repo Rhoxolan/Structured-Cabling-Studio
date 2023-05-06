@@ -1,3 +1,18 @@
+LoadCalculateForm();
+
+async function LoadCalculateForm() {
+    let resp = await fetch("Calculation/GetCalculateForm", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+        },
+    });
+    if (resp.ok === true) {
+        let calculateForm = await resp.text();
+        document.getElementById('calculateFormDiv').innerHTML = calculateForm;
+    }
+}
+
 document.getElementById('minPermanentLinkInput').addEventListener('blur', validateDiapason);
 
 document.getElementById('minPermanentLinkInput').addEventListener('blur', validateStep);
