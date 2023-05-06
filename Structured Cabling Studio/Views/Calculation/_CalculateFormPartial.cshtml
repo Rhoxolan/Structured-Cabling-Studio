@@ -1,12 +1,9 @@
 ﻿@using StructuredCablingStudioCore.Parameters
-@using StructuredCablingStudioCore;
 @using static System.Globalization.CultureInfo
-@using static System.String;
 @model CalculateViewModel
 @{
 	ViewData["Title"] = "Calculation";
 	var diapasons = (ViewData["Diapasons"] as StructuredCablingStudioDiapasons)!;
-	var cablingConfiguration = (ViewData["CablingConfiguration"] as CablingConfiguration);
 }
 
 <form id="calculateForm" asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.Calculate)" method="post">
@@ -439,7 +436,6 @@
 				<button type="button" id="restoreDefaultsButton" class="btn btn-sm btn-outline-secondary">
 					@Localizer["Restore defaults"]
 				</button>
-				<input type="hidden" id="approvedRestoreDefaultsInput" asp-for="ApprovedRestoreDefaults" />
 			</div>
 		</div>
 	</div>
@@ -452,139 +448,9 @@
 				<button type="submit" id="calculateButton" class="btn btn-lg btn-outline-primary fw-semibold">
 					@Localizer["Calculate"]
 				</button>
-				<input type="hidden" id="approvedCalculationInput" asp-for="ApprovedCalculation" />
 				<input type="hidden" id="recordTimeInput" asp-for="RecordTime" />
 			</div>
 		</div>
 	</div>
 
-	<div class="mb-3">
-		<div class="row">
-			<div class="col">
-				<div id="configurationOutputdiv" class="form-control border-primary px-4 py-3">
-					@{
-						if (cablingConfiguration != null)
-						{
-							<p>
-								@Localizer["RecordTime"]&ensp;@cablingConfiguration.RecordTime.ToShortDateString() @cablingConfiguration.RecordTime.ToLongTimeString()
-							</p>
-							<p>
-								<span>
-									@Localizer["MinPermanentLink"]&ensp;<span class="fw-semibold">@cablingConfiguration.MinPermanentLink.ToString("F2")&nbsp;@Localizer["m"]</span>
-								</span>
-								<br>
-								<span>
-									@Localizer["MaxPermanentLink"]&ensp;<span class="fw-semibold">@cablingConfiguration.MaxPermanentLink.ToString("F2")&nbsp;@Localizer["m"]</span>
-								</span>
-								<br>
-								<span>
-									@Localizer["AveragePermanentLink"]&ensp;<span class="fw-semibold">@cablingConfiguration.AveragePermanentLink.ToString("F2")&nbsp;@Localizer["m"]</span>
-								</span>
-								<br>
-								<span>
-									@Localizer["NumberOfWorkplaces"]&ensp;<span class="fw-semibold">@cablingConfiguration.NumberOfWorkplaces.ToString()</span>
-								</span>
-								<br>
-								<span>
-									@Localizer["NumberOfPorts"]&ensp;<span class="fw-semibold">@cablingConfiguration.NumberOfPorts.ToString()</span>
-								</span>
-								<br>
-								@if (cablingConfiguration.CableQuantity != null)
-								{
-									<span>
-										@Localizer["CableQuantity"]&ensp;<span class="fw-semibold">@cablingConfiguration.CableQuantity.Value.ToString("F2")&nbsp;@Localizer["m"]</span>
-									</span>
-									<br>
-								}
-								@if (cablingConfiguration.CableHankMeterage != null)
-								{
-									<span>
-										@Localizer["CableHankMeterage"]&ensp;<span class="fw-semibold">@cablingConfiguration.CableHankMeterage.Value.ToString()&nbsp;@Localizer["m"]</span>
-									</span>
-									<br>
-								}
-								@if (cablingConfiguration.HankQuantity != null)
-								{
-									<span>
-										@Localizer["HankQuantity"]&ensp;<span class="fw-semibold">@cablingConfiguration.HankQuantity.Value.ToString()</span>
-									</span>
-								}
-							</p>
-							<p>
-								<span class="fw-semibold">
-									@Localizer["TotalCableQuantity"]&ensp;@cablingConfiguration.TotalCableQuantity.ToString("F2")&nbsp;@Localizer["m"]
-								</span>
-							</p>
-							if (!IsNullOrEmpty(cablingConfiguration.Recommendations["Insulation Type"]) &&
-							!IsNullOrEmpty(cablingConfiguration.Recommendations["Insulation Material"]) &&
-							!IsNullOrEmpty(cablingConfiguration.Recommendations["Shielding"]))
-							{
-								<p>
-									<br>
-									<span>
-										@Localizer["CableSelectionRecommendations"]
-									</span>
-									<br>
-									<span>
-										@Localizer["Insulation Type"]&ensp;@cablingConfiguration.Recommendations["Insulation Type"]
-									</span>
-									<br>
-									<span>
-										@Localizer["Insulation Material"]&ensp;@cablingConfiguration.Recommendations["Insulation Material"]
-									</span>
-									<br>
-									@if (!IsNullOrEmpty(cablingConfiguration.Recommendations["Standart"]))
-									{
-										<span>
-											@Localizer["Standart"]&ensp;@cablingConfiguration.Recommendations["Standart"]
-										</span>
-										<br>
-									}
-									<span>
-										@Localizer["Shielding"]&ensp;@cablingConfiguration.Recommendations["Shielding"]
-									</span>
-									<br>
-								</p>
-							}
-							<script src="~/js/Calculate_Scroll.js" asp-append-version="true"></script>
-						}
-					}
-				</div>
-			</div>
-		</div>
-	</div>
-
 </form>
-
-<div class="mb-3">
-	<div class="row">
-		<div class="col-auto">
-			@if (cablingConfiguration != null)
-			{
-				var serializeroptions = new System.Text.Json.JsonSerializerOptions
-				{
-					WriteIndented = true,
-					ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve,
-				};
-
-				<form asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.SaveToTXT)" method="post">
-					<input type="hidden" name="serializedCablingConfiguration" value="@System.Text.Json.JsonSerializer.Serialize(cablingConfiguration, serializeroptions)">
-					<button type="submit" class="btn btn-outline-secondary mt-1 mb-2 mt-sm-0 mb-sm-0">
-						@Localizer["Save to TXT"]
-					</button>
-				</form>
-			}
-			else
-			{
-				<button class="btn btn-outline-secondary mt-1 mb-2 mt-sm-0 mb-sm-0" disabled>
-					@Localizer["Save to TXT"]
-				</button>
-			}
-		</div>
-	</div>
-</div>
-
-@await Html.PartialAsync("_PleaseWaitPartial")
-
-<script src="~/js/Calculate.js" asp-append-version="true"></script>
-

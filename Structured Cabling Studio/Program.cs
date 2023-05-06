@@ -2,41 +2,20 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
-using StructuredCablingStudio.AutoMapperProfiles;
-using StructuredCablingStudio.Binders.CalculationBinders;
 using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
-using StructuredCablingStudio.Filters.CalculationFilters;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews(opt =>
-{
-	opt.ModelBinderProviders.Insert(0, new StructuredCablingStudioParametersModelBinderProvider());
-	opt.ModelBinderProviders.Insert(0, new ConfigurationCalculateParametersModelBinderProvider());
-	opt.ModelBinderProviders.Insert(0, new CalculateDTOModelBinderProvider());
-	opt.ModelBinderProviders.Insert(0, new CablingConfigurationModelBinderProvider());
-})
+builder.Services.AddControllersWithViews()
 	.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
 	.AddDataAnnotationsLocalization();
 
 builder.Services.AddIdentity<User, IdentityRole>()
 	.AddEntityFrameworkStores<ApplicationContext>();
 
-builder.Services.AddAutoMapper(typeof(StructuredCablingParametersToStructuredCablingStudioParametersProfile),
-	typeof(StructuredCablingStudioParametersToCalculateViewModelProfile),
-	typeof(CalculateViewModelToStructuredCablingParametersProfile),
-	typeof(CalculateParametersToConfigurationCalculateParametersProfile),
-	typeof(CalculateViewModelToConfigurationCalculateParameters),
-	typeof(CablingConfigurationToCablingConfigurationEntityProfile),
-	typeof(CalculateDTOToCalculateViewModelProfile))
-	.AddScoped<StructuredCablingStudioParametersResultFilter>()
-	.AddScoped<ConfigurationCalulateParametersResultFilter>()
-	.AddScoped<DiapasonActionFilter>()
-	.AddScoped<ValueActionFilter>()
-	.AddScoped<CalculateDTOResultFilter>()
-	.AddDbContext<ApplicationContext>(opt
+builder.Services.AddDbContext<ApplicationContext>(opt
 	=> opt.UseSqlServer(builder.Configuration.GetConnectionString("CablingConfigurationsDB")))
 	.AddLocalization(opt => opt.ResourcesPath = "Resources")
 	.Configure<RequestLocalizationOptions>(opt =>
