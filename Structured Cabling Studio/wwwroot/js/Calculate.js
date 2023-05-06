@@ -2,10 +2,7 @@ LoadCalculateForm();
 
 async function LoadCalculateForm() {
     let resp = await fetch("Calculation/GetCalculateForm", {
-        method: "POST",
-        headers: {
-            "Accept": "application/json",
-        },
+        method: "POST"
     });
     if (resp.ok === true) {
         let calculateForm = await resp.text();
