@@ -50,6 +50,7 @@ namespace StructuredCablingStudio.Controllers
 			return View();
 		}
 
+		//Подумать заменить на HttpPut
 		[HttpPost]
 		public IActionResult GetCalculateForm(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters,
 			CalculateDTO calculateDTO)
@@ -63,6 +64,12 @@ namespace StructuredCablingStudio.Controllers
 			viewModel.NumberOfWorkplaces = calculateDTO.NumberOfWorkplaces;
 			ViewData["Diapasons"] = cablingParameters.Diapasons;
 			return PartialView("_CalculateFormPartial", viewModel);
+		}
+
+		[HttpPut]
+		public async Task<IActionResult> EditCalculateForm(CalculateViewModel calculateVM)
+		{
+			return PartialView("_CalculateFormPartial", calculateVM);
 		}
 
 		[Authorize]
