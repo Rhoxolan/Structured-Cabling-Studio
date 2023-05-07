@@ -51,8 +51,7 @@ namespace StructuredCablingStudio.Controllers
 			return View();
 		}
 
-		//Подумать заменить на HttpPut
-		[HttpPost]
+		[HttpPut]
 		public IActionResult LoadCalculateForm(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters,
 			CalculateDTO calculateDTO)
 		{
@@ -67,11 +66,98 @@ namespace StructuredCablingStudio.Controllers
 			return PartialView("_CalculateFormPartial", viewModel);
 		}
 
-		//Подумать перевести фильтры на синхронный интерфейс
 		[HttpPut]
-		[IsStrictComplianceWithTheStandartActionFilter]
-		public async Task<IActionResult> EditCalculateForm(CalculateViewModel calculateVM)
+		[ServiceFilter(typeof(ValueActionFilter), Order = int.MinValue + 1)]
+		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
+		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
+		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
+		[ServiceFilter(typeof(CalculateDTOResultFilter))]
+		public IActionResult PutStrictComplianceWithTheStandart(CalculateViewModel calculateVM)
 		{
+			if (!calculateVM.IsStrictComplianceWithTheStandart)
+			{
+				calculateVM.IsAnArbitraryNumberOfPorts = true;
+				ModelState.SetModelValue(nameof(calculateVM.IsAnArbitraryNumberOfPorts), calculateVM.IsAnArbitraryNumberOfPorts, default);
+			}
+			return PartialView("_CalculateFormPartial", calculateVM);
+		}
+
+		[HttpPut]
+		[ServiceFilter(typeof(ValueActionFilter), Order = int.MinValue + 1)]
+		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
+		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
+		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
+		[ServiceFilter(typeof(CalculateDTOResultFilter))]
+		public IActionResult PutRecommendationsAvailability(CalculateViewModel calculateVM)
+		{
+			if (!calculateVM.IsRecommendationsAvailability)
+			{
+				calculateVM.IsCableRouteRunOutdoors = false;
+				calculateVM.IsConsiderFireSafetyRequirements = false;
+				calculateVM.IsCableShieldingNecessity = false;
+				calculateVM.HasTenBase_T = false;
+				calculateVM.HasFastEthernet = false;
+				calculateVM.HasGigabitBASE_T = false;
+				calculateVM.HasGigabitBASE_TX = false;
+				calculateVM.HasTwoPointFiveGBASE_T = false;
+				calculateVM.HasFiveGBASE_T = false;
+				calculateVM.HasTenGE = false;
+				ModelState.SetModelValue(nameof(calculateVM.IsCableRouteRunOutdoors), calculateVM.IsCableRouteRunOutdoors, default);
+				ModelState.SetModelValue(nameof(calculateVM.IsConsiderFireSafetyRequirements), calculateVM.IsConsiderFireSafetyRequirements, default);
+				ModelState.SetModelValue(nameof(calculateVM.IsCableShieldingNecessity), calculateVM.IsCableShieldingNecessity, default);
+				ModelState.SetModelValue(nameof(calculateVM.HasTenBase_T), calculateVM.HasTenBase_T, default);
+				ModelState.SetModelValue(nameof(calculateVM.HasFastEthernet), calculateVM.HasFastEthernet, default);
+				ModelState.SetModelValue(nameof(calculateVM.HasGigabitBASE_T), calculateVM.HasGigabitBASE_T, default);
+				ModelState.SetModelValue(nameof(calculateVM.HasGigabitBASE_TX), calculateVM.HasGigabitBASE_TX, default);
+				ModelState.SetModelValue(nameof(calculateVM.HasTwoPointFiveGBASE_T), calculateVM.HasTwoPointFiveGBASE_T, default);
+				ModelState.SetModelValue(nameof(calculateVM.HasFiveGBASE_T), calculateVM.HasFiveGBASE_T, default);
+				ModelState.SetModelValue(nameof(calculateVM.HasTenGE), calculateVM.HasTenGE, default);
+			}
+			return PartialView("_CalculateFormPartial", calculateVM);
+		}
+
+		[HttpPut]
+		[ServiceFilter(typeof(ValueActionFilter), Order = int.MinValue + 1)]
+		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
+		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
+		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
+		[ServiceFilter(typeof(CalculateDTOResultFilter))]
+		public IActionResult PutCableHankMeterageAvailability(CalculateViewModel calculateVM)
+		{
+			var configurationCalculateParameters = _mapper.Map<ConfigurationCalculateParameters>(calculateVM);
+			if (calculateVM.CableHankMeterage != configurationCalculateParameters.CableHankMeterage)
+			{
+				calculateVM.CableHankMeterage = configurationCalculateParameters.CableHankMeterage;
+				ModelState.SetModelValue(nameof(calculateVM.CableHankMeterage), calculateVM.CableHankMeterage, default);
+			}
+			return PartialView("_CalculateFormPartial", calculateVM);
+		}
+
+		[HttpPut]
+		[ServiceFilter(typeof(ValueActionFilter), Order = int.MinValue + 1)]
+		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
+		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
+		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
+		[ServiceFilter(typeof(CalculateDTOResultFilter))]
+		public IActionResult PutAnArbitraryNumberOfPorts(CalculateViewModel calculateVM)
+		{
+			return PartialView("_CalculateFormPartial", calculateVM);
+		}
+
+		[HttpPut]
+		[ServiceFilter(typeof(ValueActionFilter), Order = int.MinValue + 1)]
+		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
+		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
+		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
+		[ServiceFilter(typeof(CalculateDTOResultFilter))]
+		public IActionResult PutTechnologicalReserveAvailability(CalculateViewModel calculateVM)
+		{
+			var structuredCablingStudioParameters = _mapper.Map<StructuredCablingStudioParameters>(calculateVM);
+			if (calculateVM.TechnologicalReserve != structuredCablingStudioParameters.TechnologicalReserve)
+			{
+				calculateVM.TechnologicalReserve = structuredCablingStudioParameters.TechnologicalReserve;
+				ModelState.SetModelValue(nameof(calculateVM.TechnologicalReserve), calculateVM.TechnologicalReserve, default);
+			}
 			return PartialView("_CalculateFormPartial", calculateVM);
 		}
 

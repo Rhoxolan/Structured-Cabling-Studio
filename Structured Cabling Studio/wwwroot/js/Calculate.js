@@ -1,5 +1,3 @@
-debugger;
-
 loadCalculateForm();
 
 document.addEventListener('focusout', e => {
@@ -57,44 +55,47 @@ document.addEventListener('click', e => {
 document.addEventListener('click', e => {
     if (e.target.id === "isStrictComplianceWithTheStandartCheckBox") {
         removeDisabledAttributesFromAllInputs();
-        editCalculateForm();
+        putStrictComplianceWithTheStandart();
     }
 });
 
 document.addEventListener('click', e => {
     if (e.target.id === "isAnArbitraryNumberOfPortsCheckBox") {
         removeDisabledAttributesFromAllInputs();
+        putAnArbitraryNumberOfPorts();
     }
 });
 
 document.addEventListener('click', e => {
     if (e.target.id === "isTechnologicalReserveAvailabilityCheckBox") {
         removeDisabledAttributesFromAllInputs();
+        putTechnologicalReserveAvailability();
     }
 });
 
 document.addEventListener('click', e => {
     if (e.target.id === "isRecommendationsAvailabilityCheckBox") {
         removeDisabledAttributesFromAllInputs();
+        putRecommendationsAvailability();
     }
 });
 
 document.addEventListener('click', e => {
     if (e.target.id === "isCableHankMeterageAvailabilityCheckBox") {
         removeDisabledAttributesFromAllInputs();
+        putCableHankMeterageAvailability();
     }
 });
 
 document.addEventListener('click', e => {
     if (e.target.id === "calculateButton") {
         document.getElementById('recordTimeInput').value = new Date().getTime().toString();
-        pleaseWaitDisplay();
     }
 });
 
 async function loadCalculateForm() {
     let resp = await fetch("Calculation/LoadCalculateForm", {
-        method: "POST"
+        method: "PUT"
     });
     if (resp.ok === true) {
         let calculateForm = await resp.text();
@@ -102,13 +103,30 @@ async function loadCalculateForm() {
     }
 }
 
-//Сделать MutationDiv и не забыть добавить PleaseWaitDiv к EditCalculateForm
+async function putStrictComplianceWithTheStandart() {
+    await editCalculateForm("Calculation/PutStrictComplianceWithTheStandart");
+}
 
-//Решить вопрос с формдатой
-async function editCalculateForm() {
-    let resp = await fetch("Calculation/EditCalculateForm", {
+async function putRecommendationsAvailability() {
+    await editCalculateForm("Calculation/PutRecommendationsAvailability");
+}
+
+async function putCableHankMeterageAvailability() {
+    await editCalculateForm("Calculation/PutCableHankMeterageAvailability");
+}
+
+async function putAnArbitraryNumberOfPorts() {
+    await editCalculateForm("Calculation/PutAnArbitraryNumberOfPorts");
+}
+
+async function putTechnologicalReserveAvailability() {
+    await editCalculateForm("Calculation/PutTechnologicalReserveAvailability");
+}
+
+async function editCalculateForm(path) {
+    let resp = await fetch(path, {
         method: "PUT",
-        body = new FormData(document.forms.calculateForm)
+        body: new FormData(document.forms.calculateForm)
     });
     if (resp.ok === true) {
         let calculateForm = await resp.text();
