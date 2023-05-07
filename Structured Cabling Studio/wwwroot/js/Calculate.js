@@ -1,5 +1,100 @@
 LoadCalculateForm();
 
+document.addEventListener('focusout', e => {
+    if (e.target.id === "minPermanentLinkInput") {
+        validateDiapason(e);
+        validateStep(e);
+        checkCableHankMeterage();
+    }
+});
+
+document.addEventListener('focusout', e => {
+    if (e.target.id === "maxPermanentLinkInput") {
+        validateDiapason(e);
+        validateStep(e);
+        checkCableHankMeterage();
+    }
+});
+
+document.addEventListener('focusout', e => {
+    if (e.target.id === "numberOfWorkplacesInput") {
+        validateDiapason(e);
+        validateStep(e);
+    }
+});
+
+document.addEventListener('focusout', e => {
+    if (e.target.id === "numberOfPortsInput") {
+        validateDiapason(e);
+        validateStep(e);
+    }
+});
+
+document.addEventListener('focusout', e => {
+    if (e.target.id === "cableHankMeterageInput") {
+        validateDiapason(e);
+        validateStep(e);
+        checkCableHankMeterage();
+    }
+});
+
+document.addEventListener('focusout', e => {
+    if (e.target.id === "technologicalReserveInput") {
+        validateDiapason(e);
+        validateStep(e);
+        checkCableHankMeterage();
+    }
+});
+
+document.addEventListener('click', e => {
+    if (e.target.id === "technologicalReserveInput") {
+        removeDisabledAttributesFromAllInputs();
+    }
+});
+
+document.addEventListener('click', e => {
+    if (e.target.id === "restoreDefaultsButton") {
+        removeDisabledAttributesFromAllInputs();
+    }
+});
+
+document.addEventListener('click', e => {
+    if (e.target.id === "isStrictComplianceWithTheStandartCheckBox") {
+        removeDisabledAttributesFromAllInputs();
+    }
+});
+
+document.addEventListener('click', e => {
+    if (e.target.id === "isAnArbitraryNumberOfPortsCheckBox") {
+        removeDisabledAttributesFromAllInputs();
+    }
+});
+
+document.addEventListener('click', e => {
+    if (e.target.id === "isTechnologicalReserveAvailabilityCheckBox") {
+        removeDisabledAttributesFromAllInputs();
+    }
+});
+
+document.addEventListener('click', e => {
+    if (e.target.id === "isRecommendationsAvailabilityCheckBox") {
+        removeDisabledAttributesFromAllInputs();
+    }
+});
+
+document.addEventListener('click', e => {
+    if (e.target.id === "isCableHankMeterageAvailabilityCheckBox") {
+        removeDisabledAttributesFromAllInputs();
+    }
+});
+
+document.addEventListener('click', e => {
+    if (e.target.id === "calculateButton") {
+        document.getElementById('recordTimeInput').value = new Date().getTime().toString();
+        pleaseWaitDisplay();
+    }
+});
+
 async function LoadCalculateForm() {
     let resp = await fetch("Calculation/GetCalculateForm", {
         method: "POST"
@@ -9,58 +104,6 @@ async function LoadCalculateForm() {
         document.getElementById('calculateFormDiv').innerHTML = calculateForm;
     }
 }
-
-document.getElementById('minPermanentLinkInput').addEventListener('blur', validateDiapason);
-
-document.getElementById('minPermanentLinkInput').addEventListener('blur', validateStep);
-
-document.getElementById('minPermanentLinkInput').addEventListener('blur', checkCableHankMeterage);
-
-document.getElementById('maxPermanentLinkInput').addEventListener('blur', validateDiapason);
-
-document.getElementById('maxPermanentLinkInput').addEventListener('blur', validateStep);
-
-document.getElementById('maxPermanentLinkInput').addEventListener('blur', checkCableHankMeterage);
-
-document.getElementById('numberOfWorkplacesInput').addEventListener('blur', validateDiapason);
-
-document.getElementById('numberOfWorkplacesInput').addEventListener('blur', validateStep);
-
-document.getElementById('numberOfPortsInput').addEventListener('blur', validateDiapason);
-
-document.getElementById('numberOfPortsInput').addEventListener('blur', validateStep);
-
-document.getElementById('cableHankMeterageInput').addEventListener('blur', validateDiapason);
-
-document.getElementById('cableHankMeterageInput').addEventListener('blur', validateStep);
-
-document.getElementById('cableHankMeterageInput').addEventListener('blur', checkCableHankMeterage);
-
-document.getElementById('technologicalReserveInput').addEventListener('blur', validateDiapason);
-
-document.getElementById('technologicalReserveInput').addEventListener('blur', validateStep);
-
-document.getElementById('technologicalReserveInput').addEventListener('blur', checkCableHankMeterage);
-
-document.getElementById('calculateButton').addEventListener('click', removeDisabledAttributesFromAllInputs);
-
-document.getElementById('restoreDefaultsButton').addEventListener('click', removeDisabledAttributesFromAllInputs);
-
-document.getElementById('isStrictComplianceWithTheStandartCheckBox').addEventListener('click', removeDisabledAttributesFromAllInputs);
-
-document.getElementById('isAnArbitraryNumberOfPortsCheckBox').addEventListener('click', removeDisabledAttributesFromAllInputs);
-
-document.getElementById('isTechnologicalReserveAvailabilityCheckBox').addEventListener('click', removeDisabledAttributesFromAllInputs);
-
-document.getElementById('isRecommendationsAvailabilityCheckBox').addEventListener('click', removeDisabledAttributesFromAllInputs);
-
-document.getElementById('isCableHankMeterageAvailabilityCheckBox').addEventListener('click', removeDisabledAttributesFromAllInputs);
-
-document.getElementById('calculateButton').addEventListener('click', function () {
-    document.getElementById('recordTimeInput').value = new Date().getTime().toString();
-});
-
-document.forms.calculateForm.addEventListener('submit', pleaseWaitDisplay);
 
 
 function validateDiapason(e) {
