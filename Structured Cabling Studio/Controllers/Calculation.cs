@@ -20,6 +20,7 @@ using static System.DateTimeOffset;
 using static System.Text.Encoding;
 using static System.String;
 using StructuredCablingStudio.DTOs.CalculateDTOs;
+using StructuredCablingStudio.Filters.CalculationFilters;
 
 namespace StructuredCablingStudio.Controllers
 {
@@ -52,7 +53,7 @@ namespace StructuredCablingStudio.Controllers
 
 		//Подумать заменить на HttpPut
 		[HttpPost]
-		public IActionResult GetCalculateForm(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters,
+		public IActionResult LoadCalculateForm(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters,
 			CalculateDTO calculateDTO)
 		{
 			CalculateViewModel viewModel = _mapper.Map<CalculateViewModel>(cablingParameters);
@@ -66,7 +67,9 @@ namespace StructuredCablingStudio.Controllers
 			return PartialView("_CalculateFormPartial", viewModel);
 		}
 
+		//Подумать перевести фильтры на синхронный интерфейс
 		[HttpPut]
+		[IsStrictComplianceWithTheStandartActionFilter]
 		public async Task<IActionResult> EditCalculateForm(CalculateViewModel calculateVM)
 		{
 			return PartialView("_CalculateFormPartial", calculateVM);

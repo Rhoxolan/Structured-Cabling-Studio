@@ -1,4 +1,6 @@
-LoadCalculateForm();
+debugger;
+
+loadCalculateForm();
 
 document.addEventListener('focusout', e => {
     if (e.target.id === "minPermanentLinkInput") {
@@ -47,12 +49,6 @@ document.addEventListener('focusout', e => {
 });
 
 document.addEventListener('click', e => {
-    if (e.target.id === "technologicalReserveInput") {
-        removeDisabledAttributesFromAllInputs();
-    }
-});
-
-document.addEventListener('click', e => {
     if (e.target.id === "restoreDefaultsButton") {
         removeDisabledAttributesFromAllInputs();
     }
@@ -61,6 +57,7 @@ document.addEventListener('click', e => {
 document.addEventListener('click', e => {
     if (e.target.id === "isStrictComplianceWithTheStandartCheckBox") {
         removeDisabledAttributesFromAllInputs();
+        editCalculateForm();
     }
 });
 
@@ -95,8 +92,8 @@ document.addEventListener('click', e => {
     }
 });
 
-async function LoadCalculateForm() {
-    let resp = await fetch("Calculation/GetCalculateForm", {
+async function loadCalculateForm() {
+    let resp = await fetch("Calculation/LoadCalculateForm", {
         method: "POST"
     });
     if (resp.ok === true) {
@@ -105,6 +102,19 @@ async function LoadCalculateForm() {
     }
 }
 
+//Сделать MutationDiv и не забыть добавить PleaseWaitDiv к EditCalculateForm
+
+//Решить вопрос с формдатой
+async function editCalculateForm() {
+    let resp = await fetch("Calculation/EditCalculateForm", {
+        method: "PUT",
+        body = new FormData(document.forms.calculateForm)
+    });
+    if (resp.ok === true) {
+        let calculateForm = await resp.text();
+        document.getElementById('calculateFormDiv').innerHTML = calculateForm;
+    }
+}
 
 function validateDiapason(e) {
     if (parseFloat(e.target.value) > parseFloat(e.target.getAttribute('max'))) {
