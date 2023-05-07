@@ -161,6 +161,76 @@ namespace StructuredCablingStudio.Controllers
 			return PartialView("_CalculateFormPartial", calculateVM);
 		}
 
+		[HttpPut]
+		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
+		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
+		[ServiceFilter(typeof(CalculateDTOResultFilter))]
+		public IActionResult RestoreDefaultsCalculateForm(CalculateViewModel calculateVM)
+		{
+			var cablingParameters = new StructuredCablingStudioParameters
+			{
+				IsStrictComplianceWithTheStandart = true,
+				IsAnArbitraryNumberOfPorts = true,
+				IsTechnologicalReserveAvailability = true,
+				IsRecommendationsAvailability = true
+			};
+			cablingParameters.RecommendationsArguments.IsolationType = IsolationType.Indoor;
+			cablingParameters.RecommendationsArguments.IsolationMaterial = IsolationMaterial.LSZH;
+			cablingParameters.RecommendationsArguments.ShieldedType = ShieldedType.UTP;
+			cablingParameters.RecommendationsArguments.ConnectionInterfaces = new List<ConnectionInterfaceStandard>
+			{
+				ConnectionInterfaceStandard.FastEthernet,
+				ConnectionInterfaceStandard.GigabitBASE_T
+			};
+			var calculateParameters = new ConfigurationCalculateParameters
+			{
+				IsCableHankMeterageAvailability = true
+			};
+			calculateVM.IsCableHankMeterageAvailability = calculateParameters.IsCableHankMeterageAvailability.Value;
+			calculateVM.CableHankMeterage = calculateParameters.CableHankMeterage;
+			calculateVM.TechnologicalReserve = cablingParameters.TechnologicalReserve;
+			calculateVM.IsStrictComplianceWithTheStandart = cablingParameters.IsStrictComplianceWithTheStandart.Value;
+			calculateVM.IsAnArbitraryNumberOfPorts = cablingParameters.IsAnArbitraryNumberOfPorts.Value;
+			calculateVM.IsTechnologicalReserveAvailability = cablingParameters.IsTechnologicalReserveAvailability.Value;
+			calculateVM.IsRecommendationsAvailability = cablingParameters.IsRecommendationsAvailability.Value;
+			calculateVM.IsCableRouteRunOutdoors = cablingParameters.RecommendationsArguments.IsolationType == IsolationType.Outdoor;
+			calculateVM.IsConsiderFireSafetyRequirements = cablingParameters.RecommendationsArguments.IsolationMaterial == IsolationMaterial.LSZH;
+			calculateVM.IsCableShieldingNecessity = cablingParameters.RecommendationsArguments.ShieldedType == ShieldedType.FTP;
+			calculateVM.HasTenBase_T
+				= cablingParameters.RecommendationsArguments.ConnectionInterfaces.Contains(ConnectionInterfaceStandard.TenBASE_T);
+			calculateVM.HasFastEthernet
+				= cablingParameters.RecommendationsArguments.ConnectionInterfaces.Contains(ConnectionInterfaceStandard.FastEthernet);
+			calculateVM.HasGigabitBASE_T
+				= cablingParameters.RecommendationsArguments.ConnectionInterfaces.Contains(ConnectionInterfaceStandard.GigabitBASE_T);
+			calculateVM.HasGigabitBASE_TX
+				= cablingParameters.RecommendationsArguments.ConnectionInterfaces.Contains(ConnectionInterfaceStandard.GigabitBASE_TX);
+			calculateVM.HasTwoPointFiveGBASE_T
+				= cablingParameters.RecommendationsArguments.ConnectionInterfaces.Contains(ConnectionInterfaceStandard.TwoPointFiveGBASE_T);
+			calculateVM.HasFiveGBASE_T
+				= cablingParameters.RecommendationsArguments.ConnectionInterfaces.Contains(ConnectionInterfaceStandard.FiveGBASE_T);
+			calculateVM.HasTenGE
+				= cablingParameters.RecommendationsArguments.ConnectionInterfaces.Contains(ConnectionInterfaceStandard.TenGE);
+			ModelState.SetModelValue(nameof(calculateVM.IsCableHankMeterageAvailability), calculateVM.IsCableHankMeterageAvailability, default);
+			ModelState.SetModelValue(nameof(calculateVM.CableHankMeterage), calculateVM.CableHankMeterage, default);
+			ModelState.SetModelValue(nameof(calculateVM.TechnologicalReserve), calculateVM.TechnologicalReserve, default);
+			ModelState.SetModelValue(nameof(calculateVM.IsStrictComplianceWithTheStandart), calculateVM.IsStrictComplianceWithTheStandart, default);
+			ModelState.SetModelValue(nameof(calculateVM.IsAnArbitraryNumberOfPorts), calculateVM.IsAnArbitraryNumberOfPorts, default);
+			ModelState.SetModelValue(nameof(calculateVM.IsTechnologicalReserveAvailability), calculateVM.IsTechnologicalReserveAvailability, default);
+			ModelState.SetModelValue(nameof(calculateVM.IsRecommendationsAvailability), calculateVM.IsRecommendationsAvailability, default);
+			ModelState.SetModelValue(nameof(calculateVM.IsCableRouteRunOutdoors), calculateVM.IsCableRouteRunOutdoors, default);
+			ModelState.SetModelValue(nameof(calculateVM.IsConsiderFireSafetyRequirements), calculateVM.IsConsiderFireSafetyRequirements, default);
+			ModelState.SetModelValue(nameof(calculateVM.IsCableShieldingNecessity), calculateVM.IsCableShieldingNecessity, default);
+			ModelState.SetModelValue(nameof(calculateVM.HasTenBase_T), calculateVM.HasTenBase_T, default);
+			ModelState.SetModelValue(nameof(calculateVM.HasFastEthernet), calculateVM.HasFastEthernet, default);
+			ModelState.SetModelValue(nameof(calculateVM.HasGigabitBASE_T), calculateVM.HasGigabitBASE_T, default);
+			ModelState.SetModelValue(nameof(calculateVM.HasGigabitBASE_TX), calculateVM.HasGigabitBASE_TX, default);
+			ModelState.SetModelValue(nameof(calculateVM.HasTwoPointFiveGBASE_T), calculateVM.HasTwoPointFiveGBASE_T, default);
+			ModelState.SetModelValue(nameof(calculateVM.HasFiveGBASE_T), calculateVM.HasFiveGBASE_T, default);
+			ModelState.SetModelValue(nameof(calculateVM.HasTenGE), calculateVM.HasTenGE, default);
+			return PartialView("_CalculateFormPartial", calculateVM);
+		}
+
+
 		[Authorize]
 		public IActionResult History()
 		{

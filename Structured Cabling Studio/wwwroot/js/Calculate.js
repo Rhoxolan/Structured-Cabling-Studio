@@ -49,6 +49,7 @@ document.addEventListener('focusout', e => {
 document.addEventListener('click', e => {
     if (e.target.id === "restoreDefaultsButton") {
         removeDisabledAttributesFromAllInputs();
+        restoreDefaultsCalculateForm();
     }
 });
 
@@ -121,6 +122,10 @@ async function putAnArbitraryNumberOfPorts() {
 
 async function putTechnologicalReserveAvailability() {
     await editCalculateForm("Calculation/PutTechnologicalReserveAvailability");
+}
+
+async function restoreDefaultsCalculateForm() {
+    await editCalculateForm("Calculation/RestoreDefaultsCalculateForm");
 }
 
 async function editCalculateForm(path) {

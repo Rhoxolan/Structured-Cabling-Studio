@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using StructuredCablingStudio.Controllers;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
-using StructuredCablingStudioCore.Calculation;
-using StructuredCablingStudioCore.Parameters;
 
 namespace StructuredCablingStudio.Filters.CalculationFilters
 {
