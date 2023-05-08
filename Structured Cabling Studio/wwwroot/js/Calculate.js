@@ -49,42 +49,42 @@ document.addEventListener('focusout', e => {
 document.addEventListener('click', e => {
     if (e.target.id === "restoreDefaultsButton") {
         removeDisabledAttributesFromAllInputs();
-        restoreDefaultsCalculateForm();
+        editCalculateForm("Calculation/RestoreDefaultsCalculateForm");
     }
 });
 
 document.addEventListener('click', e => {
     if (e.target.id === "isStrictComplianceWithTheStandartCheckBox") {
         removeDisabledAttributesFromAllInputs();
-        putStrictComplianceWithTheStandart();
+        editCalculateForm("Calculation/PutStrictComplianceWithTheStandart");
     }
 });
 
 document.addEventListener('click', e => {
     if (e.target.id === "isAnArbitraryNumberOfPortsCheckBox") {
         removeDisabledAttributesFromAllInputs();
-        putAnArbitraryNumberOfPorts();
+        editCalculateForm("Calculation/PutAnArbitraryNumberOfPorts");
     }
 });
 
 document.addEventListener('click', e => {
     if (e.target.id === "isTechnologicalReserveAvailabilityCheckBox") {
         removeDisabledAttributesFromAllInputs();
-        putTechnologicalReserveAvailability();
+        editCalculateForm("Calculation/PutTechnologicalReserveAvailability");
     }
 });
 
 document.addEventListener('click', e => {
     if (e.target.id === "isRecommendationsAvailabilityCheckBox") {
         removeDisabledAttributesFromAllInputs();
-        putRecommendationsAvailability();
+        editCalculateForm("Calculation/PutRecommendationsAvailability");
     }
 });
 
 document.addEventListener('click', e => {
     if (e.target.id === "isCableHankMeterageAvailabilityCheckBox") {
         removeDisabledAttributesFromAllInputs();
-        putCableHankMeterageAvailability();
+        editCalculateForm("Calculation/PutCableHankMeterageAvailability");
     }
 });
 
@@ -102,30 +102,6 @@ async function loadCalculateForm() {
         let calculateForm = await resp.text();
         document.getElementById('calculateFormDiv').innerHTML = calculateForm;
     }
-}
-
-async function putStrictComplianceWithTheStandart() {
-    await editCalculateForm("Calculation/PutStrictComplianceWithTheStandart");
-}
-
-async function putRecommendationsAvailability() {
-    await editCalculateForm("Calculation/PutRecommendationsAvailability");
-}
-
-async function putCableHankMeterageAvailability() {
-    await editCalculateForm("Calculation/PutCableHankMeterageAvailability");
-}
-
-async function putAnArbitraryNumberOfPorts() {
-    await editCalculateForm("Calculation/PutAnArbitraryNumberOfPorts");
-}
-
-async function putTechnologicalReserveAvailability() {
-    await editCalculateForm("Calculation/PutTechnologicalReserveAvailability");
-}
-
-async function restoreDefaultsCalculateForm() {
-    await editCalculateForm("Calculation/RestoreDefaultsCalculateForm");
 }
 
 async function editCalculateForm(path) {
@@ -179,6 +155,12 @@ function removeDisabledAttributesFromAllInputs() {
     document.querySelectorAll('input').forEach(i => i.removeAttribute('disabled'));
 }
 
-function pleaseWaitDisplay() {
-    document.getElementById('pleaseWaitTotalDiv').style.setProperty("display", "flex", "important");
+function overlayDisplay() {
+    let overlayDiv = document.getElementById('overlayDiv');
+    let mainContainerDiv = document.getElementById('mainContainerDiv');
+    overlayDiv.offsetTop = mainContainerDiv.offsetTop;
+    overlayDiv.offsetLeft = mainContainerDiv.offsetLeft;
+    overlayDiv.offsetHeight = mainContainerDiv.offsetHeight;
+    overlayDiv.offsetWidth = mainContainerDiv.offsetWidth;
+    overlayDiv.style.setProperty("display", "flex", "important");
 }
