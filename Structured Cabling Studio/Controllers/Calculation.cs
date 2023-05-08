@@ -84,8 +84,7 @@ namespace StructuredCablingStudio.Controllers
 		/// <param name="calculateVM">The viewmodel form values</param>
 		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
-		[ServiceFilter(typeof(ValueActionFilter), Order = int.MinValue + 1)]
-		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
+		[ServiceFilter(typeof(DiapasonActionFilter))]
 		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
 		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
 		[ServiceFilter(typeof(CalculateDTOResultFilter))]
@@ -105,8 +104,7 @@ namespace StructuredCablingStudio.Controllers
 		/// <param name="calculateVM">The viewmodel form values</param>
 		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
-		[ServiceFilter(typeof(ValueActionFilter), Order = int.MinValue + 1)]
-		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
+		[ServiceFilter(typeof(DiapasonActionFilter))]
 		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
 		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
 		[ServiceFilter(typeof(CalculateDTOResultFilter))]
@@ -144,8 +142,7 @@ namespace StructuredCablingStudio.Controllers
 		/// <param name="calculateVM">The viewmodel form values</param>
 		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
-		[ServiceFilter(typeof(ValueActionFilter), Order = int.MinValue + 1)]
-		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
+		[ServiceFilter(typeof(DiapasonActionFilter))]
 		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
 		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
 		[ServiceFilter(typeof(CalculateDTOResultFilter))]
@@ -157,6 +154,13 @@ namespace StructuredCablingStudio.Controllers
 				calculateVM.CableHankMeterage = configurationCalculateParameters.CableHankMeterage;
 				ModelState.SetModelValue(nameof(calculateVM.CableHankMeterage), calculateVM.CableHankMeterage, default);
 			}
+			var ceiledAveragePermanentLink =
+				(int)Math.Ceiling((calculateVM.MinPermanentLink + calculateVM.MaxPermanentLink) / 2 * calculateVM.TechnologicalReserve);
+			if (calculateVM.CableHankMeterage < ceiledAveragePermanentLink)
+			{
+				calculateVM.CableHankMeterage = ceiledAveragePermanentLink;
+				ModelState.SetModelValue(nameof(calculateVM.CableHankMeterage), calculateVM.CableHankMeterage, default);
+			}
 			return PartialView("_CalculateFormPartial", calculateVM);
 		}
 
@@ -166,8 +170,7 @@ namespace StructuredCablingStudio.Controllers
 		/// <param name="calculateVM">The viewmodel form values</param>
 		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
-		[ServiceFilter(typeof(ValueActionFilter), Order = int.MinValue + 1)]
-		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
+		[ServiceFilter(typeof(DiapasonActionFilter))]
 		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
 		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
 		[ServiceFilter(typeof(CalculateDTOResultFilter))]
@@ -182,8 +185,7 @@ namespace StructuredCablingStudio.Controllers
 		/// <param name="calculateVM">The viewmodel form values</param>
 		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
-		[ServiceFilter(typeof(ValueActionFilter), Order = int.MinValue + 1)]
-		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
+		[ServiceFilter(typeof(DiapasonActionFilter))]
 		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
 		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
 		[ServiceFilter(typeof(CalculateDTOResultFilter))]

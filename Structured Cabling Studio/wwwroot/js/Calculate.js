@@ -91,7 +91,18 @@ document.addEventListener('click', e => {
 
 document.addEventListener('click', e => {
     if (e.target.id === "calculateButton") {
+        removeDisabledAttributesFromAllInputs();
         document.getElementById('recordTimeInput').value = new Date().getTime().toString();
+    }
+});
+
+document.addEventListener('submit', e => {
+    if (e.target.id === "calculateForm") {
+        e.preventDefault();
+        validateDiapason(e);
+        validateStep(e);
+        checkCableHankMeterage();
+        calculate();
     }
 });
 
@@ -141,6 +152,30 @@ async function editCalculateForm(path) {
         if (resp.ok === true) {
             let calculateForm = await resp.text();
             document.getElementById('calculateFormDiv').innerHTML = calculateForm;
+        }
+        else {
+            alert("Data loading error!");
+        }
+    } catch {
+        alert("Data loading error!");
+    }
+    finally {
+        document.getElementById('calculateFormDiv').classList.remove('formLoading');
+    }
+}
+
+async function calculate() {
+    document.getElementById('calculateFormDiv').classList.add('formLoading');
+    try {
+        let resp = await fetch("Calculation/Calculate", {
+            method: "POST",
+            body: new FormData(document.forms.calculateForm)
+        });
+        if (resp.ok === true) {
+            let configurationDisplay = await resp.text();
+            let configurationDisplayDiv = document.getElementById('configurationDisplayDiv');
+            configurationDisplayDiv.innerHTML = configurationDisplay;
+            configurationDisplayDiv.scrollIntoView();
         }
         else {
             alert("Data loading error!");

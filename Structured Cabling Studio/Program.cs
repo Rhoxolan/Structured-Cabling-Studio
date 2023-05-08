@@ -33,7 +33,6 @@ builder.Services.AddAutoMapper(typeof(StructuredCablingParametersToStructuredCab
 	.AddScoped<StructuredCablingStudioParametersResultFilter>()
 	.AddScoped<ConfigurationCalulateParametersResultFilter>()
 	.AddScoped<DiapasonActionFilter>()
-	.AddScoped<ValueActionFilter>()
 	.AddScoped<CalculateDTOResultFilter>()
 	.AddDbContext<ApplicationContext>(opt
 	=> opt.UseSqlServer(builder.Configuration.GetConnectionString("CablingConfigurationsDB")))
@@ -80,6 +79,6 @@ app.UseSession();
 
 app.MapControllerRoute(
 	name: "default",
-	pattern: "{controller=Calculation}/{action=Calculate}/{id?}");
+	pattern: "{controller=Calculation}/{action=Calculate}");
 
 app.Run();
