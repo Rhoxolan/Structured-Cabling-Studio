@@ -105,13 +105,25 @@ async function loadCalculateForm() {
 }
 
 async function editCalculateForm(path) {
-    let resp = await fetch(path, {
-        method: "PUT",
-        body: new FormData(document.forms.calculateForm)
-    });
-    if (resp.ok === true) {
-        let calculateForm = await resp.text();
-        document.getElementById('calculateFormDiv').innerHTML = calculateForm;
+    overlayDisplay();
+    try {
+        let resp = await fetch(path, {
+            method: "PUT",
+            body: new FormData(document.forms.calculateForm)
+        });
+        if (resp.ok === true) {
+            let calculateForm = await resp.text();
+            document.getElementById('calculateFormDiv').innerHTML = calculateForm;
+            //overlayHide();
+        }
+        else {
+            alert("Data loading error!");
+        }
+    } catch {
+        alert("Data loading error!");
+    }
+    finally {
+        //overlayHide();
     }
 }
 
@@ -158,9 +170,28 @@ function removeDisabledAttributesFromAllInputs() {
 function overlayDisplay() {
     let overlayDiv = document.getElementById('overlayDiv');
     let mainContainerDiv = document.getElementById('mainContainerDiv');
-    overlayDiv.offsetTop = mainContainerDiv.offsetTop;
-    overlayDiv.offsetLeft = mainContainerDiv.offsetLeft;
-    overlayDiv.offsetHeight = mainContainerDiv.offsetHeight;
-    overlayDiv.offsetWidth = mainContainerDiv.offsetWidth;
+
+    //overlayDiv.clientTop = mainContainerDiv.offsetTop;
+    //overlayDiv.clientLeft = mainContainerDiv.offsetLeft;
+    //overlayDiv.clientHeight = mainContainerDiv.offsetHeight;
+    //overlayDiv.clientWidth = mainContainerDiv.offsetWidth;
+
+    //overlayDiv.style.setProperty("display", "flex", "important");
+    //overlayDiv.style.setProperty("top", mainContainerDiv.offsetTop);
+    //overlayDiv.style.setProperty("left", mainContainerDiv.offsetLeft);
+    //overlayDiv.style.setProperty("height", mainContainerDiv.offsetHeight);
+    //overlayDiv.style.setProperty("width", mainContainerDiv.offsetWidth);
+
     overlayDiv.style.setProperty("display", "flex", "important");
+    overlayDiv.style.top = mainContainerDiv.offsetTop + "px";
+    overlayDiv.style.left = mainContainerDiv.offsetLeft + "px";
+    overlayDiv.style.height = mainContainerDiv.offsetHeight + "px";
+    overlayDiv.style.width = mainContainerDiv.offsetWidth + "px";
+
+
+    debugger;
+}
+
+function overlayHide() {
+    document.getElementById('overlayDiv').style.setProperty("display", "none", "important");
 }
