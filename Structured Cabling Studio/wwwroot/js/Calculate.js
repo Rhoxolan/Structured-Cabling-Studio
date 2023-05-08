@@ -1,4 +1,5 @@
 loadCalculateForm();
+loadConfigurationDisplay();
 
 document.addEventListener('focusout', e => {
     if (e.target.id === "minPermanentLinkInput") {
@@ -95,12 +96,38 @@ document.addEventListener('click', e => {
 });
 
 async function loadCalculateForm() {
-    let resp = await fetch("Calculation/LoadCalculateForm", {
-        method: "PUT"
-    });
-    if (resp.ok === true) {
-        let calculateForm = await resp.text();
-        document.getElementById('calculateFormDiv').innerHTML = calculateForm;
+    try {
+        let resp = await fetch("Calculation/LoadCalculateForm", {
+            method: "PUT"
+        });
+        if (resp.ok === true) {
+            let calculateForm = await resp.text();
+            document.getElementById('calculateFormDiv').innerHTML = calculateForm;
+        }
+        else {
+            alert("Data loading error!");
+        }
+    }
+    catch {
+        alert("Data loading error!");
+    }
+}
+
+async function loadConfigurationDisplay() {
+    try {
+        let resp = await fetch("Calculation/LoadConfigurationDisplay", {
+            method: "PUT"
+        });
+        if (resp.ok === true) {
+            let configurationDisplay = await resp.text();
+            document.getElementById('configurationDisplayDiv').innerHTML = configurationDisplay;
+        }
+        else {
+            alert("Data loading error!");
+        }
+    }
+    catch {
+        alert("Data loading error!");
     }
 }
 

@@ -51,6 +51,9 @@ namespace StructuredCablingStudio.Controllers
 			return View();
 		}
 
+		/// <summary>
+		/// Returns the partial view with the clean Calculate form
+		/// </summary>
 		[HttpPut]
 		public IActionResult LoadCalculateForm(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters,
 			CalculateDTO calculateDTO)
@@ -66,6 +69,20 @@ namespace StructuredCablingStudio.Controllers
 			return PartialView("_CalculateFormPartial", viewModel);
 		}
 
+		/// <summary>
+		/// Returns the partial view with the clean display of structured cabling configuration
+		/// </summary>
+		[HttpPut]
+		public IActionResult LoadConfigurationDisplay()
+		{
+			return PartialView("_ConfigurationDisplayPartial");
+		}
+
+		/// <summary>
+		/// Edits the viewmodel data from the Calculate form after applying the "StrictComplianceWithTheStandart" setting
+		/// </summary>
+		/// <param name="calculateVM">The viewmodel form values</param>
+		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
 		[ServiceFilter(typeof(ValueActionFilter), Order = int.MinValue + 1)]
 		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
@@ -82,6 +99,11 @@ namespace StructuredCablingStudio.Controllers
 			return PartialView("_CalculateFormPartial", calculateVM);
 		}
 
+		/// <summary>
+		/// Edits the viewmodel data from the Calculate form after applying the "RecommendationsAvailability" setting
+		/// </summary>
+		/// <param name="calculateVM">The viewmodel form values</param>
+		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
 		[ServiceFilter(typeof(ValueActionFilter), Order = int.MinValue + 1)]
 		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
@@ -116,6 +138,11 @@ namespace StructuredCablingStudio.Controllers
 			return PartialView("_CalculateFormPartial", calculateVM);
 		}
 
+		/// <summary>
+		/// Edits the viewmodel data from the Сalculate form after applying the "CableHankMeterageAvailability" setting
+		/// </summary>
+		/// <param name="calculateVM">The viewmodel form values</param>
+		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
 		[ServiceFilter(typeof(ValueActionFilter), Order = int.MinValue + 1)]
 		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
@@ -133,6 +160,11 @@ namespace StructuredCablingStudio.Controllers
 			return PartialView("_CalculateFormPartial", calculateVM);
 		}
 
+		/// <summary>
+		/// Edits the viewmodel data from the Сalculate form after applying the "AnArbitraryNumberOfPorts" setting
+		/// </summary>
+		/// <param name="calculateVM">The viewmodel form values</param>
+		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
 		[ServiceFilter(typeof(ValueActionFilter), Order = int.MinValue + 1)]
 		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
@@ -144,6 +176,11 @@ namespace StructuredCablingStudio.Controllers
 			return PartialView("_CalculateFormPartial", calculateVM);
 		}
 
+		/// <summary>
+		/// Edits the viewmodel data from the Сalculate form after applying the "TechnologicalReserveAvailability" setting
+		/// </summary>
+		/// <param name="calculateVM">The viewmodel form values</param>
+		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
 		[ServiceFilter(typeof(ValueActionFilter), Order = int.MinValue + 1)]
 		[ServiceFilter(typeof(DiapasonActionFilter), Order = int.MinValue)]
@@ -161,6 +198,11 @@ namespace StructuredCablingStudio.Controllers
 			return PartialView("_CalculateFormPartial", calculateVM);
 		}
 
+		/// <summary>
+		/// Restore defaults settings on viewmodel data to the Сalculate form
+		/// </summary>
+		/// <param name="calculateVM">The viewmodel form values</param>
+		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
 		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
 		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
@@ -228,6 +270,38 @@ namespace StructuredCablingStudio.Controllers
 			ModelState.SetModelValue(nameof(calculateVM.HasFiveGBASE_T), calculateVM.HasFiveGBASE_T, default);
 			ModelState.SetModelValue(nameof(calculateVM.HasTenGE), calculateVM.HasTenGE, default);
 			return PartialView("_CalculateFormPartial", calculateVM);
+		}
+
+		/// <summary>
+		/// Calculation of the structured cabling configuration
+		/// </summary>
+		/// <param name="calculateVM">The viewmodel form values</param>
+		/// <returns>The partial view with the display of the structured cabling configuration</returns>
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Calculate(CalculateViewModel calculateVM)
+		{
+			var cablingParameters = _mapper.Map<StructuredCablingStudioParameters>(calculateVM);
+			var calculateParameters = _mapper.Map<ConfigurationCalculateParameters>(calculateVM);
+			var recordTime = FromUnixTimeMilliseconds(ToInt64(calculateVM.RecordTime)).DateTime.ToLocalTime();
+			var configuration = calculateParameters.Calculate(cablingParameters, recordTime, calculateVM.MinPermanentLink, calculateVM.MaxPermanentLink,
+				calculateVM.NumberOfWorkplaces, calculateVM.NumberOfPorts);
+			if (User.Identity != null && User.Identity.IsAuthenticated)
+			{
+				var userId = User.FindFirst(ClaimTypes.NameIdentifier);
+				if (userId != null)
+				{
+					var currentUser = await _userManager.FindByIdAsync(userId.Value);
+					if (currentUser != null)
+					{
+						var configuratonEntity = _mapper.Map<CablingConfigurationEntity>(configuration);
+						configuratonEntity.User = currentUser;
+						await _context.CablingConfigurations.AddAsync(configuratonEntity);
+						await _context.SaveChangesAsync();
+					}
+				}
+			}
+			return PartialView("_ConfigurationDisplayPartial", configuration);
 		}
 
 
