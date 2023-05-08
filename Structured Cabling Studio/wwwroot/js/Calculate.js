@@ -105,7 +105,7 @@ async function loadCalculateForm() {
 }
 
 async function editCalculateForm(path) {
-    overlayDisplay();
+    document.getElementById('calculateFormDiv').classList.add('formLoading');
     try {
         let resp = await fetch(path, {
             method: "PUT",
@@ -114,7 +114,6 @@ async function editCalculateForm(path) {
         if (resp.ok === true) {
             let calculateForm = await resp.text();
             document.getElementById('calculateFormDiv').innerHTML = calculateForm;
-            //overlayHide();
         }
         else {
             alert("Data loading error!");
@@ -123,7 +122,7 @@ async function editCalculateForm(path) {
         alert("Data loading error!");
     }
     finally {
-        //overlayHide();
+        document.getElementById('calculateFormDiv').classList.remove('formLoading');
     }
 }
 
@@ -165,33 +164,4 @@ function checkCableHankMeterage() {
 
 function removeDisabledAttributesFromAllInputs() {
     document.querySelectorAll('input').forEach(i => i.removeAttribute('disabled'));
-}
-
-function overlayDisplay() {
-    let overlayDiv = document.getElementById('overlayDiv');
-    let mainContainerDiv = document.getElementById('mainContainerDiv');
-
-    //overlayDiv.clientTop = mainContainerDiv.offsetTop;
-    //overlayDiv.clientLeft = mainContainerDiv.offsetLeft;
-    //overlayDiv.clientHeight = mainContainerDiv.offsetHeight;
-    //overlayDiv.clientWidth = mainContainerDiv.offsetWidth;
-
-    //overlayDiv.style.setProperty("display", "flex", "important");
-    //overlayDiv.style.setProperty("top", mainContainerDiv.offsetTop);
-    //overlayDiv.style.setProperty("left", mainContainerDiv.offsetLeft);
-    //overlayDiv.style.setProperty("height", mainContainerDiv.offsetHeight);
-    //overlayDiv.style.setProperty("width", mainContainerDiv.offsetWidth);
-
-    overlayDiv.style.setProperty("display", "flex", "important");
-    overlayDiv.style.top = mainContainerDiv.offsetTop + "px";
-    overlayDiv.style.left = mainContainerDiv.offsetLeft + "px";
-    overlayDiv.style.height = mainContainerDiv.offsetHeight + "px";
-    overlayDiv.style.width = mainContainerDiv.offsetWidth + "px";
-
-
-    debugger;
-}
-
-function overlayHide() {
-    document.getElementById('overlayDiv').style.setProperty("display", "none", "important");
 }
