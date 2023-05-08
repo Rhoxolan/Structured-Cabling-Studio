@@ -377,7 +377,7 @@ namespace StructuredCablingStudio.Controllers
 				var stream = new MemoryStream(UTF8.GetBytes(cablingConfigurationSB.ToString()));
 				return File(stream, "text/plain", fileName);
 			}
-			return Empty;
+			return NoContent();
 		}
 	}
 }
