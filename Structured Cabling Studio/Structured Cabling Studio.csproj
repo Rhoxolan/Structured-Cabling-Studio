@@ -24,6 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\Views\Calculation\_ConfigurationsListPartial.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views\Calculation\History.ru.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -21,6 +21,7 @@ using static System.Convert;
 using static System.DateTimeOffset;
 using static System.Text.Encoding;
 using static System.String;
+using Microsoft.EntityFrameworkCore;
 
 namespace StructuredCablingStudio.Controllers
 {
@@ -312,11 +313,28 @@ namespace StructuredCablingStudio.Controllers
 			return PartialView("_ConfigurationDisplayPartial", configuration);
 		}
 
-
 		[Authorize]
 		public IActionResult History()
 		{
 			return View();
+		}
+
+		/// <summary>
+		/// Returns the partial view with the list box of structured cabling configurations
+		/// </summary>
+		[HttpPut]
+		public async Task<IActionResult> LoadConfigurationsList()
+		{
+			if (User.Identity != null && User.Identity.IsAuthenticated)
+			{
+				var userId = User.FindFirst(ClaimTypes.NameIdentifier);
+				if (userId != null)
+				{
+					var configurations = await _context.CablingConfigurations.Where(c => c.User.Id == userId.Value).ToListAsync();
+					return PartialView("_ConfigurationsListPartial", configurations);
+				}
+			}
+			return Unauthorized();
 		}
 
 		public IActionResult Information()
