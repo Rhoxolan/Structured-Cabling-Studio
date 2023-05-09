@@ -2,7 +2,7 @@ loadConfigurationsList();
 
 async function loadConfigurationsList() {
     try {
-        let resp = await fetch("Calculation/LoadConfigurationsList", {
+        let resp = await fetch("/Calculation/LoadConfigurationsList", {
             method: "PUT"
         });
         if (resp.ok === true) {

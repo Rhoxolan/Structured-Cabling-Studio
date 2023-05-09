@@ -1,0 +1,9 @@
+﻿.historyPageButton {
+    width: 100%;
+}
+
+#configurationsListUlDiv {
+    min-height: 28rem;
+    max-height: 35rem;
+    overflow: auto;
+}
