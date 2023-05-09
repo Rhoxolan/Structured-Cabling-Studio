@@ -23,4 +23,10 @@
     <ProjectReference Include="..\StructuredCablingStudioCore\StructuredCablingStudioCore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Views\Calculation\History.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
