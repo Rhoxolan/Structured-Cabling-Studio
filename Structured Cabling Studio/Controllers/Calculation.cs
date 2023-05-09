@@ -2,9 +2,14 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
+using StructuredCablingStudio.DTOs.CalculateDTOs;
+using StructuredCablingStudio.Filters.CalculationFilters;
+using StructuredCablingStudio.DTOs;
+using StructuredCablingStudio.Extensions.ISessionExtension;
 using StructuredCablingStudioCore;
 using StructuredCablingStudioCore.Calculation;
 using StructuredCablingStudioCore.Parameters;
@@ -12,15 +17,10 @@ using System.Security.Claims;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using System.Text;
-using Microsoft.Extensions.Localization;
 using static System.Convert;
 using static System.DateTimeOffset;
 using static System.Text.Encoding;
 using static System.String;
-using StructuredCablingStudio.DTOs.CalculateDTOs;
-using StructuredCablingStudio.Filters.CalculationFilters;
-using StructuredCablingStudio.DTOs;
-using StructuredCablingStudio.Extensions.ISessionExtension;
 
 namespace StructuredCablingStudio.Controllers
 {
