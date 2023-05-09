@@ -2,10 +2,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
-using StructuredCablingStudio.Extensions.ISessionExtension;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
 using StructuredCablingStudioCore;
 using StructuredCablingStudioCore.Calculation;
@@ -21,6 +19,8 @@ using static System.Text.Encoding;
 using static System.String;
 using StructuredCablingStudio.DTOs.CalculateDTOs;
 using StructuredCablingStudio.Filters.CalculationFilters;
+using StructuredCablingStudio.DTOs;
+using StructuredCablingStudio.Extensions.ISessionExtension;
 
 namespace StructuredCablingStudio.Controllers
 {
@@ -283,11 +283,11 @@ namespace StructuredCablingStudio.Controllers
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Calculate(CalculateViewModel calculateVM)
 		{
-			var cablingParameters = _mapper.Map<StructuredCablingStudioParameters>(calculateVM);
-			var calculateParameters = _mapper.Map<ConfigurationCalculateParameters>(calculateVM);
+			var structuredCablingStudioParameters = _mapper.Map<StructuredCablingStudioParameters>(calculateVM);
+			var configurationCalculateParameters = _mapper.Map<ConfigurationCalculateParameters>(calculateVM);
 			var recordTime = FromUnixTimeMilliseconds(ToInt64(calculateVM.RecordTime)).DateTime.ToLocalTime();
-			var configuration = calculateParameters.Calculate(cablingParameters, recordTime, calculateVM.MinPermanentLink, calculateVM.MaxPermanentLink,
-				calculateVM.NumberOfWorkplaces, calculateVM.NumberOfPorts);
+			var configuration = configurationCalculateParameters.Calculate(structuredCablingStudioParameters, recordTime, calculateVM.MinPermanentLink,
+				calculateVM.MaxPermanentLink, calculateVM.NumberOfWorkplaces, calculateVM.NumberOfPorts);
 			if (User.Identity != null && User.Identity.IsAuthenticated)
 			{
 				var userId = User.FindFirst(ClaimTypes.NameIdentifier);
@@ -303,6 +303,12 @@ namespace StructuredCablingStudio.Controllers
 					}
 				}
 			}
+			var structuredCablingParameters = _mapper.Map<StructuredCablingParameters>(structuredCablingStudioParameters);
+			HttpContext.Session.SetStructuredCablingParameters(structuredCablingParameters);
+			var calculateParameters = _mapper.Map<CalculateParameters>(configurationCalculateParameters);
+			HttpContext.Session.SetCalculateParameters(calculateParameters);
+			var calculateDTO = _mapper.Map<CalculateDTO>(calculateVM);
+			HttpContext.Session.SetCalculateDTO(calculateDTO);
 			return PartialView("_ConfigurationDisplayPartial", configuration);
 		}
 
