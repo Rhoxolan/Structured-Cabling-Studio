@@ -31,7 +31,7 @@ builder.Services.AddAutoMapper(typeof(StructuredCablingParametersToStructuredCab
 	typeof(CablingConfigurationToCablingConfigurationEntityProfile),
 	typeof(CalculateDTOToCalculateViewModelProfile))
 	.AddScoped<StructuredCablingStudioParametersResultFilter>()
-	.AddScoped<ConfigurationCalulateParametersResultFilter>()
+	.AddScoped<ConfigurationCalculateParametersResultFilter>()
 	.AddScoped<DiapasonActionFilter>()
 	.AddScoped<CalculateDTOResultFilter>()
 	.AddDbContext<ApplicationContext>(opt

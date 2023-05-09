@@ -8,11 +8,11 @@ using StructuredCablingStudioCore.Calculation;
 
 namespace StructuredCablingStudio.Filters.CalculationFilters
 {
-	public class ConfigurationCalulateParametersResultFilter : IResultFilter
+	public class ConfigurationCalculateParametersResultFilter : IResultFilter
 	{
 		private readonly IMapper _mapper;
 
-		public ConfigurationCalulateParametersResultFilter(IMapper mapper)
+		public ConfigurationCalculateParametersResultFilter(IMapper mapper)
 		{
 			_mapper = mapper;
 		}
@@ -27,8 +27,8 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 			var model = (CalculateViewModel?)controller.ViewData.Model;
 			if (model != null)
 			{
-				var configurationCalulateParameters = _mapper.Map<ConfigurationCalculateParameters>(model);
-				var calculateParameters = _mapper.Map<CalculateParameters>(configurationCalulateParameters);
+				var configurationCalculateParameters = _mapper.Map<ConfigurationCalculateParameters>(model);
+				var calculateParameters = _mapper.Map<CalculateParameters>(configurationCalculateParameters);
 				context.HttpContext.Session.SetCalculateParameters(calculateParameters);
 			}
 		}

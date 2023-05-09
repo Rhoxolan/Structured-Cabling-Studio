@@ -86,7 +86,7 @@ namespace StructuredCablingStudio.Controllers
 		[HttpPut]
 		[ServiceFilter(typeof(DiapasonActionFilter))]
 		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
-		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
+		[ServiceFilter(typeof(ConfigurationCalculateParametersResultFilter))]
 		[ServiceFilter(typeof(CalculateDTOResultFilter))]
 		public IActionResult PutStrictComplianceWithTheStandart(CalculateViewModel calculateVM)
 		{
@@ -106,7 +106,7 @@ namespace StructuredCablingStudio.Controllers
 		[HttpPut]
 		[ServiceFilter(typeof(DiapasonActionFilter))]
 		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
-		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
+		[ServiceFilter(typeof(ConfigurationCalculateParametersResultFilter))]
 		[ServiceFilter(typeof(CalculateDTOResultFilter))]
 		public IActionResult PutRecommendationsAvailability(CalculateViewModel calculateVM)
 		{
@@ -144,7 +144,7 @@ namespace StructuredCablingStudio.Controllers
 		[HttpPut]
 		[ServiceFilter(typeof(DiapasonActionFilter))]
 		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
-		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
+		[ServiceFilter(typeof(ConfigurationCalculateParametersResultFilter))]
 		[ServiceFilter(typeof(CalculateDTOResultFilter))]
 		public IActionResult PutCableHankMeterageAvailability(CalculateViewModel calculateVM)
 		{
@@ -172,7 +172,7 @@ namespace StructuredCablingStudio.Controllers
 		[HttpPut]
 		[ServiceFilter(typeof(DiapasonActionFilter))]
 		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
-		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
+		[ServiceFilter(typeof(ConfigurationCalculateParametersResultFilter))]
 		[ServiceFilter(typeof(CalculateDTOResultFilter))]
 		public IActionResult PutAnArbitraryNumberOfPorts(CalculateViewModel calculateVM)
 		{
@@ -187,7 +187,7 @@ namespace StructuredCablingStudio.Controllers
 		[HttpPut]
 		[ServiceFilter(typeof(DiapasonActionFilter))]
 		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
-		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
+		[ServiceFilter(typeof(ConfigurationCalculateParametersResultFilter))]
 		[ServiceFilter(typeof(CalculateDTOResultFilter))]
 		public IActionResult PutTechnologicalReserveAvailability(CalculateViewModel calculateVM)
 		{
@@ -207,7 +207,7 @@ namespace StructuredCablingStudio.Controllers
 		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
 		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
-		[ServiceFilter(typeof(ConfigurationCalulateParametersResultFilter))]
+		[ServiceFilter(typeof(ConfigurationCalculateParametersResultFilter))]
 		[ServiceFilter(typeof(CalculateDTOResultFilter))]
 		public IActionResult RestoreDefaultsCalculateForm(CalculateViewModel calculateVM)
 		{
