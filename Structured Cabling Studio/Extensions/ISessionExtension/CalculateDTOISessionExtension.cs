@@ -1,10 +1,10 @@
 ﻿using System.Text.Json.Serialization;
 using System.Text.Json;
-using StructuredCablingStudio.DTOs.CalculateDTOs;
+using StructuredCablingStudio.DTOs.ConfigurationsDTOs;
 
 namespace StructuredCablingStudio.Extensions.ISessionExtension
 {
-	public static class CalculateDTOISessionExtension
+    public static class CalculateDTOISessionExtension
 	{
 		private static readonly string key = "calculateDTO";
 

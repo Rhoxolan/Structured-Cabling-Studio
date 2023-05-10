@@ -10,7 +10,7 @@ document.addEventListener('click', (e) => {
 
 async function loadConfigurationsListBox() {
     try {
-        let resp = await fetch("/Calculation/GetConfigurationsListBox", {
+        let resp = await fetch("/Configurations/GetConfigurationsListBox", {
             method: "GET"
         });
         if (resp.ok === true) {
@@ -28,7 +28,7 @@ async function loadConfigurationsListBox() {
 
 async function loadConfigurationDisplay() {
     try {
-        let resp = await fetch("/Calculation/LoadConfigurationDisplayHistory", {
+        let resp = await fetch("/Configurations/LoadConfigurationDisplayHistory", {
             method: "PUT"
         });
         if (resp.ok === true) {
@@ -47,7 +47,7 @@ async function loadConfigurationDisplay() {
 async function loadConfigurationDisplayById(id) {
     document.querySelectorAll('.historyPageButton').forEach(b => b.setAttribute('disabled', 'disabled'));
     try {
-        let resp = await fetch("/Calculation/LoadConfigurationDisplayById", {
+        let resp = await fetch("/Configurations/LoadConfigurationDisplayById", {
             method: "PUT",
             body: new URLSearchParams("id="+id)
         });

@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using StructuredCablingStudio.DTOs;
-using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
+using StructuredCablingStudio.Models.ViewModels.ConfigurationsViewModels;
 using StructuredCablingStudioCore.Parameters;
 
 namespace StructuredCablingStudio.AutoMapperProfiles
 {
-	public class CalculateViewModelToStructuredCablingParametersProfile : Profile
+    public class CalculateViewModelToStructuredCablingParametersProfile : Profile
 	{
 		public CalculateViewModelToStructuredCablingParametersProfile()
 			=> CreateMap<CalculateViewModel, StructuredCablingParameters>()

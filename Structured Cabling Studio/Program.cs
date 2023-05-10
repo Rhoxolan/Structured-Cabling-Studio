@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using StructuredCablingStudio.AutoMapperProfiles;
-using StructuredCablingStudio.Binders.CalculationBinders;
+using StructuredCablingStudio.Binders.ConfigurationsBinders;
 using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
-using StructuredCablingStudio.Filters.CalculationFilters;
+using StructuredCablingStudio.Filters.ConfigurationsFilters;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
