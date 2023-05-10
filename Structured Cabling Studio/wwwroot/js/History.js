@@ -17,3 +17,4 @@ async function loadConfigurationsList() {
         alert("Data loading error!");
     }
 }
+

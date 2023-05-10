@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<CablingConfigurationEntity>
 
 <div class="row">
-	<div class="col-8 col-sm-9 col-xxl-10">
-		<div class="form-control border-primary" id="configurationsListUlDiv">
-			<ul>
+	<div class="col-11 col-sm-9 col-xxl-10">
+		<div class="form-control border-primary mb-2 mb-sm-0" id="configurationsListUlDiv">
+			<ul class="ps-1">
 				@foreach (var configuration in Model)
 				{
-					<li>
+					<li data-id="@configuration.Id" class="configurationsListLi p-3 pt-2">
 						<div>
 							<div>
 								@configuration.RecordTime.ToShortDateString() @configuration.RecordTime.ToLongTimeString()
@@ -23,7 +23,7 @@
 									@Localizer["HankQuantity"] @configuration.HankQuantity.Value.ToString()
 								</div>
 							}
-							<div>
+							<div class="fw-semibold">
 								@Localizer["CableQuantity"] @configuration.TotalCableQuantity.ToString("F2") @Localizer["m"]
 							</div>
 						</div>
@@ -32,7 +32,7 @@
 			</ul>
 		</div>
 	</div>
-	<div class="col">
+	<div class="col-11 col-sm">
 		<button class="historyPageButton btn btn-outline-primary mb-2">
 			@Localizer["Save to TXT"]
 		</button>
