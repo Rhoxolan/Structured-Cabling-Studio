@@ -314,7 +314,16 @@ namespace StructuredCablingStudio.Controllers
 		}
 
 		[Authorize]
-		public async Task<IActionResult> History()
+		public IActionResult History()
+		{
+			return View();
+		}
+
+		/// <summary>
+		/// Returns the partial view with the list of structured cabling configurations
+		/// </summary>
+		/// <returns></returns>
+		public async Task<IActionResult> GetConfigurationsListBox()
 		{
 			if (User.Identity != null)
 			{
@@ -322,7 +331,7 @@ namespace StructuredCablingStudio.Controllers
 				if (userId != null)
 				{
 					var configurations = await _context.CablingConfigurations.Where(c => c.User.Id == userId.Value).ToListAsync();
-					return View(configurations);
+					return PartialView("_ConfigurationsListPartial", configurations);
 				}
 			}
 			return Unauthorized();

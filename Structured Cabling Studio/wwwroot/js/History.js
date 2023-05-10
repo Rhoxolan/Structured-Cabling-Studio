@@ -1,7 +1,38 @@
+loadConfigurationsListBox();
 loadConfigurationDisplay();
 
-document.querySelectorAll('.configurationsListLi').forEach(l => l.addEventListener('click',
-    e => loadConfigurationDisplayById(e.currentTarget.dataset.id)));
+//document.querySelectorAll('.configurationsListLi').forEach(l => l.addEventListener('click',
+//    e => loadConfigurationDisplayById(e.currentTarget.dataset.id)));
+
+//Проверить
+document.addEventListener('click', (event) => {
+    // Проверяем, что клик был совершен по элементу .configurationsListLi
+    if (event.target.matches('.configurationsListLi')) {
+        // Получаем id из data-атрибута текущего элемента
+        const id = event.target.dataset.id;
+
+        // Вызываем функцию loadConfigurationDisplayById с полученным id
+        loadConfigurationDisplayById(id);
+    }
+});
+
+async function loadConfigurationsListBox() {
+    try {
+        let resp = await fetch("/Calculation/GetConfigurationsListBox", {
+            method: "GET"
+        });
+        if (resp.ok === true) {
+            let configurationsListBox = await resp.text();
+            document.getElementById('configurationsListBoxDiv').innerHTML = configurationsListBox;
+        }
+        else {
+            alert("Data loading error!");
+        }
+    }
+    catch {
+        alert("Data loading error!");
+    }
+}
 
 async function loadConfigurationDisplay() {
     try {
