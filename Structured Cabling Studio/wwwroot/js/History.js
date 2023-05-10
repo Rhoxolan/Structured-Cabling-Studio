@@ -1,18 +1,10 @@
 loadConfigurationsListBox();
 loadConfigurationDisplay();
 
-//document.querySelectorAll('.configurationsListLi').forEach(l => l.addEventListener('click',
-//    e => loadConfigurationDisplayById(e.currentTarget.dataset.id)));
-
-//Проверить
-document.addEventListener('click', (event) => {
-    // Проверяем, что клик был совершен по элементу .configurationsListLi
-    if (event.target.matches('.configurationsListLi')) {
-        // Получаем id из data-атрибута текущего элемента
-        const id = event.target.dataset.id;
-
-        // Вызываем функцию loadConfigurationDisplayById с полученным id
-        loadConfigurationDisplayById(id);
+document.addEventListener('click', (e) => {
+    let li = e.target.closest('.configurationsListLi');
+    if (li != null) {
+        loadConfigurationDisplayById(li.dataset.id);
     }
 });
 
