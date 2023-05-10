@@ -74,9 +74,9 @@ namespace StructuredCablingStudio.Controllers
 		/// Returns the partial view with the clean display of structured cabling configuration
 		/// </summary>
 		[HttpPut]
-		public IActionResult LoadConfigurationDisplay()
+		public IActionResult LoadConfigurationDisplayCalculate()
 		{
-			return PartialView("_ConfigurationDisplayPartial");
+			return PartialView("_ConfigurationDisplayCalculatePartial");
 		}
 
 		/// <summary>
@@ -310,7 +310,7 @@ namespace StructuredCablingStudio.Controllers
 			HttpContext.Session.SetCalculateParameters(calculateParameters);
 			var calculateDTO = _mapper.Map<CalculateDTO>(calculateVM);
 			HttpContext.Session.SetCalculateDTO(calculateDTO);
-			return PartialView("_ConfigurationDisplayPartial", configuration);
+			return PartialView("_ConfigurationDisplayCalculatePartial", configuration);
 		}
 
 		[Authorize]
@@ -335,6 +335,25 @@ namespace StructuredCablingStudio.Controllers
 				}
 			}
 			return Unauthorized();
+		}
+
+		/// <summary>
+		/// Returns the partial view with the clean display of structured cabling configuration
+		/// </summary>
+		[HttpPut]
+		public IActionResult LoadConfigurationDisplayHistory()
+		{
+			return PartialView("_ConfigurationDisplayHistoryPartial");
+		}
+
+		/// <summary>
+		/// Returns the partial view with the display of structured cabling configuration
+		/// </summary>
+		[HttpPut]
+		public async Task<IActionResult> LoadConfigurationDisplayById(uint id)
+		{
+			var cablingConfiguration = await _context.CablingConfigurations.FindAsync(id);
+			return PartialView("_ConfigurationDisplayHistoryPartial", cablingConfiguration);
 		}
 
 		public IActionResult Information()

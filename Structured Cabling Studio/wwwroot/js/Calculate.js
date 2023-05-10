@@ -126,7 +126,7 @@ async function loadCalculateForm() {
 
 async function loadConfigurationDisplay() {
     try {
-        let resp = await fetch("Calculation/LoadConfigurationDisplay", {
+        let resp = await fetch("Calculation/LoadConfigurationDisplayCalculate", {
             method: "PUT"
         });
         if (resp.ok === true) {
