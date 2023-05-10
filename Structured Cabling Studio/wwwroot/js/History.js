@@ -52,8 +52,10 @@ async function loadConfigurationDisplayById(id) {
             body: new URLSearchParams("id="+id)
         });
         if (resp.ok === true) {
+            let configurationHistoryDisplayDiv = document.getElementById('configurationHistoryDisplayDiv');
             let configurationDisplay = await resp.text();
-            document.getElementById('configurationHistoryDisplayDiv').innerHTML = configurationDisplay;
+            configurationHistoryDisplayDiv.innerHTML = configurationDisplay;
+            configurationHistoryDisplayDiv.scrollIntoView();
             document.querySelectorAll('li[data-id]').forEach(l => l.classList.remove('selectedConfigurationsListLi'));
             document.querySelector(`li[data-id="${id}"]`).classList.add('selectedConfigurationsListLi');
         }
