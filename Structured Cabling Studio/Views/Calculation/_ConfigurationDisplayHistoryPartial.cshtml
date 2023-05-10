@@ -4,7 +4,7 @@
 <div class="mb-3">
 	<div class="row">
 		<div class="col">
-			<div id="configurationOutputdiv" class="form-control border-primary px-4 py-3">
+			<div id="configurationDisplayHistoryDiv" class="form-control border-primary px-4 py-3">
 				@{
 					if (Model != null)
 					{
@@ -92,34 +92,6 @@
 					}
 				}
 			</div>
-		</div>
-	</div>
-</div>
-
-<div class="mb-3">
-	<div class="row">
-		<div class="col-auto">
-			@if (Model != null)
-			{
-				var serializeroptions = new System.Text.Json.JsonSerializerOptions
-				{
-					WriteIndented = true,
-					ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve,
-				};
-
-				<form asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.SaveToTXT)" method="post">
-					<input type="hidden" name="serializedCablingConfiguration" value="@System.Text.Json.JsonSerializer.Serialize(Model, serializeroptions)">
-					<button type="submit" class="btn btn-outline-secondary mt-1 mb-2 mt-sm-0 mb-sm-0">
-						@Localizer["Save to TXT"]
-					</button>
-				</form>
-			}
-			else
-			{
-				<button class="btn btn-outline-secondary mt-1 mb-2 mt-sm-0 mb-sm-0" disabled>
-					@Localizer["Save to TXT"]
-				</button>
-			}
 		</div>
 	</div>
 </div>
