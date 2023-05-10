@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<CablingConfigurationEntity>
+@{
 	ViewData["Title"] = "History";
 }
 
@@ -6,7 +7,52 @@
 	@Localizer["Welcome,"] <span id="eMailDisplayHistoryPageSpan" class="text-primary">@User.Identity!.Name</span>!
 </h5>
 
-<div id="configurationsListBoxDiv">
+<div class="row">
+	<div class="col-11 col-sm-9 col-xxl-10">
+		<div class="form-control border-primary mb-2 mb-sm-0" id="configurationsListUlDiv">
+			<ul class="ps-1">
+				@foreach (var configuration in Model)
+				{
+					<li data-id="@configuration.Id" class="configurationsListLi p-3 pt-2">
+						<div>
+							<div>
+								@configuration.RecordTime.ToShortDateString() @configuration.RecordTime.ToLongTimeString()
+							</div>
+							<div>
+								@Localizer["MinPermanentLink"] @configuration.MinPermanentLink.ToString("F2") @Localizer["m"]
+							</div>
+							<div>
+								@Localizer["MaxPermanentLink"] @configuration.MinPermanentLink.ToString("F2") @Localizer["m"]
+							</div>
+							@if (configuration.HankQuantity != null)
+							{
+								<div>
+									@Localizer["HankQuantity"] @configuration.HankQuantity.Value.ToString()
+								</div>
+							}
+							<div class="fw-semibold">
+								@Localizer["CableQuantity"] @configuration.TotalCableQuantity.ToString("F2") @Localizer["m"]
+							</div>
+						</div>
+					</li>
+				}
+			</ul>
+		</div>
+	</div>
+	<div class="col-11 col-sm">
+		<button class="historyPageButton btn btn-outline-primary mb-2">
+			@Localizer["Save to TXT"]
+		</button>
+		<br />
+		<button class="historyPageButton btn btn-outline-primary mb-2">
+			@Localizer["Delete"]
+		</button>
+		<br />
+		<button class="historyPageButton btn btn-outline-primary mb-2">
+			@Localizer["Delete all"]
+		</button>
+		<br />
+	</div>
 </div>
 
 <div id="configurationHistoryDisplayDiv">

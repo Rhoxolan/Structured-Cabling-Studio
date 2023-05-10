@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CableQuantity" xml:space="preserve">
+    <value>Necessary cable meterage:</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
@@ -126,6 +129,9 @@
   <data name="HankQuantity" xml:space="preserve">
     <value>Necessary cable hank count:</value>
   </data>
+  <data name="m" xml:space="preserve">
+    <value>m</value>
+  </data>
   <data name="MaxPermanentLink" xml:space="preserve">
     <value>Maximum length of the permanent link:</value>
   </data>
@@ -134,9 +140,6 @@
   </data>
   <data name="Save to TXT" xml:space="preserve">
     <value>Save to TXT</value>
-  </data>
-  <data name="TotalCableQuantity" xml:space="preserve">
-    <value>Total necessary cable meterage:</value>
   </data>
   <data name="Welcome," xml:space="preserve">
     <value>Welcome,</value>

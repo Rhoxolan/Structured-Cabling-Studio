@@ -1,29 +1,7 @@
-loadConfigurationsList();
 loadConfigurationDisplay();
 
-document.addEventListener('click', e => {
-    if (e.target.classList.contains("configurationsListLi")) {
-        loadConfigurationDisplayById(e.target.dataset.id);
-    }
-})
-
-async function loadConfigurationsList() {
-    try {
-        let resp = await fetch("/Calculation/LoadConfigurationsList", {
-            method: "PUT"
-        });
-        if (resp.ok === true) {
-            let configurationsListBox = await resp.text();
-            document.getElementById('configurationsListBoxDiv').innerHTML = configurationsListBox;
-        }
-        else {
-            alert("Data loading error!");
-        }
-    }
-    catch {
-        alert("Data loading error!");
-    }
-}
+document.querySelectorAll('.configurationsListLi').forEach(l => l.addEventListener('click',
+    e => loadConfigurationDisplayById(e.currentTarget.dataset.id)));
 
 async function loadConfigurationDisplay() {
     try {
@@ -48,11 +26,13 @@ async function loadConfigurationDisplayById(id) {
     try {
         let resp = await fetch("/Calculation/LoadConfigurationDisplayById", {
             method: "PUT",
-            body: id
+            body: new URLSearchParams("id="+id)
         });
         if (resp.ok === true) {
             let configurationDisplay = await resp.text();
             document.getElementById('configurationHistoryDisplayDiv').innerHTML = configurationDisplay;
+            document.querySelectorAll('li[data-id]').forEach(l => l.classList.remove('selectedConfigurationsListLi'));
+            document.querySelector(`li[data-id="${id}"]`).classList.add('selectedConfigurationsListLi');
         }
         else {
             alert("Data loading error!");

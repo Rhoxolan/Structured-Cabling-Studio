@@ -1,3 +1,36 @@
 ﻿#eMailDisplayHistoryPageSpan {
     word-break: break-word;
 }
+
+.historyPageButton {
+    width: 100%;
+}
+
+#configurationsListUlDiv {
+    min-height: 28rem;
+    max-height: 35rem;
+    overflow: auto;
+}
+
+.configurationsListLi {
+    cursor: pointer;
+    list-style-type: none;
+}
+
+    .configurationsListLi:hover {
+        background-color: #F0F4FF;
+        transition: background-color 0.3s;
+    }
+
+    .configurationsListLi:active {
+        background-color: #D7E3FF;
+        transition: background-color 0s;
+    }
+
+.selectedConfigurationsListLi {
+    background-color: #C6D7FF;
+}
+
+    .selectedConfigurationsListLi:hover {
+        background-color: #C6D7FF;
+    }
