@@ -9,10 +9,26 @@ document.addEventListener('click', (e) => {
 });
 
 document.addEventListener('click', e => {
-    if (e.target.id == 'deleteButton') {
+    if (e.target.id == 'deleteButton' &&
+        document.getElementById('selectedConfigurationId').value != "") {
         loadDeleteConfirm();
     }
-})
+});
+
+document.addEventListener('click', e => {
+    if (e.target.id == 'deleteConfigurationButton' &&
+        document.getElementById('selectedConfigurationId').value != "") {
+        deleteConfiguration(document.getElementById('selectedConfigurationId').value);
+    }
+});
+
+document.addEventListener('click', e => {
+    if (e.target.id == 'cancelDeleteConfigurationButton' &&
+        document.getElementById('selectedConfigurationId').value != "") {
+        document.querySelectorAll('.deleteConfirmButton').forEach(b => b.setAttribute('disabled', 'disabled'));
+        loadConfigurationsListBox();
+    }
+});
 
 async function loadConfigurationsListBox() {
     try {
@@ -22,6 +38,11 @@ async function loadConfigurationsListBox() {
         if (resp.ok === true) {
             let configurationsListBox = await resp.text();
             document.getElementById('configurationsListBoxDiv').innerHTML = configurationsListBox;
+            let id = document.getElementById('selectedConfigurationId').value;
+            if (id != "") {
+                document.querySelectorAll('li[data-id]').forEach(l => l.classList.remove('selectedConfigurationsListLi'));
+                document.querySelector(`li[data-id="${id}"]`).classList.add('selectedConfigurationsListLi');
+            }
         }
         else {
             alert("Data loading error!");
@@ -63,6 +84,7 @@ async function loadConfigurationDisplayById(id) {
             configurationHistoryDisplayDiv.scrollIntoView();
             document.querySelectorAll('li[data-id]').forEach(l => l.classList.remove('selectedConfigurationsListLi'));
             document.querySelector(`li[data-id="${id}"]`).classList.add('selectedConfigurationsListLi');
+            document.getElementById("selectedConfigurationId").value = id;
         }
         else {
             alert("Data loading error!");
@@ -94,5 +116,25 @@ async function loadDeleteConfirm() {
     }
     finally {
         document.querySelectorAll('.historyPageButton').forEach(b => b.removeAttribute('disabled'));
+    }
+}
+
+async function deleteConfiguration(id) {
+    document.querySelectorAll('.deleteConfirmButton').forEach(b => b.setAttribute('disabled', 'disabled'));
+    try {
+        let resp = await fetch(`/Configurations/DeleteConfiguration/${id}`, {
+            method: "DELETE"
+        });
+        if (resp.ok === true) {
+            await loadConfigurationsListBox();
+            await loadConfigurationDisplay();
+            document.getElementById('selectedConfigurationId').value = "";
+        }
+        else {
+            alert("Data loading error!");
+        }
+    }
+    catch {
+        alert("Data loading error!");
     }
 }

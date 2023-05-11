@@ -1,9 +1,23 @@
-﻿<h3>
-	@Localizer["Are you sure you want?"]
-</h3>
-<button class="btn btn-outline-danger">
-	@Localizer["Delete"]
-</button>
-<button class="btn btn-outline-info">
-	@Localizer["Cancel"]
-</button>
+﻿<div class="mb-1">
+	<div class="row">
+		<div class="col">
+			<h3>
+				@Localizer["Are you sure you want?"]
+			</h3>
+		</div>
+	</div>
+</div>
+<div class="mb-3">
+	<div class="row">
+		<div class="col-auto">
+			<button id="deleteConfigurationButton" class="deleteConfirmButton btn btn-danger">
+				@Localizer["Delete"]
+			</button>
+		</div>
+		<div class="col-auto">
+			<button id="cancelDeleteConfigurationButton" class="deleteConfirmButton btn btn-success">
+				@Localizer["Cancel"]
+			</button>
+		</div>
+	</div>
+</div>

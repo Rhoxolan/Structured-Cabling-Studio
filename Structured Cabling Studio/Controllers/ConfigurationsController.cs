@@ -332,5 +332,14 @@ namespace StructuredCablingStudio.Controllers
 		{
 			return PartialView("_DeleteConfigurationPartial");
 		}
+
+		/// <summary>
+		/// Removes the cabling configuration
+		/// </summary>
+		[HttpDelete]
+		public IActionResult DeleteConfiguration(uint id)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
