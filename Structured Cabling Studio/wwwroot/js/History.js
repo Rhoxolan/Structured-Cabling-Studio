@@ -126,9 +126,9 @@ async function deleteConfiguration(id) {
             method: "DELETE"
         });
         if (resp.ok === true) {
+            document.getElementById('selectedConfigurationId').value = "";
             await loadConfigurationsListBox();
             await loadConfigurationDisplay();
-            document.getElementById('selectedConfigurationId').value = "";
         }
         else {
             alert("Data loading error!");

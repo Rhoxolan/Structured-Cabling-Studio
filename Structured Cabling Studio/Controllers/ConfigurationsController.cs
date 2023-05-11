@@ -337,9 +337,16 @@ namespace StructuredCablingStudio.Controllers
 		/// Removes the cabling configuration
 		/// </summary>
 		[HttpDelete]
-		public IActionResult DeleteConfiguration(uint id)
+		public async Task<IActionResult> DeleteConfiguration(uint id)
 		{
-			throw new NotImplementedException();
+			var cablingConfiguration = await _context.CablingConfigurations.FindAsync(id);
+			if(cablingConfiguration == null)
+			{
+				return NotFound();
+			}
+			_context.CablingConfigurations.Remove(cablingConfiguration);
+			await _context.SaveChangesAsync();
+			return NoContent();
 		}
 	}
 }
