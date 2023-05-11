@@ -337,16 +337,34 @@ namespace StructuredCablingStudio.Controllers
 		/// Removes the cabling configuration
 		/// </summary>
 		[HttpDelete]
+		[Authorize]
 		public async Task<IActionResult> DeleteConfiguration(uint id)
 		{
-			var cablingConfiguration = await _context.CablingConfigurations.FindAsync(id);
-			if(cablingConfiguration == null)
+			var userId = User.FindFirst(ClaimTypes.NameIdentifier);
+			if (userId == null)
+			{
+				return Unauthorized();
+			}
+			var cablingConfiguration = await _context.CablingConfigurations
+				.Where(c => c.User.Id == userId.Value)
+				.FirstOrDefaultAsync(c => c.Id == id);
+			if (cablingConfiguration == null)
 			{
 				return NotFound();
 			}
 			_context.CablingConfigurations.Remove(cablingConfiguration);
 			await _context.SaveChangesAsync();
 			return NoContent();
+		}
+
+		/// <summary>
+		/// Returns the partial view with the delete confirm
+		/// </summary>
+		[HttpGet]
+		[Authorize]
+		public IActionResult GetDeleteAllConfigurationsConfirm()
+		{
+			return PartialView("_DeleteAllConfigurationsPartial");
 		}
 	}
 }
