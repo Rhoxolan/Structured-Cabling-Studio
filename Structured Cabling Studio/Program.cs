@@ -79,6 +79,6 @@ app.UseSession();
 
 app.MapControllerRoute(
 	name: "default",
-	pattern: "{controller=Calculation}/{action=Calculate}");
+	pattern: "{controller=Calculation}/{action=Calculate}/{id?}");
 
 app.Run();

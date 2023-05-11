@@ -108,8 +108,8 @@ document.addEventListener('submit', e => {
 
 async function loadCalculateForm() {
     try {
-        let resp = await fetch("Configurations/LoadCalculateForm", {
-            method: "PUT"
+        let resp = await fetch("Configurations/GetCalculateForm", {
+            method: "GET"
         });
         if (resp.ok === true) {
             let calculateForm = await resp.text();
@@ -126,8 +126,8 @@ async function loadCalculateForm() {
 
 async function loadConfigurationDisplay() {
     try {
-        let resp = await fetch("Configurations/LoadConfigurationDisplayCalculate", {
-            method: "PUT"
+        let resp = await fetch("Configurations/GetConfigurationDisplayCalculate", {
+            method: "GET"
         });
         if (resp.ok === true) {
             let configurationDisplay = await resp.text();

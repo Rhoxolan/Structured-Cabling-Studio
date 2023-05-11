@@ -28,8 +28,8 @@ async function loadConfigurationsListBox() {
 
 async function loadConfigurationDisplay() {
     try {
-        let resp = await fetch("/Configurations/LoadConfigurationDisplayHistory", {
-            method: "PUT"
+        let resp = await fetch("/Configurations/GetConfigurationDisplayHistory", {
+            method: "GET"
         });
         if (resp.ok === true) {
             let configurationDisplay = await resp.text();
@@ -47,9 +47,8 @@ async function loadConfigurationDisplay() {
 async function loadConfigurationDisplayById(id) {
     document.querySelectorAll('.historyPageButton').forEach(b => b.setAttribute('disabled', 'disabled'));
     try {
-        let resp = await fetch("/Configurations/LoadConfigurationDisplayById", {
-            method: "PUT",
-            body: new URLSearchParams("id="+id)
+        let resp = await fetch(`/Configurations/GetConfigurationDisplayHistoryById/${id}`, {
+            method: "GET"
         });
         if (resp.ok === true) {
             let configurationHistoryDisplayDiv = document.getElementById('configurationHistoryDisplayDiv');

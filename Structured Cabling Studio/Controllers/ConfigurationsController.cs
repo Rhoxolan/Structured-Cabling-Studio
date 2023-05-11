@@ -14,10 +14,11 @@ using static System.DateTimeOffset;
 using StructuredCablingStudio.Filters.ConfigurationsFilters;
 using StructuredCablingStudio.Models.ViewModels.ConfigurationsViewModels;
 using StructuredCablingStudio.DTOs.ConfigurationsDTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StructuredCablingStudio.Controllers
 {
-    public class ConfigurationsController : Controller
+	public class ConfigurationsController : Controller
 	{
 		private readonly ApplicationContext _context;
 		private readonly UserManager<User> _userManager;
@@ -34,8 +35,8 @@ namespace StructuredCablingStudio.Controllers
 		/// <summary>
 		/// Returns the partial view with the clean Calculate form
 		/// </summary>
-		[HttpPut]
-		public IActionResult LoadCalculateForm(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters,
+		[HttpGet]
+		public IActionResult GetCalculateForm(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters,
 			CalculateDTO calculateDTO)
 		{
 			CalculateViewModel viewModel = _mapper.Map<CalculateViewModel>(cablingParameters);
@@ -52,8 +53,8 @@ namespace StructuredCablingStudio.Controllers
 		/// <summary>
 		/// Returns the partial view with the clean display of structured cabling configuration
 		/// </summary>
-		[HttpPut]
-		public IActionResult LoadConfigurationDisplayCalculate()
+		[HttpGet]
+		public IActionResult GetConfigurationDisplayCalculate()
 		{
 			return PartialView("_ConfigurationDisplayCalculatePartial");
 		}
@@ -61,7 +62,6 @@ namespace StructuredCablingStudio.Controllers
 		/// <summary>
 		/// Edits the viewmodel data from the Calculate form after applying the "StrictComplianceWithTheStandart" setting
 		/// </summary>
-		/// <param name="calculateVM">The viewmodel form values</param>
 		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
 		[ServiceFilter(typeof(DiapasonActionFilter))]
@@ -81,7 +81,6 @@ namespace StructuredCablingStudio.Controllers
 		/// <summary>
 		/// Edits the viewmodel data from the Calculate form after applying the "RecommendationsAvailability" setting
 		/// </summary>
-		/// <param name="calculateVM">The viewmodel form values</param>
 		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
 		[ServiceFilter(typeof(DiapasonActionFilter))]
@@ -119,7 +118,6 @@ namespace StructuredCablingStudio.Controllers
 		/// <summary>
 		/// Edits the viewmodel data from the Сalculate form after applying the "CableHankMeterageAvailability" setting
 		/// </summary>
-		/// <param name="calculateVM">The viewmodel form values</param>
 		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
 		[ServiceFilter(typeof(DiapasonActionFilter))]
@@ -147,7 +145,6 @@ namespace StructuredCablingStudio.Controllers
 		/// <summary>
 		/// Edits the viewmodel data from the Сalculate form after applying the "AnArbitraryNumberOfPorts" setting
 		/// </summary>
-		/// <param name="calculateVM">The viewmodel form values</param>
 		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
 		[ServiceFilter(typeof(DiapasonActionFilter))]
@@ -162,7 +159,6 @@ namespace StructuredCablingStudio.Controllers
 		/// <summary>
 		/// Edits the viewmodel data from the Сalculate form after applying the "TechnologicalReserveAvailability" setting
 		/// </summary>
-		/// <param name="calculateVM">The viewmodel form values</param>
 		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
 		[ServiceFilter(typeof(DiapasonActionFilter))]
@@ -183,7 +179,6 @@ namespace StructuredCablingStudio.Controllers
 		/// <summary>
 		/// Restore defaults settings on viewmodel data to the Сalculate form
 		/// </summary>
-		/// <param name="calculateVM">The viewmodel form values</param>
 		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
 		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
@@ -257,7 +252,6 @@ namespace StructuredCablingStudio.Controllers
 		/// <summary>
 		/// Calculation of the structured cabling configuration
 		/// </summary>
-		/// <param name="calculateVM">The viewmodel form values</param>
 		/// <returns>The partial view with the display of the structured cabling configuration</returns>
 		[HttpPost]
 		[ValidateAntiForgeryToken]
@@ -295,17 +289,15 @@ namespace StructuredCablingStudio.Controllers
 		/// <summary>
 		/// Returns the partial view with the list of structured cabling configurations
 		/// </summary>
-		/// <returns></returns>
+		[HttpGet]
+		[Authorize]
 		public async Task<IActionResult> GetConfigurationsListBox()
 		{
-			if (User.Identity != null)
+			var userId = User.FindFirst(ClaimTypes.NameIdentifier);
+			if (userId != null)
 			{
-				var userId = User.FindFirst(ClaimTypes.NameIdentifier);
-				if (userId != null)
-				{
-					var configurations = await _context.CablingConfigurations.Where(c => c.User.Id == userId.Value).ToListAsync();
-					return PartialView("_ConfigurationsListPartial", configurations);
-				}
+				var configurations = await _context.CablingConfigurations.Where(c => c.User.Id == userId.Value).ToListAsync();
+				return PartialView("_ConfigurationsListPartial", configurations);
 			}
 			return Unauthorized();
 		}
@@ -313,8 +305,9 @@ namespace StructuredCablingStudio.Controllers
 		/// <summary>
 		/// Returns the partial view with the clean display of structured cabling configuration
 		/// </summary>
-		[HttpPut]
-		public IActionResult LoadConfigurationDisplayHistory()
+		[HttpGet]
+		[Authorize]
+		public IActionResult GetConfigurationDisplayHistory()
 		{
 			return PartialView("_ConfigurationDisplayHistoryPartial");
 		}
@@ -322,8 +315,9 @@ namespace StructuredCablingStudio.Controllers
 		/// <summary>
 		/// Returns the partial view with the display of structured cabling configuration
 		/// </summary>
-		[HttpPut]
-		public async Task<IActionResult> LoadConfigurationDisplayById(uint id)
+		[HttpGet]
+		[Authorize]
+		public async Task<IActionResult> GetConfigurationDisplayHistoryById(uint id)
 		{
 			var cablingConfiguration = await _context.CablingConfigurations.FindAsync(id);
 			return PartialView("_ConfigurationDisplayHistoryPartial", cablingConfiguration);
