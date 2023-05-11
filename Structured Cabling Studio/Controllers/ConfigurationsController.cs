@@ -322,5 +322,15 @@ namespace StructuredCablingStudio.Controllers
 			var cablingConfiguration = await _context.CablingConfigurations.FindAsync(id);
 			return PartialView("_ConfigurationDisplayHistoryPartial", cablingConfiguration);
 		}
+
+		/// <summary>
+		/// Returns the partial view with the delete confirm
+		/// </summary>
+		[HttpGet]
+		[Authorize]
+		public IActionResult GetDeleteConfigurationConfirm()
+		{
+			return PartialView("_DeleteConfigurationPartial");
+		}
 	}
 }

@@ -8,6 +8,12 @@ document.addEventListener('click', (e) => {
     }
 });
 
+document.addEventListener('click', e => {
+    if (e.target.id == 'deleteButton') {
+        loadDeleteConfirm();
+    }
+})
+
 async function loadConfigurationsListBox() {
     try {
         let resp = await fetch("/Configurations/GetConfigurationsListBox", {
@@ -62,6 +68,28 @@ async function loadConfigurationDisplayById(id) {
             alert("Data loading error!");
         }
     } catch {
+        alert("Data loading error!");
+    }
+    finally {
+        document.querySelectorAll('.historyPageButton').forEach(b => b.removeAttribute('disabled'));
+    }
+}
+
+async function loadDeleteConfirm() {
+    document.querySelectorAll('.historyPageButton').forEach(b => b.setAttribute('disabled', 'disabled'));
+    try {
+        let resp = await fetch("/Configurations/GetDeleteConfigurationConfirm", {
+            method: "GET"
+        });
+        if (resp.ok === true) {
+            let deleteConfigurationConfirm = await resp.text();
+            document.getElementById('configurationsListBoxDiv').innerHTML = deleteConfigurationConfirm;
+        }
+        else {
+            alert("Data loading error!");
+        }
+    }
+    catch {
         alert("Data loading error!");
     }
     finally {
