@@ -366,5 +366,28 @@ namespace StructuredCablingStudio.Controllers
 		{
 			return PartialView("_DeleteAllConfigurationsPartial");
 		}
+
+		/// <summary>
+		/// Removes all the cabling configurations
+		/// </summary>
+		[HttpPost]
+		public async Task<IActionResult> DeleteAllConfigurations()
+		{
+			if(User.Identity == null || !User.Identity.IsAuthenticated)
+			{
+				return Unauthorized();
+			}
+			var userId = User.FindFirst(ClaimTypes.NameIdentifier);
+			if (userId == null)
+			{
+				return Unauthorized();
+			}
+			var configurationsToRemove = await _context.CablingConfigurations
+				.Where(c => c.User.Id == userId.Value)
+				.ToListAsync();
+			_context.CablingConfigurations.RemoveRange(configurationsToRemove);
+			await _context.SaveChangesAsync();
+			return NoContent();
+		}
 	}
 }

@@ -47,7 +47,7 @@ document.addEventListener('click', e => {
 
 document.addEventListener('click', e => {
     if (e.target.id == 'deleteAllConfigurationsButton') {
-
+        deleteAllConfigurations();
     }
 });
 
@@ -155,7 +155,6 @@ async function loadDeleteConfirm() {
 async function deleteConfiguration(id) {
     document.querySelectorAll('.deleteConfirmButton').forEach(b => b.setAttribute('disabled', 'disabled'));
     try {
-        debugger;
         let resp = await fetch(`/Configurations/DeleteConfiguration/${id}`, {
             method: "DELETE"
         });
@@ -196,5 +195,28 @@ async function loadDeleteAllConfirm() {
     }
     finally {
         document.querySelectorAll('.historyPageButton').forEach(b => b.removeAttribute('disabled'));
+    }
+}
+
+async function deleteAllConfigurations() {
+    document.querySelectorAll('.deleteConfirmButton').forEach(b => b.setAttribute('disabled', 'disabled'));
+    try {
+        let resp = await fetch(`/Configurations/DeleteAllConfigurations/`, {
+            method: "POST"
+        });
+        if (resp.ok === true) {
+            document.getElementById('selectedConfigurationId').value = "";
+            await loadConfigurationsListBox();
+            await loadConfigurationDisplay();
+        }
+        else {
+            alert("Data loading error!");
+        }
+    }
+    catch {
+        alert("Data loading error!");
+    }
+    finally {
+        document.querySelectorAll('.deleteConfirmButton').forEach(b => b.removeAttribute('disabled'));
     }
 }
