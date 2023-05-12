@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 using System.Text.Json;
-using StructuredCablingStudio.DTOs.ConfigurationsDTOs;
+using StructuredCablingStudio.DTOs.CalculationDTOs;
 
 namespace StructuredCablingStudio.Extensions.ISessionExtension
 {

@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc.Filters;
 using StructuredCablingStudio.Controllers;
-using StructuredCablingStudio.DTOs.ConfigurationsDTOs;
+using StructuredCablingStudio.DTOs.CalculationDTOs;
 using StructuredCablingStudio.Extensions.ISessionExtension;
-using StructuredCablingStudio.Models.ViewModels.ConfigurationsViewModels;
+using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
 
-namespace StructuredCablingStudio.Filters.ConfigurationsFilters
+namespace StructuredCablingStudio.Filters.CalculationFilters
 {
     public class CalculateDTOResultFilter : IResultFilter
     {

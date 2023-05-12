@@ -1,4 +1,4 @@
-﻿namespace StructuredCablingStudio.Models.ViewModels.ConfigurationsViewModels
+﻿namespace StructuredCablingStudio.Models.ViewModels.CalculationViewModels
 {
     public class CalculateViewModel
     {

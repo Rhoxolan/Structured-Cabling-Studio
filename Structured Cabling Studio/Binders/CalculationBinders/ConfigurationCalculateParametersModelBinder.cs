@@ -4,7 +4,7 @@ using StructuredCablingStudio.DTOs;
 using StructuredCablingStudio.Extensions.ISessionExtension;
 using StructuredCablingStudioCore.Calculation;
 
-namespace StructuredCablingStudio.Binders.ConfigurationsBinders
+namespace StructuredCablingStudio.Binders.CalculationBinders
 {
     public class ConfigurationCalculateParametersModelBinder : IModelBinder
     {

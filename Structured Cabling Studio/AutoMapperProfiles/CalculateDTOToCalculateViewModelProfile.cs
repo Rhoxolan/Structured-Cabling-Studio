@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using StructuredCablingStudio.DTOs.ConfigurationsDTOs;
-using StructuredCablingStudio.Models.ViewModels.ConfigurationsViewModels;
+using StructuredCablingStudio.DTOs.CalculationDTOs;
+using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
 
 namespace StructuredCablingStudio.AutoMapperProfiles
 {

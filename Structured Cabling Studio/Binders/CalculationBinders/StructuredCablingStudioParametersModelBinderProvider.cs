@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using StructuredCablingStudioCore.Parameters;
 
-namespace StructuredCablingStudio.Binders.ConfigurationsBinders
+namespace StructuredCablingStudio.Binders.CalculationBinders
 {
     public class StructuredCablingStudioParametersModelBinderProvider : IModelBinderProvider
     {

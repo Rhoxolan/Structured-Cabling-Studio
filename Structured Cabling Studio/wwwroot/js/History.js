@@ -73,7 +73,7 @@ document.addEventListener('click', e => {
 
 async function loadConfigurationsListBox() {
     try {
-        let resp = await fetch("/Configurations/GetConfigurationsListBox", {
+        let resp = await fetch("/Calculation/GetConfigurationsListBox", {
             method: "GET"
         });
         if (resp.ok === true) {
@@ -91,7 +91,7 @@ async function loadConfigurationsListBox() {
 
 async function loadConfigurationDisplay() {
     try {
-        let resp = await fetch("/Configurations/GetConfigurationDisplayHistory", {
+        let resp = await fetch("/Calculation/GetConfigurationDisplayHistory", {
             method: "GET"
         });
         if (resp.ok === true) {
@@ -110,7 +110,7 @@ async function loadConfigurationDisplay() {
 async function loadConfigurationDisplayById(id) {
     document.querySelectorAll('.historyPageButton').forEach(b => b.setAttribute('disabled', 'disabled'));
     try {
-        let resp = await fetch(`/Configurations/GetConfigurationDisplayHistoryById/${id}`, {
+        let resp = await fetch(`/Calculation/GetConfigurationDisplayHistoryById/${id}`, {
             method: "GET"
         });
         if (resp.ok === true) {
@@ -133,7 +133,7 @@ async function loadConfigurationDisplayById(id) {
 async function loadDeleteConfirm() {
     document.querySelectorAll('.historyPageButton').forEach(b => b.setAttribute('disabled', 'disabled'));
     try {
-        let resp = await fetch("/Configurations/GetDeleteConfigurationConfirm", {
+        let resp = await fetch("/Calculation/GetDeleteConfigurationConfirm", {
             method: "GET"
         });
         if (resp.ok === true) {
@@ -155,7 +155,7 @@ async function loadDeleteConfirm() {
 async function deleteConfiguration(id) {
     document.querySelectorAll('.deleteConfirmButton').forEach(b => b.setAttribute('disabled', 'disabled'));
     try {
-        let resp = await fetch(`/Configurations/DeleteConfiguration/${id}`, {
+        let resp = await fetch(`/Calculation/DeleteConfiguration/${id}`, {
             method: "DELETE"
         });
         if (resp.ok === true) {
@@ -178,7 +178,7 @@ async function deleteConfiguration(id) {
 async function loadDeleteAllConfirm() {
     document.querySelectorAll('.historyPageButton').forEach(b => b.setAttribute('disabled', 'disabled'));
     try {
-        let resp = await fetch("/Configurations/GetDeleteAllConfigurationsConfirm", {
+        let resp = await fetch("/Calculation/GetDeleteAllConfigurationsConfirm", {
             method: "GET"
         });
         if (resp.ok === true) {
@@ -201,7 +201,7 @@ async function loadDeleteAllConfirm() {
 async function deleteAllConfigurations() {
     document.querySelectorAll('.deleteConfirmButton').forEach(b => b.setAttribute('disabled', 'disabled'));
     try {
-        let resp = await fetch(`/Configurations/DeleteAllConfigurations/`, {
+        let resp = await fetch(`/Calculation/DeleteAllConfigurations/`, {
             method: "POST"
         });
         if (resp.ok === true) {

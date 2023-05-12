@@ -1,4 +1,4 @@
-﻿namespace StructuredCablingStudio.DTOs.ConfigurationsDTOs
+﻿namespace StructuredCablingStudio.DTOs.CalculationDTOs
 {
     public class CalculateDTO
     {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
-using StructuredCablingStudio.DTOs.ConfigurationsDTOs;
+using StructuredCablingStudio.DTOs.CalculationDTOs;
 
-namespace StructuredCablingStudio.Binders.ConfigurationsBinders
+namespace StructuredCablingStudio.Binders.CalculationBinders
 {
     public class CalculateDTOModelBinderProvider : IModelBinderProvider
     {

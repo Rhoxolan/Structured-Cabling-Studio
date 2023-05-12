@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using StructuredCablingStudio.Models.ViewModels.ConfigurationsViewModels;
+using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
 using StructuredCablingStudioCore.Parameters;
 
 namespace StructuredCablingStudio.AutoMapperProfiles

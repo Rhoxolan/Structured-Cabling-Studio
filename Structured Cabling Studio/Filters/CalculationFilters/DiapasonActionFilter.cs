@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc.Filters;
 using StructuredCablingStudio.Controllers;
-using StructuredCablingStudio.Models.ViewModels.ConfigurationsViewModels;
+using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
 using StructuredCablingStudioCore.Parameters;
 
-namespace StructuredCablingStudio.Filters.ConfigurationsFilters
+namespace StructuredCablingStudio.Filters.CalculationFilters
 {
     public class DiapasonActionFilter : IActionFilter
     {
