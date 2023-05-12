@@ -23,6 +23,10 @@ namespace StructuredCablingStudio.Controllers
 		[AllowAnonymous]
 		public IActionResult SignIn(string returnUrl)
 		{
+			if (User.Identity != null && User.Identity.IsAuthenticated)
+			{
+				return LocalRedirect(UrlChecker(returnUrl));
+			}
 			return View(new SignInViewModel { ReturnUrl = UrlChecker(returnUrl) });
 		}
 
@@ -83,7 +87,7 @@ namespace StructuredCablingStudio.Controllers
 
 		private string UrlChecker(string url)
 		{
-			if(!Url.IsLocalUrl(url) && IsNullOrEmpty(url))
+			if (!Url.IsLocalUrl(url) && IsNullOrEmpty(url))
 			{
 				return Url.Action(nameof(Calculation.Calculate), nameof(Calculation))!;
 			}
