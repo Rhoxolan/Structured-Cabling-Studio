@@ -32,7 +32,7 @@ namespace StructuredCablingStudio.Controllers
 
 		public IActionResult Information()
 		{
-			return Content("Informatin Page");
+			return View();
 		}
 
 		[HttpPost]
