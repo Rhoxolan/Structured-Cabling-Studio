@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using StructuredCablingStudio.Controllers;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
 using StructuredCablingStudioCore.Parameters;
 
@@ -17,7 +17,7 @@ namespace StructuredCablingStudio.Filters.CalculationFilters
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
-            var controller = (Calculation)context.Controller;
+            var controller = (Controller)context.Controller;
             var model = (CalculateViewModel?)controller.ViewData.Model;
             if (model != null)
             {
