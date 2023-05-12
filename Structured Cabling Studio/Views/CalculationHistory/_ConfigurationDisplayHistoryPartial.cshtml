@@ -7,3 +7,16 @@
 		</div>
 	</div>
 </div>
+
+@if (Model != null)
+{
+	var serializeroptions = new System.Text.Json.JsonSerializerOptions
+	{
+		WriteIndented = true,
+		ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve,
+	};
+
+	<form id="historySaveToTxtCablingConfigurationForm" asp-controller="@nameof(Calculation)" asp-action="@nameof(Calculation.SaveToTXT)" method="post">
+		<input type="hidden" name="serializedCablingConfiguration" value="@System.Text.Json.JsonSerializer.Serialize(Model, serializeroptions)">
+	</form>
+}

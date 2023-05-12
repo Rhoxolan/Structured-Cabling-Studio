@@ -70,6 +70,14 @@ document.addEventListener('click', e => {
     }
 });
 
+document.addEventListener('click', e => {
+    if (e.target.id == "saveToTxtButton" &&
+        document.getElementById('selectedConfigurationId').value != "" &&
+        document.forms.historySaveToTxtCablingConfigurationForm != null) {
+        document.forms.historySaveToTxtCablingConfigurationForm.submit();
+    }
+})
+
 
 async function loadConfigurationsListBox() {
     try {
