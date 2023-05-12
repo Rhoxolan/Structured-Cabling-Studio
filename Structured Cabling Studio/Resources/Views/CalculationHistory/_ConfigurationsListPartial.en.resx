@@ -129,6 +129,9 @@
   <data name="HankQuantity" xml:space="preserve">
     <value>Necessary cable hank count:</value>
   </data>
+  <data name="History:" xml:space="preserve">
+    <value>Your calculations history of structured cabling configurations:</value>
+  </data>
   <data name="m" xml:space="preserve">
     <value>m</value>
   </data>

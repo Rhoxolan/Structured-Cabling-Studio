@@ -1,5 +1,15 @@
 ﻿@model IEnumerable<CablingConfigurationEntity>
 
+
+<h5 class="d-sm-none mb-4">
+	@Localizer["Welcome,"] <span id="eMailDisplayHistoryPageSpan" class="text-primary">@User.Identity!.Name</span>!
+</h5>
+
+<h5 class="mb-3">
+	@Localizer["History:"]
+</h5>
+
+
 <div class="mb-3">
 	<div class="row">
 		<div class="col-11 col-sm-9 col-xxl-10">
