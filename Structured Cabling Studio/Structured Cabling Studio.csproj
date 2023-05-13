@@ -27,6 +27,9 @@
     <EmbeddedResource Update="Resources\Views\Calculation\Information.ru.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Project\ProjectInformation.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
