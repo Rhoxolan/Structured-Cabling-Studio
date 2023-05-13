@@ -117,7 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="First formula description" xml:space="preserve">
+    <value>Where a - minimum length of permanent link;&lt;br/&gt;
+b - maximum length of permanent link;&lt;br/&gt;
+c - techological reserve coefficient;&lt;br/&gt;
+d - workplaces count;&lt;br/&gt;
+e - ports count per one workplace</value>
+  </data>
   <data name="First paragraph" xml:space="preserve">
-    <value />
+    <value>The Structured Cabling Studio application is designed for calculation of necessary meterage of installation cable for design of a structured cabling,  in accordance with the requirements of the ISO/IEC 11801 international standard. The choice is given the options to calculate the requried cable length both with and without considering the cable length in the one cable hank (reel). Calculating of the required cable length with considering the cable length in the one hank will take is consider of the number of cable drops that can be made from a one cable hank.&lt;br/&gt;
+Calculation of the necessary cable meterage without considering of hanks is taken on formula:</value>
+  </data>
+  <data name="Fourth paragraph" xml:space="preserve">
+    <value>To obtain additional information about project, please go to section</value>
+  </data>
+  <data name="Project information link" xml:space="preserve">
+    <value>Project information</value>
+  </data>
+  <data name="Second formula description" xml:space="preserve">
+    <value>Where a - workplaces count;&lt;br/&gt;
+b - ports count per one workplace;&lt;br/&gt;
+c - meterage in one cable hank;&lt;br/&gt;
+d - minimum length of permanent link;&lt;br/&gt;
+e - maximum length of permanent link;&lt;br/&gt;
+f - technological reserve coefficient.</value>
+  </data>
+  <data name="Second paragraph" xml:space="preserve">
+    <value>Calculation of the requried cable hanks (reels) count is taken on formula:</value>
+  </data>
+  <data name="Third paragraph" xml:space="preserve">
+    <value>Calculation of the necessary cable meterage with considering of hanks is taken, respectively, by obtaining the product of the cable meterage in the one hank and the hanks count.&lt;br/&gt;
+The application is designed for calculation of necessary cable meterage for design of a structured cabling, but it can be used  for design of a different nature cable systems, for example, electrical cable systems.&lt;br/&gt;
+You also may obtain the telecommunicaton cable selection recommendations in consider with parameters of the planned structured cabling architecture. Select for this the necessary obtan recommendations parameters on the calculation page, which are consider with parametets of designed cabling system.</value>
   </data>
 </root>
