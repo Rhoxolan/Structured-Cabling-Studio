@@ -1,4 +1,8 @@
-﻿.historyPageButton {
+﻿#eMailDisplayHistoryPageSpan {
+    word-break: break-word;
+}
+
+.historyPageButton {
     width: 100%;
 }
 
