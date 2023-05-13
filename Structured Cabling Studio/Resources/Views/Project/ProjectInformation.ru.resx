@@ -120,10 +120,23 @@
   <data name="Author of project" xml:space="preserve">
     <value>Автор проекта</value>
   </data>
+  <data name="First paragraph" xml:space="preserve">
+    <value>В августе 2021-го, во время написания курсовой работы по предмету "Структурированные кабельные системы" в Компьтерной Академии ШАГ г. Кривой Рог, возникла необходимость в созднии программного обеспечения для расчета необходимого для построения СКС метража кабеля. Была написана первая версия приложения - консольное приложение на языке C++, которое получило название SCS-Calc.</value>
+  </data>
+  <data name="First&amp;second image description" xml:space="preserve">
+    <value>Первая, консольная версия приложения SCS-Calc</value>
+  </data>
   <data name="History of project" xml:space="preserve">
     <value>История проекта</value>
   </data>
+  <data name="Img." xml:space="preserve">
+    <value>Рис.</value>
+  </data>
   <data name="Profile" xml:space="preserve">
     <value>Профиль</value>
+  </data>
+  <data name="Second paragraph" xml:space="preserve">
+    <value>Однако, уже тогда было понимание того, что необходимо, в первую очередь, приложение с графическим интерфейсом пользователя.&lt;br/&gt;
+Что и было сделано в июне 2022-го - на языке C#, на платформе .NET 6 Windows Forms, была написана первая версия приложения с графическим интерфейсом пользователя. Приложение получило релизный индекс 1.0.</value>
   </data>
 </root>
