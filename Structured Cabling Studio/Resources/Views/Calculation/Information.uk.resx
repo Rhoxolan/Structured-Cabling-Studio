@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="First paragraph" xml:space="preserve">
-    <value />
+    <value>Застосунок Structured Cabling Studio призначений для розрахунку необхіжного метражу інсталляційного кабелю для побудови структурованної кабельної системи (СКС) з урахуванням вимог міжнародного стандарту ISO/IEC 11801. На вибір дається можливість розрахувати необхідний метраж кабелю як з урахуванням метражу кабеля в 1-й кабельній катушці (бухті), так і без.</value>
   </data>
 </root>
