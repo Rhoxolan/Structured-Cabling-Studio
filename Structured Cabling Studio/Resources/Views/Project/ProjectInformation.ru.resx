@@ -120,6 +120,10 @@
   <data name="Author of project" xml:space="preserve">
     <value>Автор проекта</value>
   </data>
+  <data name="Eight paragraph &amp; link to the SCS-Calc 2.0 repo" xml:space="preserve">
+    <value>Релиз приложения SCS-Calc 2.0 состоялся в феврале 2023-го. По совместительству, приложение стало предметом курсовой работы по платформе .NET в Компьтерной Академии ШАГ г. Кривой Рог.&lt;br /&gt;
+Более подбробно ознакомиться с приложением можно на GitHub</value>
+  </data>
   <data name="Fifth paragraph - link to the SCS-Calc 1.1 repo" xml:space="preserve">
     <value>Код приложения SCS-Calc 1.1 доступен на GitHub</value>
   </data>
@@ -149,8 +153,15 @@
     <value>Однако, уже тогда было понимание того, что необходимо, в первую очередь, приложение с графическим интерфейсом пользователя.&lt;br/&gt;
 Что и было сделано в июне 2022-го - на языке C#, на платформе .NET 6 Windows Forms, была написана первая версия приложения с графическим интерфейсом пользователя. Приложение получило релизный индекс 1.0.</value>
   </data>
+  <data name="Seventh paragraph" xml:space="preserve">
+    <value>Приложение SCS-Calc 2.0 стало совершенно новым, современным и функциональным приложением. Приложение было написано на более современной платформе разработки - .NET 7 WPF. В значительной степени был доработан функционал приложения, была добавлена возможность получения рекомендаций по побдору кабеля. Переход на новую платформу позволил реализовать совершенно новый, революционный дизайн.</value>
+  </data>
+  <data name="Sixth image description" xml:space="preserve">
+    <value>SCS-Calc 2.0</value>
+  </data>
   <data name="Sixth paragraph" xml:space="preserve">
-    <value />
+    <value>Но версия 1.1 так и не была опубликована - работа над версией 1.1 плавно перетекла в работу над версией 2.0.&lt;br /&gt;
+</value>
   </data>
   <data name="Third image description" xml:space="preserve">
     <value>Приложение SCS-Calc - десктопная версия</value>
