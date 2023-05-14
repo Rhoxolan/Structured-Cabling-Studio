@@ -123,6 +123,22 @@
   <data name="E-Mail" xml:space="preserve">
     <value>Електронна пошта</value>
   </data>
+  <data name="Eight paragraph &amp; link to the SCS-Calc 2.0 repo" xml:space="preserve">
+    <value>Реліз додатку SCS-Calc 2.0 відбувся у лютому 2023-го. За сумісництвом, додаток став предметом курсової роботи з платформи .NET у Компьютерній Академіі ШАГ м. Кривий Ріг.&lt;br/&gt;
+Більш детально з додатком можно ознайомитись на GitHub</value>
+  </data>
+  <data name="Fifth paragraph - link to the SCS-Calc 1.1 repo" xml:space="preserve">
+    <value>Код додатку SCS-Calc 1.1 доступний на GitHub</value>
+  </data>
+  <data name="First paragraph" xml:space="preserve">
+    <value>У серпні 2021-го, під час написання курсової роботи з предмету "Структуровані кабельні системи" в Компьютерній Академіі Шаг м. Кривий Ріг, з'явилася необхідність у створенні програмного забеспечення для розрахунку необхідного для побудови СКС метражу кабелю. Була написана перша версія додатку - консольний додаток на язику C++, який отримав назву SCS-Calc.</value>
+  </data>
+  <data name="First&amp;second image description" xml:space="preserve">
+    <value>Перша, консольна версія додатку SCS-Calc</value>
+  </data>
+  <data name="Fourth paragraph" xml:space="preserve">
+    <value />
+  </data>
   <data name="History of project" xml:space="preserve">
     <value>Історія проекту</value>
   </data>
