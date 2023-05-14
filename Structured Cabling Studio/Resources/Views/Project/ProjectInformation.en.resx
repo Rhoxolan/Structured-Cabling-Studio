@@ -123,6 +123,16 @@
   <data name="E-Mail" xml:space="preserve">
     <value>E-Mail</value>
   </data>
+  <data name="Eight paragraph &amp; link to the SCS-Calc 2.0 repo" xml:space="preserve">
+    <value>The release of the SCS-Calc application 2.0 took place in February 2023. Additionally, the application has become the subject of a coursework on the .NET platform at the STEP IT Academy in Kryvyi Rih.&lt;br/&gt;
+You can find more detailed information about the application on GitHub</value>
+  </data>
+  <data name="Fifth paragraph - link to the SCS-Calc 1.1 repo" xml:space="preserve">
+    <value>The source code of the SCS-Calc 1.1 is available on GitHub</value>
+  </data>
+  <data name="First paragraph" xml:space="preserve">
+    <value>In August 2021, while working on the coursework on the "Structured cabling" subject at the STEP IT Academy in Kryvyi Rih, there was a need to develop software for calculation of necessary cable  meterage for building of a structured cabling. The first version of the application was created - the console application on C++, which was named SCS-Calc.</value>
+  </data>
   <data name="History of project" xml:space="preserve">
     <value>The history of project</value>
   </data>
