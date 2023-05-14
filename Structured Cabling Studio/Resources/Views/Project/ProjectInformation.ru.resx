@@ -120,11 +120,21 @@
   <data name="Author of project" xml:space="preserve">
     <value>Автор проекта</value>
   </data>
+  <data name="Fifth paragraph - link to the SCS-Calc 1.1 repo" xml:space="preserve">
+    <value>Код приложения SCS-Calc 1.1 доступен на GitHub</value>
+  </data>
   <data name="First paragraph" xml:space="preserve">
     <value>В августе 2021-го, во время написания курсовой работы по предмету "Структурированные кабельные системы" в Компьтерной Академии ШАГ г. Кривой Рог, возникла необходимость в созднии программного обеспечения для расчета необходимого для построения СКС метража кабеля. Была написана первая версия приложения - консольное приложение на языке C++, которое получило название SCS-Calc.</value>
   </data>
   <data name="First&amp;second image description" xml:space="preserve">
     <value>Первая, консольная версия приложения SCS-Calc</value>
+  </data>
+  <data name="Fourth paragraph" xml:space="preserve">
+    <value>Проект развивался. В августе 2022-го была начата работа над версией 1.1. Одним из основных направлений разработки было создание меню дополнительных параметров, где пользователь мог настроить параметры расчета.&lt;br/&gt;
+При работе над версией 1.1 началась работа над новой архитектурной концепцией проекта. Для возможности переноса приложения на другие платформы разработки, была начата работа над созданием независимой от типа приложения кросплатформенной библиотеки, содержащей модель логики работы приложения. Это сыграло значительную роль в следующих версиях проекта, позволив перенести логическое ядро приложения на другие платформы.</value>
+  </data>
+  <data name="Fourth&amp;fifth image description" xml:space="preserve">
+    <value>SCS-Calc 1.1</value>
   </data>
   <data name="History of project" xml:space="preserve">
     <value>История проекта</value>
@@ -138,5 +148,14 @@
   <data name="Second paragraph" xml:space="preserve">
     <value>Однако, уже тогда было понимание того, что необходимо, в первую очередь, приложение с графическим интерфейсом пользователя.&lt;br/&gt;
 Что и было сделано в июне 2022-го - на языке C#, на платформе .NET 6 Windows Forms, была написана первая версия приложения с графическим интерфейсом пользователя. Приложение получило релизный индекс 1.0.</value>
+  </data>
+  <data name="Sixth paragraph" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Third image description" xml:space="preserve">
+    <value>Приложение SCS-Calc - десктопная версия</value>
+  </data>
+  <data name="Third paragraph - link to the SCS-Calc repo" xml:space="preserve">
+    <value>Более подробно ознакомиться с приложением SCS-Calc можно на GitHub</value>
   </data>
 </root>
