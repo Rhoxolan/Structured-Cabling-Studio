@@ -120,6 +120,9 @@
   <data name="Author of project" xml:space="preserve">
     <value>Автор проекту</value>
   </data>
+  <data name="E-Mail" xml:space="preserve">
+    <value>Електронна пошта</value>
+  </data>
   <data name="History of project" xml:space="preserve">
     <value>Історія проекту</value>
   </data>
