@@ -131,10 +131,28 @@ You can find more detailed information about the application on GitHub</value>
     <value>The source code of the SCS-Calc 1.1 is available on GitHub</value>
   </data>
   <data name="First paragraph" xml:space="preserve">
-    <value>In August 2021, while working on the coursework on the "Structured cabling" subject at the STEP IT Academy in Kryvyi Rih, there was a need to develop software for calculation of necessary cable  meterage for building of a structured cabling. The first version of the application was created - the console application on C++, which was named SCS-Calc.</value>
+    <value>In August 2021, while working on the coursework on the "Structured cabling" subject at the STEP IT Academy in Kryvyi Rih, there was a need to develop software for calculation of necessary cable meterage for building of a structured cabling. The first version of the application was created - the console application on C++, which was named SCS-Calc.</value>
+  </data>
+  <data name="First&amp;second image description" xml:space="preserve">
+    <value>The first console version of the SCS-Calc application</value>
+  </data>
+  <data name="Fourth paragraph" xml:space="preserve">
+    <value>The project continued to evolve. In August 2022 work on the version 1.1 was began. One of the main development directions was the creation of an additional parameters menu, where users could customize calculation settings.&lt;br/&gt;
+During the development of version 1.1, work on the new architectural concept of the project was began. To be able to port the application to other development platforms, work has begun on the creation of the cross-platform library that is independent of the type of application and contains the application logic model. This played a significant role in the next versions of the project, allowing the logical core of the application to be ported to other platforms.</value>
+  </data>
+  <data name="Fourth&amp;fifth image description" xml:space="preserve">
+    <value>SCS-Calc 1.1</value>
   </data>
   <data name="History of project" xml:space="preserve">
     <value>The history of project</value>
+  </data>
+  <data name="Img." xml:space="preserve">
+    <value>Img.</value>
+  </data>
+  <data name="Ninth paragraph - link to the Structured Cabling Studio repo" xml:space="preserve">
+    <value>After the release of SCS-Calc 2.0, as a conceptual continuation of the project, the idea of developing a web application emerged. In March 2023, work on the Structured Cabling Studio project was began on the .NET 7 ASP.NET Core platform.&lt;br/&gt;
+The release took place in May 2023. Inheriting the concept from the desktop versions of the project, Structured Cabling Studio provides extensive functionality for calculating necessary cable meterage for building of a structured cabling and obtaining cable selection recommendations.&lt;br/&gt;
+You can explore the source code of the Structured Cabling Studio project on GitHub</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profile</value>
