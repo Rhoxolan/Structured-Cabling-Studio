@@ -116,11 +116,11 @@ async function loadCalculateForm() {
             document.getElementById('calculateFormDiv').innerHTML = calculateForm;
         }
         else {
-            alert("Data loading error!");
+            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
         }
     }
     catch {
-        alert("Data loading error!");
+        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
     }
 }
 
@@ -134,11 +134,11 @@ async function loadConfigurationDisplay() {
             document.getElementById('configurationDisplayDiv').innerHTML = configurationDisplay;
         }
         else {
-            alert("Data loading error!");
+            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
         }
     }
     catch {
-        alert("Data loading error!");
+        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
     }
 }
 
@@ -154,10 +154,10 @@ async function editCalculateForm(path) {
             document.getElementById('calculateFormDiv').innerHTML = calculateForm;
         }
         else {
-            alert("Data loading error!");
+            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
         }
     } catch {
-        alert("Data loading error!");
+        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
     }
     finally {
         document.getElementById('calculateFormDiv').classList.remove('formLoading');
@@ -178,10 +178,10 @@ async function calculate() {
             configurationDisplayDiv.scrollIntoView();
         }
         else {
-            alert("Data loading error!");
+            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
         }
     } catch {
-        alert("Data loading error!");
+        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
     }
     finally {
         document.getElementById('calculateFormDiv').classList.remove('formLoading');

@@ -89,11 +89,11 @@ async function loadConfigurationsListBox() {
             document.getElementById('configurationsListBoxDiv').innerHTML = configurationsListBox;
         }
         else {
-            alert("Data loading error!");
+            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
         }
     }
     catch {
-        alert("Data loading error!");
+        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
     }
 }
 
@@ -107,11 +107,11 @@ async function loadConfigurationDisplay() {
             document.getElementById('configurationHistoryDisplayDiv').innerHTML = configurationDisplay;
         }
         else {
-            alert("Data loading error!");
+            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
         }
     }
     catch {
-        alert("Data loading error!");
+        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
     }
 }
 
@@ -128,10 +128,10 @@ async function loadConfigurationDisplayById(id) {
             configurationHistoryDisplayDiv.scrollIntoView();
         }
         else {
-            alert("Data loading error!");
+            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
         }
     } catch {
-        alert("Data loading error!");
+        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
     }
     finally {
         document.querySelectorAll('.historyPageButton').forEach(b => b.removeAttribute('disabled'));
@@ -149,11 +149,11 @@ async function loadDeleteConfirm() {
             document.getElementById('configurationsListBoxDiv').innerHTML = deleteConfigurationConfirm;
         }
         else {
-            alert("Data loading error!");
+            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
         }
     }
     catch {
-        alert("Data loading error!");
+        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
     }
     finally {
         document.querySelectorAll('.historyPageButton').forEach(b => b.removeAttribute('disabled'));
@@ -172,11 +172,11 @@ async function deleteConfiguration(id) {
             await loadConfigurationDisplay();
         }
         else {
-            alert("Data loading error!");
+            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
         }
     }
     catch {
-        alert("Data loading error!");
+        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
     }
     finally {
         document.querySelectorAll('.deleteConfirmButton').forEach(b => b.removeAttribute('disabled'));
@@ -195,11 +195,11 @@ async function loadDeleteAllConfirm() {
             document.getElementById('configurationHistoryDisplayDiv').innerHTML = "";
         }
         else {
-            alert("Data loading error!");
+            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
         }
     }
     catch {
-        alert("Data loading error!");
+        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
     }
     finally {
         document.querySelectorAll('.historyPageButton').forEach(b => b.removeAttribute('disabled'));
@@ -218,11 +218,11 @@ async function deleteAllConfigurations() {
             await loadConfigurationDisplay();
         }
         else {
-            alert("Data loading error!");
+            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
         }
     }
     catch {
-        alert("Data loading error!");
+        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
     }
     finally {
         document.querySelectorAll('.deleteConfirmButton').forEach(b => b.removeAttribute('disabled'));
