@@ -157,6 +157,9 @@ You can explore the source code of the Structured Cabling Studio project on GitH
   <data name="Profile" xml:space="preserve">
     <value>Profile</value>
   </data>
+  <data name="Project Information page title" xml:space="preserve">
+    <value>Project Information</value>
+  </data>
   <data name="Second paragraph" xml:space="preserve">
     <value>However, already at that time, there was an understanding that the first priority was to create a application with a graphical user interface.&lt;br/&gt;
 This was accomplished in June 2022 - the first version of the application with a graphical user interface was developed on the .NET 6 Windows Forms platform using the C# language. The application was got 1.0 release index.</value>

@@ -129,6 +129,9 @@
   <data name="HankQuantity" xml:space="preserve">
     <value>Necessary cable hank count:</value>
   </data>
+  <data name="History page title" xml:space="preserve">
+    <value>History</value>
+  </data>
   <data name="m" xml:space="preserve">
     <value>m</value>
   </data>

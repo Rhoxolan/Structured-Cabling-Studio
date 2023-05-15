@@ -131,6 +131,9 @@ e - кількість портів на одне ребоче місце.</valu
   <data name="Fourth paragraph" xml:space="preserve">
     <value>Для отримання додаткової інформації про проект зверніться у розділ </value>
   </data>
+  <data name="Information page title" xml:space="preserve">
+    <value>Інформація</value>
+  </data>
   <data name="Project information link" xml:space="preserve">
     <value>Інформація про проект</value>
   </data>

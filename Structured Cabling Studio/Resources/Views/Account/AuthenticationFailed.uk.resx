@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Authentication failed page title" xml:space="preserve">
+    <value>Вхід у систему не вдався</value>
+  </data>
   <data name="Authentication is failed" xml:space="preserve">
     <value>Вхід у систему не вдався</value>
   </data>

@@ -129,6 +129,9 @@
   <data name="HankQuantity" xml:space="preserve">
     <value>Необходимое количество бухт кабеля:</value>
   </data>
+  <data name="History page title" xml:space="preserve">
+    <value>История</value>
+  </data>
   <data name="m" xml:space="preserve">
     <value>м.</value>
   </data>

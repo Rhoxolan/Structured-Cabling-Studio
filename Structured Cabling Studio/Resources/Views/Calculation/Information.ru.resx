@@ -131,6 +131,9 @@ e - количество портов на одно рабочее место.</
   <data name="Fourth paragraph" xml:space="preserve">
     <value>Для дополнительной информации о проекте обратитесь в раздел</value>
   </data>
+  <data name="Information page title" xml:space="preserve">
+    <value>Информация</value>
+  </data>
   <data name="Project information link" xml:space="preserve">
     <value>Информация о проекте</value>
   </data>

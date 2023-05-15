@@ -144,6 +144,9 @@
   <data name="Calculate" xml:space="preserve">
     <value>Calculate</value>
   </data>
+  <data name="Calculation page title" xml:space="preserve">
+    <value>Calculation</value>
+  </data>
   <data name="Clean output block" xml:space="preserve">
     <value>Clean output block</value>
   </data>

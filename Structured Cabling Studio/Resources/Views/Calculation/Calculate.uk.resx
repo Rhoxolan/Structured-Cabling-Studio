@@ -144,6 +144,9 @@
   <data name="Calculate" xml:space="preserve">
     <value>Розрахувати</value>
   </data>
+  <data name="Calculation page title" xml:space="preserve">
+    <value>Розрахунок</value>
+  </data>
   <data name="Clean output block" xml:space="preserve">
     <value>Очистити блок виводу</value>
   </data>

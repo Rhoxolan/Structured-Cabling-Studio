@@ -131,6 +131,9 @@ Calculation of the necessary cable meterage without considering of hanks is take
   <data name="Fourth paragraph" xml:space="preserve">
     <value>To obtain additional information about the project, please go to section</value>
   </data>
+  <data name="Information page title" xml:space="preserve">
+    <value>Information</value>
+  </data>
   <data name="Project information link" xml:space="preserve">
     <value>Project information</value>
   </data>

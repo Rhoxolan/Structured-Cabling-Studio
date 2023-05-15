@@ -120,6 +120,9 @@
   <data name="Sign In with Google" xml:space="preserve">
     <value>Увійти за допомогою Google</value>
   </data>
+  <data name="SignIn page title" xml:space="preserve">
+    <value>Увійти у систему</value>
+  </data>
   <data name="Signin with Google to watch history" xml:space="preserve">
     <value>Увійдіть у систему за допомогою облікового запису Google і отримайте можливість переглядати свою історію розрахунків!</value>
   </data>

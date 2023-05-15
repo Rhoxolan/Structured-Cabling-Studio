@@ -157,6 +157,9 @@
   <data name="Profile" xml:space="preserve">
     <value>Профіль</value>
   </data>
+  <data name="Project Information page title" xml:space="preserve">
+    <value>Інформація про проект</value>
+  </data>
   <data name="Second paragraph" xml:space="preserve">
     <value>Однак вже тоді було розуміння того, що потрібен, в першу чергу, застосунок з графічним інтерфейсом користувача.&lt;br/&gt;
 Що і було зроблено в червні 2022-го - на мові C#, на платформі .NET 6 Windows Forms, була написана перша версія застосуноку с графічним інтерфейсом користувача. Застосунок отримав релізний індекс 1.0.</value>

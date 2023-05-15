@@ -120,6 +120,9 @@
   <data name="Sign In with Google" xml:space="preserve">
     <value>Sign In with Google</value>
   </data>
+  <data name="SignIn page title" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
   <data name="Signin with Google to watch history" xml:space="preserve">
     <value>Sign In with Google account and get the opportunity to watch your calculations history!</value>
   </data>
