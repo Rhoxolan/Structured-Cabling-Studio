@@ -24,5 +24,6 @@
 	@Localizer["Third paragraph"]
 </p>
 <p>
-	@Localizer["Fourth paragraph"] <a href="#">@Localizer["Project information link"]</a>.
+	@Localizer["Fourth paragraph"] <a asp-controller="@nameof(Project)"
+		asp-action="@nameof(Project.ProjectInformation)">@Localizer["Project information link"]</a>.
 </p>
