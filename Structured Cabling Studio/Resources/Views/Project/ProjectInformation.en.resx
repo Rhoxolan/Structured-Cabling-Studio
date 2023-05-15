@@ -157,4 +157,23 @@ You can explore the source code of the Structured Cabling Studio project on GitH
   <data name="Profile" xml:space="preserve">
     <value>Profile</value>
   </data>
+  <data name="Second paragraph" xml:space="preserve">
+    <value>However, already at that time, there was an understanding that the first priority was to create a application with a graphical user interface.&lt;br/&gt;
+This was accomplished in June 2022 - the first version of the application with a graphical user interface was developed on the .NET 6 Windows Forms platform using the C# language. The application was got 1.0 release index.</value>
+  </data>
+  <data name="Seventh paragraph" xml:space="preserve">
+    <value>The SCS-Calc 2.0 application became completely new, modern, and feature-rich. The application was developed using a more modern development platform - .NET 7 WPF. The functionality of the application was significantly improved, and the ability to receive cable selection recommendations was added. The transition to the new platform enabled the implementation of a completely new, revolutionary design.</value>
+  </data>
+  <data name="Sixth image description" xml:space="preserve">
+    <value>SCS-Calc 2.0</value>
+  </data>
+  <data name="Sixth paragraph" xml:space="preserve">
+    <value>But version 1.1 was never released, as the work on version 1.1 seamlessly transitioned into the development of version 2.0.</value>
+  </data>
+  <data name="Third image description" xml:space="preserve">
+    <value>The SCS-Calc application - the desktop version</value>
+  </data>
+  <data name="Third paragraph - link to the SCS-Calc repo" xml:space="preserve">
+    <value>You can explore the SCS-Calc application in more detail on GitHub</value>
+  </data>
 </root>
