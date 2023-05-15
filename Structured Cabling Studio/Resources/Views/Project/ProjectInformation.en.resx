@@ -137,7 +137,7 @@ You can find more detailed information about the application on GitHub</value>
     <value>The first console version of the SCS-Calc application</value>
   </data>
   <data name="Fourth paragraph" xml:space="preserve">
-    <value>The project continued to evolve. In August 2022 work on the version 1.1 was began. One of the main development directions was the creation of an additional parameters menu, where users could customize calculation settings.&lt;br/&gt;
+    <value>The project continued to evolve. In August 2022, work on the version 1.1 was began. One of the main development directions was the creation of an additional parameters menu, where users could customize calculation settings.&lt;br/&gt;
 During the development of version 1.1, work on the new architectural concept of the project was began. To be able to port the application to other development platforms, work has begun on the creation of the cross-platform library that is independent of the type of application and contains the application logic model. This played a significant role in the next versions of the project, allowing the logical core of the application to be ported to other platforms.</value>
   </data>
   <data name="Fourth&amp;fifth image description" xml:space="preserve">
