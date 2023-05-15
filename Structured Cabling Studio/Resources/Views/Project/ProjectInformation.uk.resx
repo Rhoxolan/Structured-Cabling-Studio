@@ -125,7 +125,7 @@
   </data>
   <data name="Eight paragraph &amp; link to the SCS-Calc 2.0 repo" xml:space="preserve">
     <value>Реліз додатку SCS-Calc 2.0 відбувся у лютому 2023-го. За сумісництвом, застосунок став предметом курсової роботи з платформи .NET у Комп'ютерній Академії ШАГ м. Кривий Ріг.&lt;br/&gt;
-Більш детально з додатком можно ознайомитись на GitHub</value>
+Більш детально з додатком можна ознайомитись на GitHub</value>
   </data>
   <data name="Fifth paragraph - link to the SCS-Calc 1.1 repo" xml:space="preserve">
     <value>Код застосунку SCS-Calc 1.1 доступний на GitHub</value>
@@ -150,9 +150,9 @@
     <value>Рис.</value>
   </data>
   <data name="Ninth paragraph - link to the Structured Cabling Studio repo" xml:space="preserve">
-    <value>Після релізу SCS-Calc 2.0, в якості концептуального розвитку проекту, з'явилася ідея реалізаціі веб-застосунку. У березні 2023-го, на платформі .NET 7 ASP.NET Core, була начата робота над веб-проектом Structured Cabling Studio.&lt;br/&gt;
+    <value>Після релізу SCS-Calc 2.0, в якості концептуального розвитку проекту, з'явилася ідея реалізації веб-застосунку. У березні 2023-го, на платформі .NET 7 ASP.NET Core, була начата робота над веб-проектом Structured Cabling Studio.&lt;br/&gt;
 Реліз проекту відбувся у травні 2023-го. Успадкувавши концепцію від десктопних версій проекту, Structured Cabling Studio надає широкий функціонал розрахунку необхідного метражу кабелю для побудови СКС і отримання рекомендацій з підбору кабелю.&lt;br/&gt;
-З кодом проекту Structured Cabling Studio можно ознайомитись на GitHub.</value>
+З кодом проекту Structured Cabling Studio можна ознайомитись на GitHub</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Профіль</value>
