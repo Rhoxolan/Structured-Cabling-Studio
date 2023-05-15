@@ -2,32 +2,34 @@
 	ViewData["Title"] = Localizer["Information page title"];
 }
 
-<p>
-	@Localizer["First paragraph"]
-</p>
-<p class="text-center fs-5 fw-semibold">
-	(a + b) / 2 &sdot; c &sdot; d &sdot; e
-</p>
-<div class="d-flex justify-content-center">
+<div class="informationContent">
 	<p>
-		@Localizer["First formula description"]
+		@Localizer["First paragraph"]
+	</p>
+	<p class="text-center fs-5 fw-semibold">
+		(a + b) / 2 &sdot; c &sdot; d &sdot; e
+	</p>
+	<div class="d-flex justify-content-center">
+		<p>
+			@Localizer["First formula description"]
+		</p>
+	</div>
+	<p>
+		@Localizer["Second paragraph"]
+	</p>
+	<p class="text-center fs-5 fw-semibold">
+		&lceil;(a &sdot; b / &lfloor;(c &divide; (((d + e) &divide; 2) &sdot; f))&rfloor;)&rceil;
+	</p>
+	<div class="d-flex justify-content-center">
+		<p>
+			@Localizer["Second formula description"]
+		</p>
+	</div>
+	<p>
+		@Localizer["Third paragraph"]
+	</p>
+	<p>
+		@Localizer["Fourth paragraph"] <a asp-controller="@nameof(Project)"
+									  asp-action="@nameof(Project.ProjectInformation)">@Localizer["Project information link"]</a>.
 	</p>
 </div>
-<p>
-	@Localizer["Second paragraph"]
-</p>
-<p class="text-center fs-5 fw-semibold">
-	&lceil;(a &sdot; b / &lfloor;(c &divide; (((d + e) &divide; 2) &sdot; f))&rfloor;)&rceil;
-</p>
-<div class="d-flex justify-content-center">
-	<p>
-		@Localizer["Second formula description"]
-	</p>
-</div>
-<p>
-	@Localizer["Third paragraph"]
-</p>
-<p>
-	@Localizer["Fourth paragraph"] <a asp-controller="@nameof(Project)"
-		asp-action="@nameof(Project.ProjectInformation)">@Localizer["Project information link"]</a>.
-</p>

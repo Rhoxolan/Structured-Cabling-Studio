@@ -18,3 +18,7 @@ body {
     margin-bottom: 60px;
     background-color: #FFFEFD;
 }
+
+.informationContent {
+    font-size: 1.05rem;
+}
