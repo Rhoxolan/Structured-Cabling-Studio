@@ -87,6 +87,7 @@ async function loadConfigurationsListBox() {
         if (resp.ok === true) {
             let configurationsListBox = await resp.text();
             document.getElementById('configurationsListBoxDiv').innerHTML = configurationsListBox;
+            document.getElementById("loadingDiv").style.setProperty('display', 'none', 'Important');
         }
         else {
             dataLoadingError();
@@ -105,6 +106,7 @@ async function loadConfigurationDisplay() {
         if (resp.ok === true) {
             let configurationDisplay = await resp.text();
             document.getElementById('configurationHistoryDisplayDiv').innerHTML = configurationDisplay;
+            document.getElementById("loadingDiv").style.setProperty('display', 'none', 'Important');
         }
         else {
             dataLoadingError();

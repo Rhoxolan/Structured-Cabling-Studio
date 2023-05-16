@@ -114,6 +114,7 @@ async function loadCalculateForm() {
         if (resp.ok === true) {
             let calculateForm = await resp.text();
             document.getElementById('calculateFormDiv').innerHTML = calculateForm;
+            document.getElementById("loadingDiv").style.setProperty('display', 'none', 'Important');
         }
         else {
             dataLoadingError();
@@ -132,6 +133,7 @@ async function loadConfigurationDisplay() {
         if (resp.ok === true) {
             let configurationDisplay = await resp.text();
             document.getElementById('configurationDisplayDiv').innerHTML = configurationDisplay;
+            document.getElementById("loadingDiv").style.setProperty('display', 'none', 'Important');
         }
         else {
             dataLoadingError();
