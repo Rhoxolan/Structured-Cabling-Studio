@@ -91,7 +91,6 @@ document.addEventListener('click', e => {
 
 document.addEventListener('click', e => {
     if (e.target.id === "calculateButton") {
-        removeDisabledAttributesFromAllInputs();
         document.getElementById('recordTimeInput').value = new Date().getTime().toString();
     }
 });

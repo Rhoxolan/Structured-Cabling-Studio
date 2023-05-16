@@ -180,6 +180,7 @@ namespace StructuredCablingStudio.Controllers
 		/// </summary>
 		/// <returns>The partial view with the Calculate form</returns>
 		[HttpPut]
+		[ServiceFilter(typeof(DiapasonActionFilter))]
 		[ServiceFilter(typeof(StructuredCablingStudioParametersResultFilter))]
 		[ServiceFilter(typeof(ConfigurationCalculateParametersResultFilter))]
 		[ServiceFilter(typeof(CalculateDTOResultFilter))]
