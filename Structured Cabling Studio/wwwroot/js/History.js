@@ -89,11 +89,11 @@ async function loadConfigurationsListBox() {
             document.getElementById('configurationsListBoxDiv').innerHTML = configurationsListBox;
         }
         else {
-            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+            dataLoadingError();
         }
     }
     catch {
-        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+        dataLoadingError();
     }
 }
 
@@ -107,11 +107,11 @@ async function loadConfigurationDisplay() {
             document.getElementById('configurationHistoryDisplayDiv').innerHTML = configurationDisplay;
         }
         else {
-            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+            dataLoadingError();
         }
     }
     catch {
-        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+        dataLoadingError();
     }
 }
 
@@ -128,10 +128,10 @@ async function loadConfigurationDisplayById(id) {
             configurationHistoryDisplayDiv.scrollIntoView();
         }
         else {
-            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+            dataLoadingError();
         }
     } catch {
-        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+        dataLoadingError();
     }
     finally {
         document.querySelectorAll('.historyPageButton').forEach(b => b.removeAttribute('disabled'));
@@ -149,11 +149,11 @@ async function loadDeleteConfirm() {
             document.getElementById('configurationsListBoxDiv').innerHTML = deleteConfigurationConfirm;
         }
         else {
-            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+            dataLoadingError();
         }
     }
     catch {
-        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+        dataLoadingError();
     }
     finally {
         document.querySelectorAll('.historyPageButton').forEach(b => b.removeAttribute('disabled'));
@@ -172,11 +172,11 @@ async function deleteConfiguration(id) {
             await loadConfigurationDisplay();
         }
         else {
-            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+            dataLoadingError();
         }
     }
     catch {
-        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+        dataLoadingError();
     }
     finally {
         document.querySelectorAll('.deleteConfirmButton').forEach(b => b.removeAttribute('disabled'));
@@ -195,11 +195,11 @@ async function loadDeleteAllConfirm() {
             document.getElementById('configurationHistoryDisplayDiv').innerHTML = "";
         }
         else {
-            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+            dataLoadingError();
         }
     }
     catch {
-        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+        dataLoadingError();
     }
     finally {
         document.querySelectorAll('.historyPageButton').forEach(b => b.removeAttribute('disabled'));
@@ -218,13 +218,18 @@ async function deleteAllConfigurations() {
             await loadConfigurationDisplay();
         }
         else {
-            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+            dataLoadingError();
         }
     }
     catch {
-        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+        dataLoadingError();
     }
     finally {
         document.querySelectorAll('.deleteConfirmButton').forEach(b => b.removeAttribute('disabled'));
     }
+}
+
+function dataLoadingError() {
+    document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'block', 'Important');
+    document.getElementById("historyPageContentDiv").style.setProperty('display', 'none', 'Important');
 }

@@ -120,4 +120,7 @@
   <data name="Data loading error" xml:space="preserve">
     <value>Помилка завантаження данних. Будь ласка, спробуйте ще раз</value>
   </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Перезавантажити сторінку</value>
+  </data>
 </root>

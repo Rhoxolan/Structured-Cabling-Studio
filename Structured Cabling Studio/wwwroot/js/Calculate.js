@@ -116,11 +116,11 @@ async function loadCalculateForm() {
             document.getElementById('calculateFormDiv').innerHTML = calculateForm;
         }
         else {
-            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+            dataLoadingError();
         }
     }
     catch {
-        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+        dataLoadingError();
     }
 }
 
@@ -134,11 +134,11 @@ async function loadConfigurationDisplay() {
             document.getElementById('configurationDisplayDiv').innerHTML = configurationDisplay;
         }
         else {
-            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+            dataLoadingError();
         }
     }
     catch {
-        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+        dataLoadingError();
     }
 }
 
@@ -154,10 +154,10 @@ async function editCalculateForm(path) {
             document.getElementById('calculateFormDiv').innerHTML = calculateForm;
         }
         else {
-            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+            dataLoadingError();
         }
     } catch {
-        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+        dataLoadingError();
     }
     finally {
         document.getElementById('calculateFormDiv').classList.remove('formLoading');
@@ -178,10 +178,10 @@ async function calculate() {
             configurationDisplayDiv.scrollIntoView();
         }
         else {
-            document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+            dataLoadingError();
         }
     } catch {
-        document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'flex', 'Important');
+        dataLoadingError();
     }
     finally {
         document.getElementById('calculateFormDiv').classList.remove('formLoading');
@@ -226,4 +226,9 @@ function checkCableHankMeterage() {
 
 function removeDisabledAttributesFromAllInputs() {
     document.querySelectorAll('input').forEach(i => i.removeAttribute('disabled'));
+}
+
+function dataLoadingError() {
+    document.getElementById("dataLoadingErrorDiv").style.setProperty('display', 'block', 'Important');
+    document.getElementById("calculatePageContentDiv").style.setProperty('display', 'none', 'Important');
 }

@@ -120,4 +120,7 @@
   <data name="Data loading error" xml:space="preserve">
     <value>Ошибка загрузки данных. Пожалуйста, попробуйте еще раз</value>
   </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Перезагрузить страницу</value>
+  </data>
 </root>
