@@ -9,6 +9,6 @@
 <form asp-controller="@nameof(Account)" asp-action="@nameof(Account.SignInWithGoogle)" method="post" class="mt-3">
 	<input type="hidden" name="returnUrl" value="@Model.ReturnUrl">
 	<button type="submit" class="btn btn-outline-primary">
-		@Localizer["Sign In with Google"]
+		<i class="bi bi-google"></i> @Localizer["Sign In with Google"]
 	</button>
 </form>
