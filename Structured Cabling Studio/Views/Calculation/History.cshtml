@@ -2,16 +2,20 @@
 	ViewData["Title"] = Localizer["History page title"];
 }
 
-@await Html.PartialAsync("_DataLoadingErrorPartial")
+<div class="px-lg-1">
 
-<div id="historyPageContentDiv">
+	@await Html.PartialAsync("_DataLoadingErrorPartial")
 
-	<div id="configurationsListBoxDiv">
-	</div>
+	<div id="historyPageContentDiv">
 
-	<input type="hidden" id="selectedConfigurationId" />
+		<div id="configurationsListBoxDiv">
+		</div>
 
-	<div id="configurationHistoryDisplayDiv">
+		<input type="hidden" id="selectedConfigurationId" />
+
+		<div id="configurationHistoryDisplayDiv">
+		</div>
+
 	</div>
 
 </div>

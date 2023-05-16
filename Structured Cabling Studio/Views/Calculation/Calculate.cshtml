@@ -2,17 +2,20 @@
 	ViewData["Title"] = Localizer["Calculation page title"];
 }
 
-@await Html.PartialAsync("_DataLoadingErrorPartial")
+<div class="px-lg-5 mx-lg-2">
 
-<div id="calculatePageContentDiv">
+	@await Html.PartialAsync("_DataLoadingErrorPartial")
 
-	<div id="calculateFormDiv">
-	</div>
+	<div id="calculatePageContentDiv">
 
-	<div id="configurationDisplayDiv">
+		<div id="calculateFormDiv">
+		</div>
+
+		<div id="configurationDisplayDiv">
+		</div>
+
 	</div>
 
 </div>
-
 
 <script src="~/js/Calculate.js" asp-append-version="true"></script>

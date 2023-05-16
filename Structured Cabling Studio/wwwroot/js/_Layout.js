@@ -1,25 +1,3 @@
-//.mainContent
-
-mainContentResize();
-document.addEventListener('DOMContentLoaded', mainContentResize);
-window.addEventListener('resize', mainContentResize);
-window.addEventListener('load', mainContentResize);
-
-function mainContentResize() {
-    if (window.innerWidth > 1799) {
-        document.querySelector('.mainContent').style.setProperty("margin-left", "24px", "important");
-        document.querySelector('.mainContent').style.setProperty("margin-right", "24px", "important");
-    }
-    else if (window.innerWidth > 991) {
-        document.querySelector('.mainContent').style.setProperty("margin-left", "48px", "important");
-        document.querySelector('.mainContent').style.setProperty("margin-right", "48px", "important");
-    }
-    else if (window.innerWidth > 0) {
-        document.querySelector('.mainContent').style.setProperty("margin-left", "0", "important");
-        document.querySelector('.mainContent').style.setProperty("margin-right", "0", "important");
-    }
-}
-
 //#verticalSiteNav
 
 verticalSiteNavResize();
