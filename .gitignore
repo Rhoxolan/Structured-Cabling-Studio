@@ -364,3 +364,4 @@ FodyWeavers.xsd
 /Structured Cabling Studio/cabling_configurations.db
 /Structured Cabling Studio/cabling_configurations.db-shm
 /Structured Cabling Studio/cabling_configurations.db-wal
+/Structured Cabling Studio/.config/dotnet-tools.json
