@@ -89,19 +89,17 @@ document.addEventListener('click', e => {
     }
 });
 
-document.addEventListener('click', e => {
-    if (e.target.id === "calculateButton") {
-        document.getElementById('recordTimeInput').value = new Date().getTime().toString();
-    }
-});
-
 document.addEventListener('submit', e => {
     if (e.target.id === "calculateForm") {
         e.preventDefault();
+        document.getElementById('recordTimeInput').value = new Date().getTime().toString();
         validateDiapason(e);
         validateStep(e);
         checkCableHankMeterage();
-        calculate();
+        let disabledInputs = removeDisabledAttributesFromAllInputs();
+        calculate().then(() => {
+            disabledInputs.forEach(i => i.setAttribute('disabled', 'disabled'));
+        });
     }
 });
 
@@ -226,7 +224,9 @@ function checkCableHankMeterage() {
 }
 
 function removeDisabledAttributesFromAllInputs() {
-    document.querySelectorAll('input').forEach(i => i.removeAttribute('disabled'));
+    let disabledInputs = document.querySelectorAll('input[disabled]');
+    disabledInputs.forEach(i => i.removeAttribute('disabled'));
+    return disabledInputs;
 }
 
 function dataLoadingError() {
