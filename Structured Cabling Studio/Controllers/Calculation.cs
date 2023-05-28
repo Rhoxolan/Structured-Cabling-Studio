@@ -7,37 +7,52 @@ using System.Text.Json;
 using System.Text;
 using static System.Text.Encoding;
 using static System.String;
+using StructuredCablingStudio.Loggers;
 
 namespace StructuredCablingStudio.Controllers
 {
 	public class Calculation : Controller
 	{
 		private readonly IStringLocalizer<Calculation> _localizer;
+		private readonly ICustomFileLogger _customLogger;
 
-		public Calculation(IStringLocalizer<Calculation> localizer)
+		public Calculation(IStringLocalizer<Calculation> localizer, ICustomFileLogger customLogger)
 		{
 			_localizer = localizer;
+			_customLogger = customLogger;
 		}
 
 		public IActionResult Calculate()
 		{
+			_customLogger.Log("pagesloading.log",
+				$"The loading of the Calculate page was requested from the " +
+				$"{HttpContext.Connection.RemoteIpAddress?.ToString()} ip-address");
 			return View();
 		}
 
 		[Authorize]
 		public IActionResult History()
 		{
+			_customLogger.Log("pagesloading.log",
+				$"The loading of the History page was requested from the " +
+				$"{HttpContext.Connection.RemoteIpAddress?.ToString()} ip-address");
 			return View();
 		}
 
 		public IActionResult Information()
 		{
+			_customLogger.Log("pagesloading.log",
+				$"The loading of the Information page was requested from the " +
+				$"{HttpContext.Connection.RemoteIpAddress?.ToString()} ip-address");
 			return View();
 		}
 
 		[HttpPost]
 		public IActionResult SaveToTXT(string serializedCablingConfiguration)
 		{
+			_customLogger.Log("cablingconfigurationstxtsaving.log",
+				$"The saving to txt of the cabling configuration was requested from the " +
+				$"{HttpContext.Connection.RemoteIpAddress?.ToString()} ip-address");
 			var options = new JsonSerializerOptions
 			{
 				WriteIndented = true,

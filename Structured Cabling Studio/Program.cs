@@ -7,6 +7,7 @@ using StructuredCablingStudio.Binders.CalculationBinders;
 using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
 using StructuredCablingStudio.Filters.CalculationFilters;
+using StructuredCablingStudio.Loggers;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,6 +35,7 @@ builder.Services.AddAutoMapper(typeof(StructuredCablingParametersToStructuredCab
 	.AddScoped<ConfigurationCalculateParametersResultFilter>()
 	.AddScoped<DiapasonActionFilter>()
 	.AddScoped<CalculateDTOResultFilter>()
+	.AddSingleton<ICustomFileLogger, CustomFileLogger>()
 	.AddDbContext<ApplicationContext>(opt
 	=> opt.UseSqlServer(builder.Configuration.GetConnectionString("CablingConfigurationsDB")))
 	.AddLocalization(opt => opt.ResourcesPath = "Resources")

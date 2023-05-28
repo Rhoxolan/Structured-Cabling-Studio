@@ -13,6 +13,7 @@ using static System.DateTimeOffset;
 using StructuredCablingStudio.DTOs.CalculationDTOs;
 using StructuredCablingStudio.Filters.CalculationFilters;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
+using StructuredCablingStudio.Loggers;
 
 namespace StructuredCablingStudio.Controllers
 {
@@ -22,12 +23,15 @@ namespace StructuredCablingStudio.Controllers
 		private readonly ApplicationContext _context;
 		private readonly UserManager<User> _userManager;
 		private readonly IMapper _mapper;
+		private readonly ICustomFileLogger _customLogger;
 
-		public CalculationCalculateController(UserManager<User> userManager, ApplicationContext context, IMapper mapper)
+		public CalculationCalculateController(UserManager<User> userManager, ApplicationContext context, IMapper mapper,
+			ICustomFileLogger customLogger)
 		{
 			_userManager = userManager;
 			_context = context;
 			_mapper = mapper;
+			_customLogger = customLogger;
 		}
 
 
@@ -35,7 +39,8 @@ namespace StructuredCablingStudio.Controllers
 		/// Returns the partial view with the clean Calculate form
 		/// </summary>
 		[HttpGet]
-		public IActionResult GetCalculateForm(StructuredCablingStudioParameters cablingParameters, ConfigurationCalculateParameters calculateParameters,
+		public IActionResult GetCalculateForm(StructuredCablingStudioParameters cablingParameters,
+			ConfigurationCalculateParameters calculateParameters,
 			CalculateDTO calculateDTO)
 		{
 			CalculateViewModel viewModel = _mapper.Map<CalculateViewModel>(cablingParameters);
@@ -260,8 +265,9 @@ namespace StructuredCablingStudio.Controllers
 			var structuredCablingStudioParameters = _mapper.Map<StructuredCablingStudioParameters>(calculateVM);
 			var configurationCalculateParameters = _mapper.Map<ConfigurationCalculateParameters>(calculateVM);
 			var recordTime = FromUnixTimeMilliseconds(ToInt64(calculateVM.RecordTime)).DateTime.ToLocalTime();
-			var configuration = configurationCalculateParameters.Calculate(structuredCablingStudioParameters, recordTime, calculateVM.MinPermanentLink,
-				calculateVM.MaxPermanentLink, calculateVM.NumberOfWorkplaces, calculateVM.NumberOfPorts);
+			var configuration = configurationCalculateParameters.Calculate(structuredCablingStudioParameters, recordTime,
+				calculateVM.MinPermanentLink, calculateVM.MaxPermanentLink, calculateVM.NumberOfWorkplaces, calculateVM.NumberOfPorts);
+			string logMessage = $"The cabling configuration was calculated; ip-address: {HttpContext.Connection.RemoteIpAddress?.ToString()}";
 			if (User.Identity != null && User.Identity.IsAuthenticated)
 			{
 				var userId = User.FindFirst(ClaimTypes.NameIdentifier);
@@ -274,9 +280,11 @@ namespace StructuredCablingStudio.Controllers
 						configuratonEntity.User = currentUser;
 						await _context.CablingConfigurations.AddAsync(configuratonEntity);
 						await _context.SaveChangesAsync();
+						logMessage += $"; user: {currentUser.Email}";
 					}
 				}
 			}
+			_customLogger.Log("calculationlogs.log", logMessage);
 			var structuredCablingParameters = _mapper.Map<StructuredCablingParameters>(structuredCablingStudioParameters);
 			HttpContext.Session.SetStructuredCablingParameters(structuredCablingParameters);
 			var calculateParameters = _mapper.Map<CalculateParameters>(configurationCalculateParameters);
