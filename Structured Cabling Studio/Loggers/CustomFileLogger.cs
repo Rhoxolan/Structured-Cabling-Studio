@@ -13,7 +13,6 @@ namespace StructuredCablingStudio.Loggers
 		{
 			lock (_lock)
 			{
-				Thread.Sleep(5000);
 				var now = DateTime.Now;
 				string logsDirectoryPath = Combine(GetCurrentDirectory(), "logs");
 				if (!Directory.Exists(logsDirectoryPath))
