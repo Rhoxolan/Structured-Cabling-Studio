@@ -8,6 +8,7 @@ using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
 using StructuredCablingStudio.Filters.CalculationFilters;
 using StructuredCablingStudio.Loggers;
+using StructuredCablingStudio.Services.SaveToTXTService;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,7 +25,8 @@ builder.Services.AddControllersWithViews(opt =>
 builder.Services.AddIdentity<User, IdentityRole>()
 	.AddEntityFrameworkStores<ApplicationContext>();
 
-builder.Services.AddAutoMapper(typeof(StructuredCablingParametersToStructuredCablingStudioParametersProfile),
+builder.Services.AddTransient<ISaveToTXTService, SaveToTXTService>()
+	.AddAutoMapper(typeof(StructuredCablingParametersToStructuredCablingStudioParametersProfile),
 	typeof(StructuredCablingStudioParametersToCalculateViewModelProfile),
 	typeof(CalculateViewModelToStructuredCablingParametersProfile),
 	typeof(CalculateParametersToConfigurationCalculateParametersProfile),
