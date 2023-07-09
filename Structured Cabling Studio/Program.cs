@@ -7,7 +7,7 @@ using StructuredCablingStudio.Binders.CalculationBinders;
 using StructuredCablingStudio.Data.Contexts;
 using StructuredCablingStudio.Data.Entities;
 using StructuredCablingStudio.Filters.CalculationFilters;
-using StructuredCablingStudio.Loggers;
+using StructuredCablingStudio.Services.FileLoggerService;
 using StructuredCablingStudio.Services.SaveToTXTService;
 using System.Globalization;
 
@@ -26,6 +26,7 @@ builder.Services.AddIdentity<User, IdentityRole>()
 	.AddEntityFrameworkStores<ApplicationContext>();
 
 builder.Services.AddTransient<ISaveToTXTService, SaveToTXTService>()
+	.AddSingleton<IFileLoggerService, FileLoggerService>()
 	.AddAutoMapper(typeof(StructuredCablingParametersToStructuredCablingStudioParametersProfile),
 	typeof(StructuredCablingStudioParametersToCalculateViewModelProfile),
 	typeof(CalculateViewModelToStructuredCablingParametersProfile),
@@ -37,7 +38,6 @@ builder.Services.AddTransient<ISaveToTXTService, SaveToTXTService>()
 	.AddScoped<ConfigurationCalculateParametersResultFilter>()
 	.AddScoped<DiapasonActionFilter>()
 	.AddScoped<CalculateDTOResultFilter>()
-	.AddSingleton<ICustomFileLogger, CustomFileLogger>()
 	.AddDbContext<ApplicationContext>(opt
 	=> opt.UseSqlServer(builder.Configuration.GetConnectionString("CablingConfigurationsDB")))
 	.AddLocalization(opt => opt.ResourcesPath = "Resources")

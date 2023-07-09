@@ -13,7 +13,7 @@ using static System.DateTimeOffset;
 using StructuredCablingStudio.DTOs.CalculationDTOs;
 using StructuredCablingStudio.Filters.CalculationFilters;
 using StructuredCablingStudio.Models.ViewModels.CalculationViewModels;
-using StructuredCablingStudio.Loggers;
+using StructuredCablingStudio.Services.FileLoggerService;
 
 namespace StructuredCablingStudio.Controllers
 {
@@ -23,15 +23,15 @@ namespace StructuredCablingStudio.Controllers
 		private readonly ApplicationContext _context;
 		private readonly UserManager<User> _userManager;
 		private readonly IMapper _mapper;
-		private readonly ICustomFileLogger _customLogger;
+		private readonly IFileLoggerService _fileLoggerService;
 
 		public CalculationCalculateController(UserManager<User> userManager, ApplicationContext context, IMapper mapper,
-			ICustomFileLogger customLogger)
+			IFileLoggerService fileLoggerService)
 		{
 			_userManager = userManager;
 			_context = context;
 			_mapper = mapper;
-			_customLogger = customLogger;
+			_fileLoggerService = fileLoggerService;
 		}
 
 
@@ -284,7 +284,7 @@ namespace StructuredCablingStudio.Controllers
 					}
 				}
 			}
-			_customLogger.Log("calculationlogs.log", logMessage);
+			_fileLoggerService.Log("calculationlogs.log", logMessage);
 			var structuredCablingParameters = _mapper.Map<StructuredCablingParameters>(structuredCablingStudioParameters);
 			HttpContext.Session.SetStructuredCablingParameters(structuredCablingParameters);
 			var calculateParameters = _mapper.Map<CalculateParameters>(configurationCalculateParameters);

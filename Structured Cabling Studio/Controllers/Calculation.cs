@@ -3,25 +3,25 @@ using Microsoft.AspNetCore.Mvc;
 using StructuredCablingStudioCore;
 using System.Text.Json.Serialization;
 using System.Text.Json;
-using StructuredCablingStudio.Loggers;
 using StructuredCablingStudio.Services.SaveToTXTService;
+using StructuredCablingStudio.Services.FileLoggerService;
 
 namespace StructuredCablingStudio.Controllers
 {
-	public class Calculation : Controller
+    public class Calculation : Controller
 	{
-		private readonly ICustomFileLogger _customLogger;
+		private readonly IFileLoggerService _fileLoggerService;
 		private readonly ISaveToTXTService _saveToTXTService;
 
-		public Calculation(ICustomFileLogger customLogger, ISaveToTXTService saveToTXTService)
+		public Calculation(IFileLoggerService fileLoggerService, ISaveToTXTService saveToTXTService)
 		{
-			_customLogger = customLogger;
+			_fileLoggerService = fileLoggerService;
 			_saveToTXTService = saveToTXTService;
 		}
 
 		public IActionResult Calculate()
 		{
-			_customLogger.Log("pagesloading.log",
+			_fileLoggerService.Log("pagesloading.log",
 				$"The loading of the Calculate page was requested from the " +
 				$"{HttpContext.Connection.RemoteIpAddress?.ToString()} ip-address");
 			return View();
@@ -30,7 +30,7 @@ namespace StructuredCablingStudio.Controllers
 		[Authorize]
 		public IActionResult History()
 		{
-			_customLogger.Log("pagesloading.log",
+			_fileLoggerService.Log("pagesloading.log",
 				$"The loading of the History page was requested from the " +
 				$"{HttpContext.Connection.RemoteIpAddress?.ToString()} ip-address");
 			return View();
@@ -38,7 +38,7 @@ namespace StructuredCablingStudio.Controllers
 
 		public IActionResult Information()
 		{
-			_customLogger.Log("pagesloading.log",
+			_fileLoggerService.Log("pagesloading.log",
 				$"The loading of the Information page was requested from the " +
 				$"{HttpContext.Connection.RemoteIpAddress?.ToString()} ip-address");
 			return View();
@@ -47,7 +47,7 @@ namespace StructuredCablingStudio.Controllers
 		[HttpPost]
 		public IActionResult SaveToTXT(string serializedCablingConfiguration)
 		{
-			_customLogger.Log("cablingconfigurationstxtsaving.log",
+			_fileLoggerService.Log("cablingconfigurationstxtsaving.log",
 				$"The saving to txt of the cabling configuration was requested from the " +
 				$"{HttpContext.Connection.RemoteIpAddress?.ToString()} ip-address");
 			var options = new JsonSerializerOptions

@@ -1,20 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StructuredCablingStudio.Loggers;
+using StructuredCablingStudio.Services.FileLoggerService;
 
 namespace StructuredCablingStudio.Controllers
 {
-	public class Project : Controller
+    public class Project : Controller
 	{
-		private readonly ICustomFileLogger _customLogger;
+		private readonly IFileLoggerService _fileLoggerService;
 
-		public Project(ICustomFileLogger customLogger)
+		public Project(IFileLoggerService fileLoggerService)
 		{
-			_customLogger = customLogger;
+			_fileLoggerService = fileLoggerService;
 		}
 
 		public IActionResult ProjectInformation()
 		{
-			_customLogger.Log("pagesloading.log",
+			_fileLoggerService.Log("pagesloading.log",
 				$"The loading of the ProjectInformation page was requested from the " +
 				$"{HttpContext.Connection.RemoteIpAddress?.ToString()} ip-address");
 			return View();
