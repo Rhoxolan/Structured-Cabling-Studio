@@ -120,6 +120,9 @@
   <data name="Author of project" xml:space="preserve">
     <value>Author of project</value>
   </data>
+  <data name="AuthorName" xml:space="preserve">
+    <value>Pavel Batsemakin</value>
+  </data>
   <data name="E-Mail" xml:space="preserve">
     <value>E-Mail</value>
   </data>
